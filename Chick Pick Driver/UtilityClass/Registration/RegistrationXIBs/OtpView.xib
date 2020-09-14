@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="OTP" id="iN0-l3-epB" customClass="OtpView" customModule="Pappea_Driver" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zF-js-LpS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D9s-Tj-JLx" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="AME-KI-9Nf"/>
+                            </constraints>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter Mobile OTP"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHk-Cr-kHn">
+                            <rect key="frame" x="147.5" y="70" width="80" height="20"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="4to-zS-Pph"/>
+                                <constraint firstAttribute="width" secondItem="EHk-Cr-kHn" secondAttribute="height" multiplier="4" id="Tyv-Wf-Nq2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                            <state key="normal" title="Resend OTP">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="btnResendOTP:" destination="iN0-l3-epB" eventType="touchUpInside" id="GEs-dj-mUy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="D9s-Tj-JLx" firstAttribute="leading" secondItem="1zF-js-LpS" secondAttribute="leading" id="4n7-Gx-W4R"/>
+                        <constraint firstItem="EHk-Cr-kHn" firstAttribute="top" secondItem="D9s-Tj-JLx" secondAttribute="bottom" constant="20" id="4tg-Wf-8Og"/>
+                        <constraint firstAttribute="trailing" secondItem="D9s-Tj-JLx" secondAttribute="trailing" id="5ku-0u-Y8P"/>
+                        <constraint firstItem="EHk-Cr-kHn" firstAttribute="centerX" secondItem="1zF-js-LpS" secondAttribute="centerX" id="NZI-m9-3VJ"/>
+                        <constraint firstItem="D9s-Tj-JLx" firstAttribute="top" secondItem="1zF-js-LpS" secondAttribute="top" id="v05-Pe-Ob8"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqq-Bu-vOl">
+                    <rect key="frame" x="147.5" y="91" width="80" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="HCM-J4-ZMY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1zF-js-LpS" secondAttribute="bottom" id="1dm-nI-V1J"/>
+                <constraint firstItem="dqq-Bu-vOl" firstAttribute="leading" secondItem="EHk-Cr-kHn" secondAttribute="leading" id="6VW-Kn-aSs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1zF-js-LpS" secondAttribute="trailing" id="Ag7-EP-JkX"/>
+                <constraint firstItem="1zF-js-LpS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ItO-xg-dnT"/>
+                <constraint firstItem="dqq-Bu-vOl" firstAttribute="trailing" secondItem="EHk-Cr-kHn" secondAttribute="trailing" id="bHT-qd-Nep"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dqq-Bu-vOl" secondAttribute="bottom" constant="5" id="jAO-8f-Okp"/>
+                <constraint firstItem="dqq-Bu-vOl" firstAttribute="top" secondItem="EHk-Cr-kHn" secondAttribute="bottom" constant="1" id="vd2-X7-A8g"/>
+                <constraint firstItem="1zF-js-LpS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="xWV-2F-YiP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="txtOTP" destination="D9s-Tj-JLx" id="8Nx-we-tdO"/>
+            </connections>
+            <point key="canvasLocation" x="272.80000000000001" y="32.833583208395808"/>
+        </view>
+    </objects>
+</document>

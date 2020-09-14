@@ -1,0 +1,6 @@
+framework module Pods_Chick_Pick_Driver {
+  umbrella header "Pods-Chick Pick Driver-umbrella.h"
+
+  export *
+  module * { export * }
+}
