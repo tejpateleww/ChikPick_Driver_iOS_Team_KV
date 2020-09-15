@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // While send to client build some features not everything
         Singleton.shared.isClientBuild = false
         
-        
+            // Temp Commented by Bhautik
         
         //        for fontFamilyName in UIFont.familyNames{
         //            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
