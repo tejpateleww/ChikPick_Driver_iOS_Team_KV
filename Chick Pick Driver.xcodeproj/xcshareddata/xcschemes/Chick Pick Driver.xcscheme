@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "34E8B3EA22C3AAE000C33A94"
-               BuildableName = "Chick Pick Driver.app"
+               BuildableName = "Chick Pick Drive.app"
                BlueprintName = "Chick Pick Driver"
                ReferencedContainer = "container:Chick Pick Driver.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "34E8B3EA22C3AAE000C33A94"
-            BuildableName = "Chick Pick Driver.app"
+            BuildableName = "Chick Pick Drive.app"
             BlueprintName = "Chick Pick Driver"
             ReferencedContainer = "container:Chick Pick Driver.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "34E8B3EA22C3AAE000C33A94"
-            BuildableName = "Chick Pick Driver.app"
+            BuildableName = "Chick Pick Drive.app"
             BlueprintName = "Chick Pick Driver"
             ReferencedContainer = "container:Chick Pick Driver.xcodeproj">
          </BuildableReference>

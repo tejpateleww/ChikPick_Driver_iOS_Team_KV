@@ -283,8 +283,6 @@ class VehicleInfoView: UIView
         parameterArray.no_of_passenger = txtNoOfPassenger.text!
         parameterArray.other_company_name = txtCompanyName.text!
         parameterArray.plate_number = txtVehicleNumber.text!
-      
-        
 
         parameterArray.vehicle_type_model_name = txtVehicleSubName.text! //+ " " + txtVehicleSubModel.text!
         parameterArray.vehicle_type_manufacturer_name = txtVehicleModel.text! //+ " " + txtVehicleSubModel.text!
@@ -495,8 +493,6 @@ extension VehicleInfoView  : UIPickerViewDelegate,UIPickerViewDataSource
                 txtCarType.text = ""
                 let tempDic = (vc.arrVehicleData.filter({$0.manufacturerName == strSelectName}).first)
                 vc.arrVehicleTypeSubName = tempDic! // .vehicleModel.map({$0.vehicleTypeName as! String})
-
-
             }
             else if pickerView == vc.pickerViewVehicleSubName
             {

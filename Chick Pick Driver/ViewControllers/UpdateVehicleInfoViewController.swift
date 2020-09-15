@@ -12,13 +12,11 @@ import SkyFloatingLabelTextField
 import ActionSheetPicker_3_0
 
 class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
-
-    
     
     @IBOutlet weak var txtVehicleSubModel: SkyFloatingLabelTextField!
     @IBOutlet weak var btnSave: SSSpinnerButton!
     @IBOutlet weak var vehicleView: UIView!
-//    let myCustomView: VehicleInfoView = .fromNib()
+    //    let myCustomView: VehicleInfoView = .fromNib()
     var pickerViewManufYear = UIPickerView()
     var pickerViewVehicleName = UIPickerView()
     var pickerViewVehicleSubName = UIPickerView()
@@ -41,7 +39,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     var vehicleSelectedSubModelID = String()
     var arrVehicleData = [VehicleData]()
     var parameterArray = RegistrationParameter.shared
-
+    
     var imagesTypes : [(parameter: String,image: UIImage)] = [("car_left",#imageLiteral(resourceName: "car-1")),
                                                               ("car_right",#imageLiteral(resourceName: "car-2")),
                                                               ("car_front",#imageLiteral(resourceName: "car-3")),
@@ -51,10 +49,10 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        view.isUserInteractionEnabled = false
-//        btnSave.isHidden = true
-
+        
+        //        view.isUserInteractionEnabled = false
+        //        btnSave.isHidden = true
+        
         setupColumnView()
         pickerViewManufYear = UIPickerView()
         
@@ -73,7 +71,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         let vehicleModelRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         let vehicleSubModelRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         let vehicleYearMenufactureRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-
+        
         let imageView1 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
         let imageView2 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
         let imageView3 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
@@ -85,23 +83,23 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         vehicleModelRightView.addSubview(imageView1)
         vehicleSubModelRightView.addSubview(imageView2)
         vehicleYearMenufactureRightView.addSubview(imageView3)
-
+        
         txtVehicleModel.rightView = vehicleModelRightView
         txtVehicleModel.rightViewMode = .always
-
+        
         txtVehicleSubModel.rightView = vehicleSubModelRightView
         txtVehicleSubModel.rightViewMode = .always
-
+        
         txtVehicleYearMenufacture.rightView = vehicleYearMenufactureRightView
         txtVehicleYearMenufacture.rightViewMode = .always
         
         
-//        vehicleView.addSubview(myCustomView)
-//        myCustomView.setupTextField()
+        //        vehicleView.addSubview(myCustomView)
+        //        myCustomView.setupTextField()
         btnSave.submitButtonLayout(isDark : true)
         webserviceForVehicleMenufactureYearList()
         self.title = "Vehicle Option"
-//        txtVehicleType.delegate = self
+        //        txtVehicleType.delegate = self
         
         getData()
     }
@@ -123,14 +121,14 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-
+        
         if isMovingFromParent {
             navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationController?.navigationBar.shadowImage = UIImage()
             navigationController?.navigationBar.isTranslucent = true
         }
     }
-   
+    
     func setupColumnView() {
         
         collectionView.imageDataSource = true
@@ -154,21 +152,21 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     }
     
     func didSelect(indexPath: IndexPath) {
-//        if let vc = self.parentContainerViewController() as? RegistrationViewController {
-            let imageVC : ImagePickerViewController = UIViewController.viewControllerInstance(storyBoard: .picker)
-            imageVC.onDismiss = {
-                self.imagesTypes[indexPath.item].image = imageVC.pickedImage
-                self.uploadImages(image:imageVC.pickedImage, selected: indexPath.item)
-//
-                self.collectionView.imageContentMode = .scaleAspectFit
-                
-                self.collectionView.imageArray = self.imagesTypes.map { $0.image }
-                self.collectionView.reloadData()
-                imageVC.dismiss(animated: true)
-            }
-            self.present(imageVC, animated: true, completion: nil)
-//            vc.present(imageVC, animated: true)
-//        }
+        //        if let vc = self.parentContainerViewController() as? RegistrationViewController {
+        let imageVC : ImagePickerViewController = UIViewController.viewControllerInstance(storyBoard: .picker)
+        imageVC.onDismiss = {
+            self.imagesTypes[indexPath.item].image = imageVC.pickedImage
+            self.uploadImages(image:imageVC.pickedImage, selected: indexPath.item)
+            //
+            self.collectionView.imageContentMode = .scaleAspectFit
+            
+            self.collectionView.imageArray = self.imagesTypes.map { $0.image }
+            self.collectionView.reloadData()
+            imageVC.dismiss(animated: true)
+        }
+        self.present(imageVC, animated: true, completion: nil)
+        //            vc.present(imageVC, animated: true)
+        //        }
     }
     
     func getData() {
@@ -200,19 +198,19 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             self.vehicleUpdatedType = infoData.vehicleTypeName ?? ""//arrSelectedName.first!
             txtVehicleType.text = self.vehicleUpdatedType
             txtNoofPassenger.text = infoData.noOfPassenger
-
-
+            
+            
             self.vehicleSelectedManuID = infoData.vehicleTypeManufacturerId ?? ""
             self.vehicleSelectedSubModelID = infoData.id ?? ""
-
+            
             let baseImage = NetworkEnvironment.imageBaseURL
             
-
+            
             let left = baseImage + "\(infoData.carLeft ?? "")"
             let right = baseImage + "\(infoData.carRight ?? "")"
             let front = baseImage + "\(infoData.carFront ?? "")"
             let back = baseImage + "\(infoData.carBack ?? "")"
-
+            
             parameterArray.car_left = left
             parameterArray.car_right = right
             parameterArray.car_front = front
@@ -280,7 +278,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             print(error.localizedDescription)
         }
     }
- 
+    
     @IBAction func brnSaveClicked(_ sender: Any) {
         
         if !validation().0 {
@@ -318,7 +316,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         } else if self.imagesTypes.first?.image.isEqualToImage(UIImage(named: "car-4")!) ?? true {
             return (false, "Please upload back side of car image")
         }
-       
+        
         return (true, "")
     }
     func openDatePicker(){
@@ -327,11 +325,30 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         
         txtVehicleYearMenufacture.inputView = pickerViewManufYear
         pickerViewManufYear.backgroundColor = UIColor.white
-
+        
+        if txtVehicleYearMenufacture.text?.isEmpty ?? false {
+            txtVehicleYearMenufacture.text = arrYearMenufacList.first
+        }
     }
     func openVehiclePicker(){
     }
-
+    
+    func resetCarCollectionToDefault() {
+        
+        imagesTypes = [("car_left",#imageLiteral(resourceName: "car-1")),
+                   ("car_right",#imageLiteral(resourceName: "car-2")),
+                   ("car_front",#imageLiteral(resourceName: "car-3")),
+                   ("car_back",#imageLiteral(resourceName: "car-4"))]
+        
+        parameterArray.car_left = ""
+        parameterArray.car_right = ""
+        parameterArray.car_front = ""
+        parameterArray.car_back = ""
+        
+        self.collectionView.imageArray = self.imagesTypes.map { $0.image }
+        self.collectionView.reloadData()
+    }
+    
     // ----------------------------------------------------
     // MARK: - Webservice Methods
     // ----------------------------------------------------
@@ -339,7 +356,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     func webserviceForVehicleInfo() {
         
         let updateVehicleInfoData : UpdateVehicleInfo = UpdateVehicleInfo()
-    
+        
         do {
             let loginData = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile")
             let parameter = loginData?.responseObject
@@ -363,13 +380,13 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         updateVehicleInfoData.car_right = parameterArray.car_right
         updateVehicleInfoData.car_front = parameterArray.car_front
         updateVehicleInfoData.car_back = parameterArray.car_back
-
+        
         Loader.showHUD(with: self.view)
-
-
+        
+        
         UserWebserviceSubclass.updateVehicleInfo(transferMoneyModel: updateVehicleInfoData, imageParamName: imagesTypes.map{$0.parameter}) { (response, status) in
             Loader.hideHUD()
-
+            
             if status {
                 
                 let loginModelDetails = LoginModel.init(fromJson: response)
@@ -389,9 +406,9 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     
     func webserviceForVehicleMenufactureYearList()
     {
-//        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        //        Loader.showHUD(with: UIApplication.shared.keyWindow)
         UserWebserviceSubclass.vehicleTypeModelList(strType: ["" : ""]) { (response, status) in
-//            Loader.hideHUD()
+            //            Loader.hideHUD()
             if status
             {
                 print(response)
@@ -401,15 +418,22 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
                 
                 print(vehicleListRes.yearList)
                 
-//                arrYearMenufacList = vehicleListRes.yearList
+                //                arrYearMenufacList = vehicleListRes.yearList
                 self.arrVehicleData = vehicleListRes.data
                 
                 print(self.arrVehicleData)
                 
                 self.arrVehicleTypeName = vehicleListRes.data.map({$0.manufacturerName})
                 let strSelectName = self.arrVehicleTypeName[0]
-                let tempDic = (self.arrVehicleData.filter({$0.manufacturerName == strSelectName}).first)
-                self.arrVehicleTypeSubName = (tempDic!).vehicleModel.map({$0.vehicleTypeModelName})
+                
+                if !(self.txtVehicleModel.text?.isEmpty ?? false) {
+                    // for vehicle subtype new array aacording to vehicle model
+                    let temp = (self.arrVehicleData.filter({$0.manufacturerName == self.txtVehicleModel.text!}).first)
+                    self.arrVehicleTypeSubName = (temp!).vehicleModel.map({$0.vehicleTypeModelName})
+                } else {
+                    let tempDic = (self.arrVehicleData.filter({$0.manufacturerName == strSelectName}).first)
+                    self.arrVehicleTypeSubName = (tempDic!).vehicleModel.map({$0.vehicleTypeModelName})
+                }
             }
             else
             {
@@ -432,7 +456,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         {
             return arrVehicleTypeName.count
         }
-            else if pickerView == pickerViewVehicleSubName
+        else if pickerView == pickerViewVehicleSubName
         {
             return arrVehicleTypeSubName.count
         }
@@ -448,7 +472,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         {
             return arrVehicleTypeName[row]
         }
-            else if pickerView == pickerViewVehicleSubName
+        else if pickerView == pickerViewVehicleSubName
         {
             return arrVehicleTypeSubName[row]
         }
@@ -465,18 +489,22 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             let strSelectName = arrVehicleTypeName[row]
             let tempDic = (arrVehicleData.filter({$0.manufacturerName == strSelectName}).first)
             txtVehicleModel.text = "\(strSelectName)"
-
+            
+            
+            // Reset vehicle submodel and type
             txtVehicleSubModel.text = ""
             txtVehicleType.text = ""
             arrVehicleTypeSubName = (tempDic!).vehicleModel.map({$0.vehicleTypeModelName})
-            //arrVehicleTypeSubName
+            
+            // Reset car images
+           resetCarCollectionToDefault()
         }
         else if pickerView == pickerViewVehicleSubName
         {
             let strSelectSubName = arrVehicleTypeSubName[row]
             txtVehicleSubModel.text = "\(strSelectSubName)"
             let temp = (arrVehicleData.filter({$0.manufacturerName == txtVehicleModel.text!}).first)?.vehicleModel
-                    
+            
             let newData = temp?.filter({$0.vehicleTypeModelName == strSelectSubName})
             
             self.vehicleSelectedManuID = newData?.first?.vehicleTypeManufacturerId ?? ""
@@ -484,6 +512,9 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             self.vehicleSelectedVehicleModelID = newData?.first?.vehicleTypeId ?? ""
             self.txtVehicleType.text = newData?.first?.vehicleTypeName
             self.vehicleUpdatedType =  newData?.first!.vehicleTypeId ?? ""
+            
+            // Reset car images
+            resetCarCollectionToDefault()
         }
         else
         {
@@ -494,6 +525,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
 }
 
 extension UpdateVehicleInfoViewController: UITextFieldDelegate {
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
         switch textField
@@ -501,7 +533,7 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
         case txtVehicleYearMenufacture:
             openDatePicker()
             return true
-
+            
         case txtVehicleType:
             openVehiclePicker()
             return false
@@ -514,8 +546,8 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             }
             else
             {
-            txtVehicleSubModel.inputView = pickerViewVehicleSubName
-            return true
+                txtVehicleSubModel.inputView = pickerViewVehicleSubName
+                return true
             }
             
         case txtVehicleModel:
@@ -527,6 +559,7 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             return true
         }
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         if textField == txtNoofPassenger
@@ -545,7 +578,6 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             return false
         }
         return true
-        
     }
 }
 
@@ -554,7 +586,7 @@ extension UpdateVehicleInfoViewController{
     func uploadImages(image: UIImage, selected index: Int)
     {
         Loader.showHUD(with: self.view)
-
+        
         WebService.shared.postDataWithImage(api: .docUpload, parameter: [:],  image: image, imageParamName: "image"){ json,status in
             Loader.hideHUD()
             if status{

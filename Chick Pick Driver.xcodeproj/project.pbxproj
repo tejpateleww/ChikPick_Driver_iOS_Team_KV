@@ -353,7 +353,7 @@
 		34AC4EB722C78203004152C2 /* MultiplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePickerViewController.swift; sourceTree = "<group>"; };
 		34AC4EB922C782BC004152C2 /* MultiplePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePickerTableViewCell.swift; sourceTree = "<group>"; };
 		34B9E43322CC8F0B006AD2E5 /* DriverInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverInfoView.xib; sourceTree = "<group>"; };
-		34E8B3EB22C3AAE000C33A94 /* Chick Pick Driver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chick Pick Driver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E8B3EB22C3AAE000C33A94 /* Chick Pick Drive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chick Pick Drive.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E8B3EE22C3AAE000C33A94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34E8B3FA22C3AAE100C33A94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34E8B40122C3AB4700C33A94 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -759,7 +759,7 @@
 		34E8B3EC22C3AAE000C33A94 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34E8B3EB22C3AAE000C33A94 /* Chick Pick Driver.app */,
+				34E8B3EB22C3AAE000C33A94 /* Chick Pick Drive.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1754,7 +1754,7 @@
 			);
 			name = "Chick Pick Driver";
 			productName = "Pappea Driver";
-			productReference = 34E8B3EB22C3AAE000C33A94 /* Chick Pick Driver.app */;
+			productReference = 34E8B3EB22C3AAE000C33A94 /* Chick Pick Drive.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2290,7 +2290,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chickpick.driver.eww;
-				PRODUCT_NAME = "Chick Pick Driver";
+				PRODUCT_NAME = "Chick Pick Drive";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2314,7 +2314,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chickpick.driver.eww;
-				PRODUCT_NAME = "Chick Pick Driver";
+				PRODUCT_NAME = "Chick Pick Drive";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
