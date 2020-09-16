@@ -93,6 +93,9 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NVActivityIndicatorView (4.4.0):
+    - NVActivityIndicatorView/Presenter (= 4.4.0)
+  - NVActivityIndicatorView/Presenter (4.4.0)
   - Protobuf (3.9.0)
   - QRCodeReader.swift (10.1.0)
   - SDWebImage (4.4.6):
@@ -124,6 +127,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - lottie-ios (= 2.5.3)
   - MarqueeLabel/Swift
+  - NVActivityIndicatorView (= 4.4.0)
   - QRCodeReader.swift
   - SDWebImage (= 4.4.6)
   - SideMenuSwift
@@ -160,6 +164,7 @@ SPEC REPOS:
     - lottie-ios
     - MarqueeLabel
     - nanopb
+    - NVActivityIndicatorView
     - Protobuf
     - QRCodeReader.swift
     - SDWebImage
@@ -197,6 +202,7 @@ SPEC CHECKSUMS:
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
@@ -209,6 +215,6 @@ SPEC CHECKSUMS:
   SwiftMessages: a952f7a9103d9aeab93730a2861d2d8fcdd8758f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 162d333f63cebe43205f724b0a88349a8d01ea75
+PODFILE CHECKSUM: 7e042b4525bee094b45e93b5201269205eabd4bc
 
 COCOAPODS: 1.8.4
