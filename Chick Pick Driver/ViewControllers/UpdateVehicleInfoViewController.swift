@@ -293,7 +293,11 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         
         for textField in textFields {
             if textField.text!.isBlank {
-                return (false, "Please enter \(textField.placeholder?.lowercased() ?? "")")
+                if (textField.placeholder?.lowercased().contains("select"))! {
+                  return (false, "Please \(textField.placeholder?.lowercased() ?? "")")
+                } else {
+                    return (false, "Please enter \(textField.placeholder?.lowercased() ?? "")")
+                }
             }
         }
         

@@ -93,6 +93,8 @@ class UpdateAccountViewController: UIViewController {
             return
         }
         
+        Loader.showHUD(with: self.view)
+        
         let accountData : UpdateAccountData = UpdateAccountData()
         accountData.driver_id = loginModelDetails.responseObject.id
         accountData.account_holder_name = myCustomView.txtAccountHolderName.text!
@@ -101,6 +103,8 @@ class UpdateAccountViewController: UIViewController {
         accountData.bank_branch = myCustomView.txtBankBranch.text!
     
         UserWebserviceSubclass.updateAccount(transferMoneyModel: accountData) { (response, status) in
+            
+            Loader.hideHUD()
             
             print("updateAccount: \n", response)
             if status {

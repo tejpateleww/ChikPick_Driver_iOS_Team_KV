@@ -43,6 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // While send to client build some features not everything
         Singleton.shared.isClientBuild = false
         
+        // Forcefully light mode
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
             // Temp Commented by Bhautik
         
         //        for fontFamilyName in UIFont.familyNames{

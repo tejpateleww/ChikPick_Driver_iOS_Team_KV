@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var btnLogin: SSSpinnerButton!
     @IBOutlet var btnForgotPass: UIButton!
     @IBOutlet var btnSignUp: SSSpinnerButton!
+    @IBOutlet var lblDontHaveAccount: UILabel!
 
     var strLatitude = Double()
     var strLongitude = Double()
@@ -23,9 +24,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
+        lblDontHaveAccount.font = UIFont.regular(ofSize: 15)
         btnLogin.submitButtonLayout(isDark : true)
-        btnSignUp.submitButtonLayout(isDark : false)
+//        btnSignUp.submitButtonLayout(isDark : false)
         
         
         if UIDevice.current.name == "EWW iPhone 7 Plus"  || UIDevice.current.name == "Excellent’s iPhone Second" || UIDevice.current.name == "Administrator’s iPhone" {
@@ -68,8 +70,8 @@ class LoginViewController: UIViewController {
 
     func validateFields() -> Bool{
         
-        let validationParameter :[(String?,String, ValidatiionType)] =  [(txtMail.text,emailErrorString, .isEmpty),
-                                                                         (txtPassword.text,passwordValidErrorString, .password)]
+        let validationParameter :[(String?,String, ValidatiionType)] =  [(txtMail.text,"Please enter email/mobile number", .isEmpty),
+            (txtPassword.text,"Please enter password", .password)]
         guard Validator.validate(validationParameter) else{
             return false
         }

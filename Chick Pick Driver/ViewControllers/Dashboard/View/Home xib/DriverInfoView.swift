@@ -29,6 +29,11 @@ class DriverInfoView: UIView
     @IBOutlet weak var lblVehicleNumber: UILabel!
     @IBOutlet weak var lblVehicleName: UILabel!
     
+    
+    @IBOutlet weak var viewRating: UIView!
+     @IBOutlet weak var viewkJobs: UIView!
+     @IBOutlet weak var viewEarnings: UIView!
+    
     // ----------------------------------------------------
     // MARK: - Globle Declaration Methods
     // ----------------------------------------------------
@@ -42,7 +47,20 @@ class DriverInfoView: UIView
         self.iconDriverProfilePic.layer.cornerRadius = self.iconDriverProfilePic.frame.width / 2
         self.iconDriverProfilePic.layer.masksToBounds = true
         self.iconDriverVehicle.layer.cornerRadius = self.iconDriverVehicle.frame.width / 2
-        self.iconDriverVehicle.layer.masksToBounds = true        
+        self.iconDriverVehicle.layer.masksToBounds = true
+        
+        viewRating.layer.cornerRadius = 15
+        viewRating.layer.borderColor = UIColor(custom: .themePink).cgColor
+        viewRating.layer.borderWidth = 1
+        
+        viewkJobs.layer.cornerRadius = 15
+        viewkJobs.layer.borderColor = UIColor(custom: .themePink).cgColor
+        viewkJobs.layer.borderWidth = 1
+        
+        viewEarnings.layer.cornerRadius = 15
+        viewEarnings.layer.borderColor = UIColor(custom: .themePink).cgColor
+        viewEarnings.layer.borderWidth = 1
+
     }
     
     // ----------------------------------------------------

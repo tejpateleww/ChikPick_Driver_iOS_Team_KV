@@ -381,9 +381,13 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
 
     func webserviceForSavePersonalProfile(uerData: UpdatePersonalInfo) {
         
+        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        
         UserWebserviceSubclass.updatePersonal(transferMoneyModel: uerData, image: imgProfilePic.image!, imageParamName: "profile_image") { (response, status) in
             
             print(response)
+            
+            Loader.hideHUD()
             
             if status {
                 

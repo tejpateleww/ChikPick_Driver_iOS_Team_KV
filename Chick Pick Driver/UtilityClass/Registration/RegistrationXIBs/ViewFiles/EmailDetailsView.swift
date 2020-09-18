@@ -42,30 +42,32 @@ class EmailDetailsView: UIView
         
         let validationParameter :[(String?,String, ValidatiionType)] =  [(txtFirstName.text,firstNameErrorString, .isEmpty),
         (txtLastName.text,lastNameErrorString, .isEmpty), (txtEmail.text,emailEmptyErrorString, .isEmpty),
-        (txtEmail.text,emailErrorString, .email), (txtMobile.text,phoneNumberEmptyErrorString, .isEmpty), (txtMobile.text,phoneNumberErrorString, .isPhoneNumber), (txtPassword.text,passwordEmptyErrorString, .isEmpty), (txtPassword.text,passwordValidErrorString, .password)]
+        (txtEmail.text,emailErrorString, .email), (txtMobile.text,phoneNumberEmptyErrorString, .isEmpty),  (txtPassword.text,passwordEmptyErrorString, .isEmpty), (txtPassword.text,passwordValidErrorString, .password)]
+//        (txtMobile.text,phoneNumberErrorString, .isPhoneNumber),
         
         guard Validator.validate(validationParameter) else {
             completion(false)
             return
         }
         
-        guard txtMobile.text!.count > 8 else {
-            AlertMessage.showMessageForError(phoneNumberErrorString)
-            completion(false)
-            return
-        }
+//        guard txtMobile.text!.count > 8 else {
+//            AlertMessage.showMessageForError(phoneNumberErrorString)
+//            completion(false)
+//            return
+//        }
         
         guard txtPassword.text!.count >= 6 else {
             AlertMessage.showMessageForError(passwordValidErrorString)
             completion(false)
             return
         }
- 
-        guard txtConPassword.text!.count >= 6 else {
-            AlertMessage.showMessageForError(confirmPasswordValidErrorString)
+        
+        if txtConPassword.text!.count == 0 {
+            AlertMessage.showMessageForError(confirmPasswordEmptyErrorString)
             completion(false)
             return
         }
+
         guard txtConPassword.text == txtPassword.text else {
             AlertMessage.showMessageForError(passwordMatchErrorString)
             completion(false)
@@ -169,7 +171,7 @@ extension EmailDetailsView : UITextFieldDelegate
 {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        if textField == txtMobile
+/*        if textField == txtMobile
         {
             let maxLength = 9
             let currentString: NSString = textField.text! as NSString
@@ -184,6 +186,7 @@ extension EmailDetailsView : UITextFieldDelegate
             }
             return false
         }
+ */
         return true
     }
 }

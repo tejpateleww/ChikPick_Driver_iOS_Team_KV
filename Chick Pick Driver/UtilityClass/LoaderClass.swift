@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Lottie
+import NVActivityIndicatorView
 
 class Loader{
     
@@ -27,19 +28,23 @@ class Loader{
         
         obj.viewBackFull = UIView(frame: CGRect(x: 0, y: 0, width: mainView?.frame.size.width ?? 0.0, height: mainView?.frame.size.height ?? 0.0))
         obj.viewBackFull?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        let imgGlass = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))//239    115    40
-        imgGlass.backgroundColor = UIColor.black.withAlphaComponent(0.0) //UIColor(red: 239/255, green: 115/255, blue: 40/255, alpha: 1.0)//
-        self.loadAnimationNamed(named: "Loading", view: imgGlass, dataClass: obj)
-        imgGlass.center = obj.viewBackFull?.center ?? CGPoint(x: 0, y: 0)
-        imgGlass.layer.cornerRadius = 15.0
-        imgGlass.layer.masksToBounds = true
-        obj.viewBackFull?.addSubview(imgGlass)
+//        let imgGlass = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))//239    115    40
+//        imgGlass.backgroundColor = UIColor.black.withAlphaComponent(0.0) //UIColor(red: 239/255, green: 115/255, blue: 40/255, alpha: 1.0)//
+//        self.loadAnimationNamed(named: "Loading", view: imgGlass, dataClass: obj)
+//        imgGlass.center = obj.viewBackFull?.center ?? CGPoint(x: 0, y: 0)
+//        imgGlass.layer.cornerRadius = 15.0
+//        imgGlass.layer.masksToBounds = true
+        
+        obj.laAnimation = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80), type: .ballRotate, color: UIColor(custom: .themePink)  , padding: 5)
+        obj.laAnimation?.center = obj.viewBackFull?.center ?? CGPoint(x: 0, y: 0)
+        obj.viewBackFull?.addSubview((obj.laAnimation!))
         mainView?.addSubview(obj.viewBackFull ?? UIView())
+        obj.laAnimation?.startAnimating()
     }
     
     class func loadAnimationNamed( named: String?, view mainView: UIView?, toProgress: CGFloat = 1000, dataClass obj: DataClass?) {
         
-        obj?.laAnimation = LOTAnimationView(name: named ?? "")
+ /*       obj?.laAnimation = LOTAnimationView(name: named ?? "")
         obj?.laAnimation?.frame = mainView?.frame ?? CGRect(x: 0, y: 0, width: 0, height: 0)//CGRect(x: (mainView?.center.x ?? 0.0) / 2 - 3, y: 20, width: 140, height: 140)
         obj?.laAnimation?.contentMode = .scaleAspectFill
         obj?.laAnimation?.center = mainView?.center ?? CGPoint(x: 0, y: 0)
@@ -59,12 +64,14 @@ class Loader{
         mainView?.setNeedsLayout()
         if let laAnimation = obj?.laAnimation {
             mainView?.addSubview(laAnimation)
-        }        
+        }
+        */
     }
     
     class func hideHUD() {
         
         DispatchQueue.main.async(execute: {
+            obj.laAnimation?.stopAnimating()
             obj.viewBackFull?.removeFromSuperview()
         })
     }
@@ -96,7 +103,7 @@ class Loader{
         
         var str = ""
         
-        var laAnimation: LOTAnimationView?
+        var laAnimation: NVActivityIndicatorView?
         var viewBackFull: UIView?
         
         

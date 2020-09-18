@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
         <array key="proxima-nova-bold.otf">
             <string>ProximaNova-Bold</string>
         </array>
@@ -22,7 +25,7 @@
         <!--Registration View Controller-->
         <scene sceneID="HTQ-aa-20T">
             <objects>
-                <viewController storyboardIdentifier="RegistrationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Obf-w9-2SH" customClass="RegistrationViewController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Obf-w9-2SH" customClass="RegistrationViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ENt-aB-HII">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +111,7 @@
                                             <constraint firstAttribute="bottom" secondItem="LXA-f1-14o" secondAttribute="bottom" id="jGo-Ef-uya"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VV3-M2-OFM" customClass="IndexCollectionView" customModule="Chick_Pick_Driver" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VV3-M2-OFM" customClass="IndexCollectionView" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                         <rect key="frame" x="20" y="96" width="374" height="15"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -141,6 +144,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gFL-YG-4Hw"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KPb-MR-nHD"/>
                     <connections>
                         <outlet property="btnNext" destination="7Uu-Jk-TgA" id="bmF-Rz-0Sb"/>
                         <outlet property="btnPrevious" destination="JbT-hq-eQg" id="jkQ-bZ-Yhv"/>
@@ -156,7 +160,7 @@
         <!--Login View Controller-->
         <scene sceneID="kqz-dI-k5F">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dp-wr-YIa" customClass="LoginViewController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dp-wr-YIa" customClass="LoginViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lcn-HA-261">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,7 +169,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="mM1-tv-CI6">
-                                        <rect key="frame" x="0.0" y="79" width="414" height="272"/>
+                                        <rect key="frame" x="0.0" y="-57" width="414" height="544"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -192,7 +196,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Mobile Number / Email"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Mobile Number/Email"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
@@ -242,7 +246,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDP-s5-hkA">
-                                <rect key="frame" x="8" y="548" width="398" height="26"/>
+                                <rect key="frame" x="8" y="548" width="398" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,7 +257,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOF-a0-MZf" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
-                                <rect key="frame" x="101" y="594" width="212" height="40"/>
+                                <rect key="frame" x="101" y="597" width="212" height="40"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.51764705879999995" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9td-rm-r1x"/>
@@ -266,35 +270,59 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wy-D7-beA">
-                                <rect key="frame" x="137" y="659" width="140" height="17.333333333333371"/>
+                                <rect key="frame" x="116.33333333333333" y="662" width="181.33333333333337" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73h-2g-3jw" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
-                                <rect key="frame" x="137" y="701.33333333333337" width="140" height="40"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73h-2g-3jw" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
+                                <rect key="frame" x="116.33333333333333" y="707" width="181.33333333333337" height="40"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.51764705879999995" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2Po-Mt-hbD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                 <state key="normal" title="New Register"/>
-                                <connections>
-                                    <action selector="btnSignUp:" destination="3dp-wr-YIa" eventType="touchUpInside" id="i8I-HH-1xd"/>
-                                </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="uzC-Qy-bUs">
+                                <rect key="frame" x="116.33333333333333" y="707" width="181.33333333333337" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New User?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwe-rK-x64" customClass="LocalizLabel" customModule="Chick_Pick_Drive" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="Frp-Dt-Hf8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zy-XI-QlK">
+                                        <rect key="frame" x="78.000000000000028" y="0.0" width="103.33333333333334" height="40"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
+                                        <state key="normal" title="Register">
+                                            <color key="titleColor" red="0.90588235294117647" green="0.58431372549019611" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnSignUp:" destination="3dp-wr-YIa" eventType="touchDragInside" id="Pgw-1E-oxW"/>
+                                            <segue destination="Obf-w9-2SH" kind="show" identifier="RegistrationViewController" id="dSH-9m-svp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="uzC-Qy-bUs" firstAttribute="bottom" secondItem="73h-2g-3jw" secondAttribute="bottom" id="2zP-oh-nMa"/>
                             <constraint firstItem="cDP-s5-hkA" firstAttribute="top" secondItem="isu-dj-FXq" secondAttribute="bottom" constant="8" id="40H-S8-Q94"/>
                             <constraint firstItem="8Sl-yg-kiA" firstAttribute="trailing" secondItem="o0g-Js-5Py" secondAttribute="trailing" id="57f-2e-srH"/>
                             <constraint firstItem="TOF-a0-MZf" firstAttribute="top" secondItem="cDP-s5-hkA" secondAttribute="bottom" constant="20" id="5j1-SO-WNz"/>
                             <constraint firstItem="8Sl-yg-kiA" firstAttribute="trailing" secondItem="cDP-s5-hkA" secondAttribute="trailing" constant="8" id="6oa-ZZ-aZb"/>
                             <constraint firstItem="o0g-Js-5Py" firstAttribute="top" secondItem="lcn-HA-261" secondAttribute="top" id="9q5-BT-PIg"/>
                             <constraint firstItem="cDP-s5-hkA" firstAttribute="leading" secondItem="8Sl-yg-kiA" secondAttribute="leading" constant="8" id="9wx-10-PvV"/>
+                            <constraint firstItem="uzC-Qy-bUs" firstAttribute="top" secondItem="73h-2g-3jw" secondAttribute="top" id="A32-4f-dDC"/>
                             <constraint firstItem="0wy-D7-beA" firstAttribute="centerX" secondItem="8Sl-yg-kiA" secondAttribute="centerX" id="C4L-xu-xdB"/>
                             <constraint firstItem="73h-2g-3jw" firstAttribute="top" secondItem="0wy-D7-beA" secondAttribute="bottom" constant="25" id="FRS-Uc-s8b"/>
                             <constraint firstItem="isu-dj-FXq" firstAttribute="leading" secondItem="8Sl-yg-kiA" secondAttribute="leading" constant="12" id="GSf-Ja-rd0"/>
+                            <constraint firstItem="uzC-Qy-bUs" firstAttribute="leading" secondItem="73h-2g-3jw" secondAttribute="leading" id="Hai-Tt-1ef"/>
                             <constraint firstItem="8Sl-yg-kiA" firstAttribute="trailing" secondItem="isu-dj-FXq" secondAttribute="trailing" constant="12" id="KlU-T7-0Yv"/>
                             <constraint firstItem="TOF-a0-MZf" firstAttribute="centerX" secondItem="8Sl-yg-kiA" secondAttribute="centerX" id="Mmu-OQ-0Cs"/>
                             <constraint firstItem="73h-2g-3jw" firstAttribute="leading" secondItem="0wy-D7-beA" secondAttribute="leading" id="cm6-jJ-Bf6"/>
@@ -302,6 +330,7 @@
                             <constraint firstItem="o0g-Js-5Py" firstAttribute="leading" secondItem="8Sl-yg-kiA" secondAttribute="leading" id="hEU-sF-esL"/>
                             <constraint firstItem="isu-dj-FXq" firstAttribute="top" secondItem="3UH-Ea-kQ5" secondAttribute="bottom" constant="20" id="iJA-cd-zlI"/>
                             <constraint firstItem="73h-2g-3jw" firstAttribute="trailing" secondItem="0wy-D7-beA" secondAttribute="trailing" id="lHW-WG-P1F"/>
+                            <constraint firstItem="uzC-Qy-bUs" firstAttribute="trailing" secondItem="73h-2g-3jw" secondAttribute="trailing" id="lQs-9f-ysA"/>
                             <constraint firstItem="8Sl-yg-kiA" firstAttribute="trailing" secondItem="3UH-Ea-kQ5" secondAttribute="trailing" constant="12" id="mpc-NC-hvw"/>
                             <constraint firstItem="3UH-Ea-kQ5" firstAttribute="top" secondItem="o0g-Js-5Py" secondAttribute="bottom" id="qgh-F8-fvo"/>
                             <constraint firstItem="8Sl-yg-kiA" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="73h-2g-3jw" secondAttribute="bottom" constant="10" id="quD-XG-3J8"/>
@@ -314,7 +343,7 @@
                     <connections>
                         <outlet property="btnForgotPass" destination="cDP-s5-hkA" id="le2-Pj-8xn"/>
                         <outlet property="btnLogin" destination="TOF-a0-MZf" id="YKK-OO-nDi"/>
-                        <outlet property="btnSignUp" destination="73h-2g-3jw" id="GDb-nR-BZS"/>
+                        <outlet property="lblDontHaveAccount" destination="0wy-D7-beA" id="e7J-6z-fyu"/>
                         <outlet property="txtMail" destination="3UH-Ea-kQ5" id="per-c6-CEs"/>
                         <outlet property="txtPassword" destination="isu-dj-FXq" id="Cov-nr-lG5"/>
                         <segue destination="Obf-w9-2SH" kind="show" identifier="RegistrationViewController" id="iv5-SH-9ux"/>
@@ -327,7 +356,7 @@
         <!--Splash Screen View Controller-->
         <scene sceneID="qMw-ea-GTo">
             <objects>
-                <viewController storyboardIdentifier="SplashScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ghv-Gd-ydO" customClass="SplashScreenViewController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ghv-Gd-ydO" customClass="SplashScreenViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nQC-5y-YyM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,10 +365,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="tZ8-AC-gNv">
-                                        <rect key="frame" x="0.0" y="312" width="414" height="272"/>
+                                        <rect key="frame" x="0.0" y="176" width="414" height="544"/>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver-icon" translatesAutoresizingMaskIntoConstraints="NO" id="3eP-vS-iEk">
-                                        <rect key="frame" x="0.0" y="369" width="414" height="158"/>
+                                        <rect key="frame" x="0.0" y="290" width="414" height="316"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -403,7 +432,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="358.33333333333331"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="a37-pc-uH9">
-                                        <rect key="frame" x="0.0" y="43.333333333333343" width="414" height="272"/>
+                                        <rect key="frame" x="0.0" y="-92.666666666666686" width="414" height="544"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -513,7 +542,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="334-Tw-Itj">
             <objects>
-                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b3F-ho-hvo" customClass="ForgotPasswordViewController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b3F-ho-hvo" customClass="ForgotPasswordViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hkm-t5-KQY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -622,4 +651,7 @@
         <image name="iconBack" width="26.666666030883789" height="26.666666030883789"/>
         <image name="logo-ios" width="245" height="272"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dSH-9m-svp"/>
+    </inferredMetricsTieBreakers>
 </document>

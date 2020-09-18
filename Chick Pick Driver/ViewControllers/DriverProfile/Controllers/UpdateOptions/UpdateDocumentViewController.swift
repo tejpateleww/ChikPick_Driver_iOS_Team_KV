@@ -86,9 +86,13 @@ class UpdateDocumentViewController: UIViewController {
         do{
             guard let parameterArray = try UserDefaults.standard.get(objectType: RegistrationParameter.self, forKey: keyRegistrationParameter) else { return }
             
+            Loader.showHUD(with: self.view)
+            
             let image = RegistrationImageParameter.shared.profileImage
             
             UserWebserviceSubclass.updateDoucments(transferMoneyModel: parameterArray, image: image, imageParamName: "image") { (response, status) in
+                
+                Loader.hideHUD()
                 
                 if status {
                     

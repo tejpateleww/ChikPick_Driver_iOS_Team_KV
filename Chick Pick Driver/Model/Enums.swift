@@ -51,7 +51,7 @@ enum Document: Int {
             return "Please upload an original photo of the paper licence. Please be aware that if the upload is not clear your registration will not be successful."
             
         case .privateHireInsurance:
-            return "our Private Hire Insurance must cover; yourself, passengers, goods for hire or reward. Please upload your Insurance Certificate or Temporary Cover Note."
+            return "Your Private Hire Insurance must cover; yourself, passengers, goods for hire or reward. Please upload your Insurance Certificate or Temporary Cover Note."
             
         case .roadTax:
             return "Please upload proof of your vehicles Road Tax. Road Tax must be  a valid for next 3 months."

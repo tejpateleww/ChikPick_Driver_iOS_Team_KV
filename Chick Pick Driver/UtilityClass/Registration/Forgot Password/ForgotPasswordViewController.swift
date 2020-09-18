@@ -37,11 +37,19 @@ class ForgotPasswordViewController: UIViewController {
     // ----------------------------------------------------
     @IBAction func btnResetPassword(_ sender: UIButton) {
         
-        if txtEmail.text!.isBlank {
-            AlertMessage.showMessageForError("Please enter email id")
-        } else {
-            webserviceForForrgotPassword()
+        let validationParameter :[(String?,String, ValidatiionType)] =  [ (txtEmail.text,emailEmptyErrorString, .isEmpty),
+            (txtEmail.text,emailErrorString, .email), ]
+        
+        guard Validator.validate(validationParameter) else {
+            
+            return
         }
+        
+//        if txtEmail.text!.isBlank {
+//            AlertMessage.showMessageForError("Please enter email id")
+//        } else {
+            webserviceForForrgotPassword()
+//        }
     }
     
     
@@ -49,7 +57,13 @@ class ForgotPasswordViewController: UIViewController {
     // MARK: - Webservice Methods
     // ----------------------------------------------------
     func webserviceForForrgotPassword() {
+        
+        Loader.showHUD(with: self.view)
+        
         UserWebserviceSubclass.forgotPassword(strType: ["email": txtEmail.text!]) { (response, status) in
+            
+            Loader.hideHUD()
+            
             if status {
                 AlertMessage.showMessageForSuccess(response["message"].stringValue)
                 self.dismiss(animated: true, completion: nil)
