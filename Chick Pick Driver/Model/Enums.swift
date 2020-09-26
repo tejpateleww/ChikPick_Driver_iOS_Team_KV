@@ -19,7 +19,8 @@ enum CarType: String{
 
 
 enum Document: Int {
-    case v5Logbook = 1
+    case DriverImage = 0
+    case v5Logbook
     case insuranceDocument
     case privateHireLicence
     case DVLA
@@ -32,6 +33,10 @@ enum Document: Int {
     
     func messageString() -> String {
         switch self {
+            
+        case .DriverImage:
+            return "Please upload a clear picture of yourself on a while background. The picture must show your full face and should not include sunglasses, headset, earphones. This picture will be visible to passengers."
+            
         case .v5Logbook:
             return "Please upload all the pages of your V5C Logbook where Car Registration details and Owner Information is clear. We can also accept Confirmation of Registration or E-Logbook."
             

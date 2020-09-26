@@ -8,7 +8,7 @@ import SwiftyJSON
 
 
 class DriverDoc : Codable {
-
+    var driverImage : String!
     var dlvaExpDate : String!
     var dlvaLicenceImage : String!
     var driverId : String!
@@ -46,6 +46,7 @@ class DriverDoc : Codable {
         if json.isEmpty{
             return
         }
+        driverImage = json["driver_image"].stringValue
         dlvaExpDate = json["dlva_exp_date"].stringValue
         dlvaLicenceImage = json["dlva_licence_image"].stringValue
         driverId = json["driver_id"].stringValue
@@ -83,6 +84,9 @@ class DriverDoc : Codable {
     func toDictionary() -> [String:Any]
     {
         var dictionary = [String:Any]()
+        if driverImage != nil{
+            dictionary["driver_image"] = driverImage
+        }
         if dlvaExpDate != nil{
             dictionary["dlva_exp_date"] = dlvaExpDate
         }
@@ -179,6 +183,7 @@ class DriverDoc : Codable {
     */
     @objc required init(coder aDecoder: NSCoder)
     {
+        driverImage = aDecoder.decodeObject(forKey: "driver_image") as? String
         dlvaExpDate = aDecoder.decodeObject(forKey: "dlva_exp_date") as? String
         dlvaLicenceImage = aDecoder.decodeObject(forKey: "dlva_licence_image") as? String
         driverId = aDecoder.decodeObject(forKey: "driver_id") as? String
@@ -216,6 +221,9 @@ class DriverDoc : Codable {
     */
     func encode(with aCoder: NSCoder)
     {
+        if driverImage != nil{
+            aCoder.encode(driverImage, forKey: "driver_image")
+        }
         if dlvaExpDate != nil{
             aCoder.encode(dlvaExpDate, forKey: "dlva_exp_date")
         }

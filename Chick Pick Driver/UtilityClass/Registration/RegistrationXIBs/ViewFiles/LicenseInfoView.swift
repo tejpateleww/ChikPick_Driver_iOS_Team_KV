@@ -65,6 +65,11 @@ class LicenseInfoView: UIView{
             if defaultImage.isEqualToImage(#imageLiteral(resourceName: "camera-icon")) {
                 
                 switch button.tag {
+                case 0:
+                    AlertMessage.showMessageForError(driverImageMissing)
+                    status = false
+                    completion(status)
+                    return
                 case 1:
                     AlertMessage.showMessageForError(V5logbookImageMissing)
                     status = false
@@ -96,7 +101,7 @@ class LicenseInfoView: UIView{
                     completion(status)
                     return
                 case 7:
-                    AlertMessage.showMessageForError(PrivateHireInsuranceCertificateImageMissing)
+                AlertMessage.showMessageForError(PrivateHireInsuranceCertificateImageMissing)
                     status = false
                     completion(status)
                     return
@@ -197,6 +202,7 @@ class LicenseInfoView: UIView{
             
             let imageBase = NetworkEnvironment.imageBaseURL
           
+            let driverImage = imageBase + "\(parameter?.driverImage ?? "")"
             let V5LogbookImage = imageBase + "\(parameter?.v5LogBook ?? "")"
             let InsuranceDocumentImage = imageBase + "\(parameter?.vehicleInsuranceCerti ?? "")"
             let PrivateHireLicenceImage = imageBase + "\(parameter?.driverLicenceImage ?? "")"
@@ -212,7 +218,16 @@ class LicenseInfoView: UIView{
                 btn.sd_addActivityIndicator()
                 btn.isUserInteractionEnabled = true
                 btn.isEnabled = true
-                if btn.tag == 1 {
+                
+                if btn.tag == 0 {
+                    btn.sd_setImage(with: URL(string: driverImage), for: .normal, completed: { (image, error, cacheType, url) in
+                        if(image == nil){
+                            btn.setImage(UIImage.init(named: "camera-icon"), for: .normal)
+                        } else {
+                            self.setButtonData(tag: 0, urlString: parameter?.driverImage ?? "")
+                        }
+                    })
+                } else if btn.tag == 1 {
                     btn.sd_setImage(with: URL(string: V5LogbookImage), for: .normal, completed: { (image, error, cacheType, url) in
                         if(image == nil){
                             btn.setImage(UIImage.init(named: "camera-icon"), for: .normal)
@@ -416,7 +431,7 @@ extension LicenseInfoView{
     func setButtonData(tag: Int, urlString: String){
         switch tag{
         case 0:
-            break
+            self.parameterArray.driver_image = urlString
         case 1:
             self.parameterArray.v5_log_book = urlString
         case 2:

@@ -31,12 +31,12 @@ class LoginViewController: UIViewController {
         
         
         if UIDevice.current.name == "EWW iPhone 7 Plus"  || UIDevice.current.name == "Excellent’s iPhone Second" || UIDevice.current.name == "Administrator’s iPhone" {
-            txtMail.text = "bbb@gmail.com" // "kartik@gan.com" //"test@gmail.com"
-            txtPassword.text = "12345678" // "qwerty"
+            txtMail.text = "bbb@gmail.com"
+            txtPassword.text = "12345678"
         }
 //
         #if targetEnvironment(simulator)
-            txtMail.text = "bhavesh@ymail.com" // "kartik@gan.com" //"test@gmail.com"
+            txtMail.text = "bhavesh@ymail.com" 
             txtPassword.text = "12345678" // "qwerty"
         #else
         // your real device code
@@ -132,7 +132,7 @@ class LoginViewController: UIViewController {
                     Singleton.shared.driverId = loginModelDetails.responseObject.id
                     Singleton.shared.isDriverOnline = !(loginModelDetails.responseObject.duty == "0")
                     Singleton.shared.bookingInfo = BookingInfo.init(fromJson: json.dictionary?["booking_info"])
-                    
+            
                 }
                 catch {
                     AlertMessage.showMessageForError("error")

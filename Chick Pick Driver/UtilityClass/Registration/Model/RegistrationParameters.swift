@@ -161,6 +161,7 @@ class RegistrationParameter: RequestModel, Codable {
      mot_certi"
      
      */
+    var driver_image = ""
     var v5_log_book = ""
     var v5_exp_date = ""
     var vehicle_insurance_certi = ""

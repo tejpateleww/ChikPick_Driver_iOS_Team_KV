@@ -36,19 +36,17 @@ struct DriverData {
         }
     }
 
-    private(set) var profile: User!
+    private(set) var profile: LoginModel!
     
     private init(){
         let defaults = UserDefaults.standard
         do{
-            try self.profile = defaults.get(objectType: User.self, forKey: "login")
+            try self.profile = defaults.get(objectType: LoginModel.self, forKey: "userProfile")
         }
         catch {
             print("Driver Profile not found")
         }
     }
-    
-    
 }
 
 

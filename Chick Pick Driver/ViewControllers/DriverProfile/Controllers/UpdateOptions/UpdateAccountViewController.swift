@@ -72,10 +72,12 @@ class UpdateAccountViewController: UIViewController {
             return (false, "Please enter account holder name")
         } else if myCustomView.txtBankName.text!.isBlank {
             return (false, "Please enter bank name name")
-        } else if myCustomView.txtBankBranch.text!.isBlank {
-            return (false, "Please enter bank branch")
+        } else if myCustomView.txtSortCode.text!.isBlank {
+            return (false, "Please enter sort code")
         } else if myCustomView.txtAccountNumber.text!.isBlank {
             return (false, "Please enter account number")
+        } else if myCustomView.txtSortCode.text!.count < 6 {
+            return (false, "Please enter valid sort code")
         }
         
         return (true, "")
@@ -100,7 +102,7 @@ class UpdateAccountViewController: UIViewController {
         accountData.account_holder_name = myCustomView.txtAccountHolderName.text!
         accountData.bank_name = myCustomView.txtBankName.text!
         accountData.account_number = myCustomView.txtAccountNumber.text!
-        accountData.bank_branch = myCustomView.txtBankBranch.text!
+        accountData.bank_branch = myCustomView.txtSortCode.text!
     
         UserWebserviceSubclass.updateAccount(transferMoneyModel: accountData) { (response, status) in
             

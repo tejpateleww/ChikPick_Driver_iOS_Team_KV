@@ -217,9 +217,9 @@ extension HomeViewController: SocketConnected {
         self.locationManager.startUpdatingLocation()
         
         if DriverData.shared.profile != nil {
-            if let driver = DriverData.shared.profile.profile {
+            if let driver = DriverData.shared.profile.responseObject {
                 
-                let myJSON = [profileKeys.kDriverId : driver.id,RegistrationFinalKeys.kLat: "\(Singleton.shared.driverLocation.coordinate.latitude)",RegistrationFinalKeys.kLng: "\(Singleton.shared.driverLocation.coordinate.longitude)","Token": driver.token] as [String : Any]
+                let myJSON = [profileKeys.kDriverId : driver.id,RegistrationFinalKeys.kLat: "\(Singleton.shared.driverLocation.coordinate.latitude)",RegistrationFinalKeys.kLng: "\(Singleton.shared.driverLocation.coordinate.longitude)","Token": driver.deviceToken] as [String : Any]
                 emitSocket_UpdateDriverLatLng(param: myJSON)
             }
         }

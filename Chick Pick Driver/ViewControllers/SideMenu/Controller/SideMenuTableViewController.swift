@@ -106,7 +106,7 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
 
     func pushMyTripsVC(){
         let vc : MyTripsViewController = UIViewController.viewControllerInstance(storyBoard: .myTrips)
-//        self.pushThroughNavigationBar(viewController: vc)
+        self.pushThroughNavigationBar(viewController: vc)
     }
     func pushInviteVC(){
         let vc : InviteDriverViewController = UIViewController.viewControllerInstance(storyBoard: .invite)

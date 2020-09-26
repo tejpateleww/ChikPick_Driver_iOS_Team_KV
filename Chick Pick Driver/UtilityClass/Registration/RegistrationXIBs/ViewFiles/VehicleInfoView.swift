@@ -329,13 +329,8 @@ class VehicleInfoView: UIView
 //            vc.present(dateVC, animated: true)
       
                 txtVehicleManufactureYear.inputView = vc.pickerViewManufYear
-            
         }
     }
-    
-   
-  
-    
 }
 
 extension VehicleInfoView: UITextFieldDelegate
@@ -358,7 +353,6 @@ extension VehicleInfoView: UITextFieldDelegate
             return false
         }
         return true
-        
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
@@ -414,9 +408,8 @@ extension VehicleInfoView: UITextFieldDelegate
             return true
         }
     }
-    
-    
 }
+
 extension VehicleInfoView  : UIPickerViewDelegate,UIPickerViewDataSource
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

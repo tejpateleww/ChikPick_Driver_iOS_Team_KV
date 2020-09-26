@@ -26,7 +26,7 @@ class UpdateDocumentViewController: UIViewController {
     // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Document"
+        self.title = "Documents"
 
 //        view.isUserInteractionEnabled = false
 //        btnSave.isHidden = true

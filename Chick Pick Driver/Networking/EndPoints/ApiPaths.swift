@@ -107,15 +107,14 @@ enum ParameterKey{
 
 enum socketApiKeys: String, CaseIterable {
     
-     case kSocketBaseURL = "https://www.peppea.com:8080"//"http://13.127.213.134:8080"// "https://www.shipodds.com:8080"
-    //"https://www.tantaxitanzania.com:8081""http://3.120.161.225:8080""http://13.237.0.107:8080/"http://3.120.161.225:8080""https://pickngolk.info:8081" "https://pickngolk.info:8081"   // "http://54.169.67.226:8080"  //
+    case kSocketBaseURL =  "http://18.133.15.111:8080/"  // "https://www.peppea.com:8080"
     
     case updateDriverLocation = "update_driver_location"
     case WhenRequestArrived = "forward_booking_request"
     case RejectRequest = "forward_booking_request_to_another_driver"
     case AcceptRequest = "accept_booking_request"
     case StartTrip = "start_trip"
-    case DriverCurrentLocation      = "live_tracking"//"driver_current_location"
+    case DriverCurrentLocation = "live_tracking" //"driver_current_location"
 
     
     case onTheWayBookingRequest = "on_the_way_booking_request" // driver_id,booking_id

@@ -23,9 +23,9 @@ class MyTripTableViewCell: UITableViewCell {
     func setup(){
         selectionStyle = .none
         cellContainerView.roundCorners([.topLeft,.topRight], radius: 5)
-        iconPickupToDestinationLocation.tintColor = UIColor.init(custom: .textWhite)
+        iconPickupToDestinationLocation.tintColor = .black
         btnSendReceipt.layer.cornerRadius = 15
-        btnSendReceipt.layer.borderColor = UIColor.white.cgColor
+        btnSendReceipt.layer.borderColor = UIColor.black.cgColor
         btnSendReceipt.layer.borderWidth = 1.5
         btnSendReceipt.titleLabel?.font = UIFont.regular(ofSize: 10)
         btnSendReceipt.clipsToBounds = true

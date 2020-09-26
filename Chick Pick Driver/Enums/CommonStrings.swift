@@ -62,7 +62,9 @@ let documentImageErrorString = "Please select document image"
 
 let bankNameErrorString = "Please enter bank name"
 let branchNameErrorString = "Please enter branch name"
+let sortCodeErrorString = "Please enter sort code"
 let accountNumberErrorString = "Please enter account number"
+let sortCodeValidErrorString = "Please enter valid sort code"
 
 let vehicleLeftImageErrorString = "Please select left side of vehicle image"
 let vehicleRightImageErrorString = "Please select right side of vehicle image"
@@ -70,6 +72,8 @@ let vehicleFrontImageErrorString = "Please select front side of vehicle image"
 let vehicleBackImageErrorString = "Please select back side of vehicle image"
 
 // ----------- Registration Last Screen -----------
+
+let driverImageMissing = "Please upload driver image"
 
 let V5logbookDateMissing = "Please select the expiry date of V5 Logbook"
 let V5logbookImageMissing = "Please upload V5 Logbook"

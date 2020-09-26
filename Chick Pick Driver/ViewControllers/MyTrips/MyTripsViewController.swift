@@ -281,9 +281,6 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource{
         
         let strURL = model.customer_id + "/" + model.page
         
-       
-        
-        
         UserWebserviceSubclass.pastBookingHistory(strURL: strURL) { (response, status) in
             UtilityClass.hideHUD()
             self.isRefresh = false
