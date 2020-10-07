@@ -23,14 +23,17 @@ struct DriverData {
             {
                 if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController
                 {
-                    homeVC.updateDriverLocationAtRegularInterval = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(homeVC.updateDriverLocation), userInfo: nil, repeats: true)
+                    homeVC.updateDriverLocationAtRegularInterval = Timer.scheduledTimer(timeInterval: 10, target: homeVC, selector: #selector(homeVC.updateDriverLocation), userInfo: nil, repeats: true)
                 }
             }
             else
             {
                 if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController
                 {
-                    homeVC.updateDriverLocationAtRegularInterval = nil
+                    if homeVC.updateDriverLocationAtRegularInterval != nil {
+                        homeVC.updateDriverLocationAtRegularInterval.invalidate()
+                        homeVC.updateDriverLocationAtRegularInterval = nil
+                    }
                 }
             }
         }

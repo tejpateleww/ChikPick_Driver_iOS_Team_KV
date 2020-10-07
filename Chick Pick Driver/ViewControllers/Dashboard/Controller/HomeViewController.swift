@@ -228,6 +228,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         if Singleton.shared.isDriverOnline {
             SocketIOManager.shared.establishConnection()
             self.updateDriverLocation()
+//            self.driverData.driverState = .available // Added for frequent update
             self.switchBtn.setOn(true, animated: true)
             self.offlineView.isHidden = true
             if self.constantHeightOfOfflineView != nil {
@@ -238,6 +239,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
             }
         } else {
             SocketIOManager.shared.closeConnection()
+//            self.driverData.driverState = .tripComplete // Added for stop timer
             self.switchBtn.setOn(false, animated: true)
             if self.constantHeightOfOfflineView != nil {
                 self.constantHeightOfOfflineView.constant = 60

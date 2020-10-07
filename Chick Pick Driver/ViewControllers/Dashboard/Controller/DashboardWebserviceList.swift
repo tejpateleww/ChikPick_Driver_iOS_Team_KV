@@ -55,6 +55,7 @@ extension HomeViewController: DashboardWebservices {
                     Singleton.shared.isDriverOnline = true
                     SocketIOManager.shared.establishConnection()
                     self.updateDriverLocation()
+                    self.driverData.driverState = .available // added for frequent location update
                     self.switchBtn.setOn(true, animated: true)
                     self.offlineView.isHidden = true
                     if self.constantHeightOfOfflineView != nil {
@@ -66,6 +67,7 @@ extension HomeViewController: DashboardWebservices {
                 } else {
                     Singleton.shared.isDriverOnline = false
                     SocketIOManager.shared.closeConnection()
+                    self.driverData.driverState = .tripComplete // added for stop timer
                     self.switchBtn.setOn(false, animated: true)
                     if self.constantHeightOfOfflineView != nil {
                         self.constantHeightOfOfflineView.constant = 60

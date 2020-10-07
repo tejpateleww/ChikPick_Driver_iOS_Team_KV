@@ -87,7 +87,9 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.WhenRequestArrived.rawValue){ json in
             print(#function)
             print("\n \(json)")
-            AlertMessage.showMessageForSuccess(#function)
+            
+            let message = json.first?.1.dictionary?["message"]?.stringValue
+            AlertMessage.showMessageForSuccess(message ?? "Booking Request Accepted")
             
             let booking = bookingAcceptedeDataModel(fromJson: json.array?.first)
             Singleton.shared.bookingInfo = booking.bookingInfo
@@ -158,7 +160,8 @@ extension HomeViewController: SocketConnected {
                     self.driverData.driverState = .inTrip
                     self.resetMap()
             }
-            AlertMessage.showMessageForSuccess(#function)
+            let message = json.first?.1.dictionary?["message"]?.stringValue
+            AlertMessage.showMessageForSuccess(message ?? "")
         }
     }
     
@@ -167,7 +170,8 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.onTheWayBookingRequest.rawValue){ json in
             print(#function)
             print("\n \(json)")
-            AlertMessage.showMessageForSuccess(#function)
+            let message = json.first?.1.dictionary?["message"]?.stringValue
+            AlertMessage.showMessageForSuccess(message ?? "")
         }
     }
     
@@ -206,7 +210,6 @@ extension HomeViewController: SocketConnected {
                  if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
                         homeVC.getFirstView()
                         self.driverData.driverState = .available
-
                 }
             }
         }
@@ -219,7 +222,7 @@ extension HomeViewController: SocketConnected {
         if DriverData.shared.profile != nil {
             if let driver = DriverData.shared.profile.responseObject {
                 
-                let myJSON = [profileKeys.kDriverId : driver.id,RegistrationFinalKeys.kLat: "\(Singleton.shared.driverLocation.coordinate.latitude)",RegistrationFinalKeys.kLng: "\(Singleton.shared.driverLocation.coordinate.longitude)","Token": driver.deviceToken] as [String : Any]
+                let myJSON = ["driver_id" : driver.id, "lat": "\(Singleton.shared.driverLocation.coordinate.latitude)", "lng": "\(Singleton.shared.driverLocation.coordinate.longitude)","device_token": driver.deviceToken] as [String : Any]
                 emitSocket_UpdateDriverLatLng(param: myJSON)
             }
         }
