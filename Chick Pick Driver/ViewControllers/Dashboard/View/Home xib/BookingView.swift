@@ -44,10 +44,10 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     @IBOutlet weak var btnCall: UIButton!
     @IBOutlet weak var btnNavigate: UIButton!
 
-    @IBOutlet weak var viewAcceptReject: UIView!
-    @IBOutlet weak var viewRequestAccepted: UIView!
-    @IBOutlet weak var viewStartTrip: UIView!
-    @IBOutlet weak var viewEndTrip: UIView!
+    @IBOutlet weak var viewAcceptReject: UIStackView!
+    @IBOutlet weak var viewRequestAccepted: UIStackView!
+    @IBOutlet weak var viewStartTrip: UIStackView!
+    @IBOutlet weak var viewEndTrip: UIStackView!
     @IBOutlet weak var viewContactUs: UIStackView!
     @IBOutlet weak var viewEstimatePrice: UIStackView!
     @IBOutlet weak var viewWaitingTimer: UIStackView!
@@ -58,19 +58,33 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     
    
     override func draw(_ rect: CGRect) {
-        btnReject.submitButtonLayout(isDark: true)
-        btnAccept.submitButtonLayout(isDark: true)
+//        btnReject.submitButtonLayout(isDark: true)
+//        btnAccept.submitButtonLayout(isDark: true)
         btnCancelTrip.submitButtonLayout(isDark: true)
-        btnArrive.submitButtonLayout(isDark: true)
+//        btnArrive.submitButtonLayout(isDark: true)
         btnStartWaitingTime.submitButtonLayout(isDark: true)
         btnEndWaitingTime.submitButtonLayout(isDark: true)
         btnCompleteTrip.submitButtonLayout(isDark: true)
-        btnStart.submitButtonLayout(isDark: true)
+//        btnStart.submitButtonLayout(isDark: true)
         
-        btnCard.layer.cornerRadius = 3
+        btnCard.layer.cornerRadius = btnCard.frame.size.height / 2
         btnCard.clipsToBounds = true
         btnDiscount.layer.cornerRadius = 3
         btnDiscount.clipsToBounds = true
+        
+        btnStartWaitingTime.isHidden = true
+        
+        btnAccept.buttonLayout(withBgColor: UIColor.hexStringToUIColor(hex: "#2fa918"), textColor: .white)
+        btnReject.buttonLayout(withBgColor: UIColor.hexStringToUIColor(hex: "#c90a12"), textColor: .white)
+        btnArrive.buttonLayout(withBgColor: UIColor(custom: .themePink), textColor: UIColor(custom: .theme))
+        btnStart.buttonLayout(withBgColor: UIColor(custom: .themePink), textColor: UIColor(custom: .theme))
+        
+//        btnReject.backgroundColor = UIColor.hexStringToUIColor(hex: "#c90a12")
+//        btnReject.layer.cornerRadius = btnReject.frame.size.height / 2
+//        btnReject.clipsToBounds = true
+//        btnAccept.backgroundColor = UIColor.hexStringToUIColor(hex: "#2fa918")
+//        btnAccept.layer.cornerRadius = btnAccept.frame.size.height / 2
+//        btnAccept.clipsToBounds = true
     }
     
     func setupData() {
@@ -81,7 +95,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         let passengerImage = profile.profileImage
         imgPassenger.sd_setImage(with: URL(string: imagBaseURL + (passengerImage ?? "")), completed: nil)
         
-        btnCard.setTitle("N/A", for: .normal)
+        btnCard.setTitle("Card", for: .normal)
         lblTripPrice.text = "N/A"
         btnDiscount.setTitle("N/A", for: .normal)
         lblTripDistance.text = "N/A"
@@ -99,12 +113,26 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
 //        showAllViews()
 //        hideShowViews(hide: true, views: [viewStartTrip, viewAcceptReject,txtDropOff, viewEndTrip, viewEstimatePrice])
         showAllViews()
-        hideShowViews(hide: true, views: [viewAcceptReject, txtDropOff, viewEndTrip, viewEstimatePrice, btnCompleteTrip, btnStart])
+        hideShowViews(hide: true, views: [viewAcceptReject, txtDropOff, viewEndTrip, viewEstimatePrice, btnCompleteTrip, btnStart, btnArrive])
+        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(showArriveButton), userInfo: nil, repeats: false)
     }
     
-    private func setArrivedView() {
+    @objc func showArriveButton(){
+        if let vc: UIViewController = self.parentViewController {
+            if let hVc = vc as? HomeViewController {
+               if hVc.driverData.driverState == .requestAccepted {
+                   btnArrive.isHidden = false
+                btnArrive.setTitle("Start Request Code", for: .normal)
+                } else {
+                    btnArrive.isHidden = true
+                }
+            }
+        }
+    }
+    
+    func setArrivedView() {
         showAllViews()
-        hideShowViews(hide: true, views: [viewAcceptReject, viewEndTrip, viewEstimatePrice,btnCompleteTrip])
+        hideShowViews(hide: true, views: [viewAcceptReject, viewEndTrip, viewEstimatePrice, btnCompleteTrip])
     }
     
     func setStartTripView() {
@@ -117,7 +145,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         hideShowViews(hide: true, views: [viewAcceptReject, viewRequestAccepted, viewStartTrip])
     }
     
-    private func setTripView() {
+    func setTripView() {
         showAllViews()
         hideShowViews(hide: true, views: [viewAcceptReject, viewEndTrip, viewEstimatePrice, viewRequestAccepted])
     }
@@ -214,6 +242,9 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
             
         case .lastCompleteView:
             setCompleteTripView()
+            
+        case .ratingView:
+            print("Rating View")
         }
     }
     
@@ -270,18 +301,54 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     // Arrived to pickup location
     @IBAction func btnArrivedAction(_ sender: UIButton) {
         print(#function)
-        txtDropOff.becomeFirstResponder()
-        isAccepted = false
-        isArrived = true
-        isStartTrip = false
-        setConstraintOfHomeVc()
-        setStartTripView()
-        DispatchQueue.main.async {
-            self.txtDropOff.resignFirstResponder()
+        //        txtDropOff.becomeFirstResponder()
+        
+        if(sender.titleLabel?.text == "Start Request Code")
+        {
+//            isAccepted = false
+//            isArrived = true
+//            isStartTrip = false
+//            setConstraintOfHomeVc()
+//            setStartTripView()
+            
+            guard let bookingData = Singleton.shared.bookingInfo else { return }
+            var param = [String: Any]()
+            param["booking_id"] = bookingData.id
+            
+            if let vc: UIViewController = self.parentViewController {
+                if let hVc = vc as? HomeViewController {
+                    var param = [String: Any]()
+                    param["driver_id"] = Singleton.shared.driverId
+                    param["booking_id"] = bookingData.id
+                    param["customer_id"] = bookingData.customerId
+                    hVc.emitSocket_VerifyCustomer(param: param)
+                }
+            }
         }
-        DispatchQueue.main.async {
-            self.resignFirstResponder()
+        else
+        {
+            isAccepted = false
+            isArrived = true
+            isStartTrip = false
+            setConstraintOfHomeVc()
+            setStartTripView()
+            
+            guard let bookingData = Singleton.shared.bookingInfo else { return }
+            var param = [String: Any]()
+            param["booking_id"] = bookingData.id
+            
+            if let vc: UIViewController = self.parentViewController {
+                if let hVc = vc as? HomeViewController {
+                    hVc.emitSocket_ArrivedAtPickupLocation(param: param)
+                }
+            }
         }
+        //        DispatchQueue.main.async {
+        //            self.txtDropOff.resignFirstResponder()
+        //        }
+        //        DispatchQueue.main.async {
+        //            self.resignFirstResponder()
+        //        }
     }
     
     @IBAction func btnStartTrip(_ sender: UIButton) {
@@ -306,11 +373,16 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     // Cancel trip
     @IBAction func btnCancelAction(_ sender: UIButton) {
         print(#function)
-        setConstraintOfHomeVc()
-        setDeiverInfoView()
-        if let vc: UIViewController = self.parentViewController {
-            if let hVc = vc as? HomeViewController {
-                hVc.cancelTripAfterAccept()
+        
+        guard let bookingData = Singleton.shared.bookingInfo else { return }
+        
+        UtilityClass.showAlert(message: "Cancelling a trip after accepting it attracts a fee of £\(bookingData.vehicleType.driverCancellationFee ?? ""). Please confirm whether you still wish to cancel?", isCancelShow: true) {
+            self.setConstraintOfHomeVc()
+            //        setDeiverInfoView()
+            if let vc: UIViewController = self.parentViewController {
+                if let hVc = vc as? HomeViewController {
+                    hVc.cancelTripAfterAccept()
+                }
             }
         }
     }
@@ -335,19 +407,15 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         print(#function)
         setConstraintOfHomeVc()
         setDeiverInfoView()
+        
         guard let bookingData = Singleton.shared.bookingInfo else { return }
         var param = [String: Any]()
         param["booking_id"] = bookingData.id
         
         if let vc = ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children)?.first?.children.first as? HomeViewController {
-            vc.emitSocket_AskForTips(param: param)
+//            vc.emitSocket_AskForTips(param: param)
+            vc.emitSocket_RequestCodeForCompleteTrip(param: param)
         }
-        
-//        if let vc: UIViewController = self.parentViewController {
-//            if let hVc = vc as? HomeViewController {
-//                hVc.emitSocket_AskForTips(param: param)
-//            }
-//        }
     }
     
     // Message to passenger
@@ -398,6 +466,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
                 hVc.getFirstView()
+                hVc.resetMap()
             }
         }
     }
@@ -429,12 +498,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         }
     }
 
-
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
 
     }
-
-
-
-
 }

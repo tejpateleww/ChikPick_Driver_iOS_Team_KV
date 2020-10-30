@@ -11,7 +11,7 @@
         <!--HomeViewController-->
         <scene sceneID="wWN-UI-kLL">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lWb-mh-YOO" userLabel="HomeViewController" customClass="HomeViewController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lWb-mh-YOO" userLabel="HomeViewController" customClass="HomeViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tUa-HC-671">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,10 +91,6 @@
                                     <view opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="130" translatesAutoresizingMaskIntoConstraints="NO" id="qE2-Xs-sGr">
                                         <rect key="frame" x="0.0" y="538" width="375" height="130"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAj-jx-znC">
-                                                <rect key="frame" x="0.0" y="48" width="375" height="82"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQv-Ze-Jqd">
                                                 <rect key="frame" x="147.66666666666666" y="22" width="80" height="4"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,6 +99,10 @@
                                                     <constraint firstAttribute="width" constant="80" id="XH0-Rz-lF3"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="safeArea" id="2zP-7M-hxh"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAj-jx-znC">
+                                                <rect key="frame" x="0.0" y="48" width="375" height="82"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gof-6a-hID">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
@@ -192,7 +192,7 @@
         <!--Side Menu View Controller-->
         <scene sceneID="GMX-dn-dYR">
             <objects>
-                <viewController storyboardIdentifier="SideMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gil-aE-lKI" customClass="SideMenuViewController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SideMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gil-aE-lKI" customClass="SideMenuViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Aw-tG-Feo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,7 +251,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileSideMenuTVC" rowHeight="184" id="msV-0R-LOc" customClass="ProfileSideMenuTVC" customModule="Chick_Pick_Driver" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileSideMenuTVC" rowHeight="184" id="msV-0R-LOc" customClass="ProfileSideMenuTVC" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="300" height="184"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="msV-0R-LOc" id="kml-yM-uSG">
@@ -319,7 +319,7 @@
                                             <outlet property="profileImageButton" destination="Vd5-Fq-b69" id="b3x-vM-8jo"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuTVC" textLabel="yaj-fm-zxZ" rowHeight="34" style="IBUITableViewCellStyleDefault" id="YXT-xM-wfi" customClass="MenuTVC" customModule="Chick_Pick_Driver" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuTVC" textLabel="yaj-fm-zxZ" rowHeight="34" style="IBUITableViewCellStyleDefault" id="YXT-xM-wfi" customClass="MenuTVC" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="212" width="300" height="34"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXT-xM-wfi" id="7jU-um-3q9">
@@ -369,7 +369,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-fT-00y" customClass="CollectionTabBar" customModule="Chick_Pick_Driver" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-fT-00y" customClass="CollectionTabBar" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="718" width="375" height="60"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -406,7 +406,7 @@
         <!--Settings View Controller-->
         <scene sceneID="kks-aU-wRP">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="gYa-ZH-x9x" customClass="SettingsViewController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="gYa-ZH-x9x" customClass="SettingsViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="79K-sv-F1e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,7 +417,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuTVC" textLabel="qZk-Ot-NGL" rowHeight="60" style="IBUITableViewCellStyleDefault" id="ddv-tm-6Nq" customClass="MenuTVC" customModule="Chick_Pick_Driver" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuTVC" textLabel="qZk-Ot-NGL" rowHeight="60" style="IBUITableViewCellStyleDefault" id="ddv-tm-6Nq" customClass="MenuTVC" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ddv-tm-6Nq" id="7Mz-PU-PM3">
@@ -458,7 +458,7 @@
         <!--Side Menu Container-->
         <scene sceneID="sHk-o9-YEz">
             <objects>
-                <viewController storyboardIdentifier="SideMenuContainer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LJF-3h-ctD" customClass="SideMenuContainer" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SideMenuContainer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LJF-3h-ctD" customClass="SideMenuContainer" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0hF-Uv-Qn7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -477,7 +477,7 @@
         <!--Navigation Controller-->
         <scene sceneID="NtN-DL-24W">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EVh-49-WCZ" customClass="NavigationController" customModule="Chick_Pick_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EVh-49-WCZ" customClass="NavigationController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sFH-eb-Wqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>

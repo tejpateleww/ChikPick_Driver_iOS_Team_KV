@@ -29,6 +29,8 @@ pod 'SkyFloatingLabelTextField'
 pod 'lottie-ios', '2.5.3'
 pod 'ActionSheetPicker-3.0'
 pod 'QRCodeReader.swift'
+
+pod 'Cosmos', '~> 23.0'
 #pod 'BFKit-Swift'
 #pod 'CardIO'
 #pod 'TTSegmentedControl'

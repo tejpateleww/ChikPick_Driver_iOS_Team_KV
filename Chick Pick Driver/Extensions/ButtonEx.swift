@@ -30,6 +30,14 @@ extension UIButton{
         self.layer.borderWidth = 1.0
     }
     
+    func buttonLayout(withBgColor : UIColor, textColor : UIColor){
+      
+        self.layer.cornerRadius = self.frame.size.height / 2
+        self.clipsToBounds = true
+        self.backgroundColor = withBgColor
+        self.setTitleColor(textColor, for: .normal)
+    }
+    
     func setImageFromUrl(url: String) {
         
         self.imageView?.sd_addActivityIndicator()

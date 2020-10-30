@@ -23,6 +23,7 @@ enum DriverState: CaseIterable{
     case stopWaiting
     
     case lastCompleteView
+    case ratingView
 
     var nextCase : DriverState{
         let allCases = type(of: self).allCases
@@ -37,6 +38,11 @@ enum DriverState: CaseIterable{
             return myCustomView as! T
         case .lastCompleteView:
             let myCustomView: CompleteView = .fromNib()
+            myCustomView.setGrandTotal()
+            return myCustomView as! T
+        case .ratingView:
+            let myCustomView: RatingView = .fromNib()
+            myCustomView.setupView()
             return myCustomView as! T
         default:
             let myCustomView: BookingView = .fromNib()

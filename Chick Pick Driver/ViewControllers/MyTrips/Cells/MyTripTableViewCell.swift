@@ -23,7 +23,7 @@ class MyTripTableViewCell: UITableViewCell {
     func setup(){
         selectionStyle = .none
         cellContainerView.roundCorners([.topLeft,.topRight], radius: 5)
-        iconPickupToDestinationLocation.tintColor = .black
+        iconPickupToDestinationLocation.image = iconPickupToDestinationLocation.image?.imageWithTintColorCustomMethod(color: .black)
         btnSendReceipt.layer.cornerRadius = 15
         btnSendReceipt.layer.borderColor = UIColor.black.cgColor
         btnSendReceipt.layer.borderWidth = 1.5

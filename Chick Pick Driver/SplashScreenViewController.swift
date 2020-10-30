@@ -30,10 +30,15 @@ class SplashScreenViewController: BaseViewController {
             if status
             {
 //                print(json)
-
+                let responseModel = InitResponseModel(fromJson: json)
                 let booking = json.dictionary?["booking_info"]
+//                let cancellationCharges = json.dictionary?["cancellation_charges"]
                 Singleton.shared.isDriverOnline = booking?["driver_duty"].boolValue ?? false
                 Singleton.shared.bookingInfo = BookingInfo(fromJson: booking)
+                Singleton.shared.bookingInfoLoginModel = BookingInfoLoginModel(fromJson: booking)
+                Singleton.shared.cancelltionCharges = responseModel.cancellationCharges
+//                Singleton.shared.cancelltionFee = responseModel.bookingInfo.vehicleType.driverCancellationFee
+                
                 
                 let isLogin = UserDefaults.standard.bool(forKey: "isUserLogin")
 
@@ -51,13 +56,8 @@ class SplashScreenViewController: BaseViewController {
                         AlertMessage.showMessageForError("error")
                         return
                     }
-
-
-                       (UIApplication.shared.delegate as! AppDelegate).setHome()
+                    (UIApplication.shared.delegate as! AppDelegate).setHome()
                 }
-                
-
-                
             }
         }
     }
@@ -75,6 +75,4 @@ class SplashScreenViewController: BaseViewController {
         staringImageView.stopRotating()
         self.performSegue(withIdentifier: LoginViewController.identifier, sender: self)
     }
-    
-
 }

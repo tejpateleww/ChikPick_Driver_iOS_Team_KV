@@ -85,11 +85,17 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         
         if let BookingInfoData = Singleton.shared.bookingInfo {
             let status = BookingInfoData.status
-            
+//            self.bookingData = BookingInfoData
             if status == "pending" {
                 
-            } else if status == "accepted" {                
-                self.presentView = self.presentType.chooseTripMode(state: .requestAccepted) // chooseTripMode
+            } else if status == "accepted" {
+                if UserDefaults.standard.object(forKey: "isDriverArrived") as? Bool == true {
+                    self.presentView = self.presentType.chooseTripMode(state: .arrived) // chooseTripMode
+                    self.setDataAfterDriverArrived()
+                } else {
+                    self.presentView = self.presentType.chooseTripMode(state: .requestAccepted) // chooseTripMode
+                    self.setDataAfterAcceptingRequest()
+                }
                 bottomContentView.customAddSubview(presentView)
                 containerBottomConstraint.constant = 0
             } else if status == "traveling" {
@@ -100,8 +106,6 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
                 
             }
         }
-
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -278,14 +282,26 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     }
     
     public func getLastView() {
-        //        presentView = presentType.fromNib()
-        presentView = presentType.chooseTripMode(state: .lastCompleteView)
-        changeView()
+//        DispatchQueue.main.async {
+            self.presentView = self.presentType.chooseTripMode(state: .lastCompleteView)
+            self.changeView()
+//            self.view.layoutIfNeeded()
+//        }
+    }
+    
+    public func getRatingView() {
+//        DispatchQueue.main.async {
+            self.presentView = self.presentType.chooseTripMode(state: .ratingView)
+            self.changeView()
+//            self.containerTopView.layoutIfNeeded()
+//            self.view.layoutIfNeeded()
+//        }
     }
     
     func changeView() {
         bottomContentView.customAddSubview(presentView)
         containerBottomConstraint.constant = 0
+         self.containerTopView.layoutIfNeeded()
     }
     
     var count: Double = 0
@@ -372,14 +388,12 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
                 print(json)
                 let VehicleListDetails = VehicleListResultModel.init(fromJson: json)
                 Singleton.shared.vehicleListData = VehicleListDetails
-
             }
             else {
                 AlertMessage.showMessageForError(json["message"].stringValue)
             }
         }
     }
-
 }
 
 
@@ -403,18 +417,29 @@ extension HomeViewController: CLLocationManagerDelegate {
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
           //  mapView
         }
+        else
+        {
+            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
+            var dictParam = [String:Any]()
+            dictParam["driver_id"] = driverData.profile.responseObject.id ?? ""
+            dictParam["customer_id"] = bookingData.customerId ?? ""
+            dictParam["lat"] = "\(location.coordinate.latitude)"
+            dictParam["lng"] =  "\(location.coordinate.longitude)"
+            dictParam["pickup_lat"] = bookingData.pickupLat
+            dictParam["pickup_lng"] = bookingData.pickupLng
+            emitSocket_DriverLocation(param: dictParam)
+        }
+        
+        
         if(driverMarker == nil)
         {
             self.driverMarker = GMSMarker(position: location.coordinate) // self.originCoordinate
             self.driverMarker.icon = UIImage(named:"CarOnMap")
             self.driverMarker.map = self.mapView
-
         }
-
+        
         carMovement.arCarMovement(marker: driverMarker, oldCoordinate: oldCoordinate ?? location.coordinate , newCoordinate: location.coordinate, mapView: mapView)
         oldCoordinate = location.coordinate
-       
-
     }
 
     // Handle authorization for the location manager.
@@ -448,9 +473,6 @@ extension HomeViewController
 
     func drawRouteOnGoogleMap(origin: String!, destination: String!, waypoints: Array<String>!, travelMode: AnyObject!, fromMarker: GMSMarker?, toMarker: GMSMarker?, completionHandler: ((_ status:   String, _ success: Bool) -> Void)?)
     {
-
-
-
         var directionsURLString = baseURLDirections + "origin=" + origin + "&destination=" + destination + "&key=" + (UIApplication.shared.delegate as! AppDelegate).googlApiKey
         print ("directionsURLString: \(directionsURLString)")
 
@@ -482,8 +504,8 @@ extension HomeViewController
 
                     //                    if fromMarker == self.driverMarker {
                     //                    }
-
-                    self.setupMarkerOnGooglMap(markerType: .from, cordinate: originCoordinate)
+// TODO : commnented By Bhumi Jani from removing 1 extra pin for driver location
+//                    self.setupMarkerOnGooglMap(markerType: .from, cordinate: originCoordinate)
                     self.drawPoyLineOnGoogleMap(poliLinePoints: overviewPolyline)
                     self.setupMarkerOnGooglMap(markerType: .to, cordinate: destinationCoordinate)
                 }
@@ -500,7 +522,7 @@ extension HomeViewController
         let path: GMSPath = GMSPath(fromEncodedPath: route)!
         let routePolyline = GMSPolyline(path: path)
         routePolyline.map = self.mapView
-        routePolyline.strokeColor = UIColor.darkGray // UIColor.init(red: 44, green: 134, blue: 200, alpha: 1.0)
+        routePolyline.strokeColor = UIColor.init(custom: .themePink) //UIColor.darkGray
         routePolyline.strokeWidth = 3.0
     }
 
@@ -533,7 +555,7 @@ extension HomeViewController
             drawRouteOnGoogleMap(origin: originLocation, destination: destinationLocation, waypoints: nil, travelMode: nil, fromMarker: nil, toMarker: nil, completionHandler: nil)
         default:
             break
-            //            carMovement.arCarMovement(marker: customMap.marker, oldCoordinate: customMap.previousLocation.coordinate, newCoordinate: customMap.presentLocation.coordinate, mapView: mapView, bearing: Float(2))
+//                        carMovement.arCarMovement(marker: customMap.marker, oldCoordinate: customMap.previousLocation.coordinate, newCoordinate: customMap.presentLocation.coordinate, mapView: mapView, bearing: Float(2))
         }
     }
 }

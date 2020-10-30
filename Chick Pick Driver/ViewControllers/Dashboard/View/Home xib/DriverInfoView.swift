@@ -92,9 +92,10 @@ class DriverInfoView: UIView
             self.lblVehicleName.text = parameter!.vehicleInfo.first?.vehicleTypeName
             self.lblVehicleNumber.text = parameter!.vehicleInfo.first?.plateNumber
             
-            self.lblTotleJobs.text = loginData?.bookingInfo?.totalTrips
+            self.lblTotleJobs.text = Singleton.shared.bookingInfoLoginModel?.totalTrips   // loginData?.bookingInfo?.totalTrips
             
-            let totalEarning = Double(loginData?.bookingInfo?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
+//            let totalEarning = Double(loginData?.bookingInfo?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
+            let totalEarning = Double(Singleton.shared.bookingInfoLoginModel?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
             
             self.lblTotalEarning.text = Currency + " " + "\(totalEarning ?? 0.0)"
             self.lblDriverRatings.text = parameter?.rating

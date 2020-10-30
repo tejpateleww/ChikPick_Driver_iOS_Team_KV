@@ -23,7 +23,6 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .login, httpMethod: .post, parameters: params, completion: completion)
     }
     
-
     class func transferMoney(transferMoneyModel : TransferMoneyModel, completion: @escaping CompletionResponse) {
         let params : [String:String] = transferMoneyModel.generatPostParams() as! [String:String]
         WebService.shared.requestMethod(api: .transferMoney, httpMethod: .post, parameters: params, completion: completion)
@@ -76,6 +75,26 @@ class UserWebserviceSubclass
 //        WebService.shared.requestMethod(api: .pastBookingHistory, httpMethod: .get, parameters: strType, completion: completion)
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.pastBookingHistory.rawValue + strType
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func upcomingBookingHistory(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.upcomingBookingHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func pendingBookingHistory(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.PendingBookingHistory.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func paymentReceivedOrNot(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.PaymentReceivedOrNot.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func ReviewRatingToDriver( bookingRequestModel : ReviewRatingReqModel  ,completion: @escaping CompletionResponse ) {
+        let  params : [String:String] = bookingRequestModel.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .reviewRating, httpMethod: .post, parameters: params, completion: completion)
     }
     
     class func LogoutApi(strType : [String: Any]  ,completion: @escaping CompletionResponse ) {

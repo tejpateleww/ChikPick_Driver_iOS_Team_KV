@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +22,7 @@
         <!--Trip Info Completed TripVC-->
         <scene sceneID="wtK-kf-TMI">
             <objects>
-                <viewController storyboardIdentifier="TripInfoCompletedTripVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GPk-pF-Wpq" customClass="TripInfoCompletedTripVC" customModule="Pappea_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripInfoCompletedTripVC" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GPk-pF-Wpq" customClass="TripInfoCompletedTripVC" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="19u-3c-2b3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,14 +31,14 @@
                                 <rect key="frame" x="20" y="89.5" width="335" height="488"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="HRB-MJ-Thn">
-                                        <rect key="frame" x="137.5" y="10" width="60" height="16"/>
+                                        <rect key="frame" x="137.5" y="10" width="60" height="90"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="iFx-Oe-Qvt"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ER-ZV-7DR">
-                                        <rect key="frame" x="134.5" y="36" width="66.5" height="15"/>
+                                        <rect key="frame" x="134.5" y="110" width="66.5" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="dUZ-cp-dS5"/>
                                         </constraints>
@@ -49,10 +47,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XSp-Iv-vEE">
-                                        <rect key="frame" x="0.0" y="59" width="335" height="371"/>
+                                        <rect key="frame" x="0.0" y="133" width="335" height="297"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U23-GK-wlp">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="371"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="297"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDc-tX-5vD">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="314.5"/>
@@ -489,7 +487,7 @@
                                             <constraint firstItem="U23-GK-wlp" firstAttribute="leading" secondItem="XSp-Iv-vEE" secondAttribute="leading" id="pPO-7k-o8i"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20e-lK-Wvo" customClass="ThemeButton" customModule="Pappea_Driver" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20e-lK-Wvo" customClass="ThemeButton" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                         <rect key="frame" x="30" y="438" width="275" height="40"/>
                                         <color key="backgroundColor" red="0.89338213209999995" green="0.51630395650000005" blue="0.15679338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -591,7 +589,7 @@
         <!--WaitForTipViewController-->
         <scene sceneID="Ef9-6t-ZxC">
             <objects>
-                <viewController storyboardIdentifier="WaitForTipViewController" modalPresentationStyle="overCurrentContext" id="Edl-NY-YdC" userLabel="WaitForTipViewController" customClass="WaitForTipViewController" customModule="Pappea_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WaitForTipViewController" modalPresentationStyle="overCurrentContext" id="Edl-NY-YdC" userLabel="WaitForTipViewController" customClass="WaitForTipViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iw4-ii-PNV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -670,7 +668,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lg1-NT-xoX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOl-Uu-e04" customClass="BRCircularProgressView" customModule="Pappea_Driver" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOl-Uu-e04" customClass="BRCircularProgressView" customModule="Chick_Pick_Drive" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     <color key="backgroundColor" red="1" green="0.67450980390000004" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -700,7 +698,7 @@
         <!--Signature View Controller-->
         <scene sceneID="gUg-TK-njo">
             <objects>
-                <viewController storyboardIdentifier="SignatureViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fWL-rY-19z" customClass="SignatureViewController" customModule="Pappea_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignatureViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fWL-rY-19z" customClass="SignatureViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ODw-bL-bjn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -726,7 +724,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-h5-zNY">
                                         <rect key="frame" x="0.0" y="497" width="343" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yx-dC-OjY" customClass="ThemeButton" customModule="Pappea_Driver" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yx-dC-OjY" customClass="ThemeButton" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
                                                 <color key="backgroundColor" red="0.89338213209999995" green="0.51630395650000005" blue="0.15679338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -764,7 +762,7 @@
                                             <constraint firstAttribute="width" constant="60" id="dPP-s5-jPy"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUF-gP-KOY" customClass="YPDrawSignatureView" customModule="Pappea_Driver" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUF-gP-KOY" customClass="YPDrawSignatureView" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="106" width="343" height="391"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                     </view>
@@ -825,7 +823,7 @@
         <!--RatingViewController-->
         <scene sceneID="4oF-am-qhe">
             <objects>
-                <viewController storyboardIdentifier="RatingViewController" title="RatingViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lEN-WT-7qe" customClass="RatingViewController" customModule="Pappea_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RatingViewController" title="RatingViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lEN-WT-7qe" customClass="RatingViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TLl-u0-Aq6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -847,7 +845,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HU-0z-QKw">
                                         <rect key="frame" x="20" y="160.5" width="335" height="346.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="MWc-EL-rJe">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="MWc-EL-rJe">
                                                 <rect key="frame" x="127.5" y="20" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="MWc-EL-rJe" secondAttribute="height" multiplier="1:1" id="Yhe-Si-HcV"/>
@@ -875,7 +873,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="WbT-WB-K23"/>
                                                 </constraints>
-                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -889,7 +886,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="je7-8Y-kgi">
                                                 <rect key="frame" x="30" y="286.5" width="275" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zm-LC-I9F" customClass="ThemeButton" customModule="Pappea_Driver" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zm-LC-I9F" customClass="ThemeButton" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="275" height="40"/>
                                                         <color key="backgroundColor" red="0.89338213209999995" green="0.51630395650000005" blue="0.15679338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -970,5 +967,6 @@
         <image name="iconCancel" width="85" height="85"/>
         <image name="iconClockOuter" width="16" height="16"/>
         <image name="iconTOtoFromAddress" width="13" height="60"/>
+        <image name="logo-ios" width="245" height="272"/>
     </resources>
 </document>

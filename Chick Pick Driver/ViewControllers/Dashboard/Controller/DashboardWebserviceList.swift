@@ -19,9 +19,12 @@ extension HomeViewController: DashboardWebservices {
         model.booking_id = Singleton.shared.bookingInfo?.id ?? ""
         
         UserWebserviceSubclass.CancelTripService(cancelTripDetailModel: model) { (response, status) in
+            print("CancelTripService : ",response)
             if status {
                 Singleton.shared.bookingInfo = nil
                 self.getFirstView()
+                self.driverData.driverState = .available
+                self.resetMap()
             } else {
                 UtilityClass.showAlert(message: response.dictionary?["message"]?.stringValue ?? "Cancel trip is not possible due to some reason, \nPlease restart application.")
             }
@@ -111,23 +114,19 @@ extension HomeViewController: DashboardWebservices {
         model.dropoff_lng = dictOFParam["dropoff_lng"] as! String
         UserWebserviceSubclass.CompleteTripService(MobileNoDetailModel: model) { (response, status) in
             if status {
-                
                 let res = response.dictionary?["data"]
                 Singleton.shared.bookingInfo = BookingInfo(fromJson: res)
+//                Singleton.shared.bookingInfo = nil
+//                self.driverData.driverState = .lastCompleteView
+//                self.resetMap()
                 self.getLastView()
-                Singleton.shared.bookingInfo = nil
-                
-//                let myMapView = MapView()
-                self.driverData.driverState = .available
-                self.resetMap()
                
+                UserDefaults.standard.removeObject(forKey: "isDriverArrived")
             } else {
                  AlertMessage.showMessageForError(response["message"].stringValue)
             }
         }
     }
-
-    
     
     //-------------------------------------------------------------
     // MARK: - Webservice Methods For Completeing Advance Booking

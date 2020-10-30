@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             window?.overrideUserInterfaceStyle = .light
         }
         
-            // Temp Commented by Bhautik
+        // Temp Commented by Bhautik
         
         //        for fontFamilyName in UIFont.familyNames{
         //            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         
         print(RegistrationParameter.shared.email)
-
+        
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
@@ -84,14 +84,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         isGPSOn()
         
-
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         setSplash()
         setUpUserData()
         setupPushNotification(application: application)
         //        SocketIOManager.shared.socket.connect()
         //        SocketIOManager.shared.establishConnection()
-
+        
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -200, vertical: 0), for:UIBarMetrics.default)
         
         return true
@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     {
         let isLogin = UserDefaults.standard.bool(forKey: "isUserLogin")
         var LoginDetail : LoginModel = LoginModel()
-
+        
         if isLogin
         {
             if(UserDefaults.standard.object(forKey: "userProfile") == nil) {
@@ -116,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
         }
     }
-
+    
     func setSplash(){
         let vc: SplashScreenViewController = UIViewController.viewControllerInstance(storyBoard: .registration)
         
@@ -209,16 +209,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        //        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         Messaging.messaging().apnsToken = deviceToken
-
-//        if let fcmToken = Messaging.messaging().fcmToken
-//        {
-//            Singleton.shared.token = fcmToken
-//        }
-//        UserDefaults.standard.set(Singleton.shared.token, forKey: "Token")
-//        UserDefaults.standard.synchronize()
-
+        
+        //        if let fcmToken = Messaging.messaging().fcmToken
+        //        {
+        //            Singleton.shared.token = fcmToken
+        //        }
+        //        UserDefaults.standard.set(Singleton.shared.token, forKey: "Token")
+        //        UserDefaults.standard.synchronize()
+        
         
     }
     
@@ -258,6 +258,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print(userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        //        let content = response.notification.request.content
+        let userInfo = response.notification.request.content.userInfo
+        if userInfo["gcm.notification.type"] == nil { return }
+        let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
+        
+        print("USER INFo : ",userInfo)
+        print("KEY : ",key)
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print(#function, notification.request.content.userInfo)
+        //        let content = notification.request.content
+        
+        completionHandler([.alert, .sound])
+        
+        let userInfo = notification.request.content.userInfo
+        if userInfo["gcm.notification.type"] == nil { return }
+        
+        let key = (userInfo as NSDictionary).object(forKey: "gcm.notification.type")!
+        
+        print("USER INFo : ",userInfo)
+        print("KEY : ",key)
+        
+        if userInfo["gcm.notification.type"] as! String == "mpesa_payment_failed" {
+            
+            let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "PaymentFailedPopupViewController") as? PaymentFailedPopupViewController {
+                
+                if let dic = (userInfo["aps"] as? [String : Any]) {
+                    //                   print(dic["alert"])
+                    if let alert = (dic["alert"] as? [String : Any]) {
+                        //                        print(alert["body"])
+                        controller.strMessage = alert["body"] as? String ?? ""
+                    }
+                }
+                
+                controller.strBookingId = userInfo["gcm.notification.extra_data"] as? String ?? ""
+                
+                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+                    vc.present(controller, animated: true)
+                }
+            }
+        } else {
+            //                NotificationCenter.default.post(name: NotificationBadges, object: content)
+            //            completionHandler([.alert, .sound])
+        }
+        //        else if userInfo["gcm.notification.type"] as! String == "verify_customer" {
+        //            completionHandler([.alert, .sound])
+        //        }
+        //        else if userInfo["gcm.notification.type"] as! String == "request_code_for_complete_trip" {
+        //            completionHandler([.alert, .sound])
+        //        }
+        //            completionHandler([.alert, .sound])
+        
     }
 }
 

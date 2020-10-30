@@ -26,7 +26,7 @@ class WebService{
     //-------------------------------------
     
     func requestMethod(api: ApiKey, httpMethod:Method,parameters: Any, completion: @escaping CompletionResponse){
-
+        
         guard isConnected else { completion(JSON(), false); return }
         
         
@@ -50,20 +50,20 @@ class WebService{
         print("the url is \(url) and the parameters are \n \(parameters) and the headers are \(NetworkEnvironment.headers)")
         
         let method = Alamofire.HTTPMethod.init(rawValue: httpMethod.rawValue)!
-
+        
         var params = parameters
-
+        
         if(method == .get)
         {
             params = [:]
         }
-
-//        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        
+        //        Loader.showHUD(with: UIApplication.shared.keyWindow)
         
         Alamofire.request(url, method: method, parameters: params as? [String : Any], encoding: URLEncoding.httpBody, headers: NetworkEnvironment.headers).validate()
             .responseJSON { (response) in
-               // LoaderClass.hideActivityIndicator()
-//         Loader.hideHUD()
+                // LoaderClass.hideActivityIndicator()
+                //         Loader.hideHUD()
                 
                 if let json = response.result.value{
                     let resJson = JSON(json)
@@ -72,9 +72,9 @@ class WebService{
                     completion(resJson, status)
                 }
                 else {
-                  //  LoaderClass.hideActivityIndicator()
+                    //  LoaderClass.hideActivityIndicator()
                     if let error = response.result.error {
-
+                        
                         if(response.response?.statusCode == 403)
                         {
                             (UIApplication.shared.delegate as! AppDelegate).setLogin()
@@ -86,12 +86,12 @@ class WebService{
                             print("Error = \(error.localizedDescription)")
                             completion(JSON(), false)
                             AlertMessage.showMessageForError(error.localizedDescription)
-
+                            
                         }
                     }
                 }
-            }
-
+        }
+        
     }
 
 

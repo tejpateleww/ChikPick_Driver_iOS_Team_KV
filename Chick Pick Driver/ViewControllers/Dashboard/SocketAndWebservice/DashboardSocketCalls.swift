@@ -9,7 +9,8 @@
 import UIKit
 
 extension HomeViewController: SocketConnected {
-  
+ 
+    
     // ----------------------------------------------------
     // MARK:- --- All Socket Methods ---
     // MARK:-
@@ -24,9 +25,14 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socket.off(socketApiKeys.onTheWayBookingRequest.rawValue)    // Socket Off 4
         SocketIOManager.shared.socket.off(socketApiKeys.receiveTips.rawValue)               // Socket Off 5
         SocketIOManager.shared.socket.off(socketApiKeys.cancelTrip.rawValue)                // Socket Off 6
+        SocketIOManager.shared.socket.off(socketApiKeys.requestCodeForCompleteTrip.rawValue)// Socket Off 7
+        SocketIOManager.shared.socket.off(socketApiKeys.arrivedAtPickupLocation.rawValue)   // Socket Off 8
+        SocketIOManager.shared.socket.off(socketApiKeys.updateDriverLocation.rawValue)      // Socket Off 9
+        SocketIOManager.shared.socket.off(socketApiKeys.verifyCustomer.rawValue)            // Socket Off 9
+        SocketIOManager.shared.socket.off(socketApiKeys.DriverLocation.rawValue)            // Socket Off 18
         SocketIOManager.shared.socket.off(clientEvent: .disconnect)                         // Socket Disconnect
     }
-
+    
     /// Socket On All
     func allSocketOnMethods() {
         
@@ -36,6 +42,11 @@ extension HomeViewController: SocketConnected {
         onSocket_OnTheWayBookLater()            // Socket On 4
         onSocket_ReceiveTips()                  // Socket On 5
         onSocket_CancelTrip()                   // Socket On 6
+        onSocket_RequestCodeForCompleteTrip()   // Socket On 7
+        onSocket_ArrivedAtPickupLocation()      // Socket On 8
+        onSocket_UpdateDriverLocation()         // Socket On 9
+        onSocket_VerifyCustomer()               // Socket On 9
+        onSocket_DriverArrived()                // Socket On 18
     }
     
     // ----------------------------------------------------
@@ -77,11 +88,34 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.askForTips.rawValue, with: param)
     }
     
+    // Socket Emit 7
+    func emitSocket_RequestCodeForCompleteTrip(param: [String:Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.requestCodeForCompleteTrip.rawValue, with: param)
+    }
+    
+    // Socket Emit 8
+    func emitSocket_ArrivedAtPickupLocation(param: [String:Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.arrivedAtPickupLocation.rawValue, with: param)
+        print(#function)
+    }
+    
+    // Socket Emit 9
+    func emitSocket_VerifyCustomer(param: [String:Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.verifyCustomer.rawValue, with: param)
+        print(#function)
+    }
+    
+    // Socket On 14
+    func emitSocket_DriverLocation(param: [String:Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.DriverLocation.rawValue, with: param)
+//        print(#function)
+    }
+    
     // ----------------------------------------------------
     // MARK:- --- Socket On Methods ---
     // MARK:-
     // ----------------------------------------------------
-   
+    
     // Socket On 1
     func onSocket_ReceiveBookingRequest() {
         SocketIOManager.shared.socketCall(for: socketApiKeys.WhenRequestArrived.rawValue){ json in
@@ -110,42 +144,64 @@ extension HomeViewController: SocketConnected {
             print(#function)
             print("\n \(json)")
             
-            if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
-                homeVC.stopProgress()
-                if let bookingView = homeVC.presentView as? BookingView {
-                    bookingView.isAccepted = true
-                    bookingView.isArrived = false
-                    bookingView.isStartTrip = false
-                    bookingView.setConstraintOfHomeVc()
-                    bookingView.setRequestAcceptedView()
-
-                    
-                    // Arrived Action
-                    bookingView.txtDropOff.becomeFirstResponder()
-                    bookingView.isAccepted = false
-                    bookingView.isArrived = true
-                    bookingView.isStartTrip = false
-                    bookingView.setConstraintOfHomeVc()
-                    bookingView.setStartTripView()
-                    
-                    DispatchQueue.main.async {
-                        bookingView.txtDropOff.resignFirstResponder()
-                    }
-                    DispatchQueue.main.async {
-                        bookingView.resignFirstResponder()
-                    }
-                    
-                }
-                
-//                if homeVC.mapView != nil {
-                    self.bookingData = Singleton.shared.bookingInfo!
-                    self.driverData.driverState = .requestAccepted
-                    self.resetMap()
-//                }
-
-            }
+            self.setDataAfterAcceptingRequest()
             let message = json.first?.1.dictionary?["message"]?.stringValue
             AlertMessage.showMessageForSuccess(message ?? "Booking Request Accepted")
+        }
+    }
+    
+    func setDataAfterAcceptingRequest()
+    {
+        if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
+            homeVC.stopProgress()
+            if let bookingView = homeVC.presentView as? BookingView {
+                bookingView.isAccepted = true
+                bookingView.isArrived = false
+                bookingView.isStartTrip = false
+                bookingView.setConstraintOfHomeVc()
+                bookingView.setRequestAcceptedView()
+                
+                // Arrived Action
+                bookingView.txtDropOff.becomeFirstResponder()
+                bookingView.isAccepted = false
+                bookingView.isArrived = true
+                bookingView.isStartTrip = false
+                bookingView.setConstraintOfHomeVc()
+                //                    bookingView.setStartTripView()
+                bookingView.setRequestAcceptedView()
+                
+                DispatchQueue.main.async {
+                    bookingView.txtDropOff.resignFirstResponder()
+                }
+                DispatchQueue.main.async {
+                    bookingView.resignFirstResponder()
+                }
+            }
+            //                if homeVC.mapView != nil {
+            self.bookingData = Singleton.shared.bookingInfo!
+            self.driverData.driverState = .requestAccepted
+            self.resetMap()
+            //                }
+        }
+    }
+    
+    func setDataAfterDriverArrived()
+    {
+        if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
+            homeVC.stopProgress()
+            if let bookingView = homeVC.presentView as? BookingView {
+               
+                // Arrived Action
+                bookingView.txtDropOff.becomeFirstResponder()
+                bookingView.isAccepted = false
+                bookingView.isArrived = true
+                bookingView.isStartTrip = false
+                bookingView.setConstraintOfHomeVc()
+                bookingView.setStartTripView()
+            }
+            self.bookingData = Singleton.shared.bookingInfo!
+            self.driverData.driverState = .requestAccepted
+            self.resetMap()
         }
     }
     
@@ -156,9 +212,9 @@ extension HomeViewController: SocketConnected {
             print("\n \(json)")
             
             if ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController) != nil {
-                    self.bookingData = Singleton.shared.bookingInfo!
-                    self.driverData.driverState = .inTrip
-                    self.resetMap()
+                self.bookingData = Singleton.shared.bookingInfo!
+                self.driverData.driverState = .inTrip
+                self.resetMap()
             }
             let message = json.first?.1.dictionary?["message"]?.stringValue
             AlertMessage.showMessageForSuccess(message ?? "")
@@ -182,10 +238,8 @@ extension HomeViewController: SocketConnected {
             print("\n \(json)")
             
             if ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController) != nil {
-                    self.resetMap()
-
+                self.resetMap()
             }
-            
             
             if let msg = json.array?.first?.dictionary?["message"] {
                 AlertMessage.showMessageForSuccess(msg.stringValue)
@@ -207,14 +261,70 @@ extension HomeViewController: SocketConnected {
             if let msg = json.array?.first?.dictionary?["message"] {
                 AlertMessage.showMessageForSuccess(msg.stringValue)
                 
-                 if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
-                        homeVC.getFirstView()
-                        self.driverData.driverState = .available
+                if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
+                    self.getFirstView()
+                    self.driverData.driverState = .available
+                    self.resetMap()
+                    UserDefaults.standard.removeObject(forKey: "isDriverArrived")
                 }
             }
         }
     }
-
+    
+    // Socket On 7
+    func onSocket_RequestCodeForCompleteTrip() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.requestCodeForCompleteTrip.rawValue){ json in
+            print(#function)
+            print("\n \(json)")
+            
+            self.driverData.driverState = .lastCompleteView
+            self.resetMap()
+            
+            let otp = json.array?.first?.dictionary?["otp"]?.string ?? ""
+            
+            let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyCustomerPopupViewController") as? VerifyCustomerPopupViewController {
+                //                vc.strMessage = msg
+                vc.strTitle = "Please Enter Complete Code From Customer To Complete This Trip"
+                vc.strPlaceholder = "Enter Complete Code"
+                vc.strOTP = otp
+                vc.strBtnTitle = "Submit"
+                vc.completeTripOnEndCode = { status in
+                    print(status)
+                    
+                    if status {
+                        var param = [String: Any]()
+                        param["booking_id"] = Singleton.shared.bookingInfo?.id
+                        param["dropoff_lat"] = Singleton.shared.bookingInfo?.dropoffLat
+                        param["dropoff_lng"] = Singleton.shared.bookingInfo?.dropoffLng
+                        self.webserviceCallForCompleteTrip(dictOFParam: param as AnyObject)
+                    } else {
+                        print("Fail webservice complete trip")
+                        //                        self.present(vc, animated: true, completion: nil)
+                    }
+                }
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // Socket On 8
+    func onSocket_ArrivedAtPickupLocation() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.arrivedAtPickupLocation.rawValue){ json in
+            print(#function)
+            print("\n \(json)")
+            
+            if ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController) != nil {
+//                self.bookingData = Singleton.shared.bookingInfo!
+//                self.driverData.driverState = .arrived
+//                self.resetMap()
+                self.setDataAfterDriverArrived()
+            }
+            let message = json.first?.1.dictionary?["message"]?.stringValue
+            AlertMessage.showMessageForSuccess(message ?? "")
+        }
+    }
+    
     @objc func updateDriverLocation(){
         
         self.locationManager.startUpdatingLocation()
@@ -224,6 +334,95 @@ extension HomeViewController: SocketConnected {
                 
                 let myJSON = ["driver_id" : driver.id, "lat": "\(Singleton.shared.driverLocation.coordinate.latitude)", "lng": "\(Singleton.shared.driverLocation.coordinate.longitude)","device_token": driver.deviceToken] as [String : Any]
                 emitSocket_UpdateDriverLatLng(param: myJSON)
+            }
+        }
+    }
+    
+    // Socket On 9
+    func onSocket_UpdateDriverLocation() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.updateDriverLocation.rawValue){ json in
+            print(#function)
+            print("\n \(json)")
+        }
+    }
+    
+    // Socket On 18
+    func onSocket_DriverArrived() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.driverArrived.rawValue){ json in
+            print(#function)
+            print("\n \(json)")
+           
+            if self.bookingData.arrivedTime.isEmpty {
+                 UserDefaults.standard.set(false, forKey: "isDriverArrived")
+            } else {
+                UserDefaults.standard.set(true, forKey: "isDriverArrived")
+                print("Driver arrived at pickup location")
+            }
+            
+            if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
+                //                homeVC.stopProgress()
+                if let bookingView = homeVC.presentView as? BookingView {
+                    if (UserDefaults.standard.object(forKey: "isDriverArrived") != nil) && UserDefaults.standard.object(forKey: "isDriverArrived") as? Bool != true {
+                         bookingView.btnArrive.setTitle("Arrive", for: .normal)
+                    } else {
+                         bookingView.btnArrive.setTitle("Start Request Code", for: .normal)
+                    }
+                }
+            }
+        }
+    }
+    
+    // Socket On 7
+    func onSocket_VerifyCustomer() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.verifyCustomer.rawValue){ json in
+            print(#function)
+            print("\n \(json)")
+            
+            let otp = json.array?.first?.dictionary?["otp"]?.string ?? ""
+            
+            let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "VerifyCustomerPopupViewController") as? VerifyCustomerPopupViewController {
+                //                vc.strMessage = msg
+                vc.strTitle = "Please Enter Start Code From Customer To Start This Trip"
+                vc.strPlaceholder = "Enter Start Code"
+                vc.strOTP = otp
+                vc.strBtnTitle = "Submit"
+                vc.completeTripOnEndCode = { status in
+                    print(status)
+                    
+                    if status {
+                        
+                        if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
+                            //                homeVC.stopProgress()
+                            if let bookingView = homeVC.presentView as? BookingView {
+                                // For Start Trip
+                                if !bookingView.viewRequestAccepted.isHidden {
+                                    bookingView.isAccepted = false
+                                    bookingView.isArrived = false
+                                    bookingView.isStartTrip = true
+                                    bookingView.setConstraintOfHomeVc()
+                                    bookingView.setTripView()
+                                    
+                                    guard let bookingData = Singleton.shared.bookingInfo else { return }
+                                    var param = [String: Any]()
+                                    param["booking_id"] = bookingData.id
+                                    self.emitSocket_StartTrip(param: param)
+                                }
+                            } else {
+                                // For Complete Trip
+                                var param = [String: Any]()
+                                param["booking_id"] = Singleton.shared.bookingInfo?.id
+                                param["dropoff_lat"] = Singleton.shared.bookingInfo?.dropoffLat
+                                param["dropoff_lng"] = Singleton.shared.bookingInfo?.dropoffLng
+                                self.webserviceCallForCompleteTrip(dictOFParam: param as AnyObject)
+                            }
+                        }
+                    } else {
+                        print("Fail webservice complete/start trip")
+                        //                        self.present(vc, animated: true, completion: nil)
+                    }
+                }
+                self.present(vc, animated: true, completion: nil)
             }
         }
     }

@@ -52,7 +52,7 @@ enum NetworkEnvironment: String {
         return .qa
     }
    
-    static var token: String{
+    static var token: String {
         return "dhuafidsuifunabneufjubefg"
     }
 }
@@ -90,6 +90,10 @@ enum ApiKey: String {
     case reviewRating = "review_rating"
     
     case pastBookingHistory = "past_booking_history"
+    case upcomingBookingHistory = "future_booking_history/"
+    case PendingBookingHistory = "pending_booking_history/"
+    
+    case PaymentReceivedOrNot = "payment_received_or_not/"
     
     case vehicleTypeModelList = "vehicle_type_manufacturer_list"
     case companyList = "company_list"
@@ -115,13 +119,17 @@ enum socketApiKeys: String, CaseIterable {
     case AcceptRequest = "accept_booking_request"
     case StartTrip = "start_trip"
     case DriverCurrentLocation = "live_tracking" //"driver_current_location"
-
+    case DriverLocation = "driver_location"
     
     case onTheWayBookingRequest = "on_the_way_booking_request" // driver_id,booking_id
     case askForTips = "ask_for_tips"
     case receiveTips = "receive_tips"
     case cancelTrip = "cancel_trip"
-   
+    
+    case requestCodeForCompleteTrip = "request_code_for_complete_trip" // booking_id
+    case arrivedAtPickupLocation = "arrived_at_pickup_location" // booking_id
+    case driverArrived = "driver_arrived" // booking_id
+    case verifyCustomer = "verify_customer" // customer_id, driver_id, booking_id
 }
 
 

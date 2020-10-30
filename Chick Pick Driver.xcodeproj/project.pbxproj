@@ -228,8 +228,18 @@
 		469BD3E722F066790077E3A5 /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BD3E622F066780077E3A5 /* InviteDriverViewController.swift */; };
 		46AF2A7B22EC1C010028A2B4 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 46AF2A7A22EC1C010028A2B4 /* Location.gpx */; };
 		46C7D14822F854660064FFD0 /* PastBookingHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C7D14722F854650064FFD0 /* PastBookingHistoryResponse.swift */; };
+		641035A62535B74000A5CACB /* NoDataFoundTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641035A42535B74000A5CACB /* NoDataFoundTblCell.swift */; };
+		641035A72535B74000A5CACB /* NoDataFoundTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 641035A52535B74000A5CACB /* NoDataFoundTblCell.xib */; };
+		64128CC9254690DE004A6153 /* CancellationCharge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64128CC8254690DE004A6153 /* CancellationCharge.swift */; };
+		64128FE825347CBC0094FA60 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64128FE725347CBC0094FA60 /* Popup.storyboard */; };
+		64128FEA25347E290094FA60 /* VerifyCustomerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64128FE925347E290094FA60 /* VerifyCustomerPopupViewController.swift */; };
+		641E02CF254BD6BF0030EC57 /* ReviewRatingReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641E02CE254BD6BF0030EC57 /* ReviewRatingReqModel.swift */; };
+		6430522A253993F500D007A8 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64305229253993F500D007A8 /* RatingView.swift */; };
+		6430522C2539941400D007A8 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6430522B2539941400D007A8 /* RatingView.xib */; };
+		64439ADD253EB58900696A1D /* PaymentFailedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64439ADC253EB58900696A1D /* PaymentFailedPopupViewController.swift */; };
 		647E5FD42507AF7A005D57DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647E5FD32507AF79005D57DF /* GoogleService-Info.plist */; };
 		6481BEE62508B4E2004C1E94 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481BEE52508B4E2004C1E94 /* SettingsViewController.swift */; };
+		64F927052546A4E3006F3A13 /* InitResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F927042546A4E3006F3A13 /* InitResponseModel.swift */; };
 		B380770F941AF30C1230F9B7 /* Pods_Chick_Pick_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F126F9FECAE1DAF1B08427 /* Pods_Chick_Pick_Driver.framework */; };
 		EE00703D22D8CFA900D30223 /* TransferToBankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE00703922D8CFA800D30223 /* TransferToBankVC.swift */; };
 		EE00703E22D8CFA900D30223 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE00703A22D8CFA900D30223 /* WalletViewController.swift */; };
@@ -495,9 +505,19 @@
 		46AF2A7A22EC1C010028A2B4 /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		46C5F985602C5B02CFA0756E /* Pods-Pappea Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pappea Driver.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pappea Driver/Pods-Pappea Driver.release.xcconfig"; sourceTree = "<group>"; };
 		46C7D14722F854650064FFD0 /* PastBookingHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastBookingHistoryResponse.swift; sourceTree = "<group>"; };
+		641035A42535B74000A5CACB /* NoDataFoundTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataFoundTblCell.swift; sourceTree = "<group>"; };
+		641035A52535B74000A5CACB /* NoDataFoundTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataFoundTblCell.xib; sourceTree = "<group>"; };
+		64128CC8254690DE004A6153 /* CancellationCharge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationCharge.swift; sourceTree = "<group>"; };
+		64128FE725347CBC0094FA60 /* Popup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
+		64128FE925347E290094FA60 /* VerifyCustomerPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCustomerPopupViewController.swift; sourceTree = "<group>"; };
+		641E02CE254BD6BF0030EC57 /* ReviewRatingReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewRatingReqModel.swift; sourceTree = "<group>"; };
+		64305229253993F500D007A8 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		6430522B2539941400D007A8 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		643F61EF24FE165900B8EB69 /* Chick Pick Driver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chick Pick Driver.entitlements"; sourceTree = "<group>"; };
+		64439ADC253EB58900696A1D /* PaymentFailedPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFailedPopupViewController.swift; sourceTree = "<group>"; };
 		647E5FD32507AF79005D57DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6481BEE52508B4E2004C1E94 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		64F927042546A4E3006F3A13 /* InitResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitResponseModel.swift; sourceTree = "<group>"; };
 		6631D337F3A4CF1B97060ADF /* Pods-Chick Pick Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chick Pick Driver.release.xcconfig"; path = "Target Support Files/Pods-Chick Pick Driver/Pods-Chick Pick Driver.release.xcconfig"; sourceTree = "<group>"; };
 		8434CFDFF1B613A42CEF2141 /* Pods-Pappea Driver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pappea Driver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pappea Driver/Pods-Pappea Driver.debug.xcconfig"; sourceTree = "<group>"; };
 		A7F126F9FECAE1DAF1B08427 /* Pods_Chick_Pick_Driver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chick_Pick_Driver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -708,6 +728,8 @@
 				347A89C222CE15AD007A58F6 /* MyTripDescriptionTableViewCell.xib */,
 				347A89C422CE15CC007A58F6 /* MyTripDescriptionTableViewCell.swift */,
 				347A89C622CE2B1F007A58F6 /* FooterTableViewCell.xib */,
+				641035A42535B74000A5CACB /* NoDataFoundTblCell.swift */,
+				641035A52535B74000A5CACB /* NoDataFoundTblCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -742,6 +764,8 @@
 				341067D322CCB360001E94FC /* DriverInfoView.swift */,
 				1823752723018EF300A7B446 /* CompleteView.xib */,
 				1823752923018F2000A7B446 /* CompleteView.swift */,
+				6430522B2539941400D007A8 /* RatingView.xib */,
+				64305229253993F500D007A8 /* RatingView.swift */,
 			);
 			path = "Home xib";
 			sourceTree = "<group>";
@@ -932,8 +956,8 @@
 				34E8B45C22C3AB4800C33A94 /* CompletedTrip */,
 				34E8B48122C3AB4800C33A94 /* TermsAndConditions */,
 				34E8B48422C3AB4800C33A94 /* Dashboard */,
-				34E8B49722C3AB4900C33A94 /* Invite */,
 				34E8B49C22C3AB4900C33A94 /* SideMenu */,
+				34E8B49722C3AB4900C33A94 /* Invite */,
 				34E8B4A422C3AB4900C33A94 /* DriverProfile */,
 				34E8B4AE22C3AB4900C33A94 /* Wallet */,
 				34E8B4B122C3AB4900C33A94 /* RatingHistory */,
@@ -1072,6 +1096,8 @@
 			children = (
 				34E8B49222C3AB4900C33A94 /* HomeViewController.swift */,
 				18E9F0F922E5976800132C97 /* DashboardWebserviceList.swift */,
+				64128FE925347E290094FA60 /* VerifyCustomerPopupViewController.swift */,
+				64439ADC253EB58900696A1D /* PaymentFailedPopupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1089,6 +1115,7 @@
 			children = (
 				34AC3B7A22CB1C4200125CD8 /* Home xib */,
 				34E8B49622C3AB4900C33A94 /* Home.storyboard */,
+				64128FE725347CBC0094FA60 /* Popup.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1550,6 +1577,15 @@
 			path = CreditCardValidator;
 			sourceTree = "<group>";
 		};
+		64128CC7254690B2004A6153 /* InitModel */ = {
+			isa = PBXGroup;
+			children = (
+				64F927042546A4E3006F3A13 /* InitResponseModel.swift */,
+				64128CC8254690DE004A6153 /* CancellationCharge.swift */,
+			);
+			path = InitModel;
+			sourceTree = "<group>";
+		};
 		83C6381A79622B0C84407A8C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1619,6 +1655,7 @@
 		EE48D3C622D369B300A55146 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				641E02CE254BD6BF0030EC57 /* ReviewRatingReqModel.swift */,
 				469BD3E122F04BBC0077E3A5 /* transferMoneyToBank.swift */,
 				469BD37422F027560077E3A5 /* Logout.swift */,
 				469BD37522F027570077E3A5 /* MobileNoDetail.swift */,
@@ -1654,6 +1691,7 @@
 		EE48D3CE22D36A0200A55146 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				64128CC7254690B2004A6153 /* InitModel */,
 				18BC30CA22F45A2F0041D617 /* bookingAcceptedeDataModel */,
 				18BC30C822F43C300041D617 /* VehicleListResultModel.swift */,
 				463D6CCF22F9873200DA819B /* VehicleListModel.swift */,
@@ -1808,6 +1846,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E8B4DB22C3AB4900C33A94 /* proxima-nova-condensed-semibold.otf in Resources */,
+				6430522C2539941400D007A8 /* RatingView.xib in Resources */,
 				34E8B4E622C3AB4900C33A94 /* proxima-nova-light-italic.otf in Resources */,
 				34E8B54522C3AB4A00C33A94 /* UpdateProfile.storyboard in Resources */,
 				34AC3B7C22CB1C8F00125CD8 /* BookingView.xib in Resources */,
@@ -1842,6 +1881,7 @@
 				46AF2A7B22EC1C010028A2B4 /* Location.gpx in Resources */,
 				34E8B4E122C3AB4900C33A94 /* proxima-nova-semibold-italic.otf in Resources */,
 				1823752823018EF300A7B446 /* CompleteView.xib in Resources */,
+				64128FE825347CBC0094FA60 /* Popup.storyboard in Resources */,
 				347A89C122CDFBE8007A58F6 /* MyTripTableViewCell.xib in Resources */,
 				34E8B53E22C3AB4A00C33A94 /* Home.storyboard in Resources */,
 				347038F622C4938E009C040C /* OtpView.xib in Resources */,
@@ -1849,6 +1889,7 @@
 				349E3A7F22CA224E0046B4F4 /* styleMap.json in Resources */,
 				34E8B4EB22C3AB4900C33A94 /* Theme.plist in Resources */,
 				EE4B833522D9E3D100843424 /* Bid.storyboard in Resources */,
+				641035A72535B74000A5CACB /* NoDataFoundTblCell.xib in Resources */,
 				347038EB22C4938E009C040C /* Registration.storyboard in Resources */,
 				3416ED9E22C63B0F00371905 /* Picker.storyboard in Resources */,
 				347038FA22C4938E009C040C /* UserInfoView.xib in Resources */,
@@ -1987,6 +2028,8 @@
 				34E8B55222C3AB4A00C33A94 /* BookNowRequestModel.swift in Sources */,
 				18125CBE22D71C1200E4C0C4 /* BackgroundImageView.swift in Sources */,
 				469BD39D22F0313F0077E3A5 /* FormTextFieldClearButton.swift in Sources */,
+				641E02CF254BD6BF0030EC57 /* ReviewRatingReqModel.swift in Sources */,
+				64128FEA25347E290094FA60 /* VerifyCustomerPopupViewController.swift in Sources */,
 				EE72353522D47D4400948D54 /* AddCard.swift in Sources */,
 				EE72353922D4802600948D54 /* ForgotPassword.swift in Sources */,
 				469BD3DF22F040C90077E3A5 /* CreditCardValidator.swift in Sources */,
@@ -2015,6 +2058,7 @@
 				34E8B56F22C3AB7000C33A94 /* HTTPMethod.swift in Sources */,
 				469BD3A222F0313F0077E3A5 /* CardExpirationDateInputValidator.swift in Sources */,
 				EE48D3CD22D369B300A55146 /* RequestModel.swift in Sources */,
+				6430522A253993F500D007A8 /* RatingView.swift in Sources */,
 				18BC30D122F45A2F0041D617 /* VehicleTypeBookingAcceptedeData.swift in Sources */,
 				EE00703E22D8CFA900D30223 /* WalletViewController.swift in Sources */,
 				18A7EA9F23027D880081BBD1 /* DoubleEx.swift in Sources */,
@@ -2064,6 +2108,7 @@
 				469BD3C922F0316A0077E3A5 /* SwipeAccessibilityCustomAction.swift in Sources */,
 				469BD3A322F0313F0077E3A5 /* DecimalInputValidator.swift in Sources */,
 				469BD3A422F0313F0077E3A5 /* FormTextField.swift in Sources */,
+				64F927052546A4E3006F3A13 /* InitResponseModel.swift in Sources */,
 				18E9F10E22E5E7B600132C97 /* WalletResponseDataModel.swift in Sources */,
 				34AC4EB822C78203004152C2 /* MultiplePickerViewController.swift in Sources */,
 				469BD3A122F0313F0077E3A5 /* InputValidatable.swift in Sources */,
@@ -2105,12 +2150,14 @@
 				347038F322C4938E009C040C /* BankInfoView.swift in Sources */,
 				347038F122C4938E009C040C /* UserInfoView.swift in Sources */,
 				1830C47722E7034D004F107F /* LoginModel.swift in Sources */,
+				64128CC9254690DE004A6153 /* CancellationCharge.swift in Sources */,
 				347038EC22C4938E009C040C /* RegistrationParameters.swift in Sources */,
 				18A1842422FC0A6500A84120 /* BookingInfoLoginModel.swift in Sources */,
 				347038D022C48FA7009C040C /* IndexCollectionView.swift in Sources */,
 				469BD37B22F027B60077E3A5 /* MobileNoResultModel.swift in Sources */,
 				469BD39E22F0313F0077E3A5 /* FormTextFieldTypeManager.swift in Sources */,
 				347038ED22C4938E009C040C /* UserProfile.swift in Sources */,
+				641035A62535B74000A5CACB /* NoDataFoundTblCell.swift in Sources */,
 				18D4342A22F4799B0086CD07 /* CompleteModel.swift in Sources */,
 				46C7D14822F854660064FFD0 /* PastBookingHistoryResponse.swift in Sources */,
 				469BD3E222F04BBC0077E3A5 /* transferMoneyToBank.swift in Sources */,
@@ -2124,6 +2171,7 @@
 				34E8B56C22C3AB7000C33A94 /* ApiPaths.swift in Sources */,
 				463D6CD022F9873200DA819B /* VehicleListModel.swift in Sources */,
 				EE4B834D22DA130500843424 /* ChangePasswordViewController.swift in Sources */,
+				64439ADD253EB58900696A1D /* PaymentFailedPopupViewController.swift in Sources */,
 				349E3A8122CA361B0046B4F4 /* TextFieldEx.swift in Sources */,
 				469BD3A622F0313F0077E3A5 /* CardExpirationDateFormatter.swift in Sources */,
 				EE72352D22D47C9900948D54 /* QRCodeDetails.swift in Sources */,
@@ -2280,7 +2328,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
@@ -2305,7 +2353,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

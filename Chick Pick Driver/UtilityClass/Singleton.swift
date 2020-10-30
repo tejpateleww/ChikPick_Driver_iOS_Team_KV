@@ -20,8 +20,6 @@ class Singleton {
     var companyListData : CompanyListModel?
     var menufacturingYearList = [String]()
 
-
-
      /// Driver login details
     var userProfile: LoginModel?
     
@@ -42,6 +40,15 @@ class Singleton {
     
     /// Booking data while acceptd or started trip
     var bookingInfo: BookingInfo?
+    
+    /// Booking data while acceptd or started trip
+    var bookingInfoLoginModel: BookingInfoLoginModel?
+    
+    /// Driver cancellation charges
+    var cancelltionFee: String?
+    
+    /// Driver cancellation charges
+    var cancelltionCharges: [CancellationCharge]?
     
     /// While send to client build some features not everything
     var isClientBuild = true

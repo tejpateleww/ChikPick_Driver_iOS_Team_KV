@@ -32,6 +32,15 @@ protocol SocketConnected{
     
     func onSocket_CancelTrip()
     
+    func onSocket_RequestCodeForCompleteTrip()
+    
+    func onSocket_ArrivedAtPickupLocation()
+    
+    func onSocket_DriverArrived()
+    
+    func onSocket_UpdateDriverLocation()
+    
+    func onSocket_VerifyCustomer()
     
 //    func socketCallForReceivingBookingRequest()
 //    

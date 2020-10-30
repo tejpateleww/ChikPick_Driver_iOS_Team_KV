@@ -18,14 +18,22 @@ class CompleteView: UIView {
     }
     */
     
+    @IBOutlet weak var lblTotal: UILabel!
+    
+    var strTotal : String?
+    
+    func setGrandTotal() {
+        lblTotal.text = "Grand Total : £\(Singleton.shared.bookingInfo?.grandTotal ?? "0")"
+//        Singleton.shared.bookingInfo = nil
+    }
+    
     @IBAction func btnOKAction(_ sender: UIButton) {
         
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
-                hVc.getFirstView()
+                hVc.driverData.driverState = .ratingView
+                hVc.getRatingView()
             }
         }
     }
-    
-
 }

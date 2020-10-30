@@ -81,7 +81,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prJ-Dc-weo">
                             <rect key="frame" x="5" y="80" width="345" height="77"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andy Debroux" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZw-2V-1Zt">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andy Debroux" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZw-2V-1Zt">
                                     <rect key="frame" x="34" y="0.0" width="311" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,14 +94,14 @@
                                         <constraint firstAttribute="height" constant="1" id="oVM-4P-ZK1"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andy Debroux" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0F-mb-qJn">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andy Debroux" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0F-mb-qJn">
                                     <rect key="frame" x="34" y="41.5" width="311" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPickUpToDestination" translatesAutoresizingMaskIntoConstraints="NO" id="aDk-rD-cPu">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="60"/>
+                                    <rect key="frame" x="0.0" y="1" width="24" height="60"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="mcV-Z9-TeZ"/>
@@ -112,6 +112,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="eZw-2V-1Zt" firstAttribute="top" secondItem="prJ-Dc-weo" secondAttribute="top" id="4It-TL-IwB"/>
+                                <constraint firstItem="aDk-rD-cPu" firstAttribute="centerY" secondItem="gtg-u9-pUg" secondAttribute="centerY" id="8is-hb-4ba"/>
                                 <constraint firstItem="gtg-u9-pUg" firstAttribute="leading" secondItem="aDk-rD-cPu" secondAttribute="trailing" constant="10" id="EBN-8T-oV1"/>
                                 <constraint firstAttribute="trailing" secondItem="gtg-u9-pUg" secondAttribute="trailing" id="N3Y-FB-Sns"/>
                                 <constraint firstItem="aDk-rD-cPu" firstAttribute="leading" secondItem="prJ-Dc-weo" secondAttribute="leading" id="VSu-Pq-Db1"/>
@@ -122,7 +123,6 @@
                                 <constraint firstItem="eZw-2V-1Zt" firstAttribute="leading" secondItem="aDk-rD-cPu" secondAttribute="trailing" constant="10" id="m9W-gz-X6e"/>
                                 <constraint firstItem="gtg-u9-pUg" firstAttribute="top" secondItem="eZw-2V-1Zt" secondAttribute="bottom" constant="10" id="om6-hO-gJp"/>
                                 <constraint firstAttribute="trailing" secondItem="eZw-2V-1Zt" secondAttribute="trailing" id="sRq-5T-LCO"/>
-                                <constraint firstItem="aDk-rD-cPu" firstAttribute="top" secondItem="eZw-2V-1Zt" secondAttribute="top" id="x2e-1u-hqo"/>
                             </constraints>
                         </view>
                     </subviews>
