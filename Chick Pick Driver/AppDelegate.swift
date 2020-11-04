@@ -165,6 +165,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        print("App is in Background mode")
+//        SocketIOManager.shared.establishConnection()
+        
+
+        
+//        SocketIOManager.shared.socket.on(clientEvent: .connect) {data, ack in
+            print ("socket connected")
+//            UIApplication.shared.isIdleTimerDisabled = true
+            
+//        }
+        
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {

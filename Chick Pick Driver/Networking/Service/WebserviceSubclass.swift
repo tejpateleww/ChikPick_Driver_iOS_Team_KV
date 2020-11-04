@@ -11,9 +11,9 @@ import UIKit
 
 class UserWebserviceSubclass
 {
-//    class func initApi( strURL : String  ,completion: @escaping CompletionResponse ) {
-//           WebService.shared.getMethod(url: URL.init(string: strURL)!, httpMethod: .get, completion: completion)
-//    }
+    class func initApi( strURL : String  ,completion: @escaping CompletionResponse ) {
+           WebService.shared.getMethod(url: URL.init(string: strURL)!, httpMethod: .get, completion: completion)
+    }
     class func register( registerModel : RegistrationModel  ,completion: @escaping CompletionResponse ) {
         let  params : [String:String] = registerModel.generatPostParams() as! [String : String]
         WebService.shared.requestMethod(api: .register, httpMethod: .post, parameters: params, completion: completion)

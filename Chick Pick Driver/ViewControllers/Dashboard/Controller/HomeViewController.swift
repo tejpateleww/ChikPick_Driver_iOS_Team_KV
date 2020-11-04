@@ -100,6 +100,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
                 containerBottomConstraint.constant = 0
             } else if status == "traveling" {
                 self.presentView = self.presentType.chooseTripMode(state: .inTrip) // chooseTripMode
+//                self.setDataAfterAcceptingRequest()
                 bottomContentView.customAddSubview(presentView)
                 containerBottomConstraint.constant = 0
             } else if status == "completed" {
@@ -114,7 +115,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         shadowView.layer.shadowColor = UIColor.black.cgColor
         shadowView.layer.shadowOpacity = 1
         shadowView.layer.masksToBounds = false
-        //        mapView.frame = CGRect(x: 0, y: 0, width: self.mapContainerView.frame.width, height: self.mapContainerView.frame.height)
+        mapView.frame = CGRect(x: 0, y: 0, width: self.mapContainerView.frame.width, height: self.mapContainerView.frame.height)
     }
     
     func setupGoogleMaps()
@@ -474,7 +475,10 @@ extension HomeViewController
     
     func drawRouteOnGoogleMap(origin: String!, destination: String!, waypoints: Array<String>!, travelMode: AnyObject!, fromMarker: GMSMarker?, toMarker: GMSMarker?, completionHandler: ((_ status:   String, _ success: Bool) -> Void)?)
     {
-        var directionsURLString = baseURLDirections + "origin=" + origin + "&destination=" + destination + "&key=" + (UIApplication.shared.delegate as! AppDelegate).googlApiKey
+        
+        
+        let url = "origin=" + origin + "&destination=" + destination
+        var directionsURLString = baseURLDirections + url + "&key=" + (UIApplication.shared.delegate as! AppDelegate).googlApiKey
         print ("directionsURLString: \(directionsURLString)")
         
         directionsURLString = directionsURLString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -546,7 +550,12 @@ extension HomeViewController
         switch driverData.driverState {
             
         case .requestAccepted:
-            let originLocation = "\(Singleton.shared.driverLocation.coordinate.latitude),\(Singleton.shared.driverLocation.coordinate.longitude)"
+            var originLocation = "\(Singleton.shared.driverLocation.coordinate.latitude),\(Singleton.shared.driverLocation.coordinate.longitude)"
+            
+            if(originLocation == "0.0,0.0")
+            {
+                originLocation = "\(self.locationManager.location?.coordinate.latitude ?? 0.0),\(self.locationManager.location?.coordinate.longitude ?? 0.0)"
+            }
             let destinationLocation = "\(bookingData.pickupLat ?? ""),\(bookingData.pickupLng ?? "")"
             drawRouteOnGoogleMap(origin: originLocation, destination: destinationLocation, waypoints: nil, travelMode: nil, fromMarker: nil, toMarker: nil, completionHandler: nil)
         case .inTrip:

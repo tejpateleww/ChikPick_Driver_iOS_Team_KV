@@ -7,64 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A3F8078E-F3A6-4830-8A8A-4B6C8EE3721D"
+            uuid = "D1003B4B-5B5A-42D4-9987-506E875CDA0A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Chick Pick Driver/ViewControllers/MyTrips/MyTripsViewController.swift"
+            filePath = "Chick Pick Driver/ViewControllers/Dashboard/Controller/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "LoadNewData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "832AF5A9-C52F-4135-9A34-FD09EDC8341A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chick Pick Driver/ViewControllers/Dashboard/SocketAndWebservice/DashboardSocketCalls.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "emitSocket_UpdateDriverLatLng(param:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B324F01A-14F5-4C1C-966E-92583C5B1B32"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chick Pick Driver/ViewControllers/Dashboard/SocketAndWebservice/DashboardSocketCalls.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "updateDriverLocation()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5C80B7C3-40B0-408F-83A5-9D19E3AE687D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Chick Pick Driver/ViewControllers/Dashboard/SocketAndWebservice/DashboardSocketCalls.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "updateDriverLocation()"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "drawRouteOnGoogleMap(origin:destination:waypoints:travelMode:fromMarker:toMarker:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
