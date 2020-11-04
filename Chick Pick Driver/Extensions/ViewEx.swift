@@ -211,6 +211,12 @@ extension UIView {
         }
     }
     
+    func setUserInteractionEnable(views: [UIView]){
+        for view in views {
+            view.isUserInteractionEnabled = true
+        }
+    }
+    
 
     @IBInspectable
     var cornerRadius: CGFloat {

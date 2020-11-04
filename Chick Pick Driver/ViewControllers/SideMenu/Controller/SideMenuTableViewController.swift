@@ -186,10 +186,12 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
     
     @IBAction func btnLogoutAction(_ sender: Any) {
         
-        UtilityClass.showAlert(message: "Are you sure you want to logout?", isCancelShow: true) {
-            self.webserviceForLogout()
+        if Singleton.shared.bookingInfo?.id == nil || Singleton.shared.bookingInfo?.id == "" {
+            UtilityClass.showAlert(message: "Are you sure you want to logout?", isCancelShow: true) {
+                self.webserviceForLogout()
+            }
+            sideMenuController?.hideMenu()
         }
-        sideMenuController?.hideMenu()
         return
     }
 
@@ -208,7 +210,7 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
             if status {
                 self.resetUserDefaults()
 //                UserDefaults.standard.set(false, forKey: "isUserLogin")
-                (UIApplication.shared.delegate as! AppDelegate).setLogin()
+                (UIApplication.shared.delegate as! AppDelegate).setLogout()
             } else {
                 AlertMessage.showMessageForError(response["message"].stringValue)
             }

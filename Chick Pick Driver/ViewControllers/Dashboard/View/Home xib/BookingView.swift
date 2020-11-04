@@ -88,20 +88,19 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     }
     
     func setupData() {
-       
-        guard let profile = Singleton.shared.bookingInfo?.customerInfo else { return }
-        lblPassengerName.text = (profile.firstName ?? "") + " " + (profile.lastName ?? "")
-    
-        let passengerImage = profile.profileImage
-        imgPassenger.sd_setImage(with: URL(string: imagBaseURL + (passengerImage ?? "")), completed: nil)
+        txtPickup.text = Singleton.shared.bookingInfo?.pickupLocation
+        txtDropOff.text = Singleton.shared.bookingInfo?.dropoffLocation
         
         btnCard.setTitle("Card", for: .normal)
         lblTripPrice.text = "N/A"
         btnDiscount.setTitle("N/A", for: .normal)
         lblTripDistance.text = "N/A"
         
-        txtPickup.text = Singleton.shared.bookingInfo?.pickupLocation
-        txtDropOff.text = Singleton.shared.bookingInfo?.dropoffLocation
+        guard let profile = Singleton.shared.bookingInfo?.customerInfo else { return }
+        lblPassengerName.text = (profile.firstName ?? "") + " " + (profile.lastName ?? "")
+        
+        let passengerImage = profile.profileImage
+        imgPassenger.sd_setImage(with: URL(string: imagBaseURL + (passengerImage ?? "")), completed: nil)
     }
     
     private func requestView() {
@@ -197,6 +196,9 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     }
     
     private func showAllViews() {
+        
+        setUserInteractionEnable(views: [btnAccept, btnStart, btnArrive, btnReject, btnCancelTrip, btnCompleteTrip, btnEndWaitingTime, btnStartWaitingTime])
+        
         hideShowViews(hide: false, views: [viewAcceptReject,
             viewRequestAccepted,
             viewStartTrip,
@@ -256,6 +258,8 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     @IBAction func btnAcceptAction(_ sender: UIButton) {
         print(#function)
         
+        btnAccept.isUserInteractionEnabled = false
+        
 //        isAccepted = true
 //        isArrived = false
 //        isStartTrip = false
@@ -279,6 +283,9 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     // Cancel Trip
     @IBAction func btnRejectAction(_ sender: UIButton) {
         print(#function)
+        
+        btnReject.isUserInteractionEnabled = false
+        
         setConstraintOfHomeVc()
         setRequestRejectedView()
         
@@ -302,6 +309,8 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     @IBAction func btnArrivedAction(_ sender: UIButton) {
         print(#function)
         //        txtDropOff.becomeFirstResponder()
+        
+        btnAccept.isUserInteractionEnabled = false
         
         if(sender.titleLabel?.text == "Start Request Code")
         {
@@ -352,6 +361,9 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     }
     
     @IBAction func btnStartTrip(_ sender: UIButton) {
+        
+        btnStart.isUserInteractionEnabled = false
+        
         isAccepted = false
         isArrived = false
         isStartTrip = true
@@ -374,17 +386,8 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     @IBAction func btnCancelAction(_ sender: UIButton) {
         print(#function)
         
-        guard let bookingData = Singleton.shared.bookingInfo else { return }
-        
-        UtilityClass.showAlert(message: "Cancelling a trip after accepting it attracts a fee of £\(bookingData.vehicleType.driverCancellationFee ?? ""). Please confirm whether you still wish to cancel?", isCancelShow: true) {
-            self.setConstraintOfHomeVc()
-            //        setDeiverInfoView()
-            if let vc: UIViewController = self.parentViewController {
-                if let hVc = vc as? HomeViewController {
-                    hVc.cancelTripAfterAccept()
-                }
-            }
-        }
+        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        self.webserviceForCancellationCharges()
     }
     
     // Start Waiting Time
@@ -454,6 +457,18 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         }
     }
     
+    func alertForCancellation(charges : String) {
+        UtilityClass.showAlert(message: "Cancelling a trip after accepting it attracts a fee of \(Currency)\(charges). Please confirm whether you still wish to cancel?", isCancelShow: true) {
+            self.setConstraintOfHomeVc()
+            //        setDeiverInfoView()
+            if let vc: UIViewController = self.parentViewController {
+                if let hVc = vc as? HomeViewController {
+                    hVc.cancelTripAfterAccept()
+                }
+            }
+        }
+    }
+    
     func setConstraintOfHomeVc() {
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
@@ -467,6 +482,25 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
             if let hVc = vc as? HomeViewController {
                 hVc.getFirstView()
                 hVc.resetMap()
+            }
+        }
+    }
+    
+    func webserviceForCancellationCharges() {
+        
+        let param = Singleton.shared.bookingInfo?.vehicleType.id ?? ""
+        
+        UserWebserviceSubclass.CancellationCharges(strURL: param) { (response, status) in
+            //            print(response)
+            Loader.hideHUD()
+           
+            if(status) {
+                let data = response["data"].dictionaryValue
+                let charges = data["driver_cancellation_fee"]?.stringValue
+                self.alertForCancellation(charges: charges ?? "")
+            }
+            else {
+                AlertMessage.showMessageForError(response["message"].stringValue)
             }
         }
     }

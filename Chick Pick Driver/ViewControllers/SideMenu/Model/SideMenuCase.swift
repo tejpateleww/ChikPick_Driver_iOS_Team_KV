@@ -11,7 +11,7 @@ import UIKit
 enum SideMenuCase: String, CaseIterable{
     
     case home = "Home"
-    case myTrip = "My Trip"
+    case myTrip = "My Trips"
     case payments = "Payments"
     case settings = "Settings"
 //    case wallet = "Wallet"

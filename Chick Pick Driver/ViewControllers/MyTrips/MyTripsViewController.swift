@@ -50,7 +50,7 @@ class MyTripsViewController: BaseViewController {
             collectionTableView.tableView.addSubview(refreshControl)
         }
         refreshControl.addTarget(self, action: #selector(self.refreshWeatherData(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.red // UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
+        refreshControl.tintColor = UIColor.lightGray // UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -79,12 +79,19 @@ class MyTripsViewController: BaseViewController {
         collectionTableView.cellInset = UIEdgeInsets.zero
         collectionTableView.spacing = 0
         
+        if self.tripType == .upcoming {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.collectionTableView.loadTheSection(ofNumber: 1)
+            }
+        }
+        
         collectionTableView.didSelectItemAt = {
             indexpaths in
-            if indexpaths.indexPath != indexpaths.previousIndexPath{
+            if indexpaths.indexPath != indexpaths.previousIndexPath {
                 self.tripType = MyTrips.allCases[indexpaths.indexPath.item]
                 //                self.data = self.tripType.getDescription()
-                self.selectedCell = []
+                self.pastBookingHistoryModelDetails = []
+                self.selectedCell = -1
                 self.LoadNewData()
                 self.collectionTableView.tableView.removeAllSubviews()
                 self.collectionTableView.tableView.reloadData()
@@ -93,7 +100,7 @@ class MyTripsViewController: BaseViewController {
     }
     
     func LoadMoreData() {
-        
+        selectedCell = -1
         self.PageNumber += 1
         if self.tripType.rawValue.lowercased() == "past"
         {
@@ -126,7 +133,7 @@ class MyTripsViewController: BaseViewController {
             self.webserviceForPendingBooking(pageNo: self.PageNumber)
         }
     }
-    var selectedCell = [Int]()
+    var selectedCell : Int = -1
 }
 
 extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -137,8 +144,8 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if selectedCell.contains(section){
-            return 1 + data.count
+        if selectedCell == section {
+            return 1 + self.data.count
         }
         return 1
     }
@@ -160,11 +167,9 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedCell.contains(indexPath.section){
-            let index = selectedCell.firstIndex(of: indexPath.section)
-            //            self.tripType.getDescription()
-            selectedCell.remove(at: index!)
-            
+        if selectedCell == indexPath.section {
+            selectedCell = -1
+           
             self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
             tableView.removeAllSubviews()
             tableView.reloadData()
@@ -175,7 +180,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else{
             self.data = self.tripType.getDescription(pastBookingHistory: self.pastBookingHistoryModelDetails[indexPath.section])
-            selectedCell.append(indexPath.section)
+            selectedCell = indexPath.section
             tableView.reloadData()
             if self.data.count > 0 {
                 tableView.scrollToRow(at: IndexPath(row: 0, section: indexPath.section), at: .top, animated: false)
@@ -199,7 +204,26 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.lblBookin.text = "Booking Id : \(dataResponseHeader.id ?? "")"
                 cell.lblPickup.text = dataResponseHeader.pickupLocation
                 cell.lblDropoff.text = dataResponseHeader.dropoffLocation
-                cell.btnSendReceipt.isHidden = true
+                
+                if self.tripType.rawValue.lowercased() == "past"
+                {
+                    cell.btnSendReceipt.isHidden = true
+                    cell.btnRequestAccept.isHidden = true
+                }
+                else if self.tripType.rawValue.lowercased() == "upcoming"
+                {
+                    cell.btnSendReceipt.isHidden = true
+                    cell.btnRequestAccept.isHidden = false
+                    cell.btnRequestAccept.addTarget(self, action: #selector(acceptBookLaterRequestAction(_:)), for: .touchUpInside)
+                    cell.btnRequestAccept.tag = indexPath.section
+                }
+                else
+                {
+                    cell.btnSendReceipt.isHidden = Singleton.shared.bookingInfo?.id == dataResponseHeader.id ? true : false
+                    cell.btnRequestAccept.isHidden = true
+                    cell.btnSendReceipt.addTarget(self, action: #selector(onTheWayAction(_:)), for: .touchUpInside)
+                    cell.btnSendReceipt.tag = indexPath.section
+                }
                 
                 return cell
             default:
@@ -234,6 +258,38 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    @objc func acceptBookLaterRequestAction(_ sender: UIButton) {
+        let model = self.pastBookingHistoryModelDetails[sender.tag]
+        var param = [String: Any]()
+        param["driver_id"] = Singleton.shared.userProfile!.responseObject.id
+        param["booking_id"] = model.id
+        param["booking_type"] = model.bookingType
+        
+        if let vc = self.navigationController?.children.first as? HomeViewController {
+            vc.emitSocket_AcceptRequest(param: param)
+        }
+    }
+    
+    @objc func onTheWayAction(_ sender: UIButton) {
+         let model = self.pastBookingHistoryModelDetails[sender.tag]
+        if Singleton.shared.isDriverOnline {
+            
+            if Singleton.shared.bookingInfo?.id == nil || Singleton.shared.bookingInfo?.id == "" || Singleton.shared.bookingInfo?.id == model.id {
+                var param = [String: Any]()
+                param["driver_id"] = Singleton.shared.userProfile!.responseObject.id
+                param["booking_id"] = model.id
+                
+                if let vc = self.navigationController?.children.first as? HomeViewController {
+                    vc.emitSocket_OnTheWayBookingRequest(param: param)
+                }
+            } else {
+                AlertMessage.showMessageForError("Your trip is already started, please complete it first")
+            }
+        } else {
+            AlertMessage.showMessageForError("Go online to start the trip")
+        }
+    }
+    
     // MARK:- Webservice Call
     
     func webserviceCallForGettingPastHistory(pageNo: Int)
@@ -252,28 +308,6 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
             {
                 print(response)
                 self.setDataAfterWebServiceCall(response: response)
-//                var arrResponseData = [PastBookingHistoryResponse]()
-//
-//                if let arrayResponse = response.dictionary?["data"]?.array {
-//                    arrResponseData = arrayResponse.map({ (item) -> PastBookingHistoryResponse in
-//                        return PastBookingHistoryResponse.init(fromJson: item)
-//                    })
-//                }
-//
-//                if arrResponseData.count == 0 || arrResponseData.count < 10 {
-//                    self.didEndReached = true
-//                } else {
-//                    self.didEndReached = false
-//                }
-//
-//                if self.PageNumber == 1 {
-//                    self.pastBookingHistoryModelDetails = arrResponseData
-//                } else {
-//                    self.pastBookingHistoryModelDetails.append(contentsOf: arrResponseData)
-//                }
-//
-//                self.collectionTableView.tableView.reloadData()
-//                self.refreshControl.endRefreshing()
             }
             else
             {

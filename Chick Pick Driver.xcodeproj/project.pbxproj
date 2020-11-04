@@ -237,6 +237,7 @@
 		6430522A253993F500D007A8 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64305229253993F500D007A8 /* RatingView.swift */; };
 		6430522C2539941400D007A8 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6430522B2539941400D007A8 /* RatingView.xib */; };
 		64439ADD253EB58900696A1D /* PaymentFailedPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64439ADC253EB58900696A1D /* PaymentFailedPopupViewController.swift */; };
+		64751FC025528B17000D9321 /* echo_ringtone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64751FBF25528B16000D9321 /* echo_ringtone.mp3 */; };
 		647E5FD42507AF7A005D57DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647E5FD32507AF79005D57DF /* GoogleService-Info.plist */; };
 		6481BEE62508B4E2004C1E94 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481BEE52508B4E2004C1E94 /* SettingsViewController.swift */; };
 		64F927052546A4E3006F3A13 /* InitResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F927042546A4E3006F3A13 /* InitResponseModel.swift */; };
@@ -515,6 +516,7 @@
 		6430522B2539941400D007A8 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		643F61EF24FE165900B8EB69 /* Chick Pick Driver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chick Pick Driver.entitlements"; sourceTree = "<group>"; };
 		64439ADC253EB58900696A1D /* PaymentFailedPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFailedPopupViewController.swift; sourceTree = "<group>"; };
+		64751FBF25528B16000D9321 /* echo_ringtone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = echo_ringtone.mp3; sourceTree = "<group>"; };
 		647E5FD32507AF79005D57DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6481BEE52508B4E2004C1E94 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		64F927042546A4E3006F3A13 /* InitResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitResponseModel.swift; sourceTree = "<group>"; };
@@ -791,6 +793,7 @@
 		34E8B3ED22C3AAE000C33A94 /* Chick Pick Driver */ = {
 			isa = PBXGroup;
 			children = (
+				64751FBF25528B16000D9321 /* echo_ringtone.mp3 */,
 				643F61EF24FE165900B8EB69 /* Chick Pick Driver.entitlements */,
 				18BC30D322F45EF80041D617 /* Dummy Data */,
 				469BD38722F031220077E3A5 /* Libraries */,
@@ -1861,6 +1864,7 @@
 				347038F422C4938E009C040C /* LicenseInfoView.xib in Resources */,
 				34E8B4D922C3AB4900C33A94 /* proxima-nova-condensed.otf in Resources */,
 				34E8B54022C3AB4A00C33A94 /* Invite.storyboard in Resources */,
+				64751FC025528B17000D9321 /* echo_ringtone.mp3 in Resources */,
 				34E8B54B22C3AB4A00C33A94 /* Wallet.storyboard in Resources */,
 				34E8B4E722C3AB4900C33A94 /* proxima-nova-bold-italic.otf in Resources */,
 				34E8B4E222C3AB4900C33A94 /* proxima-nova-bold.otf in Resources */,
@@ -2328,7 +2332,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
@@ -2353,7 +2357,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

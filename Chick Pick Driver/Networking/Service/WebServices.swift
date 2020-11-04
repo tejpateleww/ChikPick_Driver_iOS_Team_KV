@@ -19,7 +19,7 @@ class WebService{
     static let shared = WebService()
     
     private init() {}
-
+    
     
     // //-------------------------------------
     // MARK:- Method for Get, post..
@@ -77,9 +77,9 @@ class WebService{
                         
                         if(response.response?.statusCode == 403)
                         {
-                            (UIApplication.shared.delegate as! AppDelegate).setLogin()
+                            (UIApplication.shared.delegate as! AppDelegate).setLogout()
                             UserDefaults.standard.set(false, forKey: "isUserLogin")
-                            AlertMessage.showMessageForError("Duplicate Login")
+                            AlertMessage.showMessageForError("Session expired")
                         }
                         else
                         {
@@ -91,20 +91,19 @@ class WebService{
                     }
                 }
         }
-        
     }
-
-
+    
+    
     func getMethod(url: URL, httpMethod:Method, completion: @escaping CompletionResponse)
     {
         print("The webservice call is for \(url)")
         
-//        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        //        Loader.showHUD(with: UIApplication.shared.keyWindow)
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: NetworkEnvironment.headers)
             .validate()
             .responseJSON { (response) in
                 // LoaderClass.hideActivityIndicator()
-//                Loader.hideHUD()
+                //                Loader.hideHUD()
                 
                 
                 if let json = response.result.value{
@@ -125,23 +124,23 @@ class WebService{
                     if let error = response.result.error {
                         if(response.response?.statusCode == 403)
                         {
-                            (UIApplication.shared.delegate as! AppDelegate).setLogin()
+                            (UIApplication.shared.delegate as! AppDelegate).setLogout()
                             UserDefaults.standard.set(false, forKey: "isUserLogin")
-                            AlertMessage.showMessageForError("Duplicate Login")
-
+                            AlertMessage.showMessageForError("Session expired")
+                            
                         }
                         else
                         {
                             print("Error = \(error.localizedDescription)")
                             completion(JSON(), false)
                             AlertMessage.showMessageForError(error.localizedDescription)
-
+                            
                         }
                     }
                 }
         }
     }
-
+    
     // //-------------------------------------
     // MARK:- Multiform Data
     //-------------------------------------
@@ -149,37 +148,37 @@ class WebService{
     func uploadMultipartFormData(api: ApiKey,from images: [String:UIImage],completion: @escaping CompletionResponse){
         
         guard isConnected else { completion(JSON(), false); return }
-//        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        //        Loader.showHUD(with: UIApplication.shared.keyWindow)
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                    for (key,value) in images{
-                        if let imageData = value.jpegData(compressionQuality: 0.6) {
-                            multipartFormData.append(imageData, withName: key, mimeType: "image/jpeg")
-                        }
+                for (key,value) in images{
+                    if let imageData = value.jpegData(compressionQuality: 0.6) {
+                        multipartFormData.append(imageData, withName: key, mimeType: "image/jpeg")
                     }
+                }
                 
         },usingThreshold:10 * 1024 * 1024,
-            to: (NetworkEnvironment.baseURL + api.rawValue), method:.post,
-            headers:NetworkEnvironment.headers,
-            encodingCompletion: { encodingResult in
-//                Loader.hideHUD()
-                print("the response is \n \(encodingResult)")
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                        debugPrint(response)
-                    }
-                case .failure(let encodingError):
-                    print(encodingError)
+          to: (NetworkEnvironment.baseURL + api.rawValue), method:.post,
+          headers:NetworkEnvironment.headers,
+          encodingCompletion: { encodingResult in
+            //                Loader.hideHUD()
+            print("the response is \n \(encodingResult)")
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    debugPrint(response)
                 }
+            case .failure(let encodingError):
+                print(encodingError)
+            }
         })
     }
     
     func postDataWithImage(api: ApiKey, parameter dictParams: [String: Any], image: UIImage, imageParamName: String, completion: @escaping CompletionResponse) {
         
         guard isConnected else { completion(JSON(), false); return }
-
-//           Loader.showHUD(with: UIApplication.shared.keyWindow)
+        
+        //           Loader.showHUD(with: UIApplication.shared.keyWindow)
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             
             if let imageData = image.jpegData(compressionQuality: 0.6) {
@@ -202,13 +201,13 @@ class WebService{
             }
         }, usingThreshold: 10 *  1024 * 1024, to: (NetworkEnvironment.baseURL + api.rawValue),
            method: .post, headers: NetworkEnvironment.headers) { (encodingResult) in
-//            Loader.hideHUD()
-             print("the response is \n \(encodingResult)")
+            //            Loader.hideHUD()
+            print("the response is \n \(encodingResult)")
             switch encodingResult
             {
             case .success(let upload,_,_):
                 
-               upload.responseJSON {
+                upload.responseJSON {
                     response in
                     
                     if let json = response.result.value {
@@ -220,7 +219,7 @@ class WebService{
                         else {
                             let resJson = JSON(json)
                             print(resJson)
-
+                            
                             completion(resJson, true)
                         }
                     }
@@ -241,9 +240,9 @@ class WebService{
         
         guard isConnected else { completion(JSON(), false); return }
         
-//        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        //        Loader.showHUD(with: UIApplication.shared.keyWindow)
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-           
+            
             for (ind, img) in image.enumerated() {
                 if let imageData = img.jpegData(compressionQuality: 0.6) {
                     multipartFormData.append(imageData, withName: imageParamName[ind], fileName: "image.jpeg", mimeType: "image/jpeg")
@@ -265,8 +264,8 @@ class WebService{
             }
         }, usingThreshold: 10 *  1024 * 1024, to: (NetworkEnvironment.baseURL + api.rawValue),
            method: .post, headers: NetworkEnvironment.headers) { (encodingResult) in
-//            Loader.hideHUD()
-             print("the response is \n \(encodingResult)")
+            //            Loader.hideHUD()
+            print("the response is \n \(encodingResult)")
             switch encodingResult
             {
             case .success(let upload,_,_):
@@ -310,18 +309,18 @@ extension Encodable {
         }
         return dictionary
     }
-
+    
     var dictionary: [String: Any]? {
-            guard let data = try? JSONEncoder().encode(self) else { return nil }
-            return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String: Any]
-        }
- }
+        guard let data = try? JSONEncoder().encode(self) else { return nil }
+        return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String: Any]
+    }
+}
 
 extension WebService{
     var isConnected : Bool{
         guard isConnectedToInternet() else {
             AlertMessage.showMessageForError("Please connect to internet")
-          //  LoaderClass.hideActivityIndicator()
+            //  LoaderClass.hideActivityIndicator()
             return false
         }
         return true

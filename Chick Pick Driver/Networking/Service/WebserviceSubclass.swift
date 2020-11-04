@@ -171,5 +171,8 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .cancelTrip, httpMethod: .post, parameters: params, completion: completion)
     }
     
-    
+    class func CancellationCharges(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.cancellationCharges.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
 }

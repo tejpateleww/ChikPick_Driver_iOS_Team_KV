@@ -35,7 +35,7 @@ class UpdateMobileEmailVC: UIViewController {
     var otpNumber = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Peppea"
+        self.title = AppName.kAPPName
         isGetOTP = false
         btnSubmit.submitButtonLayout(isDark : true)
         
@@ -116,16 +116,6 @@ class UpdateMobileEmailVC: UIViewController {
             }
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 // MARK: - API Integration
 

@@ -39,12 +39,23 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faz-YB-aCJ">
-                                    <rect key="frame" x="261" y="0.0" width="79" height="30"/>
+                                    <rect key="frame" x="270" y="0.0" width="70" height="30"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="10"/>
                                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                    <state key="normal" title="Send Receipt">
+                                    <state key="normal" title="On the way">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWf-cF-AvZ">
+                                    <rect key="frame" x="296" y="-3" width="36" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="DPa-Aq-kSU"/>
+                                        <constraint firstAttribute="width" constant="36" id="NAf-6m-Wiq"/>
+                                    </constraints>
+                                    <state key="normal" image="acceptRequest"/>
+                                    <connections>
+                                        <action selector="btnAcceptAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="W45-vg-bdd"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,6 +68,8 @@
                                 <constraint firstItem="dTM-La-xA2" firstAttribute="top" secondItem="CDD-uw-fhj" secondAttribute="top" id="f79-MY-HOe"/>
                                 <constraint firstAttribute="trailing" secondItem="faz-YB-aCJ" secondAttribute="trailing" constant="5" id="fBh-vN-gwU"/>
                                 <constraint firstItem="dTM-La-xA2" firstAttribute="centerX" secondItem="CDD-uw-fhj" secondAttribute="centerX" id="iPQ-fy-uEf"/>
+                                <constraint firstItem="JWf-cF-AvZ" firstAttribute="top" secondItem="CDD-uw-fhj" secondAttribute="top" constant="-3" id="mHO-bN-qEH"/>
+                                <constraint firstAttribute="trailing" secondItem="JWf-cF-AvZ" secondAttribute="trailing" constant="13" id="npy-R1-xvH"/>
                                 <constraint firstAttribute="bottom" secondItem="dTM-La-xA2" secondAttribute="bottom" id="uoy-20-MgZ"/>
                                 <constraint firstAttribute="height" constant="30" id="vfC-89-f6g"/>
                             </constraints>
@@ -151,6 +164,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="btnRequestAccept" destination="JWf-cF-AvZ" id="yC0-U0-Oz3"/>
                 <outlet property="btnSendReceipt" destination="faz-YB-aCJ" id="wl7-sp-fjS"/>
                 <outlet property="cellContainerView" destination="IGa-BP-2Uv" id="8pG-X8-wBt"/>
                 <outlet property="iconPickupToDestinationLocation" destination="aDk-rD-cPu" id="5yx-lu-37U"/>
@@ -164,6 +178,7 @@
         </view>
     </objects>
     <resources>
+        <image name="acceptRequest" width="36" height="36"/>
         <image name="iconPickUpToDestination" width="13" height="60"/>
     </resources>
 </document>

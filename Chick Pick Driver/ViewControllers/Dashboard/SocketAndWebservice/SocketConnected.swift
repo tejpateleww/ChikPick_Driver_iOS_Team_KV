@@ -42,6 +42,8 @@ protocol SocketConnected{
     
     func onSocket_VerifyCustomer()
     
+    func onSocket_CancelBookingBeforeAccept()
+    
 //    func socketCallForReceivingBookingRequest()
 //    
 //    func receiveBookLaterBookingRequest()

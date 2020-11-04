@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // While send to client build some features not everything
         Singleton.shared.isClientBuild = false
         
+        // For stop the screen from going to sleep
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         // Forcefully light mode
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
@@ -71,20 +74,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 print(error.localizedDescription)
             }
         }
-        
-        
         print(RegistrationParameter.shared.email)
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        
-        
+   
         GMSServices.provideAPIKey(googlApiKey)
         GMSPlacesClient.provideAPIKey(googlPlacesApiKey)
         
         isGPSOn()
-        
-        
+   
         window = UIWindow(frame: UIScreen.main.bounds)
         setSplash()
         setUpUserData()
@@ -141,7 +140,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     func setLogout()
     {
+        // 1. Reset User defaults
+        self.window?.rootViewController?.resetUserDefaults()
+        
+        // 2. Clear Singleton class
+        Singleton.shared.clearSingletonClass()
+        
+        //3. Set isLogin USer Defaults to false
         UserDefaults.standard.set(false, forKey: "isUserLogin")
+        
+        //4. Remove all sockets from memory
+        if let homeVC = self.window?.rootViewController?.children.first?.children.first as? HomeViewController {
+            homeVC.allSocketOffMethods()
+        }
+        
         self.setLogin()
     }
     
@@ -171,26 +183,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     {
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            
-            UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { (status, error) in
-                
-            }
-            //            UNUserNotificationCenter.current().requestAuthorization(
-            //                options: authOptions,
-            //                completionHan)
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_,_ in })
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-        
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
     }
-    
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         InstanceID.instanceID().instanceID { (result, error) in
@@ -218,8 +224,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         //        }
         //        UserDefaults.standard.set(Singleton.shared.token, forKey: "Token")
         //        UserDefaults.standard.synchronize()
-        
-        
     }
     
     
@@ -262,6 +266,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+        print(response)
+        
         //        let content = response.notification.request.content
         let userInfo = response.notification.request.content.userInfo
         if userInfo["gcm.notification.type"] == nil { return }
@@ -270,6 +276,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print("USER INFo : ",userInfo)
         print("KEY : ",key)
         
+        if userInfo["gcm.notification.type"] as! String == "new_book_later" {
+            
+            for childVc in self.window?.rootViewController?.children.first?.children ?? [] {
+                if childVc.isKind(of: MyTripsViewController.self) {
+                   let vc = childVc as? MyTripsViewController
+                    vc?.tripType = .upcoming
+                    vc?.collectionTableView.loadTheSection(ofNumber: 1)
+                    return
+                }
+            }
+        
+            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+                
+                controller.tripType = .upcoming
+                
+                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+                    vc.pushViewController(controller, animated: true)
+                }
+            }
+        } else if userInfo["gcm.notification.type"] as! String == "mpesa_payment_failed" {
+            
+            let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "PaymentFailedPopupViewController") as? PaymentFailedPopupViewController {
+                
+                if let dic = (userInfo["aps"] as? [String : Any]) {
+                    //                   print(dic["alert"])
+                    if let alert = (dic["alert"] as? [String : Any]) {
+                        //                        print(alert["body"])
+                        controller.strMessage = alert["body"] as? String ?? ""
+                    }
+                }
+                
+                controller.strBookingId = userInfo["gcm.notification.extra_data"] as? String ?? ""
+                
+                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+                    vc.present(controller, animated: true)
+                }
+            }
+        } else if userInfo["gcm.notification.type"] as! String == "Logout" {
+            self.setLogout()
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -306,18 +354,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     vc.present(controller, animated: true)
                 }
             }
-        } else {
-            //                NotificationCenter.default.post(name: NotificationBadges, object: content)
-            //            completionHandler([.alert, .sound])
+        } else if userInfo["gcm.notification.type"] as! String == "new_book_later" {
+            
+            //           let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            //           if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+            //
+            //               if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+            //                   vc.pushViewController(controller, animated: true)
+            //               }
+            //           }
+        } else if userInfo["gcm.notification.type"] as! String == "Logout" {
+            self.setLogout()
         }
-        //        else if userInfo["gcm.notification.type"] as! String == "verify_customer" {
-        //            completionHandler([.alert, .sound])
-        //        }
-        //        else if userInfo["gcm.notification.type"] as! String == "request_code_for_complete_trip" {
-        //            completionHandler([.alert, .sound])
-        //        }
-        //            completionHandler([.alert, .sound])
-        
     }
 }
 

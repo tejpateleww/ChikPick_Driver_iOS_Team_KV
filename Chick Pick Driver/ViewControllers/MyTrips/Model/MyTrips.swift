@@ -53,7 +53,8 @@ enum MyTrips: String, CaseIterable {
                 return tempArray
             }
         } else {
-            var tempArray = [("Drop Off Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.dropoffTime, dateFormat: "dd-MM-YYYY HH:mm:ss")),
+            var tempArray = [("Pickup Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.pickupTime, dateFormat: "dd-MM-YYYY HH:mm:ss")),
+                             ("Drop Off Time" , UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.dropoffTime, dateFormat: "dd-MM-YYYY HH:mm:ss")),
                              ("Vehicle Model" , pastBookingHistory.vehicleName),
                              ("Trip Distance", "\(pastBookingHistory.distance ?? "0") km"),
                              ("Trip Duration", UtilityClass.convertTimeStampToFormat(unixtimeInterval: pastBookingHistory.tripDuration, dateFormat: "HH:mm:ss")),

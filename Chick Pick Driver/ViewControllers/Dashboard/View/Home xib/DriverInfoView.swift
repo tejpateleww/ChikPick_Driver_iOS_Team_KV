@@ -15,7 +15,7 @@ class DriverInfoView: UIView
     // ----------------------------------------------------
     // MARK: - Outlets
     // ----------------------------------------------------
-
+    
     @IBOutlet weak var txtPickup: SkyFloatingLabelTextField!
     @IBOutlet weak var iconDriverProfilePic: UIImageView!
     
@@ -31,8 +31,8 @@ class DriverInfoView: UIView
     
     
     @IBOutlet weak var viewRating: UIView!
-     @IBOutlet weak var viewkJobs: UIView!
-     @IBOutlet weak var viewEarnings: UIView!
+    @IBOutlet weak var viewkJobs: UIView!
+    @IBOutlet weak var viewEarnings: UIView!
     
     // ----------------------------------------------------
     // MARK: - Globle Declaration Methods
@@ -60,7 +60,7 @@ class DriverInfoView: UIView
         viewEarnings.layer.cornerRadius = 15
         viewEarnings.layer.borderColor = UIColor(custom: .themePink).cgColor
         viewEarnings.layer.borderWidth = 1
-
+        
     }
     
     // ----------------------------------------------------
@@ -94,7 +94,7 @@ class DriverInfoView: UIView
             
             self.lblTotleJobs.text = Singleton.shared.bookingInfoLoginModel?.totalTrips   // loginData?.bookingInfo?.totalTrips
             
-//            let totalEarning = Double(loginData?.bookingInfo?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
+            //            let totalEarning = Double(loginData?.bookingInfo?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
             let totalEarning = Double(Singleton.shared.bookingInfoLoginModel?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
             
             self.lblTotalEarning.text = Currency + " " + "\(totalEarning ?? 0.0)"
@@ -102,31 +102,31 @@ class DriverInfoView: UIView
             
             let strImage = NetworkEnvironment.imageBaseURL + parameter!.profileImage
             
-             iconDriverProfilePic.sd_setImage(with: URL(string: strImage), placeholderImage: UIImage(named: "iconPlaceHolderUser")) { (image, error, catchType, url) in
-                 self.iconDriverProfilePic.layer.borderWidth = image?.isEqualToImage(UIImage(named: "iconPlaceHolderUser")!) ?? true ? 0 : 2
-             }
+            iconDriverProfilePic.sd_setImage(with: URL(string: strImage), placeholderImage: UIImage(named: "iconPlaceHolderUser")) { (image, error, catchType, url) in
+                self.iconDriverProfilePic.layer.borderWidth = image?.isEqualToImage(UIImage(named: "iconPlaceHolderUser")!) ?? true ? 0 : 2
+            }
             
-//            self.iconDriverProfilePic.sd_setImage(with: URL(string: NetworkEnvironment.imageBaseURL + parameter!.profileImage), completed: nil)
-
-
+            //            self.iconDriverProfilePic.sd_setImage(with: URL(string: NetworkEnvironment.imageBaseURL + parameter!.profileImage), completed: nil)
+            
+            
             if (parameter!.vehicleInfo.first?.carFront) != nil
             {
                 self.iconDriverVehicle.sd_setImage(with: URL(string: NetworkEnvironment.imageBaseURL + parameter!.vehicleInfo.first!.carFront), completed: nil)
             }
-
+            
             self.getCurrentPlace()
         } catch{
             print(error.localizedDescription)
             return
         }
         
-//        if let image = self.imgProfile.image
-//        {
-//            if let data = image.pngData(){
-//                UserDefaults.standard.setValue(data, forKeyPath: keyProfileImage)
-//            }
-//
-//        }
+        //        if let image = self.imgProfile.image
+        //        {
+        //            if let data = image.pngData(){
+        //                UserDefaults.standard.setValue(data, forKeyPath: keyProfileImage)
+        //            }
+        //
+        //        }
     }
     
     func getCurrentPlace()
@@ -138,7 +138,7 @@ class DriverInfoView: UIView
             }
             
             //self.nameLabel = "No current place"
-                        self.txtPickup.text = ""
+            self.txtPickup.text = ""
             
             if let placeLikelihoodList = placeLikelihoodList {
                 let place = placeLikelihoodList.likelihoods.first?.place

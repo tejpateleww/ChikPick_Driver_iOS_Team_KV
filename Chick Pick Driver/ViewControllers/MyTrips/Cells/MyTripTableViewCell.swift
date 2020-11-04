@@ -18,7 +18,11 @@ class MyTripTableViewCell: UITableViewCell {
    
     @IBOutlet weak var iconPickupToDestinationLocation: UIImageView!
     @IBOutlet weak var btnSendReceipt: UIButton!
-
+    @IBOutlet weak var btnRequestAccept: UIButton!
+    
+    let AcceptBookLaterClosure:(PastBookingHistoryResponse) -> () = { model in
+        print(model.bookingType)
+    }
    
     func setup(){
         selectionStyle = .none
@@ -29,5 +33,9 @@ class MyTripTableViewCell: UITableViewCell {
         btnSendReceipt.layer.borderWidth = 1.5
         btnSendReceipt.titleLabel?.font = UIFont.regular(ofSize: 10)
         btnSendReceipt.clipsToBounds = true
+    }
+    
+    @IBAction func btnAcceptAction(_ sender: Any) {
+        
     }
 }

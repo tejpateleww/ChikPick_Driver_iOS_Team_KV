@@ -12,25 +12,25 @@ import CoreLocation
 import GoogleMaps
 
 class HomeViewController: UIViewController,ARCarMovementDelegate {
-
-
-
+    
+    
+    
     // ----------------------------------------------------
     // MARK: - Outlets
     // ----------------------------------------------------
-
+    
     @IBOutlet weak var containerBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var btnTopHeader: UIButton!
     
     @IBOutlet weak var shadowView: UIView!
-
+    
     @IBOutlet weak var offlineView: UIView!
     @IBOutlet weak var constantHeightOfOfflineView: NSLayoutConstraint! // 60
     @IBOutlet weak var progressRequest: UIProgressView!
-//    @IBOutlet weak var viewProgress: UIView!
+    //    @IBOutlet weak var viewProgress: UIView!
     var mapView : GMSMapView!
     @IBOutlet weak var mapContainerView : UIView!
-
+    
     @IBOutlet var bottomContentView: UIView!
     let progress = Progress(totalUnitCount: 10)
     let switchBtn = UISwitch(frame: CGRect(x: 0, y: 0, width: 40, height: 26))
@@ -54,13 +54,13 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     var tempView = UIView()
     var oldCoordinate : CLLocationCoordinate2D!
     var updateDriverLocationAtRegularInterval : Timer!
-
-
+    
+    
     enum setupGMSMarker {
         case from
         case to
     }
-
+    
     // ----------------------------------------------------
     // MARK: - Base Methods
     // ----------------------------------------------------
@@ -69,11 +69,11 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         super.viewDidLoad()
         setupGoogleMaps()
         SocketIOManager.shared.establishConnection()
-
+        
         progressRequest.isHidden = true
         carMovement.delegate = self
         setNavbar()
-
+        
         tempView.frame = bottomContentView.bounds
         locationManager.delegate = self
         self.webserviceForCardList()
@@ -81,11 +81,11 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         getFirstView()
         SideMenuController.preferences.basic.enableRubberEffectWhenPanning = false
         btnTopHeader.addTarget(self, action: #selector(hideBottomView(_:)), for: .touchUpInside)
-
+        
         
         if let BookingInfoData = Singleton.shared.bookingInfo {
             let status = BookingInfoData.status
-//            self.bookingData = BookingInfoData
+            //            self.bookingData = BookingInfoData
             if status == "pending" {
                 
             } else if status == "accepted" {
@@ -114,10 +114,9 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         shadowView.layer.shadowColor = UIColor.black.cgColor
         shadowView.layer.shadowOpacity = 1
         shadowView.layer.masksToBounds = false
-//        mapView.frame = CGRect(x: 0, y: 0, width: self.mapContainerView.frame.width, height: self.mapContainerView.frame.height)
-
+        //        mapView.frame = CGRect(x: 0, y: 0, width: self.mapContainerView.frame.width, height: self.mapContainerView.frame.height)
     }
-
+    
     func setupGoogleMaps()
     {
         mapView = GMSMapView(frame: mapContainerView.bounds)
@@ -125,7 +124,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         mapView.settings.tiltGestures = false
         mapView.isMyLocationEnabled = false
         mapView.settings.myLocationButton = false
-
+        
         do {
             // Set the map style by passing the URL of the local file.
             if let styleURL = Bundle.main.url(forResource: "styleMap", withExtension: "json") {
@@ -136,15 +135,15 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         } catch {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
-
         mapContainerView.addSubview(mapView)
     }
-
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if presentType == .available {
-            getFirstView()
+            // TODO:- Commented by Bhumi Jani as the UI was not displaying proper after coming from another screen
+//            getFirstView()
         }
     }
     
@@ -152,7 +151,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         super.viewDidAppear(animated)
         SideMenuController.preferences.basic.enablePanGesture = true
     }
-
+    
     // ----------------------------------------------------
     // MARK: - Actions
     // ----------------------------------------------------
@@ -184,11 +183,11 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
             return
         }
     }
-
+    
     // ----------------------------------------------------
     // MARK: - Custom Methods
     // ----------------------------------------------------
-   
+    
     @objc func panAction(_ sender: UISwipeGestureRecognizer){
         switch sender.direction {
         case .down:
@@ -212,11 +211,11 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         setMenuIcon()
         setRightSwitch()
     }
-
+    
     // ----------------------------------------------------
     // MARK:- ARCarMovement Delegate
     // ----------------------------------------------------
-
+    
     func arCarMovementMoved(_ marker: GMSMarker) {
         driverMarker = marker
         driverMarker.map = mapView
@@ -232,7 +231,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         if Singleton.shared.isDriverOnline {
             SocketIOManager.shared.establishConnection()
             self.updateDriverLocation()
-//            self.driverData.driverState = .available // Added for frequent update
+            //            self.driverData.driverState = .available // Added for frequent update
             self.switchBtn.setOn(true, animated: true)
             self.offlineView.isHidden = true
             if self.constantHeightOfOfflineView != nil {
@@ -243,7 +242,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
             }
         } else {
             SocketIOManager.shared.closeConnection()
-//            self.driverData.driverState = .tripComplete // Added for stop timer
+            //            self.driverData.driverState = .tripComplete // Added for stop timer
             self.switchBtn.setOn(false, animated: true)
             if self.constantHeightOfOfflineView != nil {
                 self.constantHeightOfOfflineView.constant = 60
@@ -255,7 +254,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
             }
         }
         
-//        switchBtn.setOn(Singleton.shared.isDriverOnline, animated: false)
+        //        switchBtn.setOn(Singleton.shared.isDriverOnline, animated: false)
         switchBtn.addTarget(self, action: #selector(onlineSwitch(sender:)), for: .valueChanged)
     }
     // ----------------------------------------------------------
@@ -272,36 +271,36 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
             
             webserviceForChangeDuty()
         }
-
+        
     }
     
     public func getFirstView() {
-//        presentView = presentType.fromNib()
+        //        presentView = presentType.fromNib()
         presentView = presentType.chooseTripMode(state: .available)
         changeView()
     }
     
     public func getLastView() {
-//        DispatchQueue.main.async {
-            self.presentView = self.presentType.chooseTripMode(state: .lastCompleteView)
-            self.changeView()
-//            self.view.layoutIfNeeded()
-//        }
+        //        DispatchQueue.main.async {
+        self.presentView = self.presentType.chooseTripMode(state: .lastCompleteView)
+        self.changeView()
+        self.view.layoutIfNeeded()
+        //        }
     }
     
     public func getRatingView() {
-//        DispatchQueue.main.async {
-            self.presentView = self.presentType.chooseTripMode(state: .ratingView)
-            self.changeView()
-//            self.containerTopView.layoutIfNeeded()
-//            self.view.layoutIfNeeded()
-//        }
+        //        DispatchQueue.main.async {
+        self.presentView = self.presentType.chooseTripMode(state: .ratingView)
+        self.changeView()
+        self.containerTopView.layoutIfNeeded()
+        self.view.layoutIfNeeded()
+        //        }
     }
     
     func changeView() {
         bottomContentView.customAddSubview(presentView)
         containerBottomConstraint.constant = 0
-         self.containerTopView.layoutIfNeeded()
+//        self.containerTopView.layoutIfNeeded()
     }
     
     var count: Double = 0
@@ -312,7 +311,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         progressRequest.progress = 0.0
         self.count = 0
         timerProgressRequest?.invalidate()
-
+        
         // 2
         timerProgressRequest = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             
@@ -322,15 +321,15 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
                 self.count = 0
                 self.progressRequest.progress = 0.0
                 self.progressRequest.isHidden = true
-//                self.setConstraintOfHomeVc()
-//                self.setRequestRejectedView()
+                //                self.setConstraintOfHomeVc()
+                //                self.setRequestRejectedView()
                 
                 let bookingData = Singleton.shared.bookingInfo
                 var param = [String: Any]()
                 param["driver_id"] = Singleton.shared.driverId
                 param["booking_id"] = bookingData?.id
                 self.emitSocket_RejectRequest(param: param)
-               
+                
                 return
             }
             // 4
@@ -350,9 +349,9 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         self.progressRequest.progress = 0.0
         self.progressRequest.isHidden = true
     }
-
+    
     func webserviceForCardList() {
-      
+        
         if(UserDefaults.standard.object(forKey: "userProfile") == nil) {
             return
         }
@@ -402,20 +401,18 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
 // ----------------------------------------------------
 
 extension HomeViewController: CLLocationManagerDelegate {
-
+    
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
+        
         guard let location = locations.last else {
             return
         }
-
-
         Singleton.shared.driverLocation = location
-
+        
         if(bookingData.id == nil)
         {
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
-          //  mapView
+            //  mapView
         }
         else
         {
@@ -427,10 +424,14 @@ extension HomeViewController: CLLocationManagerDelegate {
             dictParam["lng"] =  "\(location.coordinate.longitude)"
             dictParam["pickup_lat"] = bookingData.pickupLat
             dictParam["pickup_lng"] = bookingData.pickupLng
-            emitSocket_DriverLocation(param: dictParam)
+            
+            if Singleton.shared.bookingInfo?.id != nil && Singleton.shared.bookingInfo?.id != "" {
+                emitSocket_LiveTracking(param: dictParam)
+            } else {
+                emitSocket_DriverLocation(param: dictParam)
+            }
         }
-        
-        
+      
         if(driverMarker == nil)
         {
             self.driverMarker = GMSMarker(position: location.coordinate) // self.originCoordinate
@@ -441,7 +442,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         carMovement.arCarMovement(marker: driverMarker, oldCoordinate: oldCoordinate ?? location.coordinate , newCoordinate: location.coordinate, mapView: mapView)
         oldCoordinate = location.coordinate
     }
-
+    
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -458,7 +459,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             manager.startUpdatingLocation()
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // print (error)
         if (error as? CLError)?.code == .denied {
@@ -470,42 +471,42 @@ extension HomeViewController: CLLocationManagerDelegate {
 
 extension HomeViewController
 {
-
+    
     func drawRouteOnGoogleMap(origin: String!, destination: String!, waypoints: Array<String>!, travelMode: AnyObject!, fromMarker: GMSMarker?, toMarker: GMSMarker?, completionHandler: ((_ status:   String, _ success: Bool) -> Void)?)
     {
         var directionsURLString = baseURLDirections + "origin=" + origin + "&destination=" + destination + "&key=" + (UIApplication.shared.delegate as! AppDelegate).googlApiKey
         print ("directionsURLString: \(directionsURLString)")
-
+        
         directionsURLString = directionsURLString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let directionsURL = NSURL(string: directionsURLString)
-
+        
         DispatchQueue.main.async( execute: { () -> Void in
             let directionsData = NSData(contentsOf: directionsURL! as URL)
-
+            
             do{
                 let dictionary: Dictionary<String, AnyObject> = try JSONSerialization.jsonObject(with: directionsData! as Data, options: JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, AnyObject>
-
+                
                 let status = dictionary["status"] as! String
-
+                
                 if status == "OK" {
                     let selectedRoute = (dictionary["routes"] as! Array<Dictionary<String, AnyObject>>)[0]
                     let overviewPolyline = selectedRoute["overview_polyline"] as! Dictionary<String, AnyObject>
-
+                    
                     let legs = selectedRoute["legs"] as! Array<Dictionary<String, AnyObject>>
-
+                    
                     let startLocationDictionary = legs[0]["start_location"] as! Dictionary<String, AnyObject>
                     let originCoordinate = CLLocationCoordinate2DMake(startLocationDictionary["lat"] as! Double, startLocationDictionary["lng"] as! Double)
-
+                    
                     let endLocationDictionary = legs[legs.count - 1]["end_location"] as! Dictionary<String, AnyObject>
                     let destinationCoordinate = CLLocationCoordinate2DMake(endLocationDictionary["lat"] as! Double, endLocationDictionary["lng"] as! Double)
-
+                    
                     //                    let originAddress = legs[0]["start_address"] as! String
                     //                    let destinationAddress = legs[legs.count - 1]["end_address"] as! String
-
+                    
                     //                    if fromMarker == self.driverMarker {
                     //                    }
-// TODO : commnented By Bhumi Jani from removing 1 extra pin for driver location
-//                    self.setupMarkerOnGooglMap(markerType: .from, cordinate: originCoordinate)
+                    // TODO:- commnented By Bhumi Jani from removing 1 extra pin for driver location
+                    //                    self.setupMarkerOnGooglMap(markerType: .from, cordinate: originCoordinate)
                     self.drawPoyLineOnGoogleMap(poliLinePoints: overviewPolyline)
                     self.setupMarkerOnGooglMap(markerType: .to, cordinate: destinationCoordinate)
                 }
@@ -515,7 +516,7 @@ extension HomeViewController
             }
         })
     }
-
+    
     func drawPoyLineOnGoogleMap(poliLinePoints: [String:Any])
     {
         let route = poliLinePoints["points"] as! String
@@ -525,12 +526,11 @@ extension HomeViewController
         routePolyline.strokeColor = UIColor.init(custom: .themePink) //UIColor.darkGray
         routePolyline.strokeWidth = 3.0
     }
-
+    
     func setupMarkerOnGooglMap(markerType: setupGMSMarker, cordinate: CLLocationCoordinate2D)
     {
-
         let driverCordinate = Singleton.shared.driverLocation.coordinate
-
+        
         let fromMarker = GMSMarker(position: cordinate)
         fromMarker.map = self.mapView
         //        self.mapView.camera(for: GMSCoordinateBounds(coordinate: driverCordinate.latitude, coordinate: driverCordinate.longitude), insets: .zero)
@@ -538,13 +538,13 @@ extension HomeViewController
         fromMarker.icon = UIImage.init(named: (markerType == setupGMSMarker.from) ? "CarOnMap" : "PinSmall")
         fromMarker.title = ""
     }
-
+    
     func resetMap(){
-
+        
         mapView.animate(toLocation: Singleton.shared.driverLocation.coordinate)
         mapView.clear()
         switch driverData.driverState {
-
+            
         case .requestAccepted:
             let originLocation = "\(Singleton.shared.driverLocation.coordinate.latitude),\(Singleton.shared.driverLocation.coordinate.longitude)"
             let destinationLocation = "\(bookingData.pickupLat ?? ""),\(bookingData.pickupLng ?? "")"
@@ -555,7 +555,7 @@ extension HomeViewController
             drawRouteOnGoogleMap(origin: originLocation, destination: destinationLocation, waypoints: nil, travelMode: nil, fromMarker: nil, toMarker: nil, completionHandler: nil)
         default:
             break
-//                        carMovement.arCarMovement(marker: customMap.marker, oldCoordinate: customMap.previousLocation.coordinate, newCoordinate: customMap.presentLocation.coordinate, mapView: mapView, bearing: Float(2))
+            //                        carMovement.arCarMovement(marker: customMap.marker, oldCoordinate: customMap.previousLocation.coordinate, newCoordinate: customMap.presentLocation.coordinate, mapView: mapView, bearing: Float(2))
         }
     }
 }
@@ -569,28 +569,28 @@ class NavigationController: UINavigationController, UINavigationBarDelegate {
             addButton(viewController.navigationItem)
         }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
-
+    
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         addButton(viewController.navigationItem)
         super.pushViewController(viewController, animated: animated)
     }
-
+    
     func addButton(_ item: UINavigationItem?) {
-
-//        let barButtonItem = UIBarButtonItem(image: UIImage(named: "iconEmergencyCall"), style: .plain, target: self, action: #selector(action))
-
-//        if item?.rightBarButtonItem == nil {
-//            item?.rightBarButtonItems = [barButtonItem]
-//        }
-//        else
-//        {
-//            item?.rightBarButtonItems = [self.navigationItem.rightBarButtonItem,barButtonItem] as? [UIBarButtonItem]
-//        }
+        
+        //        let barButtonItem = UIBarButtonItem(image: UIImage(named: "iconEmergencyCall"), style: .plain, target: self, action: #selector(action))
+        
+        //        if item?.rightBarButtonItem == nil {
+        //            item?.rightBarButtonItems = [barButtonItem]
+        //        }
+        //        else
+        //        {
+        //            item?.rightBarButtonItems = [self.navigationItem.rightBarButtonItem,barButtonItem] as? [UIBarButtonItem]
+        //        }
         
         if item?.rightBarButtonItem == nil {
             item?.rightBarButtonItems = []
@@ -600,13 +600,13 @@ class NavigationController: UINavigationController, UINavigationBarDelegate {
             item?.rightBarButtonItems = [self.navigationItem.rightBarButtonItem] as? [UIBarButtonItem]
         }
     }
-
+    
     @objc func action(_ button: UIBarButtonItem?) {
         dialNumber(number: "123456789")
     }
-
+    
     func dialNumber(number : String) {
-
+        
         if let url = URL(string: "tel://\(number)"),
             UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10, *) {

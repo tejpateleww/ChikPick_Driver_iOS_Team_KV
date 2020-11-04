@@ -88,6 +88,7 @@ enum ApiKey: String {
     case completeTrip = "complete_trip"
     case cancelTrip = "cancel_trip"
     case reviewRating = "review_rating"
+    case cancellationCharges = "cancellation_charges/"
     
     case pastBookingHistory = "past_booking_history"
     case upcomingBookingHistory = "future_booking_history/"
@@ -118,13 +119,14 @@ enum socketApiKeys: String, CaseIterable {
     case RejectRequest = "forward_booking_request_to_another_driver"
     case AcceptRequest = "accept_booking_request"
     case StartTrip = "start_trip"
-    case DriverCurrentLocation = "live_tracking" //"driver_current_location"
+    case LiveTracking = "live_tracking" //"driver_current_location"
     case DriverLocation = "driver_location"
     
     case onTheWayBookingRequest = "on_the_way_booking_request" // driver_id,booking_id
     case askForTips = "ask_for_tips"
     case receiveTips = "receive_tips"
     case cancelTrip = "cancel_trip"
+    case CancelBookingBeforeAccept  = "cancel_booking_before_accept"
     
     case requestCodeForCompleteTrip = "request_code_for_complete_trip" // booking_id
     case arrivedAtPickupLocation = "arrived_at_pickup_location" // booking_id

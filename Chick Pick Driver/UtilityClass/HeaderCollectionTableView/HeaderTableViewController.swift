@@ -220,6 +220,13 @@ class HeaderTableViewController: UIView {
         leadingConstraint.isActive = true
     }
     
+    func loadTheSection(ofNumber : Int) {
+        let indexPathForFirstRow = IndexPath(row: ofNumber, section: 0)
+        self.indexPath = indexPathForFirstRow
+        scrollToIndexPath(indexPath: indexPath)
+        if didSelectItemAt != nil {  didSelectItemAt!((previousIndexPath, indexPath ))
+        }
+    }
 }
 
 // //-------------------------------------
@@ -232,7 +239,6 @@ extension HeaderTableViewController: UICollectionViewDataSource, UICollectionVie
       backgroundColor = pageBgColor
         pageCollectionSetup()
           headerCollectionSetup()
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -248,23 +254,18 @@ extension HeaderTableViewController: UICollectionViewDataSource, UICollectionVie
      }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            guard !isSizeToFitCellNeeded else {
-                cellWidth = bounds.width / floatCount - spacing
-                return CGSize(width: cellWidth, height: headerHeight)
-                
-            }
-            cellWidth = widthOfString(usingFont: textFont, string: titles[indexPath.item]) + 10
+        guard !isSizeToFitCellNeeded else {
+            cellWidth = bounds.width / floatCount - spacing
             return CGSize(width: cellWidth, height: headerHeight)
-      
-       
+        }
+        cellWidth = widthOfString(usingFont: textFont, string: titles[indexPath.item]) + 10
+        return CGSize(width: cellWidth, height: headerHeight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return spacing
-      
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return spacing
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

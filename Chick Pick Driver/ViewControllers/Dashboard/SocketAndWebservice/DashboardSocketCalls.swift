@@ -29,6 +29,7 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socket.off(socketApiKeys.arrivedAtPickupLocation.rawValue)   // Socket Off 8
         SocketIOManager.shared.socket.off(socketApiKeys.updateDriverLocation.rawValue)      // Socket Off 9
         SocketIOManager.shared.socket.off(socketApiKeys.verifyCustomer.rawValue)            // Socket Off 9
+        SocketIOManager.shared.socket.off(socketApiKeys.LiveTracking.rawValue)            // Socket Off 10
         SocketIOManager.shared.socket.off(socketApiKeys.DriverLocation.rawValue)            // Socket Off 18
         SocketIOManager.shared.socket.off(clientEvent: .disconnect)                         // Socket Disconnect
     }
@@ -47,6 +48,7 @@ extension HomeViewController: SocketConnected {
         onSocket_UpdateDriverLocation()         // Socket On 9
         onSocket_VerifyCustomer()               // Socket On 9
         onSocket_DriverArrived()                // Socket On 18
+        onSocket_CancelBookingBeforeAccept()    // Socket On 18
     }
     
     // ----------------------------------------------------
@@ -105,6 +107,12 @@ extension HomeViewController: SocketConnected {
         print(#function)
     }
     
+    // Socket On 10
+    func emitSocket_LiveTracking(param: [String:Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.LiveTracking.rawValue, with: param)
+        print(#function)
+    }
+    
     // Socket On 14
     func emitSocket_DriverLocation(param: [String:Any]) {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.DriverLocation.rawValue, with: param)
@@ -144,9 +152,21 @@ extension HomeViewController: SocketConnected {
             print(#function)
             print("\n \(json)")
             
-            self.setDataAfterAcceptingRequest()
             let message = json.first?.1.dictionary?["message"]?.stringValue
             AlertMessage.showMessageForSuccess(message ?? "Booking Request Accepted")
+            
+            if let bookingInfo = json.first?.1.dictionary?["booking_info"] {
+                if bookingInfo["booking_type"] == "book_later" {
+                    print("Book_later")
+                    if let vc = self.navigationController?.children.last as? MyTripsViewController {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            vc.collectionTableView.loadTheSection(ofNumber: 2)
+                        }
+                    }
+                }else {
+                    self.setDataAfterAcceptingRequest()
+                }
+            }
         }
     }
     
@@ -154,7 +174,11 @@ extension HomeViewController: SocketConnected {
     {
         if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
             homeVC.stopProgress()
+            
             if let bookingView = homeVC.presentView as? BookingView {
+                
+                bookingView.btnAccept.isUserInteractionEnabled = true
+                
                 bookingView.isAccepted = true
                 bookingView.isArrived = false
                 bookingView.isStartTrip = false
@@ -162,7 +186,7 @@ extension HomeViewController: SocketConnected {
                 bookingView.setRequestAcceptedView()
                 
                 // Arrived Action
-                bookingView.txtDropOff.becomeFirstResponder()
+//                bookingView.txtDropOff.becomeFirstResponder()
                 bookingView.isAccepted = false
                 bookingView.isArrived = true
                 bookingView.isStartTrip = false
@@ -170,12 +194,12 @@ extension HomeViewController: SocketConnected {
                 //                    bookingView.setStartTripView()
                 bookingView.setRequestAcceptedView()
                 
-                DispatchQueue.main.async {
-                    bookingView.txtDropOff.resignFirstResponder()
-                }
-                DispatchQueue.main.async {
-                    bookingView.resignFirstResponder()
-                }
+//                DispatchQueue.main.async {
+//                    bookingView.txtDropOff.resignFirstResponder()
+//                }
+//                DispatchQueue.main.async {
+//                    bookingView.resignFirstResponder()
+//                }
             }
             //                if homeVC.mapView != nil {
             self.bookingData = Singleton.shared.bookingInfo!
@@ -226,6 +250,15 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.onTheWayBookingRequest.rawValue){ json in
             print(#function)
             print("\n \(json)")
+            self.navigationController?.popViewController(animated: true)
+            Singleton.shared.bookingInfo = BookingInfo(fromJson: json.first?.1.dictionary?["booking_info"])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.presentView = self.presentType.chooseTripMode(state: .request)
+                self.bottomContentView?.customAddSubview(self.presentView)
+                self.containerBottomConstraint.constant = 0
+                self.setDataAfterAcceptingRequest()
+            }
+            
             let message = json.first?.1.dictionary?["message"]?.stringValue
             AlertMessage.showMessageForSuccess(message ?? "")
         }
@@ -267,6 +300,23 @@ extension HomeViewController: SocketConnected {
                     self.resetMap()
                     UserDefaults.standard.removeObject(forKey: "isDriverArrived")
                 }
+            }
+        }
+    }
+    
+    // Socket On 18
+    func onSocket_CancelBookingBeforeAccept() {
+        SocketIOManager.shared.socketCall(for: socketApiKeys.CancelBookingBeforeAccept.rawValue) { (json) in
+            print(#function, "\n ", json)
+            let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
+            AlertMessage.showMessageForSuccess(titleMessage)
+            
+            if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
+                self.stopProgress()
+                self.getFirstView()
+                self.driverData.driverState = .available
+                self.resetMap()
+                UserDefaults.standard.removeObject(forKey: "isDriverArrived")
             }
         }
     }
