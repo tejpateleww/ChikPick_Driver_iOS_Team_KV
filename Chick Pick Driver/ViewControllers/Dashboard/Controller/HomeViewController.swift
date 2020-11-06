@@ -10,6 +10,7 @@ import UIKit
 import SideMenuSwift
 import CoreLocation
 import GoogleMaps
+import AVKit
 
 class HomeViewController: UIViewController,ARCarMovementDelegate {
     
@@ -46,6 +47,8 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     // ----------------------------------------------------
     // MARK: - Globle Declaration Methods
     // ----------------------------------------------------
+    
+      var audioPlayer:AVAudioPlayer!
     
     var presentType = DriverState.available
     var presentView = UIView()
@@ -103,6 +106,8 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
 //                self.setDataAfterAcceptingRequest()
                 bottomContentView.customAddSubview(presentView)
                 containerBottomConstraint.constant = 0
+                self.driverData.driverState = .inTrip
+                self.resetMap()
             } else if status == "completed" {
                 
             }
@@ -262,17 +267,18 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     
     @objc func onlineSwitch(sender: UISwitch)
     {
-        
         if Singleton.shared.isClientBuild {
             UtilityClass.showAlert(message: "Feature is coming soon...", isCancelShow: false) {
                 self.switchBtn.setOn(false, animated: true)
                 return
             }
         } else {
-            
-            webserviceForChangeDuty()
+            if Singleton.shared.bookingInfo?.status == nil || Singleton.shared.bookingInfo?.status == "" || Singleton.shared.bookingInfo?.status == "completed" {
+                webserviceForChangeDuty()
+            }else {
+                sender.isOn = true
+            }
         }
-        
     }
     
     public func getFirstView() {
@@ -312,19 +318,21 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         progressRequest.progress = 0.0
         self.count = 0
         timerProgressRequest?.invalidate()
+        playSound()
         
         // 2
         timerProgressRequest = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             
             // 3
             if self.count >= 1 {
-                self.timerProgressRequest?.invalidate()
-                self.count = 0
-                self.progressRequest.progress = 0.0
-                self.progressRequest.isHidden = true
+                
+//                self.timerProgressRequest?.invalidate()
+//                self.count = 0
+//                self.progressRequest.progress = 0.0
+//                self.progressRequest.isHidden = true
                 //                self.setConstraintOfHomeVc()
                 //                self.setRequestRejectedView()
-                
+//                self.stopProgress()
                 let bookingData = Singleton.shared.bookingInfo
                 var param = [String: Any]()
                 param["driver_id"] = Singleton.shared.driverId
@@ -339,17 +347,57 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
                 self.count += 0.033
                 self.progressRequest.setProgress(Float(self.count), animated: true)
             }, completion: { (state) in
+                
+                print(state)
             })
         }
     }
     
     func stopProgress() {
-        
+        stopSound()
         self.timerProgressRequest?.invalidate()
         self.count = 0
         self.progressRequest.progress = 0.0
         self.progressRequest.isHidden = true
     }
+    
+    func playSound() {
+          guard let url = Bundle.main.url(forResource: RingToneSound, withExtension: "mp3") else { return }
+          
+          do {
+              try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+              try AVAudioSession.sharedInstance().setActive(true)
+              
+              /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+              audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+              
+              /* iOS 10 and earlier require the following line:
+               player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+              
+              guard let player = audioPlayer else { return }
+              player.numberOfLoops = -1
+              player.play()
+              
+          } catch let error {
+              print(error.localizedDescription)
+          }
+      }
+      
+      func stopSound() {
+          
+          guard let url = Bundle.main.url(forResource: RingToneSound, withExtension: "mp3") else { return }
+          
+          do {
+              try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+              try AVAudioSession.sharedInstance().setActive(true)
+              
+              audioPlayer = try AVAudioPlayer(contentsOf: url)
+              audioPlayer.stop()
+          }
+          catch let error {
+              print(error.localizedDescription)
+          }
+      }
     
     func webserviceForCardList() {
         
@@ -556,11 +604,15 @@ extension HomeViewController
             {
                 originLocation = "\(self.locationManager.location?.coordinate.latitude ?? 0.0),\(self.locationManager.location?.coordinate.longitude ?? 0.0)"
             }
-            let destinationLocation = "\(bookingData.pickupLat ?? ""),\(bookingData.pickupLng ?? "")"
+            let destinationLocation = "\(Singleton.shared.bookingInfo?.pickupLat ?? ""),\(Singleton.shared.bookingInfo?.pickupLng ?? "")"
             drawRouteOnGoogleMap(origin: originLocation, destination: destinationLocation, waypoints: nil, travelMode: nil, fromMarker: nil, toMarker: nil, completionHandler: nil)
         case .inTrip:
-            let originLocation = "\(Singleton.shared.driverLocation.coordinate.latitude),\(Singleton.shared.driverLocation.coordinate.longitude)"
-            let destinationLocation = "\(bookingData.dropoffLat ?? ""),\(bookingData.dropoffLng ?? "")"
+            var originLocation = "\(Singleton.shared.driverLocation.coordinate.latitude),\(Singleton.shared.driverLocation.coordinate.longitude)"
+            if(originLocation == "0.0,0.0")
+            {
+                originLocation = "\(self.locationManager.location?.coordinate.latitude ?? 0.0),\(self.locationManager.location?.coordinate.longitude ?? 0.0)"
+            }
+            let destinationLocation = "\(Singleton.shared.bookingInfo?.dropoffLat ?? ""),\(Singleton.shared.bookingInfo?.dropoffLng ?? "")"
             drawRouteOnGoogleMap(origin: originLocation, destination: destinationLocation, waypoints: nil, travelMode: nil, fromMarker: nil, toMarker: nil, completionHandler: nil)
         default:
             break

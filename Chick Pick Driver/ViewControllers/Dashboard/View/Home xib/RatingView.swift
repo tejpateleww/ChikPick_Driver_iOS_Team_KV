@@ -69,13 +69,13 @@ class RatingView: UIView {
         UserWebserviceSubclass.ReviewRatingToDriver(bookingRequestModel: model) { (response, status) in
             print(response)
             if status {
+                Singleton.shared.bookingInfo = nil
                 if let vc: UIViewController = self.parentViewController {
                     if let hVc = vc as? HomeViewController {
                         hVc.driverData.driverState = .available
                         hVc.getFirstView()
                     }
                 }
-                Singleton.shared.bookingInfo = nil
             } else {
                 AlertMessage.showMessageForError(response.dictionary?["message"]?.stringValue ?? "")
             }

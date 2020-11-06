@@ -1036,8 +1036,8 @@
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
-                                                    <button hidden="YES" opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZz-WU-2qJ">
-                                                        <rect key="frame" x="340" y="55" width="25" height="25"/>
+                                                    <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZz-WU-2qJ">
+                                                        <rect key="frame" x="340" y="65" width="25" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="25" id="4ZG-ah-ZMf"/>
                                                             <constraint firstAttribute="height" constant="25" id="MtX-g5-Not"/>
@@ -1520,12 +1520,12 @@
                                                     <constraint firstItem="YII-K3-Un8" firstAttribute="centerY" secondItem="UlG-X0-HNp" secondAttribute="centerY" id="1qB-1e-Yqq"/>
                                                     <constraint firstItem="Jom-xl-79i" firstAttribute="trailing" secondItem="UlG-X0-HNp" secondAttribute="trailing" id="8rJ-a7-mAN"/>
                                                     <constraint firstItem="VZz-WU-2qJ" firstAttribute="leading" secondItem="YII-K3-Un8" secondAttribute="trailing" constant="5" id="9OT-1w-MSA"/>
-                                                    <constraint firstItem="VZz-WU-2qJ" firstAttribute="centerY" secondItem="UlG-X0-HNp" secondAttribute="centerY" id="Aqb-Ej-azM"/>
                                                     <constraint firstItem="Jom-xl-79i" firstAttribute="top" secondItem="UlG-X0-HNp" secondAttribute="top" id="BTg-24-xwB"/>
                                                     <constraint firstItem="Jom-xl-79i" firstAttribute="leading" secondItem="UlG-X0-HNp" secondAttribute="leading" id="D9F-PS-FS4"/>
                                                     <constraint firstAttribute="trailing" secondItem="VZz-WU-2qJ" secondAttribute="trailing" constant="10" id="Dp2-MX-wkw"/>
                                                     <constraint firstAttribute="bottom" secondItem="aHb-cA-myC" secondAttribute="bottom" id="F88-7h-DYR"/>
                                                     <constraint firstAttribute="trailing" secondItem="C1r-it-TW7" secondAttribute="trailing" constant="2" id="KGf-G6-cVc"/>
+                                                    <constraint firstItem="aHb-cA-myC" firstAttribute="top" secondItem="VZz-WU-2qJ" secondAttribute="bottom" constant="45" id="TZh-4W-UCA"/>
                                                     <constraint firstItem="aHb-cA-myC" firstAttribute="top" secondItem="UlG-X0-HNp" secondAttribute="bottom" constant="20" id="f1O-wU-Y9L"/>
                                                     <constraint firstItem="YII-K3-Un8" firstAttribute="leading" secondItem="UlG-X0-HNp" secondAttribute="trailing" constant="20" id="kGL-wO-vnH"/>
                                                     <constraint firstItem="UlG-X0-HNp" firstAttribute="leading" secondItem="kKd-ff-eZe" secondAttribute="leading" constant="20" id="llE-fU-rtT"/>
@@ -1831,7 +1831,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-nd-WZz" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
-                                <rect key="frame" x="20" y="563" width="335" height="40"/>
+                                <rect key="frame" x="20" y="543" width="335" height="40"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9EX-ZI-o6R"/>
@@ -1845,10 +1845,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-EV-H2i">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAN-Rf-JlD">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5y-we-Usm">
                                                 <rect key="frame" x="20" y="50" width="335" height="128"/>
@@ -1859,7 +1859,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NWP-Bd-JQr">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="264" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bL8-Lt-oZl" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+44" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bL8-Lt-oZl" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                         <color key="tintColor" red="0.88974148040000001" green="0.51925832029999996" blue="0.15762996670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
@@ -1890,7 +1890,6 @@
                                                                     </textField>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vdI-G9-KpJ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                         <rect key="frame" x="55" y="0.0" width="280" height="50"/>
-                                                                        <color key="tintColor" red="0.88974148040000001" green="0.51925832029999996" blue="0.15762996670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="271-CL-sJe"/>
                                                                         </constraints>
@@ -1924,7 +1923,6 @@
                                                             </stackView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KZL-dV-qiY" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="50" width="335" height="50"/>
-                                                                <color key="tintColor" red="0.88974148040000001" green="0.51925832029999996" blue="0.15762996670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="9sz-0l-fyT"/>
                                                                 </constraints>
@@ -1953,7 +1951,6 @@
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRT-xV-9PO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="100" width="335" height="50"/>
-                                                                <color key="tintColor" red="0.88974148040000001" green="0.51925832029999996" blue="0.15762996670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="SgM-SJ-2VP"/>
                                                                 </constraints>
@@ -2073,7 +2070,7 @@
                             <constraint firstItem="2Zf-zc-tnH" firstAttribute="trailing" secondItem="Xhe-nd-WZz" secondAttribute="trailing" constant="20" id="7oE-vC-44c"/>
                             <constraint firstItem="Z0L-EV-H2i" firstAttribute="top" secondItem="Llv-Sg-kze" secondAttribute="top" id="DjW-mK-sEP"/>
                             <constraint firstItem="2Zf-zc-tnH" firstAttribute="bottom" secondItem="SJT-wQ-EC4" secondAttribute="bottom" id="SeD-9N-Ijl"/>
-                            <constraint firstItem="2Zf-zc-tnH" firstAttribute="bottom" secondItem="Xhe-nd-WZz" secondAttribute="bottom" constant="20" id="TR3-Ia-Ltn"/>
+                            <constraint firstItem="2Zf-zc-tnH" firstAttribute="bottom" secondItem="Xhe-nd-WZz" secondAttribute="bottom" constant="40" id="TR3-Ia-Ltn"/>
                             <constraint firstItem="SJT-wQ-EC4" firstAttribute="top" secondItem="Llv-Sg-kze" secondAttribute="top" id="mxq-xy-rHv"/>
                             <constraint firstItem="Z0L-EV-H2i" firstAttribute="leading" secondItem="2Zf-zc-tnH" secondAttribute="leading" id="ptf-0z-H5y"/>
                             <constraint firstItem="2Zf-zc-tnH" firstAttribute="trailing" secondItem="Z0L-EV-H2i" secondAttribute="trailing" id="ql1-wu-urU"/>

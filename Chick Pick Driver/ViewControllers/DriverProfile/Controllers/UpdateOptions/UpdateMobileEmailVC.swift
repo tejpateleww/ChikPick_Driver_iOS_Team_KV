@@ -13,6 +13,7 @@ protocol updateMobileOrEmailDataSource {
     func updateData(update: String, isEmail: Bool)
 }
 class UpdateMobileEmailVC: UIViewController {
+    
     @IBOutlet weak var btnSubmit: SSSpinnerButton!
     var delegate : updateMobileOrEmailDataSource?
     var isFromEmail = true
@@ -43,13 +44,13 @@ class UpdateMobileEmailVC: UIViewController {
         txtMobile.isHidden = isFromEmail
         txtEmail.isHidden = !isFromEmail
         
-        if isFromEmail {
+//        if isFromEmail {
             //            txtEmail.text = strEmailOrMobile
-            txtEmail.becomeFirstResponder()
-        }else {
+//            txtEmail.becomeFirstResponder()
+//        }else {
             //            txtMobile.text = strEmailOrMobile
-            txtMobile.becomeFirstResponder()
-        }
+//            txtMobile.becomeFirstResponder()
+//        }
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +65,7 @@ class UpdateMobileEmailVC: UIViewController {
             }else if txtOTP.text! != otpNumber {
                 AlertMessage.showMessageForError("Please enter valid OTP number.")
             }else {
-                delegate?.updateData(update: isFromEmail ? txtEmail.text! : txtMobile.text!, isEmail: isFromEmail)
+                delegate?.updateData(update: isFromEmail ? txtEmail.text! : txtCountryCode.text! + txtMobile.text!, isEmail: isFromEmail)
                 self.navigationController?.popViewController(animated: true)
             }
         }

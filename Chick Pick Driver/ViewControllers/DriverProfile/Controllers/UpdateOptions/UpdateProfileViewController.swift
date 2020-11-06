@@ -270,7 +270,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func editClick(_ sender: UIButton) {
-        isEmailedit = (sender.tag == 111)
+ //       isEmailedit = (sender.tag == 111) // For updating email
 //        if sender.tag == 111 {
 //
 //        }else {
@@ -442,6 +442,7 @@ extension UpdateProfileViewController: updateMobileOrEmailDataSource {
             lblEmail.text = update
         }else {
             txtMobile.text = update
+            lblMobile.text = update
         }
     }
 }

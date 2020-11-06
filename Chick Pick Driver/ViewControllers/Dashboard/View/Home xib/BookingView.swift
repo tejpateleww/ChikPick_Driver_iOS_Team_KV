@@ -99,8 +99,20 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         guard let profile = Singleton.shared.bookingInfo?.customerInfo else { return }
         lblPassengerName.text = (profile.firstName ?? "") + " " + (profile.lastName ?? "")
         
+        self.imgPassenger.layer.cornerRadius = self.imgPassenger.frame.size.width/2
+        //        self.imgProfile.layer.borderWidth = 3
+        self.imgPassenger.layer.borderColor = UIColor.lightGray.cgColor
+        self.imgPassenger.layer.masksToBounds = true
+        self.imgPassenger.contentMode = .scaleAspectFill
+        self.imgPassenger.tintColor = .lightGray
+        
         let passengerImage = profile.profileImage
-        imgPassenger.sd_setImage(with: URL(string: imagBaseURL + (passengerImage ?? "")), completed: nil)
+        let strImageUrl = NetworkEnvironment.imageBaseURL + (passengerImage ?? "")
+//        imgPassenger.sd_setImage(with: URL(string: imagBaseURL + (passengerImage ?? "")), completed: nil)
+        
+        imgPassenger.sd_setImage(with: URL(string: strImageUrl), placeholderImage: UIImage(named: "iconPlaceHolderUser")) { (image, error, catchType, url) in
+            self.imgPassenger.layer.borderWidth = image?.isEqualToImage(UIImage(named: "iconPlaceHolderUser")!) ?? true ? 0 : 2
+        }
     }
     
     private func requestView() {
@@ -296,10 +308,13 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
-                hVc.timerProgressRequest?.invalidate()
-                hVc.count = 0
-                hVc.progressRequest.progress = 0.0
-                hVc.progressRequest.isHidden = true
+//                hVc.timerProgressRequest?.invalidate()
+//                hVc.count = 0
+//                hVc.progressRequest.progress = 0.0
+//                hVc.progressRequest.isHidden = true
+//                hVc.stopProgress()
+//                hVc.getFirstView()
+                Singleton.shared.bookingInfo = nil
                 hVc.emitSocket_RejectRequest(param: param)
             }
         }

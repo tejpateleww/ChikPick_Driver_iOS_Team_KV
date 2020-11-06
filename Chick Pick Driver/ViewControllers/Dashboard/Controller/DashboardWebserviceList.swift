@@ -68,6 +68,7 @@ extension HomeViewController: DashboardWebservices {
                         self.view.layoutIfNeeded()
                     }
                 } else {
+                    Singleton.shared.bookingInfo = nil
                     Singleton.shared.isDriverOnline = false
                     SocketIOManager.shared.closeConnection()
                     self.driverData.driverState = .tripComplete // added for stop timer

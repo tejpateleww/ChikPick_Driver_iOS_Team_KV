@@ -88,15 +88,15 @@ class LoginViewController: UIViewController {
         }
         else
         {
-            if txtMail.text!.count == 9
-            {
+//            if txtMail.text!.count == 9
+//            {
                 logInModel.username = "+44" + txtMail.text!
-            }
-            else
-            {
-                AlertMessage.showMessageForError(phoneNumberErrorString)
-                return
-            }
+//            }
+//            else
+//            {
+//                AlertMessage.showMessageForError(phoneNumberErrorString)
+//                return
+//            }
         }
         
         logInModel.password = txtPassword.text ?? ""

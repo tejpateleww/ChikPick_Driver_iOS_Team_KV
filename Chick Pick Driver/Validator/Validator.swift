@@ -65,10 +65,10 @@ class Validator {
     
     static private func isPhoneNumber(string: String?, errorString: String) -> Bool{
         guard isNumeric(string: string, errorString: errorString) else { return false }
-        if  string!.count > 10 || string!.count < 9 {
-            AlertMessage.showMessageForError(errorString)
-            return false
-            }
+//        if  string!.count > 10 || string!.count < 9 {
+//            AlertMessage.showMessageForError(errorString)
+//            return false
+//            }
         return true
         }
   

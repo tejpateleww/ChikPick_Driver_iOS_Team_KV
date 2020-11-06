@@ -85,14 +85,13 @@ class DriverInfoView: UIView
             //            let parameter = try UserDefaults.standard.get(objectType: RegistrationParameter.self, forKey: keyRegistrationParameter)
             let loginData = try UserDefaults.standard.get(objectType: LoginModel.self, forKey: "userProfile") // .set(object: loginModelDetails, forKey: "userProfile")
             let parameter = loginData?.responseObject
-            
-            
+           
             self.lblDriverName.text = parameter!.firstName ?? "" + " " + parameter!.lastName
             self.lblkDriverRole.text = parameter!.driverRole ?? ""
             self.lblVehicleName.text = parameter!.vehicleInfo.first?.vehicleTypeName
             self.lblVehicleNumber.text = parameter!.vehicleInfo.first?.plateNumber
             
-            self.lblTotleJobs.text = Singleton.shared.bookingInfoLoginModel?.totalTrips   // loginData?.bookingInfo?.totalTrips
+            self.lblTotleJobs.text = Singleton.shared.bookingInfoLoginModel?.totalTrips ?? "0"  // loginData?.bookingInfo?.totalTrips
             
             //            let totalEarning = Double(loginData?.bookingInfo?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
             let totalEarning = Double(Singleton.shared.bookingInfoLoginModel?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)

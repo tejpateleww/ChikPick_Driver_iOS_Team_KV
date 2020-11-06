@@ -19,6 +19,8 @@ let Currency = "£"
 let measurement = "mi"
 let zoomLevel: Float = 16.0
 
+let RingToneSound : String = "echo_ringtone"
+
 let baseURLDirections = "https://maps.googleapis.com/maps/api/directions/json?"
 
 

@@ -57,17 +57,6 @@
                                         </constraints>
                                         <viewLayoutGuide key="safeArea" id="6TW-tC-uQ6"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6O-kC-3gu">
-                                        <rect key="frame" x="335" y="70" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="D6O-kC-3gu" secondAttribute="height" multiplier="1:1" id="Qc8-km-c8Z"/>
-                                            <constraint firstAttribute="width" constant="30" id="YhQ-jh-4sN"/>
-                                        </constraints>
-                                        <state key="normal" image="Driver Pin"/>
-                                        <connections>
-                                            <action selector="btnCurrentLocation:" destination="lWb-mh-YOO" eventType="touchUpInside" id="2Fy-Fr-cve"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8J-aM-wEg">
                                         <rect key="frame" x="0.0" y="60" width="375" height="608"/>
                                         <subviews>
@@ -130,6 +119,17 @@
                                             <constraint firstItem="gof-6a-hID" firstAttribute="top" secondItem="qE2-Xs-sGr" secondAttribute="top" id="zyq-9m-qFh"/>
                                         </constraints>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6O-kC-3gu">
+                                        <rect key="frame" x="335" y="70" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="D6O-kC-3gu" secondAttribute="height" multiplier="1:1" id="Qc8-km-c8Z"/>
+                                            <constraint firstAttribute="width" constant="30" id="YhQ-jh-4sN"/>
+                                        </constraints>
+                                        <state key="normal" image="pinCurrentLocation"/>
+                                        <connections>
+                                            <action selector="btnCurrentLocation:" destination="lWb-mh-YOO" eventType="touchUpInside" id="2Fy-Fr-cve"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -494,8 +494,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Driver Pin" width="170" height="170"/>
         <image name="Moon" width="170" height="170"/>
         <image name="logout" width="40" height="40"/>
+        <image name="pinCurrentLocation" width="38" height="38"/>
     </resources>
 </document>

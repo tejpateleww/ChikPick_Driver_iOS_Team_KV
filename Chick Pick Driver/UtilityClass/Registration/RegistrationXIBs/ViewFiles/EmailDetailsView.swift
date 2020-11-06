@@ -158,6 +158,7 @@ class EmailDetailsView: UIView
 //            Loader.hideHUD()
             if status{
                 self.parameterArray.otp = json["otp"].stringValue
+                AlertMessage.showMessageForSuccess(json["message"].stringValue)
              }else{
                  AlertMessage.showMessageForError(json["message"].stringValue)
             }

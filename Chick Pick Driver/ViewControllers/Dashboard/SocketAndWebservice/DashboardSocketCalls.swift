@@ -70,6 +70,7 @@ extension HomeViewController: SocketConnected {
     func emitSocket_RejectRequest(param: [String:Any]) {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.RejectRequest.rawValue, with: param)
         if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
+            Singleton.shared.bookingInfo = nil
             homeVC.stopProgress()
             homeVC.getFirstView()
         }
@@ -365,9 +366,6 @@ extension HomeViewController: SocketConnected {
             print("\n \(json)")
             
             if ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController) != nil {
-//                self.bookingData = Singleton.shared.bookingInfo!
-//                self.driverData.driverState = .arrived
-//                self.resetMap()
                 self.setDataAfterDriverArrived()
             }
             let message = json.first?.1.dictionary?["message"]?.stringValue

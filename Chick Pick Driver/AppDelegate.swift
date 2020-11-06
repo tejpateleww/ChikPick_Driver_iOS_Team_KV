@@ -166,20 +166,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("App is in Background mode")
-//        SocketIOManager.shared.establishConnection()
+        SocketIOManager.shared.establishConnection()
         
 
         
-//        SocketIOManager.shared.socket.on(clientEvent: .connect) {data, ack in
+        SocketIOManager.shared.socket.on(clientEvent: .connect) {data, ack in
             print ("socket connected")
-//            UIApplication.shared.isIdleTimerDisabled = true
+            UIApplication.shared.isIdleTimerDisabled = true
             
-//        }
+        }
         
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        if (CLLocationManager.authorizationStatus() == .denied) || CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .notDetermined {
+            let alert = UIAlertController(title: AppName.kAPPName, message: "Please enable location from settings", preferredStyle: .alert)
+            let enable = UIAlertAction(title: "Enable", style: .default) { (temp) in
+                
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(URL(string: "App-Prefs:root=Privacy&path=LOCATION") ?? url, options: [:], completionHandler: nil)
+                }
+                //                guard let locationUrl = URL(string: "prefs:root =LOCATION_SERVICES") else {
+                //                    return
+                //                }
+                //                UIApplication.shared.openURL(locationUrl)
+            }
+            alert.addAction(enable)
+            (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -336,7 +352,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         print(#function, notification.request.content.userInfo)
         //        let content = notification.request.content
         
-        completionHandler([.alert, .sound])
+//        completionHandler([.alert, .sound])
         
         let userInfo = notification.request.content.userInfo
         if userInfo["gcm.notification.type"] == nil { return }
@@ -367,6 +383,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
         } else if userInfo["gcm.notification.type"] as! String == "new_book_later" {
             
+            completionHandler([.alert, .sound])
+            
             //           let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
             //           if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
             //
@@ -375,6 +393,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             //               }
             //           }
         } else if userInfo["gcm.notification.type"] as! String == "Logout" {
+            completionHandler([.alert, .sound])
             self.setLogout()
         }
     }

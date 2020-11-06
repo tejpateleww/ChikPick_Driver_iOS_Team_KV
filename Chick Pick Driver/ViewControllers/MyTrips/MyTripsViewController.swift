@@ -66,6 +66,7 @@ class MyTripsViewController: BaseViewController {
     }
     
     private func setCollectionTableView(){
+        
         collectionTableView.isSizeToFitCellNeeded = true
         collectionTableView.indicatorColor = .black
         collectionTableView.titles = MyTrips.titles
@@ -274,7 +275,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
          let model = self.pastBookingHistoryModelDetails[sender.tag]
         if Singleton.shared.isDriverOnline {
             
-            if Singleton.shared.bookingInfo?.id == nil || Singleton.shared.bookingInfo?.id == "" || Singleton.shared.bookingInfo?.id == model.id {
+            if Singleton.shared.bookingInfo?.id == nil || Singleton.shared.bookingInfo?.id == "" || Singleton.shared.bookingInfo?.id == model.id  || Singleton.shared.bookingInfo?.status == "completed" {
                 var param = [String: Any]()
                 param["driver_id"] = Singleton.shared.userProfile!.responseObject.id
                 param["booking_id"] = model.id
