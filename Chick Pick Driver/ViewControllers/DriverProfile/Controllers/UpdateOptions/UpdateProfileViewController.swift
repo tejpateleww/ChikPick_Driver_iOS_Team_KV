@@ -395,6 +395,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
                 do {
                     try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile")
                     UserDefaults.standard.synchronize()
+                    Singleton.shared.userProfile = loginModelDetails
                 }
                 catch {
                     print("Error")

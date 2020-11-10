@@ -22,7 +22,7 @@ extension HomeViewController: DashboardWebservices {
             print("CancelTripService : ",response)
             if status {
                 Singleton.shared.bookingInfo = nil
-                self.getFirstView()
+                self.getFirstView(isDriverInfoUpdated: false)
                 self.driverData.driverState = .available
                 self.resetMap()
             } else {
@@ -82,7 +82,7 @@ extension HomeViewController: DashboardWebservices {
                         self.view.layoutIfNeeded()
                     }
                 }
-                self.getFirstView()
+                self.getFirstView(isDriverInfoUpdated: false)
             } else {
                AlertMessage.showMessageForError(response["message"].stringValue)
                 self.switchBtn.setOn(false, animated: true)
@@ -117,6 +117,10 @@ extension HomeViewController: DashboardWebservices {
             if status {
                 let res = response.dictionary?["data"]
                 Singleton.shared.bookingInfo = BookingInfo(fromJson: res)
+                let driverInfo = res?.dictionary?["driver_info"]
+                Singleton.shared.updatedDriverInfoAfterCompleteTrip["rating"] = driverInfo?.dictionary?["rating"]
+                Singleton.shared.updatedDriverInfoAfterCompleteTrip["jobs"] = driverInfo?.dictionary?["total_trips"]
+                Singleton.shared.updatedDriverInfoAfterCompleteTrip["earning"] = driverInfo?.dictionary?["total_driver_earning"]
 //                Singleton.shared.bookingInfo = nil
 //                self.driverData.driverState = .lastCompleteView
 //                self.resetMap()

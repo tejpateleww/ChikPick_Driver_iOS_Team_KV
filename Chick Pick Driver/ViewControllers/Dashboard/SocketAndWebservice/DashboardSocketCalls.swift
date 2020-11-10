@@ -72,7 +72,7 @@ extension HomeViewController: SocketConnected {
         if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
             Singleton.shared.bookingInfo = nil
             homeVC.stopProgress()
-            homeVC.getFirstView()
+            homeVC.getFirstView(isDriverInfoUpdated: false)
         }
     }
     
@@ -296,7 +296,7 @@ extension HomeViewController: SocketConnected {
                 AlertMessage.showMessageForSuccess(msg.stringValue)
                 
                 if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
-                    self.getFirstView()
+                    self.getFirstView(isDriverInfoUpdated: false)
                     self.driverData.driverState = .available
                     self.resetMap()
                     UserDefaults.standard.removeObject(forKey: "isDriverArrived")
@@ -310,11 +310,12 @@ extension HomeViewController: SocketConnected {
         SocketIOManager.shared.socketCall(for: socketApiKeys.CancelBookingBeforeAccept.rawValue) { (json) in
             print(#function, "\n ", json)
             let titleMessage = json.array?.first?.dictionary?["message"]?.string ?? ""
-            AlertMessage.showMessageForSuccess(titleMessage)
+//            AlertMessage.showMessageForSuccess(titleMessage)
+            AlertMessage.showMessageForError(titleMessage)
             
             if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
                 self.stopProgress()
-                self.getFirstView()
+                self.getFirstView(isDriverInfoUpdated: false)
                 self.driverData.driverState = .available
                 self.resetMap()
                 UserDefaults.standard.removeObject(forKey: "isDriverArrived")

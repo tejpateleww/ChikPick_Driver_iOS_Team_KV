@@ -23,7 +23,7 @@ class CompleteView: UIView {
     var strTotal : String?
     
     func setGrandTotal() {
-        lblTotal.text = "Grand Total : \(Currency)\(Singleton.shared.bookingInfo?.grandTotal ?? "0")"
+        lblTotal.text = "Total : \(Currency)\(Singleton.shared.bookingInfo?.grandTotal ?? "0")"
 //        Singleton.shared.bookingInfo = nil
     }
     

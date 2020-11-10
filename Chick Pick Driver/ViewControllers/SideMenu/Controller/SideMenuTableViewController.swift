@@ -23,6 +23,11 @@ class SideMenuViewController: UIViewController {
         tableView.dataSource = self
 //        tableView.tableFooterView = UIView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 }
 
 extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
@@ -202,10 +207,10 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
             Singleton.shared.token = token
         }
 
-        let LoginID = Singleton.shared.userProfile?.responseObject.id ?? ""
-        let param: [String: Any] = ["driver_id": LoginID, "device_token": Singleton.shared.token]
-
-        UserWebserviceSubclass.LogoutApi(strType: param) { (response, status) in
+//        let LoginID = Singleton.shared.userProfile?.responseObject.id ?? ""
+//        let param: [String: Any] = ["driver_id": LoginID, "device_token": Singleton.shared.token]
+        let param = Singleton.shared.userProfile!.responseObject.id + "/" + Singleton.shared.token
+        UserWebserviceSubclass.LogoutApi(strURL: param) { (response, status) in
             
             if status {
                 self.resetUserDefaults()

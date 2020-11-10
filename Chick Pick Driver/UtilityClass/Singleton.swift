@@ -43,6 +43,8 @@ class Singleton {
     /// Booking data while acceptd or started trip
     var bookingInfoLoginModel: BookingInfoLoginModel?
     
+    var updatedDriverInfoAfterCompleteTrip = [String:Any]()
+    
     /// Driver cancellation charges
     var cancelltionFee: String?
     
@@ -83,6 +85,8 @@ class Singleton {
         
         /// Booking data while acceptd or started trip
         bookingInfoLoginModel = BookingInfoLoginModel()
+        
+        updatedDriverInfoAfterCompleteTrip = [String:Any]()
         
         /// Driver cancellation charges
         cancelltionFee = String()

@@ -81,7 +81,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         locationManager.delegate = self
         self.webserviceForCardList()
         self.webserviceForVehicleList()
-        getFirstView()
+        getFirstView(isDriverInfoUpdated: false)
         SideMenuController.preferences.basic.enableRubberEffectWhenPanning = false
         btnTopHeader.addTarget(self, action: #selector(hideBottomView(_:)), for: .touchUpInside)
         
@@ -148,8 +148,11 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if presentType == .available {
+            if let driverView = presentView as? DriverInfoView {
+                driverView.setDataofDriver()
+            }
             // TODO:- Commented by Bhumi Jani as the UI was not displaying proper after coming from another screen
-//            getFirstView()
+//            getFirstView(isDriverInfoUpdated: false)
         }
     }
     
@@ -281,10 +284,17 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         }
     }
     
-    public func getFirstView() {
+    public func getFirstView(isDriverInfoUpdated: Bool) {
+        
         //        presentView = presentType.fromNib()
         presentView = presentType.chooseTripMode(state: .available)
         changeView()
+        
+        if isDriverInfoUpdated {
+            if let driverView = presentView as? DriverInfoView {
+                driverView.setDriverInfoAfterCompleteTrip()
+            }
+        }
     }
     
     public func getLastView() {
@@ -458,10 +468,13 @@ extension HomeViewController: CLLocationManagerDelegate {
         }
         Singleton.shared.driverLocation = location
         
-        if(bookingData.id == nil)
+        print("DRIVER LOCATION UPDATE...")
+        
+        if(Singleton.shared.bookingInfo?.id == nil)
         {
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
             //  mapView
+            updateDriverLocation()
         }
         else
         {
@@ -477,7 +490,8 @@ extension HomeViewController: CLLocationManagerDelegate {
             if Singleton.shared.bookingInfo?.id != nil && Singleton.shared.bookingInfo?.id != "" {
                 emitSocket_LiveTracking(param: dictParam)
             } else {
-                emitSocket_DriverLocation(param: dictParam)
+//                emitSocket_DriverLocation(param: dictParam)
+                updateDriverLocation()
             }
         }
       
@@ -523,8 +537,6 @@ extension HomeViewController
     
     func drawRouteOnGoogleMap(origin: String!, destination: String!, waypoints: Array<String>!, travelMode: AnyObject!, fromMarker: GMSMarker?, toMarker: GMSMarker?, completionHandler: ((_ status:   String, _ success: Bool) -> Void)?)
     {
-        
-        
         let url = "origin=" + origin + "&destination=" + destination
         var directionsURLString = baseURLDirections + url + "&key=" + (UIApplication.shared.delegate as! AppDelegate).googlApiKey
         print ("directionsURLString: \(directionsURLString)")

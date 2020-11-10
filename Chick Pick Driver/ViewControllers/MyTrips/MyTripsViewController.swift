@@ -84,6 +84,10 @@ class MyTripsViewController: BaseViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.collectionTableView.loadTheSection(ofNumber: 1)
             }
+        } else  if self.tripType == .ongoing {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.collectionTableView.loadTheSection(ofNumber: 2)
+            }
         }
         
         collectionTableView.didSelectItemAt = {
@@ -197,7 +201,7 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.row{
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: MyTripTableViewCell.identifier, for: indexPath) as! MyTripTableViewCell
-                cell.setup()
+//                cell.setup()
                 
                 let dataResponseHeader = self.pastBookingHistoryModelDetails[indexPath.section]
                 cell.lblName.text = "\(dataResponseHeader.customerFirstName ?? "") \(dataResponseHeader.customerLastName ?? "")"

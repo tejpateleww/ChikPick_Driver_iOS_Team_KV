@@ -12,8 +12,9 @@ class UtilityClass: NSObject {
 
     typealias alertCompletion = (() -> Void)?
     
-    class func showAlert(message: String, isCancelShow: Bool = false, completion: alertCompletion = nil) {
-        let alert = UIAlertController(title: AppName.kAPPName, message: message, preferredStyle: .alert)
+    class func showAlert(title: String? = AppName.kAPPName, message: String, isCancelShow: Bool = false, completion: alertCompletion = nil) {
+       
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { (action) in
             if completion != nil {
                 completion!()

@@ -310,6 +310,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                    let vc = childVc as? MyTripsViewController
                     vc?.tripType = .upcoming
                     vc?.collectionTableView.loadTheSection(ofNumber: 1)
+                    vc?.LoadNewData()
                     return
                 }
             }
@@ -323,7 +324,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     vc.pushViewController(controller, animated: true)
                 }
             }
-        } else if userInfo["gcm.notification.type"] as! String == "mpesa_payment_failed" {
+        }
+        else if userInfo["gcm.notification.type"] as! String == "canceled_trip" {
+            
+            for childVc in self.window?.rootViewController?.children.first?.children ?? [] {
+                if childVc.isKind(of: MyTripsViewController.self) {
+                   let vc = childVc as? MyTripsViewController
+                    vc?.tripType = .ongoing
+                    vc?.collectionTableView.loadTheSection(ofNumber: 2)
+                    vc?.LoadNewData()
+                    return
+                }
+            }
+        
+            let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+                
+                controller.tripType = .ongoing
+                
+                if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+                    vc.pushViewController(controller, animated: true)
+                }
+            }
+        }
+        else if userInfo["gcm.notification.type"] as! String == "mpesa_payment_failed" {
             
             let storyboard = UIStoryboard(name: "Popup", bundle: nil)
             if let controller = storyboard.instantiateViewController(withIdentifier: "PaymentFailedPopupViewController") as? PaymentFailedPopupViewController {
@@ -381,7 +405,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     vc.present(controller, animated: true)
                 }
             }
-        } else if userInfo["gcm.notification.type"] as! String == "new_book_later" {
+        }
+        else if userInfo["gcm.notification.type"] as! String == "new_book_later" {
             
             completionHandler([.alert, .sound])
             
@@ -392,7 +417,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             //                   vc.pushViewController(controller, animated: true)
             //               }
             //           }
-        } else if userInfo["gcm.notification.type"] as! String == "Logout" {
+        }
+        else if userInfo["gcm.notification.type"] as! String == "canceled_trip" {
+            
+            completionHandler([.alert, .sound])
+            
+            //           let storyboard = UIStoryboard(name: "MyTrips", bundle: nil)
+            //           if let controller = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as? MyTripsViewController {
+            //
+            //               if let vc = self.window?.rootViewController?.children.first as? NavigationController {
+            //                   vc.pushViewController(controller, animated: true)
+            //               }
+            //           }
+        }
+        else if userInfo["gcm.notification.type"] as! String == "Logout" {
             completionHandler([.alert, .sound])
             self.setLogout()
         }

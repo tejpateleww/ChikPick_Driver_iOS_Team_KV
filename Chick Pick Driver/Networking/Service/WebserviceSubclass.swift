@@ -97,9 +97,11 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .reviewRating, httpMethod: .post, parameters: params, completion: completion)
     }
     
-    class func LogoutApi(strType : [String: Any]  ,completion: @escaping CompletionResponse ) {
-        WebService.shared.requestMethod(api: .logout, httpMethod: .get, parameters: strType, completion: completion)
+    class func LogoutApi(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.logout.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
+
     class func VehicleTypeListApi(strType : [String: Any]  ,completion: @escaping CompletionResponse ) {
         WebService.shared.requestMethod(api: .vehicleTypeList, httpMethod: .get, parameters: strType, completion: completion)
     }

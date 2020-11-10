@@ -79,6 +79,17 @@ class DriverInfoView: UIView
         txtPickup.leftViewMode = .always
     }
     
+    func setDriverInfoAfterCompleteTrip() {
+        
+        self.lblTotleJobs.text = Singleton.shared.updatedDriverInfoAfterCompleteTrip["jobs"] as? String
+        
+        //            let totalEarning = Double(loginData?.bookingInfo?.totalDriverEarning ?? "0")?.rounded(toPlaces: 2)
+        let totalEarning = Double(Singleton.shared.updatedDriverInfoAfterCompleteTrip["earning"] as! String)?.rounded(toPlaces: 2)
+        
+        self.lblTotalEarning.text = Currency + " " + "\(totalEarning ?? 0.0)"
+        self.lblDriverRatings.text = Singleton.shared.updatedDriverInfoAfterCompleteTrip["rating"] as? String
+    }
+    
     func setDataofDriver()
     {
         do {

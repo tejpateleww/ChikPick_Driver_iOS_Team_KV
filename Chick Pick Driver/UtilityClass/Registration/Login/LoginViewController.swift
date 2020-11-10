@@ -132,7 +132,7 @@ class LoginViewController: UIViewController {
                     Singleton.shared.driverId = loginModelDetails.responseObject.id
                     Singleton.shared.isDriverOnline = !(loginModelDetails.responseObject.duty == "0")
                     Singleton.shared.bookingInfo = BookingInfo.init(fromJson: json.dictionary?["booking_info"])
-            
+                    Singleton.shared.bookingInfoLoginModel = BookingInfoLoginModel(fromJson: json.dictionary?["booking_info"])
                 }
                 catch {
                     AlertMessage.showMessageForError("error")

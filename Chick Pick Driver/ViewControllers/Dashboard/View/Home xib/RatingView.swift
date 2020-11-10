@@ -73,7 +73,7 @@ class RatingView: UIView {
                 if let vc: UIViewController = self.parentViewController {
                     if let hVc = vc as? HomeViewController {
                         hVc.driverData.driverState = .available
-                        hVc.getFirstView()
+                        hVc.getFirstView(isDriverInfoUpdated: true)
                     }
                 }
             } else {

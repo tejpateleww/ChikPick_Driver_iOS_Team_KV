@@ -432,7 +432,13 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         
         if let vc = ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children)?.first?.children.first as? HomeViewController {
 //            vc.emitSocket_AskForTips(param: param)
-            vc.emitSocket_RequestCodeForCompleteTrip(param: param)
+//            vc.emitSocket_RequestCodeForCompleteTrip(param: param)
+            
+            var param = [String: Any]()
+            param["booking_id"] = Singleton.shared.bookingInfo?.id
+            param["dropoff_lat"] = Singleton.shared.bookingInfo?.dropoffLat
+            param["dropoff_lng"] = Singleton.shared.bookingInfo?.dropoffLng
+            vc.webserviceCallForCompleteTrip(dictOFParam: param as AnyObject)
         }
     }
     
@@ -473,7 +479,8 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     }
     
     func alertForCancellation(charges : String) {
-        UtilityClass.showAlert(message: "Cancelling a trip after accepting it attracts a fee of \(Currency)\(charges). Please confirm whether you still wish to cancel?", isCancelShow: true) {
+        
+        UtilityClass.showAlert(title: "WARNING", message: "Cancelling a trip after accepting it consists of a fee of \(Currency)\(charges). Please confirm if you would like to cancel the trip.", isCancelShow: true) {
             self.setConstraintOfHomeVc()
             //        setDeiverInfoView()
             if let vc: UIViewController = self.parentViewController {
@@ -495,7 +502,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     func setDeiverInfoView() {
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
-                hVc.getFirstView()
+                hVc.getFirstView(isDriverInfoUpdated: false)
                 hVc.resetMap()
             }
         }
@@ -531,7 +538,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
             }
         } else {
             // add error message here
-            UtilityClass.showAlert(message: "Your device is not able to call right now.")
+            UtilityClass.showAlert(title: AppName.kAPPName, message: "Your device is not able to call right now.")
         }
     }
 

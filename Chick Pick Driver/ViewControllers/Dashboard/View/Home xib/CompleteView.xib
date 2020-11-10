@@ -30,7 +30,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your rider paid by card and your account will be credited immediately. Thank you for driving with Chick Pick. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKJ-Dt-cYc" userLabel="Your rider paid by card and your account will be credited immediately. Thank you for driving with Chick Pick.">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for driving with Chick Pick LTD." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKJ-Dt-cYc" userLabel="Your rider paid by card and your account will be credited immediately. Thank you for driving with Chick Pick.">
                     <rect key="frame" x="10" y="145.5" width="351" height="58.5"/>
                     <viewLayoutGuide key="safeArea" id="he7-1E-fFQ"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -56,7 +56,7 @@
                         <action selector="btnOKAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="d9t-4F-yjd"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grand Total : " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zb-vQ-tU4">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total : " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zb-vQ-tU4">
                     <rect key="frame" x="10" y="110.5" width="351" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="jSc-ED-1ou"/>

@@ -23,6 +23,11 @@ class MyTripTableViewCell: UITableViewCell {
     let AcceptBookLaterClosure:(PastBookingHistoryResponse) -> () = { model in
         print(model.bookingType)
     }
+    
+    override func layoutSubviews() {
+        superview?.layoutSubviews()
+        setup()
+    }
    
     func setup(){
         selectionStyle = .none

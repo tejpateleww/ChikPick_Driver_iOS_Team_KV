@@ -72,7 +72,7 @@ enum ApiKey: String {
     case update_docs = "update_docs"
     case updateVehicleInfo = "update_vehicle_info"
     case changeDuty = "change_duty"
-    case logout = "logout"
+    case logout = "logout/"
     case changePassword = "change_password"
     case forgotPassword = "forgot_password"
     case AddCard = "add_card"
