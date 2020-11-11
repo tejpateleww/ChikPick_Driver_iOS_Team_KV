@@ -44,7 +44,6 @@
 		18E9F11122E5E9E000132C97 /* TransferToBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9F11022E5E9E000132C97 /* TransferToBank.swift */; };
 		341067D422CCB360001E94FC /* DriverInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341067D322CCB360001E94FC /* DriverInfoView.swift */; };
 		3416ED9E22C63B0F00371905 /* Picker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3416ED9D22C63B0F00371905 /* Picker.storyboard */; };
-		34370EF822C4D570003E2858 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34370EF722C4D570003E2858 /* Assets.xcassets */; };
 		34370EFA22C4DE15003E2858 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34370EF922C4DE15003E2858 /* SplashScreenViewController.swift */; };
 		3457139722CF88B400400093 /* ProfileUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3457139622CF88B400400093 /* ProfileUpdateView.xib */; };
 		3457139922CF8BB900400093 /* ProfileUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3457139822CF8BB900400093 /* ProfileUpdateView.swift */; };
@@ -228,6 +227,7 @@
 		469BD3E722F066790077E3A5 /* InviteDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BD3E622F066780077E3A5 /* InviteDriverViewController.swift */; };
 		46AF2A7B22EC1C010028A2B4 /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 46AF2A7A22EC1C010028A2B4 /* Location.gpx */; };
 		46C7D14822F854660064FFD0 /* PastBookingHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C7D14722F854650064FFD0 /* PastBookingHistoryResponse.swift */; };
+		640A736A255C170B0032BB18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34370EF722C4D570003E2858 /* Assets.xcassets */; };
 		641035A62535B74000A5CACB /* NoDataFoundTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641035A42535B74000A5CACB /* NoDataFoundTblCell.swift */; };
 		641035A72535B74000A5CACB /* NoDataFoundTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 641035A52535B74000A5CACB /* NoDataFoundTblCell.xib */; };
 		64128CC9254690DE004A6153 /* CancellationCharge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64128CC8254690DE004A6153 /* CancellationCharge.swift */; };
@@ -240,6 +240,7 @@
 		64751FC025528B17000D9321 /* echo_ringtone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 64751FBF25528B16000D9321 /* echo_ringtone.mp3 */; };
 		647E5FD42507AF7A005D57DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 647E5FD32507AF79005D57DF /* GoogleService-Info.plist */; };
 		6481BEE62508B4E2004C1E94 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6481BEE52508B4E2004C1E94 /* SettingsViewController.swift */; };
+		64D15891255BF9A200B8CCE1 /* Playball-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64D15890255BF9A100B8CCE1 /* Playball-Regular.ttf */; };
 		64F927052546A4E3006F3A13 /* InitResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F927042546A4E3006F3A13 /* InitResponseModel.swift */; };
 		B380770F941AF30C1230F9B7 /* Pods_Chick_Pick_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F126F9FECAE1DAF1B08427 /* Pods_Chick_Pick_Driver.framework */; };
 		EE00703D22D8CFA900D30223 /* TransferToBankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE00703922D8CFA800D30223 /* TransferToBankVC.swift */; };
@@ -519,6 +520,7 @@
 		64751FBF25528B16000D9321 /* echo_ringtone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = echo_ringtone.mp3; sourceTree = "<group>"; };
 		647E5FD32507AF79005D57DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6481BEE52508B4E2004C1E94 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		64D15890255BF9A100B8CCE1 /* Playball-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Playball-Regular.ttf"; sourceTree = "<group>"; };
 		64F927042546A4E3006F3A13 /* InitResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitResponseModel.swift; sourceTree = "<group>"; };
 		6631D337F3A4CF1B97060ADF /* Pods-Chick Pick Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chick Pick Driver.release.xcconfig"; path = "Target Support Files/Pods-Chick Pick Driver/Pods-Chick Pick Driver.release.xcconfig"; sourceTree = "<group>"; };
 		8434CFDFF1B613A42CEF2141 /* Pods-Pappea Driver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pappea Driver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pappea Driver/Pods-Pappea Driver.debug.xcconfig"; sourceTree = "<group>"; };
@@ -793,6 +795,7 @@
 		34E8B3ED22C3AAE000C33A94 /* Chick Pick Driver */ = {
 			isa = PBXGroup;
 			children = (
+				64D15890255BF9A100B8CCE1 /* Playball-Regular.ttf */,
 				64751FBF25528B16000D9321 /* echo_ringtone.mp3 */,
 				643F61EF24FE165900B8EB69 /* Chick Pick Driver.entitlements */,
 				18BC30D322F45EF80041D617 /* Dummy Data */,
@@ -1848,6 +1851,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				640A736A255C170B0032BB18 /* Assets.xcassets in Resources */,
 				34E8B4DB22C3AB4900C33A94 /* proxima-nova-condensed-semibold.otf in Resources */,
 				6430522C2539941400D007A8 /* RatingView.xib in Resources */,
 				34E8B4E622C3AB4900C33A94 /* proxima-nova-light-italic.otf in Resources */,
@@ -1878,7 +1882,6 @@
 				34E8B55322C3AB4A00C33A94 /* ReceiveRequest.storyboard in Resources */,
 				347A89AF22CDE9B8007A58F6 /* MyTrips.storyboard in Resources */,
 				34E8B4E822C3AB4900C33A94 /* proxima-nova-black.otf in Resources */,
-				34370EF822C4D570003E2858 /* Assets.xcassets in Resources */,
 				34E8B4E322C3AB4900C33A94 /* proxima-nova-semibold.otf in Resources */,
 				34E8B50622C3AB4900C33A94 /* PassengersInfo.storyboard in Resources */,
 				34E8B4DC22C3AB4900C33A94 /* proxima-nova-light.otf in Resources */,
@@ -1900,6 +1903,7 @@
 				34E8B4E422C3AB4900C33A94 /* proxima-nova-extrabold.otf in Resources */,
 				34E8B55022C3AB4A00C33A94 /* Passcode.storyboard in Resources */,
 				34E8B4DD22C3AB4900C33A94 /* proxima-nova-condensed-light.otf in Resources */,
+				64D15891255BF9A200B8CCE1 /* Playball-Regular.ttf in Resources */,
 				469BD3C422F0316A0077E3A5 /* LICENSE in Resources */,
 				EEA3A17F22D9B20C0078F735 /* Launch Screen.storyboard in Resources */,
 				34E8B4DE22C3AB4900C33A94 /* proxima-nova-condensed-regular-italic.otf in Resources */,
@@ -2332,7 +2336,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
@@ -2357,7 +2361,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.5;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

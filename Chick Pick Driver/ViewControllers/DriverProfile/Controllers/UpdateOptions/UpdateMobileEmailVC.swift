@@ -61,9 +61,9 @@ class UpdateMobileEmailVC: UIViewController {
     @IBAction func submitClick(_ sender: Any) {
         if isGetOTP {
             if txtOTP.text!.isBlank {
-                AlertMessage.showMessageForError("Please enter OTP number.")
+                AlertMessage.showMessageForError("Please enter verification code")
             }else if txtOTP.text! != otpNumber {
-                AlertMessage.showMessageForError("Please enter valid OTP number.")
+                AlertMessage.showMessageForError("Please enter valid verification code")
             }else {
                 delegate?.updateData(update: isFromEmail ? txtEmail.text! : txtCountryCode.text! + txtMobile.text!, isEmail: isFromEmail)
                 self.navigationController?.popViewController(animated: true)
@@ -122,6 +122,7 @@ class UpdateMobileEmailVC: UIViewController {
 
 extension UpdateMobileEmailVC {
     func updateEmailMail(obj : UpdateMailOrNumber){
+        
         UserWebserviceSubclass.updateEmailOrMobile(emailNumberModel: obj) { (response, status) in
             if status {
                 AlertMessage.showMessageForSuccess(response["message"].stringValue)

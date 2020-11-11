@@ -410,13 +410,13 @@ extension HomeViewController: SocketConnected {
             
             if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
                 //                homeVC.stopProgress()
-                if let bookingView = homeVC.presentView as? BookingView {
-                    if (UserDefaults.standard.object(forKey: "isDriverArrived") != nil) && UserDefaults.standard.object(forKey: "isDriverArrived") as? Bool != true {
-                         bookingView.btnArrive.setTitle("Arrive", for: .normal)
-                    } else {
-                         bookingView.btnArrive.setTitle("Start Request Code", for: .normal)
-                    }
-                }
+//                if let bookingView = homeVC.presentView as? BookingView {
+//                    if (UserDefaults.standard.object(forKey: "isDriverArrived") != nil) && UserDefaults.standard.object(forKey: "isDriverArrived") as? Bool != true {
+//                         bookingView.btnArrive.setTitle("Arrive", for: .normal)
+//                    } else {
+//                         bookingView.btnArrive.setTitle("Start Request Code", for: .normal)
+//                    }
+//                }
             }
         }
     }

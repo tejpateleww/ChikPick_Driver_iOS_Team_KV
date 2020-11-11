@@ -17,32 +17,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gac-Y1-jKm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="273" width="414" height="350"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="pdM-lm-ULR">
-                                        <rect key="frame" x="0.0" y="312" width="414" height="272"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="272"/>
                                     </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver-icon" translatesAutoresizingMaskIntoConstraints="NO" id="z7d-dK-UR7">
-                                        <rect key="frame" x="0.0" y="369" width="414" height="158"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver" translatesAutoresizingMaskIntoConstraints="NO" id="Hpe-HU-db1">
+                                        <rect key="frame" x="132" y="282" width="150" height="51.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="z7d-dK-UR7" secondAttribute="trailing" id="608-rH-AL3"/>
-                                    <constraint firstItem="z7d-dK-UR7" firstAttribute="leading" secondItem="gac-Y1-jKm" secondAttribute="leading" id="7qa-qF-WDP"/>
+                                    <constraint firstItem="pdM-lm-ULR" firstAttribute="top" secondItem="gac-Y1-jKm" secondAttribute="top" id="ShX-nl-mHm"/>
                                     <constraint firstAttribute="trailing" secondItem="pdM-lm-ULR" secondAttribute="trailing" id="TzU-qy-KlA"/>
-                                    <constraint firstItem="z7d-dK-UR7" firstAttribute="centerY" secondItem="gac-Y1-jKm" secondAttribute="centerY" id="an7-oQ-yF2"/>
-                                    <constraint firstItem="pdM-lm-ULR" firstAttribute="centerY" secondItem="gac-Y1-jKm" secondAttribute="centerY" id="fUq-Ki-ksp"/>
+                                    <constraint firstItem="Hpe-HU-db1" firstAttribute="top" secondItem="pdM-lm-ULR" secondAttribute="bottom" constant="10" id="Zja-6j-RVl"/>
+                                    <constraint firstAttribute="height" constant="350" id="e1E-l6-bse"/>
                                     <constraint firstItem="pdM-lm-ULR" firstAttribute="leading" secondItem="gac-Y1-jKm" secondAttribute="leading" id="hNd-PZ-QNe"/>
+                                    <constraint firstItem="Hpe-HU-db1" firstAttribute="centerX" secondItem="gac-Y1-jKm" secondAttribute="centerX" id="vD9-vv-NjB"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gac-Y1-jKm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="7ei-tm-lJH"/>
                             <constraint firstItem="18w-W9-YIu" firstAttribute="trailing" secondItem="gac-Y1-jKm" secondAttribute="trailing" id="aWJ-hg-HvX"/>
                             <constraint firstItem="gac-Y1-jKm" firstAttribute="leading" secondItem="18w-W9-YIu" secondAttribute="leading" id="lTF-e4-K2S"/>
-                            <constraint firstAttribute="bottom" secondItem="gac-Y1-jKm" secondAttribute="bottom" id="scd-wH-ByJ"/>
+                            <constraint firstItem="gac-Y1-jKm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="s7h-7r-E8J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="18w-W9-YIu"/>
                     </view>
@@ -53,7 +52,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="driver-icon" width="158" height="158"/>
+        <image name="driver" width="150" height="51.5"/>
         <image name="logo-ios" width="245" height="272"/>
     </resources>
 </document>

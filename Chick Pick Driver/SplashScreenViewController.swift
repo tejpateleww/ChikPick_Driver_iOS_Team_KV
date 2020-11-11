@@ -66,13 +66,13 @@ class SplashScreenViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navType = .transparent
-        staringImageView.startRotating()
+//        staringImageView.startRotating()
         self.navigationController?.isNavigationBarHidden = true
         Timer.scheduledTimer(timeInterval: 1.1, target: self, selector: #selector(self.dismissSplashScreen), userInfo: nil, repeats: false)
     }
  
     @objc private func dismissSplashScreen(){
-        staringImageView.stopRotating()
+//        staringImageView.stopRotating()
         self.performSegue(withIdentifier: LoginViewController.identifier, sender: self)
     }
 }

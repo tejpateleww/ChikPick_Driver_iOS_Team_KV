@@ -1042,6 +1042,7 @@
                                                             <constraint firstAttribute="width" constant="25" id="4ZG-ah-ZMf"/>
                                                             <constraint firstAttribute="height" constant="25" id="MtX-g5-Not"/>
                                                         </constraints>
+                                                        <color key="tintColor" red="0.90588235289999997" green="0.58431372550000005" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="edit"/>
                                                         <connections>
                                                             <action selector="editClick:" destination="YjQ-XF-RK3" eventType="touchUpInside" id="CyL-KM-Jx4"/>
@@ -1949,7 +1950,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter OTP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRT-xV-9PO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Verification Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRT-xV-9PO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="100" width="335" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="SgM-SJ-2VP"/>
@@ -1982,7 +1983,7 @@
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal">
                                                                     <attributedString key="attributedTitle">
-                                                                        <fragment content="Resend OTP">
+                                                                        <fragment content="Resend Code">
                                                                             <attributes>
                                                                                 <font key="NSFont" size="14" name="Helvetica"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">

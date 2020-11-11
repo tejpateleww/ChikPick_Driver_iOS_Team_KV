@@ -132,8 +132,8 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
                if hVc.driverData.driverState == .requestAccepted {
-                   btnArrive.isHidden = false
-                btnArrive.setTitle("Start Request Code", for: .normal)
+                    btnArrive.isHidden = false
+//                    btnArrive.setTitle("Start Request Code", for: .normal)
                 } else {
                     btnArrive.isHidden = true
                 }
@@ -326,15 +326,9 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         //        txtDropOff.becomeFirstResponder()
         
         btnAccept.isUserInteractionEnabled = false
-        
-        if(sender.titleLabel?.text == "Start Request Code")
+        // TODO: - Uncomment for Start Request Code functionality - Bhumi Jani
+/*        if(sender.titleLabel?.text == "Start Request Code")
         {
-//            isAccepted = false
-//            isArrived = true
-//            isStartTrip = false
-//            setConstraintOfHomeVc()
-//            setStartTripView()
-            
             guard let bookingData = Singleton.shared.bookingInfo else { return }
             var param = [String: Any]()
             param["booking_id"] = bookingData.id
@@ -351,6 +345,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         }
         else
         {
+ */
             isAccepted = false
             isArrived = true
             isStartTrip = false
@@ -366,7 +361,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
                     hVc.emitSocket_ArrivedAtPickupLocation(param: param)
                 }
             }
-        }
+//        }
         //        DispatchQueue.main.async {
         //            self.txtDropOff.resignFirstResponder()
         //        }

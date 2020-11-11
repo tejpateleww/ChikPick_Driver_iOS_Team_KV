@@ -122,9 +122,10 @@ extension HomeViewController: DashboardWebservices {
                 Singleton.shared.updatedDriverInfoAfterCompleteTrip["jobs"] = driverInfo?.dictionary?["total_trips"]
                 Singleton.shared.updatedDriverInfoAfterCompleteTrip["earning"] = driverInfo?.dictionary?["total_driver_earning"]
 //                Singleton.shared.bookingInfo = nil
-//                self.driverData.driverState = .lastCompleteView
-//                self.resetMap()
+                self.driverData.driverState = .lastCompleteView
+                self.resetMap()
                 self.getLastView()
+                self.updateDriverLocation()
                
                 UserDefaults.standard.removeObject(forKey: "isDriverArrived")
             } else {
