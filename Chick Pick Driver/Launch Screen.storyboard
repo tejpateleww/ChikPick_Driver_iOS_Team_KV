@@ -20,10 +20,10 @@
                                 <rect key="frame" x="0.0" y="273" width="414" height="350"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="pdM-lm-ULR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="272"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="544"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver" translatesAutoresizingMaskIntoConstraints="NO" id="Hpe-HU-db1">
-                                        <rect key="frame" x="132" y="282" width="150" height="51.5"/>
+                                        <rect key="frame" x="57" y="554" width="300" height="103"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

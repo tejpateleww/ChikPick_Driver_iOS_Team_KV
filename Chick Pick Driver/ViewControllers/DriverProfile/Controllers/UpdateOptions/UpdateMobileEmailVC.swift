@@ -65,6 +65,7 @@ class UpdateMobileEmailVC: UIViewController {
             }else if txtOTP.text! != otpNumber {
                 AlertMessage.showMessageForError("Please enter valid verification code")
             }else {
+                AlertMessage.showMessageForSuccess("Code verified successfully")
                 delegate?.updateData(update: isFromEmail ? txtEmail.text! : txtCountryCode.text! + txtMobile.text!, isEmail: isFromEmail)
                 self.navigationController?.popViewController(animated: true)
             }

@@ -215,6 +215,7 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
             if status {
                 self.resetUserDefaults()
 //                UserDefaults.standard.set(false, forKey: "isUserLogin")
+                SocketIOManager.shared.closeConnection()
                 (UIApplication.shared.delegate as! AppDelegate).setLogout()
             } else {
                 AlertMessage.showMessageForError(response["message"].stringValue)

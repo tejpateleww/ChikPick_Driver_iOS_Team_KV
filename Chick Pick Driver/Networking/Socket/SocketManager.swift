@@ -52,6 +52,7 @@ class SocketIOManager: NSObject {
     
     func closeConnection() {
         socket.disconnect()
+        self.isSocketOn = false
     }
     
     func socketCall(for key: String, completion: CompletionBlock = nil)

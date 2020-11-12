@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         }
 //
         #if targetEnvironment(simulator)
-            txtMail.text = "bhavesh@ymail.com" 
+            txtMail.text = "disha@yopmail.com" 
             txtPassword.text = "12345678" // "qwerty"
         #else
         // your real device code

@@ -293,7 +293,8 @@ extension HomeViewController: SocketConnected {
             print(#function)
             print("\n \(json)")
             if let msg = json.array?.first?.dictionary?["message"] {
-                AlertMessage.showMessageForSuccess(msg.stringValue)
+//                AlertMessage.showMessageForSuccess(msg.stringValue)
+                AlertMessage.showMessageForError(msg.stringValue)
                 
                 if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
                     self.getFirstView(isDriverInfoUpdated: false)
