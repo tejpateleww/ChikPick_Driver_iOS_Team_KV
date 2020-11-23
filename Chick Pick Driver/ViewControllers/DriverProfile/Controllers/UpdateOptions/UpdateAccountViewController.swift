@@ -68,11 +68,26 @@ class UpdateAccountViewController: UIViewController {
     
     func validation() -> (Bool, String) {
         
+//        myCustomView.validationWithCompletion { (success) in
+//            if success{
+//                (true, "")
+//            }
+//        }
+        
         if myCustomView.txtAccountHolderName.text!.isBlank {
             return (false, "Please enter account holder name")
-        } else if myCustomView.txtBankName.text!.isBlank {
-            return (false, "Please enter bank name name")
-        } else if myCustomView.txtSortCode.text!.isBlank {
+        }
+//        else if !myCustomView.txtAccountHolderName.text!.isAlpha {
+//            return (false, "Please enter account holder name only in alphabets")
+//        }
+        
+        else if myCustomView.txtBankName.text!.isBlank {
+            return (false, "Please enter bank name")
+        }
+//        else if !myCustomView.txtBankName.text!.isAlpha {
+//            return (false, "Please enter bank name only in alphabets")
+//        }
+        else if myCustomView.txtSortCode.text!.isBlank {
             return (false, "Please enter sort code")
         } else if myCustomView.txtAccountNumber.text!.isBlank {
             return (false, "Please enter account number")

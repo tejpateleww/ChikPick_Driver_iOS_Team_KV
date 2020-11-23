@@ -39,6 +39,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     var vehicleSelectedSubModelID = String()
     var arrVehicleData = [VehicleData]()
     var parameterArray = RegistrationParameter.shared
+    var isValueSelected = Bool()
     
     var imagesTypes : [(parameter: String,image: UIImage)] = [("car_left",#imageLiteral(resourceName: "car-1")),
                                                               ("car_right",#imageLiteral(resourceName: "car-2")),
@@ -294,7 +295,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         for textField in textFields {
             if textField.text!.isBlank {
                 if (textField.placeholder?.lowercased().contains("select"))! {
-                  return (false, "Please \(textField.placeholder?.lowercased() ?? "")")
+                    return (false, "Please \(textField.placeholder?.lowercased() ?? "")")
                 } else {
                     return (false, "Please enter \(textField.placeholder?.lowercased() ?? "")")
                 }
@@ -340,9 +341,9 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     func resetCarCollectionToDefault() {
         
         imagesTypes = [("car_left",#imageLiteral(resourceName: "car-1")),
-                   ("car_right",#imageLiteral(resourceName: "car-2")),
-                   ("car_front",#imageLiteral(resourceName: "car-3")),
-                   ("car_back",#imageLiteral(resourceName: "car-4"))]
+                       ("car_right",#imageLiteral(resourceName: "car-2")),
+                       ("car_front",#imageLiteral(resourceName: "car-3")),
+                       ("car_back",#imageLiteral(resourceName: "car-4"))]
         
         parameterArray.car_left = ""
         parameterArray.car_right = ""
@@ -488,12 +489,13 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
+        isValueSelected = true
+        
         if pickerView == pickerViewVehicleName
         {
             let strSelectName = arrVehicleTypeName[row]
             let tempDic = (arrVehicleData.filter({$0.manufacturerName == strSelectName}).first)
             txtVehicleModel.text = "\(strSelectName)"
-            
             
             // Reset vehicle submodel and type
             txtVehicleSubModel.text = ""
@@ -501,7 +503,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             arrVehicleTypeSubName = (tempDic!).vehicleModel.map({$0.vehicleTypeModelName})
             
             // Reset car images
-           resetCarCollectionToDefault()
+            resetCarCollectionToDefault()
         }
         else if pickerView == pickerViewVehicleSubName
         {
@@ -582,6 +584,48 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             return false
         }
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField == txtVehicleModel && !isValueSelected {
+            
+            let strSelectName = arrVehicleTypeName[0]
+            
+            let tempDic = (arrVehicleData.filter({$0.manufacturerName == strSelectName}).first)
+            txtVehicleModel.text = "\(strSelectName)"
+            
+            // Reset vehicle submodel and type
+            txtVehicleSubModel.text = ""
+            txtVehicleType.text = ""
+            arrVehicleTypeSubName = (tempDic!).vehicleModel.map({$0.vehicleTypeModelName})
+            
+            // Reset car images
+            resetCarCollectionToDefault()
+            
+        } else if textField == txtVehicleSubModel && !isValueSelected {
+            
+            let strSelectSubName = arrVehicleTypeSubName[0]
+            txtVehicleSubModel.text = "\(strSelectSubName)"
+            let temp = (arrVehicleData.filter({$0.manufacturerName == txtVehicleModel.text!}).first)?.vehicleModel
+            
+            let newData = temp?.filter({$0.vehicleTypeModelName == strSelectSubName})
+            
+            self.vehicleSelectedManuID = newData?.first?.vehicleTypeManufacturerId ?? ""
+            self.vehicleSelectedSubModelID = newData?.first?.id ?? ""
+            self.vehicleSelectedVehicleModelID = newData?.first?.vehicleTypeId ?? ""
+            self.txtVehicleType.text = newData?.first?.vehicleTypeName
+            self.vehicleUpdatedType =  newData?.first!.vehicleTypeId ?? ""
+            
+            // Reset car images
+            resetCarCollectionToDefault()
+            
+        } else if textField == txtVehicleYearMenufacture && !isValueSelected {
+            let strSelectYear = arrYearMenufacList[0]
+            txtVehicleYearMenufacture.text = "\(strSelectYear)"
+        }
+        
+        isValueSelected = false
     }
 }
 

@@ -26,6 +26,7 @@ class BankInfoView: UIView {
     override func validationWithCompletion(_ completion: @escaping ((Bool) -> ())){
 
         let validationParameter :[(String?,String, ValidatiionType)] = [(txtAccountHolderName.text,accountHolderNameErrorString, .isEmpty),
+                                                                        (txtAccountHolderName.text,NameAlphaErrorString, .isAlpha),
                                                                          (txtBankName.text,bankNameErrorString, .isEmpty),
                                                                          (txtSortCode.text,branchNameErrorString, .isEmpty),
                                                                          (txtAccountNumber.text,accountNumberErrorString, .numeric)]

@@ -188,10 +188,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 if let url = URL.init(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(URL(string: "App-Prefs:root=Privacy&path=LOCATION") ?? url, options: [:], completionHandler: nil)
                 }
-                //                guard let locationUrl = URL(string: "prefs:root =LOCATION_SERVICES") else {
-                //                    return
-                //                }
-                //                UIApplication.shared.openURL(locationUrl)
             }
             alert.addAction(enable)
             (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)

@@ -214,18 +214,23 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
                 {
                     cell.btnSendReceipt.isHidden = true
                     cell.btnRequestAccept.isHidden = true
+                    cell.btnRequestReject.isHidden = true
                 }
                 else if self.tripType.rawValue.lowercased() == "upcoming"
                 {
                     cell.btnSendReceipt.isHidden = true
                     cell.btnRequestAccept.isHidden = false
+                    cell.btnRequestReject.isHidden = false
                     cell.btnRequestAccept.addTarget(self, action: #selector(acceptBookLaterRequestAction(_:)), for: .touchUpInside)
                     cell.btnRequestAccept.tag = indexPath.section
+                    cell.btnRequestReject.addTarget(self, action: #selector(rejectBookLaterRequestAction(_:)), for: .touchUpInside)
+                    cell.btnRequestReject.tag = indexPath.section
                 }
                 else
                 {
                     cell.btnSendReceipt.isHidden = Singleton.shared.bookingInfo?.id == dataResponseHeader.id ? true : false
                     cell.btnRequestAccept.isHidden = true
+                    cell.btnRequestReject.isHidden = true
                     cell.btnSendReceipt.addTarget(self, action: #selector(onTheWayAction(_:)), for: .touchUpInside)
                     cell.btnSendReceipt.tag = indexPath.section
                 }
@@ -272,6 +277,18 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let vc = self.navigationController?.children.first as? HomeViewController {
             vc.emitSocket_AcceptRequest(param: param)
+        }
+    }
+    
+    @objc func rejectBookLaterRequestAction(_ sender: UIButton) {
+        let model = self.pastBookingHistoryModelDetails[sender.tag]
+        var param = [String: Any]()
+        param["driver_id"] = Singleton.shared.userProfile!.responseObject.id
+        param["booking_id"] = model.id
+        param["booking_type"] = model.bookingType
+        
+        if let vc = self.navigationController?.children.first as? HomeViewController {
+//            vc.emitSocket_AcceptRequest(param: param)
         }
     }
     

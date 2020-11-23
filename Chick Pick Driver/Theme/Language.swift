@@ -42,8 +42,6 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
     }
     
-    
-    
     func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {
@@ -91,7 +89,6 @@ extension String {
                 }
             }
         }
-        
         return nil;
     }
     
@@ -110,9 +107,6 @@ extension String {
             "&lt;"      : "<",
             "&gt;"      : ">",
             "&nbsp;"    : "\n",
-            
-            
-            
             ]
         
         for (name,value) in entities {
@@ -121,12 +115,21 @@ extension String {
         return newStr
     }
     
-    
+    var isAlpha : Bool {
+        get{
+            let characterSet = NSMutableCharacterSet.letter()
+            characterSet.addCharacters(in: " ")
+            if self.rangeOfCharacter(from: characterSet as CharacterSet) != nil{
+                return false
+            }
+             return true
+//            return !self.isEmpty && self.rangeOfCharacter(from: NSCharacterSet.letters.inverted) == nil
+        }
+    }
     
     var isNumber : Bool {
         get{
             return !self.isEmpty && self.rangeOfCharacter(from: NSCharacterSet.decimalDigits.inverted) == nil
-            
         }
     }
     var isBlank: Bool {
@@ -156,9 +159,7 @@ extension String {
         let inputString:[String] = self.components(separatedBy: charcter)
         filtered = inputString.joined(separator: "") as String
         return  self == filtered
-        
     }
-    
     
     
     func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ssZ")-> Date?{
@@ -169,7 +170,6 @@ extension String {
         dateFormatter.dateFormat = format
         let date = dateFormatter.date(from: self)
         return date
-        
     }
 }
 

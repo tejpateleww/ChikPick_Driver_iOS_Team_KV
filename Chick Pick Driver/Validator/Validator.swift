@@ -13,6 +13,7 @@ enum ValidatiionType{
     case email
     case isEmpty
     case numeric
+    case isAlpha
     case password
     case isPhoneNumber
 }
@@ -31,6 +32,9 @@ class Validator {
             
             case .isEmpty:
                 break
+                
+            case .isAlpha:
+                guard isAlpha(string: value.string, errorString: value.errorString) else { return false }
             
             case .numeric:
                 guard isNumeric(string: value.string, errorString: value.errorString) else { return false }
@@ -53,6 +57,16 @@ class Validator {
             return false
         }
         return true
+    }
+    
+    static private func isAlpha(string: String?, errorString: String) -> Bool{
+        let characterSet = NSMutableCharacterSet.letter()
+        characterSet.addCharacters(in: " ")
+        if string?.rangeOfCharacter(from: characterSet as CharacterSet) != nil{
+            AlertMessage.showMessageForError(errorString)
+            return false
+        }
+         return true
     }
    
     static private func isNumeric(string: String?, errorString: String) -> Bool{

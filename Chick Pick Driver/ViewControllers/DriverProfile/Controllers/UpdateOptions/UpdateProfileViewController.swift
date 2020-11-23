@@ -10,7 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 import SSSpinnerButton
 
-class UpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class UpdateProfileViewController: BaseViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     // ----------------------------------------------------
     // MARK: - Outlets
@@ -44,6 +44,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     var isImageSelected:Bool = false
     var isEmailedit = false
     var strDateOfBirth = String()
+    var isValueSelected = Bool()
     
     var loginModelDetails: LoginModel = LoginModel()
     
@@ -85,6 +86,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         txtPaymentMethod.titleFormatter = { $0 }
         pickerViewSelectPayment.delegate = self
         txtPaymentMethod.inputView = pickerViewSelectPayment
+        txtDOB.delegate = self
         
         btnChangePassword.submitButtonLayout(isDark : false)
         btnSave.submitButtonLayout(isDark : true)
@@ -290,7 +292,9 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
                  self.PickingImageFromGallery()
              })
              let Camera  = UIAlertAction(title: "Camera", style: .default, handler: { ACTION in
-                 self.PickingImageFromCamera()
+                if self.isCameraAllow() {
+                     self.PickingImageFromCamera()
+                }
              })
              let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
              
@@ -366,7 +370,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         dateFormaterView.dateFormat = "dd-MM-yyyy"
         txtDOB.text = dateFormaterView.string(from: sender.date)
         strDateOfBirth = txtDOB.text!
-        
+        isValueSelected = true
     }
     
     @IBAction func btnChangePasswordClicked(_ sender: Any) {
@@ -412,6 +416,17 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
 extension UpdateProfileViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == txtDOB && !isValueSelected {
+            let dateFormaterView = DateFormatter()
+            dateFormaterView.dateFormat = "dd-MM-yyyy"
+            let view = textField.inputView as? UIDatePicker
+            txtDOB.text = dateFormaterView.string(from: view?.maximumDate ?? Date())
+            strDateOfBirth = txtDOB.text!
+        }
+        isValueSelected = false
     }
 }
 

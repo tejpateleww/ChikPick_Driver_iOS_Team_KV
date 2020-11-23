@@ -19,6 +19,7 @@ class MyTripTableViewCell: UITableViewCell {
     @IBOutlet weak var iconPickupToDestinationLocation: UIImageView!
     @IBOutlet weak var btnSendReceipt: UIButton!
     @IBOutlet weak var btnRequestAccept: UIButton!
+    @IBOutlet weak var btnRequestReject: UIButton!
     
     let AcceptBookLaterClosure:(PastBookingHistoryResponse) -> () = { model in
         print(model.bookingType)

@@ -188,7 +188,6 @@ class LicenseInfoView: UIView{
                 print("----------------------------------------------------------")
                 print("----------------------------------------------------------")
             }
-   
             
             txtV5logbook.text = changeFormat(strDate: parameter?.v5ExpDate ?? "") // parameter?.ntsaExpDate
             txtInsuranceDocument.text = changeFormat(strDate: parameter?.vehicleInsuranceExpDate ?? "")

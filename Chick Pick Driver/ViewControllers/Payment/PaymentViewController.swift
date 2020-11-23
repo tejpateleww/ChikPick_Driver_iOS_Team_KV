@@ -130,7 +130,8 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
          self.webserviceForCardList()
         self.setNavBarWithBack(Title: "Payment", IsNeedRightButton: false)
-        cardNum()
+//        cardNum()
+        cardHolder()
     }
     
     
@@ -223,12 +224,27 @@ class PaymentViewController: BaseViewController,UITableViewDelegate, UITableView
         }
         return true
     }
+    
+    func cardHolder()
+    {
+        txtCArdHolderName.inputType = .name
+        txtCArdHolderName.placeholder = "Card Holder"
+        
+        let characterSet = NSMutableCharacterSet.letter()
+        characterSet.addCharacters(in: " ")
+        validation.characterSet = characterSet as CharacterSet
+        inputValidator = InputValidator(validation: validation)
+        
+        txtCArdHolderName.inputValidator = inputValidator
+        
+        cardNum()
+    }
+    
     func cardNum()
     {
 //        txtCardNumber.inputType = .integer
         txtCardNumber.formatter = CardNumberFormatter()
         txtCardNumber.placeholder = "Card Number"
-        
         
         validation.maximumLength = 19
         validation.minimumLength = 14

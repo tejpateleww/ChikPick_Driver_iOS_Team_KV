@@ -8,7 +8,7 @@
 
 import UIKit
 import SkyFloatingLabelTextField
-class ImagePickerViewController: UIViewController {
+class ImagePickerViewController: BaseViewController {
     
     @IBOutlet weak var txtDate : SkyFloatingLabelTextField!
     @IBOutlet weak var containerView : UIView!
@@ -37,7 +37,9 @@ class ImagePickerViewController: UIViewController {
     }
     
     @IBAction func pickFromCamera(_ sender: UIButton){
-        pickingImageFromGallery(fromCamera: true)
+        if self.isCameraAllow() {
+             pickingImageFromGallery(fromCamera: true)
+        }
     }
     @IBAction func pickFromGallery(_ sender: UIButton){
         pickingImageFromGallery(fromCamera: false)
@@ -69,10 +71,10 @@ class ImagePickerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         view.backgroundColor = .clear
     }
-
-
 }
+
 extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
        
         if let pickedImage = info[.editedImage] as? UIImage {

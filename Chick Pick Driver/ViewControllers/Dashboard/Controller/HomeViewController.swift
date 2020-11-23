@@ -72,6 +72,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         super.viewDidLoad()
         setupGoogleMaps()
         SocketIOManager.shared.establishConnection()
+        isLocationEnable()
         
         progressRequest.isHidden = true
         carMovement.delegate = self
@@ -84,7 +85,6 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
         getFirstView(isDriverInfoUpdated: false)
         SideMenuController.preferences.basic.enableRubberEffectWhenPanning = false
         btnTopHeader.addTarget(self, action: #selector(hideBottomView(_:)), for: .touchUpInside)
-        
         
         if let BookingInfoData = Singleton.shared.bookingInfo {
             let status = BookingInfoData.status
@@ -159,6 +159,20 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         SideMenuController.preferences.basic.enablePanGesture = true
+    }
+    
+    func isLocationEnable() {
+        if (CLLocationManager.authorizationStatus() == .denied) || CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .notDetermined {
+            let alert = UIAlertController(title: AppName.kAPPName, message: "Please enable location from settings", preferredStyle: .alert)
+            let enable = UIAlertAction(title: "Enable", style: .default) { (temp) in
+                
+                if let url = URL.init(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(URL(string: "App-Prefs:root=Privacy&path=LOCATION") ?? url, options: [:], completionHandler: nil)
+                }
+            }
+            alert.addAction(enable)
+            (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
     
     // ----------------------------------------------------
@@ -489,6 +503,7 @@ extension HomeViewController: CLLocationManagerDelegate {
             
             if Singleton.shared.bookingInfo?.id != nil && Singleton.shared.bookingInfo?.id != "" {
                 emitSocket_LiveTracking(param: dictParam)
+                self.resetMap() // for rerouting 
             } else {
 //                emitSocket_DriverLocation(param: dictParam)
                 updateDriverLocation()
@@ -598,14 +613,14 @@ extension HomeViewController
         let fromMarker = GMSMarker(position: cordinate)
         fromMarker.map = self.mapView
         //        self.mapView.camera(for: GMSCoordinateBounds(coordinate: driverCordinate.latitude, coordinate: driverCordinate.longitude), insets: .zero)
-        self.mapView.animate(to: GMSCameraPosition(target: driverCordinate, zoom: 12))
+        self.mapView.animate(to: GMSCameraPosition(target: driverCordinate, zoom: zoomLevel))
         fromMarker.icon = UIImage.init(named: (markerType == setupGMSMarker.from) ? "CarOnMap" : "PinSmall")
         fromMarker.title = ""
     }
     
     func resetMap(){
         
-        mapView.animate(toLocation: Singleton.shared.driverLocation.coordinate)
+//        mapView.animate(toLocation: Singleton.shared.driverLocation.coordinate)
         mapView.clear()
         switch driverData.driverState {
             
