@@ -19,11 +19,24 @@ class CompleteView: UIView {
     */
     
     @IBOutlet weak var lblTotal: UILabel!
+    @IBOutlet weak var lblFair: UILabel!
+    @IBOutlet weak var lblCharge: UILabel!
     
     var strTotal : String?
+    var strFair : String?
+    var strCharge : String?
     
     func setGrandTotal() {
+        if Singleton.shared.bookingInfo?.pastDuePayment == "0" || Singleton.shared.bookingInfo?.pastDuePayment == "" {
+            lblFair.isHidden = true
+            lblCharge.isHidden = true
+        } else {
+            lblFair.isHidden = false
+            lblCharge.isHidden = false
+        }
         lblTotal.text = "Total : \(Currency)\(Singleton.shared.bookingInfo?.grandTotal ?? "0")"
+        lblFair.text = "Total Fair : \(Currency)\(Singleton.shared.bookingInfo?.tripFare ?? "0")"
+        lblCharge.text = "Cancellation Charge : \(Currency)\(Singleton.shared.bookingInfo?.pastDuePayment ?? "0")"
 //        Singleton.shared.bookingInfo = nil
     }
     

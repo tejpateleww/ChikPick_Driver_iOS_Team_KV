@@ -45,7 +45,7 @@ enum MyTrips: String, CaseIterable {
         if pastBookingHistory.status == "canceled" {
             
             if pastBookingHistory.cancelBy != "passenger" {
-                let tempArray = [("Status" , "Cancelled"), ("Cancellation Charges" , "\(Currency) \(pastBookingHistory.cancellationCharge ?? "")"), ("Grand Total" , "\(Currency) \(pastBookingHistory.grandTotal ?? "")")]
+                let tempArray = [("Status" , "Cancelled"), ("Cancellation Charges" , "\(Currency) \(pastBookingHistory.cancellationCharge ?? "")")] // , ("Grand Total" , "\(Currency) \(pastBookingHistory.grandTotal ?? "")")
                 return tempArray
                 
             } else {

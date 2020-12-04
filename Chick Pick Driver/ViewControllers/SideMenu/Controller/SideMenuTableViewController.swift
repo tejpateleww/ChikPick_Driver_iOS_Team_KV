@@ -9,10 +9,12 @@
 import UIKit
 import SideMenuSwift
 
-class SideMenuViewController: UIViewController {
+class SideMenuViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var constraintMenuWidth : NSLayoutConstraint!
+    @IBOutlet weak var btnEmergencyHelp: UIButton!
+    
     var selectedIndex = 0
 
     var sideMenuPreference = SideMenuController.preferences.basic
@@ -22,11 +24,32 @@ class SideMenuViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 //        tableView.tableFooterView = UIView()
+        
+        btnEmergencyHelp.layer.cornerRadius = btnEmergencyHelp.frame.height/2
+        btnEmergencyHelp.layer.borderColor = UIColor(custom: .themePink).cgColor
+        btnEmergencyHelp.layer.borderWidth = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    @IBAction func btnEmergencyHelp(_ sender: Any) {
+        let alert = UIAlertController(title: AppName.kAPPName, message: "IF THIS IS A LIFE-THREATENING EMERGENCY, DIAL 999 IMMEDIATELY!", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "Call", style: .default) { (action) in
+            self.callNumber(phoneNumber: "999")
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+        sideMenuController?.hideMenu()
+        return
     }
 }
 
@@ -166,8 +189,8 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
             
 //        case .onDemand:
 //            pushProfileVC()
-//        case .tripToDestination:
-//            pushToTripToDestination()
+        case .tripToDestination:
+            pushToTripToDestination()
 //        case .airportQueue:
 //            pushProfileVC()
 //        case .bidMyTrip:

@@ -17,7 +17,7 @@ enum SideMenuCase: String, CaseIterable{
 //    case wallet = "Wallet"
     
 //    case onDemand = "On Demand Area"
-//    case tripToDestination = "Trip To Destination"
+    case tripToDestination = "Trip To Destination"
 //    case airportQueue = "Airport Queue Management"
 //    case bidMyTrip = "Bid My Trip"
 //    case invite = "Invite"

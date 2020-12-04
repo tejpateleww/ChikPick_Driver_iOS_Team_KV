@@ -172,6 +172,15 @@
 		34E8B58622C3ABAB00C33A94 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B58522C3ABAB00C33A94 /* Validator.swift */; };
 		34E8B61E22C3AF0900C33A94 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */; };
 		34E8B61F22C3AF0900C33A94 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */; };
+		37DF9247257625B900FFAF2B /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9243257625B800FFAF2B /* FAQViewController.swift */; };
+		37DF9248257625B900FFAF2B /* FAQSubTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9244257625B900FFAF2B /* FAQSubTypesViewController.swift */; };
+		37DF9249257625B900FFAF2B /* FAQDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9245257625B900FFAF2B /* FAQDetailsViewController.swift */; };
+		37DF924A257625B900FFAF2B /* FAQQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9246257625B900FFAF2B /* FAQQuestionsViewController.swift */; };
+		37DF924D257625C400FFAF2B /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF924B257625C300FFAF2B /* HelpViewController.swift */; };
+		37DF924E257625C400FFAF2B /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF924C257625C400FFAF2B /* TicketsViewController.swift */; };
+		37DF925225763D4700FFAF2B /* TicketListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF925025763D4700FFAF2B /* TicketListingModel.swift */; };
+		37DF925325763D4700FFAF2B /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF925125763D4700FFAF2B /* Ticket.swift */; };
+		37DF9255257641CB00FFAF2B /* GenerateTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9254257641CB00FFAF2B /* GenerateTicket.swift */; };
 		463D6CD022F9873200DA819B /* VehicleListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463D6CCF22F9873200DA819B /* VehicleListModel.swift */; };
 		463D6CD222F9ADE400DA819B /* CompanyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463D6CD122F9ADE400DA819B /* CompanyListModel.swift */; };
 		4656018522EB36E900CB4445 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4656018422EB36E900CB4445 /* UserNotifications.framework */; };
@@ -450,6 +459,15 @@
 		34E8B58522C3ABAB00C33A94 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		37DF9243257625B800FFAF2B /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		37DF9244257625B900FFAF2B /* FAQSubTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSubTypesViewController.swift; sourceTree = "<group>"; };
+		37DF9245257625B900FFAF2B /* FAQDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQDetailsViewController.swift; sourceTree = "<group>"; };
+		37DF9246257625B900FFAF2B /* FAQQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQQuestionsViewController.swift; sourceTree = "<group>"; };
+		37DF924B257625C300FFAF2B /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		37DF924C257625C400FFAF2B /* TicketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
+		37DF925025763D4700FFAF2B /* TicketListingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketListingModel.swift; sourceTree = "<group>"; };
+		37DF925125763D4700FFAF2B /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		37DF9254257641CB00FFAF2B /* GenerateTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateTicket.swift; sourceTree = "<group>"; };
 		463D6CCF22F9873200DA819B /* VehicleListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleListModel.swift; sourceTree = "<group>"; };
 		463D6CD122F9ADE400DA819B /* CompanyListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyListModel.swift; sourceTree = "<group>"; };
 		4656018422EB36E900CB4445 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -953,6 +971,8 @@
 		34E8B43A22C3AB4800C33A94 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				37DF9242257625A700FFAF2B /* FAQ */,
+				37DF92412576259D00FFAF2B /* Help */,
 				469BD37E22F02CD70077E3A5 /* Payment */,
 				EED1D08522D4C4BC00B33277 /* BaseVC */,
 				347A89AD22CDE98C007A58F6 /* MyTrips */,
@@ -1462,6 +1482,35 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
+		37DF92412576259D00FFAF2B /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				37DF924B257625C300FFAF2B /* HelpViewController.swift */,
+				37DF924C257625C400FFAF2B /* TicketsViewController.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		37DF9242257625A700FFAF2B /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				37DF9245257625B900FFAF2B /* FAQDetailsViewController.swift */,
+				37DF9246257625B900FFAF2B /* FAQQuestionsViewController.swift */,
+				37DF9244257625B900FFAF2B /* FAQSubTypesViewController.swift */,
+				37DF9243257625B800FFAF2B /* FAQViewController.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		37DF924F25763D3300FFAF2B /* TickitListingModel */ = {
+			isa = PBXGroup;
+			children = (
+				37DF925125763D4700FFAF2B /* Ticket.swift */,
+				37DF925025763D4700FFAF2B /* TicketListingModel.swift */,
+			);
+			path = TickitListingModel;
+			sourceTree = "<group>";
+		};
 		469BD37E22F02CD70077E3A5 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1661,6 +1710,7 @@
 		EE48D3C622D369B300A55146 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				37DF9254257641CB00FFAF2B /* GenerateTicket.swift */,
 				641E02CE254BD6BF0030EC57 /* ReviewRatingReqModel.swift */,
 				469BD3E122F04BBC0077E3A5 /* transferMoneyToBank.swift */,
 				469BD37422F027560077E3A5 /* Logout.swift */,
@@ -1697,6 +1747,7 @@
 		EE48D3CE22D36A0200A55146 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				37DF924F25763D3300FFAF2B /* TickitListingModel */,
 				64128CC7254690B2004A6153 /* InitModel */,
 				18BC30CA22F45A2F0041D617 /* bookingAcceptedeDataModel */,
 				18BC30C822F43C300041D617 /* VehicleListResultModel.swift */,
@@ -2043,6 +2094,7 @@
 				469BD3DF22F040C90077E3A5 /* CreditCardValidator.swift in Sources */,
 				34E8B4FA22C3AB4900C33A94 /* NavigationBarType.swift in Sources */,
 				1830C47822E7034D004F107F /* VehicleInfo.swift in Sources */,
+				37DF9249257625B900FFAF2B /* FAQDetailsViewController.swift in Sources */,
 				469BD38422F02CD90077E3A5 /* PaymentWalletTypeListCell.swift in Sources */,
 				469BD3D022F0316A0077E3A5 /* SwipeActionTransitioning.swift in Sources */,
 				34E8B4EC22C3AB4900C33A94 /* Colors.swift in Sources */,
@@ -2057,6 +2109,7 @@
 				34E8B4E922C3AB4900C33A94 /* ThemeModel.swift in Sources */,
 				34E8B57422C3AB8300C33A94 /* Enums.swift in Sources */,
 				EE00704C22D8D2B600D30223 /* ThemeTextField.swift in Sources */,
+				37DF925325763D4700FFAF2B /* Ticket.swift in Sources */,
 				18BC30D022F45A2F0041D617 /* bookingAcceptedeDataModel.swift in Sources */,
 				3470390222C49763009C040C /* ColumnCollectionViewCell.swift in Sources */,
 				469BD3DA22F0316A0077E3A5 /* SwipeTableViewCell.swift in Sources */,
@@ -2074,9 +2127,11 @@
 				6481BEE62508B4E2004C1E94 /* SettingsViewController.swift in Sources */,
 				469BD3C622F0316A0077E3A5 /* SwipeAnimator.swift in Sources */,
 				469BD3D422F0316A0077E3A5 /* SwipeCollectionViewCell+Accessibility.swift in Sources */,
+				37DF9248257625B900FFAF2B /* FAQSubTypesViewController.swift in Sources */,
 				EE4B834822D9EDF700843424 /* CarsCollectionViewCell.swift in Sources */,
 				34E8B54222C3AB4A00C33A94 /* SideMenuContainer.swift in Sources */,
 				3457139922CF8BB900400093 /* ProfileUpdateView.swift in Sources */,
+				37DF925225763D4700FFAF2B /* TicketListingModel.swift in Sources */,
 				469BD3D822F0316A0077E3A5 /* SwipeExpanding.swift in Sources */,
 				347038F222C4938E009C040C /* OtpView.swift in Sources */,
 				34E8B4F122C3AB4900C33A94 /* GlobalMethods.swift in Sources */,
@@ -2096,6 +2151,7 @@
 				18E9F10F22E5E7B600132C97 /* WalletResponseModel.swift in Sources */,
 				34E8B4F922C3AB4900C33A94 /* UserCredentials.swift in Sources */,
 				1823752A23018F2000A7B446 /* CompleteView.swift in Sources */,
+				37DF924E257625C400FFAF2B /* TicketsViewController.swift in Sources */,
 				EED1D08A22D4C60B00B33277 /* ThemeButton.swift in Sources */,
 				EE4B834A22DA127600843424 /* ForgotPasswordViewController.swift in Sources */,
 				EE4B834022D9E43D00843424 /* BidListContainerViewController.swift in Sources */,
@@ -2120,6 +2176,7 @@
 				18E9F10E22E5E7B600132C97 /* WalletResponseDataModel.swift in Sources */,
 				34AC4EB822C78203004152C2 /* MultiplePickerViewController.swift in Sources */,
 				469BD3A122F0313F0077E3A5 /* InputValidatable.swift in Sources */,
+				37DF9247257625B900FFAF2B /* FAQViewController.swift in Sources */,
 				34E8B4ED22C3AB4900C33A94 /* CustomFont.swift in Sources */,
 				EE48D3CB22D369B300A55146 /* Login.swift in Sources */,
 				34E8B51A22C3AB4900C33A94 /* TripInfoCompletedTripVC.swift in Sources */,
@@ -2137,6 +2194,7 @@
 				34E8B4D822C3AB4900C33A94 /* Language.swift in Sources */,
 				18BC30C922F43C310041D617 /* VehicleListResultModel.swift in Sources */,
 				469BD37622F027570077E3A5 /* Logout.swift in Sources */,
+				37DF9255257641CB00FFAF2B /* GenerateTicket.swift in Sources */,
 				189ECB412344B828002782EF /* UpdateMobileEmailVC.swift in Sources */,
 				347038FB22C4938E009C040C /* RegistrationViewController.swift in Sources */,
 				469BD3C722F0316A0077E3A5 /* SwipeCollectionViewCell+Display.swift in Sources */,
@@ -2201,11 +2259,13 @@
 				34E8B57F22C3ABA400C33A94 /* UserDefaultsEx.swift in Sources */,
 				347038F822C4938E009C040C /* EmailDetailsView.swift in Sources */,
 				18E9F0FA22E5976800132C97 /* DashboardWebserviceList.swift in Sources */,
+				37DF924D257625C400FFAF2B /* HelpViewController.swift in Sources */,
 				34E8B50522C3AB4900C33A94 /* PassengerInfoViewController.swift in Sources */,
 				34E8B4EE22C3AB4900C33A94 /* AppTheme.swift in Sources */,
 				469BD3E022F040C90077E3A5 /* CreditCardValidationType.swift in Sources */,
 				34E8B61E22C3AF0900C33A94 /* DatePickerViewController.swift in Sources */,
 				3470390522C49868009C040C /* Constants.swift in Sources */,
+				37DF924A257625B900FFAF2B /* FAQQuestionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

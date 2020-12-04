@@ -85,6 +85,7 @@ enum ApiKey: String {
     case QRCodeDetail = "qr_code_detail"
     case MobileNoDetail = "transfer_money_with_mobile_no" // "mobile_no_detail"
     
+    case rejectBooking = "reject_booking"
     case completeTrip = "complete_trip"
     case cancelTrip = "cancel_trip"
     case reviewRating = "review_rating"
@@ -98,6 +99,13 @@ enum ApiKey: String {
     
     case vehicleTypeModelList = "vehicle_type_manufacturer_list"
     case companyList = "company_list"
+    
+    case FAQList = "help_categories"
+    case FAQSubCategories = "help_subcategories/"
+    case FAQ = "helps_faq/"
+    
+    case generateTicket = "generate_ticket"
+    case ticketList = "ticket_list/"
 }
 
 enum ParameterKey{

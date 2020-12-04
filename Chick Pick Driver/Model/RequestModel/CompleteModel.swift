@@ -15,3 +15,7 @@ class CompleteModel : RequestModel {
     var dropoff_lng: String = ""
 }
 
+class RejectModel : RequestModel {
+    var booking_id: String = ""
+    var driver_id: String = ""
+}

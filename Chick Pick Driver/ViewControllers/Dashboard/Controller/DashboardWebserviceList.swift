@@ -20,6 +20,7 @@ extension HomeViewController: DashboardWebservices {
         
         UserWebserviceSubclass.CancelTripService(cancelTripDetailModel: model) { (response, status) in
             print("CancelTripService : ",response)
+            Loader.hideHUD()
             if status {
                 Singleton.shared.bookingInfo = nil
                 self.getFirstView(isDriverInfoUpdated: false)
@@ -114,6 +115,8 @@ extension HomeViewController: DashboardWebservices {
         model.dropoff_lat = dictOFParam["dropoff_lat"] as! String
         model.dropoff_lng = dictOFParam["dropoff_lng"] as! String
         UserWebserviceSubclass.CompleteTripService(MobileNoDetailModel: model) { (response, status) in
+            Loader.hideHUD()
+            
             if status {
                 let res = response.dictionary?["data"]
                 Singleton.shared.bookingInfo = BookingInfo(fromJson: res)
@@ -122,6 +125,7 @@ extension HomeViewController: DashboardWebservices {
                 Singleton.shared.updatedDriverInfoAfterCompleteTrip["jobs"] = driverInfo?.dictionary?["total_trips"]
                 Singleton.shared.updatedDriverInfoAfterCompleteTrip["earning"] = driverInfo?.dictionary?["total_driver_earning"]
 //                Singleton.shared.bookingInfo = nil
+                
                 self.driverData.driverState = .lastCompleteView
                 self.resetMap()
                 self.getLastView()

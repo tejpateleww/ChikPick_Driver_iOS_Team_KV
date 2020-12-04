@@ -73,13 +73,15 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
         
         if arrMenuTitle[indexPath.row] == "Help"
         {
-            
+            let vc : HelpViewController = UIViewController.viewControllerInstance(storyBoard: .home)
+            self.pushThroughNavigationBar(viewController: vc)
             return
         }
         
         if arrMenuTitle[indexPath.row] == "FAQ"
         {
-           
+           let vc : FAQViewController = UIViewController.viewControllerInstance(storyBoard: .home)
+           self.pushThroughNavigationBar(viewController: vc)
             return
         }
     }

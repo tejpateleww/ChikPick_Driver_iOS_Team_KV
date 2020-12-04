@@ -284,9 +284,10 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         param["driver_id"] = Singleton.shared.driverId
         param["booking_id"] = bookingData.id
         param["booking_type"] = bookingData.bookingType
-        
+   
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
+                Loader.showHUD(with: UIApplication.shared.keyWindow)
                 hVc.emitSocket_AcceptRequest(param: param)
             }
         }
@@ -305,7 +306,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         var param = [String: Any]()
         param["driver_id"] = Singleton.shared.driverId
         param["booking_id"] = bookingData.id
-        
+        Singleton.shared.bookingInfo = nil
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
 //                hVc.timerProgressRequest?.invalidate()
@@ -314,7 +315,6 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
 //                hVc.progressRequest.isHidden = true
 //                hVc.stopProgress()
 //                hVc.getFirstView()
-                Singleton.shared.bookingInfo = nil
                 hVc.emitSocket_RejectRequest(param: param)
             }
         }
@@ -358,6 +358,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
             
             if let vc: UIViewController = self.parentViewController {
                 if let hVc = vc as? HomeViewController {
+                    Loader.showHUD(with: UIApplication.shared.keyWindow)
                     hVc.emitSocket_ArrivedAtPickupLocation(param: param)
                 }
             }
@@ -387,6 +388,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         
         if let vc: UIViewController = self.parentViewController {
             if let hVc = vc as? HomeViewController {
+                Loader.showHUD(with: UIApplication.shared.keyWindow)
                 hVc.emitSocket_StartTrip(param: param)
             }
         }
@@ -433,6 +435,8 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
             param["booking_id"] = Singleton.shared.bookingInfo?.id
             param["dropoff_lat"] = Singleton.shared.bookingInfo?.dropoffLat
             param["dropoff_lng"] = Singleton.shared.bookingInfo?.dropoffLng
+            
+            Loader.showHUD(with: UIApplication.shared.keyWindow)
             vc.webserviceCallForCompleteTrip(dictOFParam: param as AnyObject)
         }
     }
@@ -480,6 +484,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
             //        setDeiverInfoView()
             if let vc: UIViewController = self.parentViewController {
                 if let hVc = vc as? HomeViewController {
+                    Loader.showHUD(with: UIApplication.shared.keyWindow)
                     hVc.cancelTripAfterAccept()
                 }
             }

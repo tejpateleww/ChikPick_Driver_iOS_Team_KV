@@ -41,9 +41,12 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     var CardListReqModel : CardList = CardList()
     var driverData = DriverData.shared
     var bookingData = BookingInfo()
+    
     let carMovement = ARCarMovement()
     var driverMarker : GMSMarker!
     var destinationMarker : GMSMarker!
+    var arrivedRoutePath: GMSPath?
+    
     // ----------------------------------------------------
     // MARK: - Globle Declaration Methods
     // ----------------------------------------------------
@@ -503,7 +506,17 @@ extension HomeViewController: CLLocationManagerDelegate {
             
             if Singleton.shared.bookingInfo?.id != nil && Singleton.shared.bookingInfo?.id != "" {
                 emitSocket_LiveTracking(param: dictParam)
-                self.resetMap() // for rerouting 
+              
+                if self.arrivedRoutePath != nil {
+                    if !GMSGeometryIsLocationOnPathTolerance(location.coordinate, self.arrivedRoutePath!, true, 200) {
+                        resetMap()
+//                        if Singleton.shared.bookingInfo?.status == "traveling" {
+//                            self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.dropoffLat ?? ""),\(self.booingInfo.dropoffLng ?? "")", isTripAccepted: true)
+//                        } else {
+//                            self.routeDrawMethod(origin: "\(lat),\(lng)", destination: "\(self.booingInfo.pickupLat ?? ""),\(self.booingInfo.pickupLng ?? "")", isTripAccepted: true)
+//                        }
+                    }
+                }
             } else {
 //                emitSocket_DriverLocation(param: dictParam)
                 updateDriverLocation()
@@ -552,6 +565,8 @@ extension HomeViewController
     
     func drawRouteOnGoogleMap(origin: String!, destination: String!, waypoints: Array<String>!, travelMode: AnyObject!, fromMarker: GMSMarker?, toMarker: GMSMarker?, completionHandler: ((_ status:   String, _ success: Bool) -> Void)?)
     {
+        arrivedRoutePath = nil
+        
         let url = "origin=" + origin + "&destination=" + destination
         var directionsURLString = baseURLDirections + url + "&key=" + (UIApplication.shared.delegate as! AppDelegate).googlApiKey
         print ("directionsURLString: \(directionsURLString)")
@@ -600,6 +615,7 @@ extension HomeViewController
     {
         let route = poliLinePoints["points"] as! String
         let path: GMSPath = GMSPath(fromEncodedPath: route)!
+        self.arrivedRoutePath = path
         let routePolyline = GMSPolyline(path: path)
         routePolyline.map = self.mapView
         routePolyline.strokeColor = UIColor.init(custom: .themePink) //UIColor.darkGray

@@ -23,6 +23,11 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .login, httpMethod: .post, parameters: params, completion: completion)
     }
     
+    class func getAPIcall(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
     class func transferMoney(transferMoneyModel : TransferMoneyModel, completion: @escaping CompletionResponse) {
         let params : [String:String] = transferMoneyModel.generatPostParams() as! [String:String]
         WebService.shared.requestMethod(api: .transferMoney, httpMethod: .post, parameters: params, completion: completion)
@@ -173,8 +178,23 @@ class UserWebserviceSubclass
         WebService.shared.requestMethod(api: .cancelTrip, httpMethod: .post, parameters: params, completion: completion)
     }
     
+    class func RejectBooking(rejectModel : RejectModel, completion: @escaping CompletionResponse) {
+        let params : [String:String] = rejectModel.generatPostParams() as! [String:String]
+        WebService.shared.requestMethod(api: .rejectBooking, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
     class func CancellationCharges(strURL : String  ,completion: @escaping CompletionResponse ) {
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.cancellationCharges.rawValue + strURL
+        WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
+    }
+    
+    class func GenerateTicketService(param:GenerateTicketModel , completion: @escaping CompletionResponse) {
+        let  params : [String:String] = param.generatPostParams() as! [String : String]
+        WebService.shared.requestMethod(api: .generateTicket, httpMethod: .post, parameters: params, completion: completion)
+    }
+    
+    class func TicketListService(strURL : String  ,completion: @escaping CompletionResponse ) {
+        let strURLFinal = NetworkEnvironment.baseURL + ApiKey.ticketList.rawValue + strURL
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
 }

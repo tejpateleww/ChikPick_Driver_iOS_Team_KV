@@ -281,14 +281,22 @@ extension MyTripsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func rejectBookLaterRequestAction(_ sender: UIButton) {
-        let model = self.pastBookingHistoryModelDetails[sender.tag]
-        var param = [String: Any]()
-        param["driver_id"] = Singleton.shared.userProfile!.responseObject.id
-        param["booking_id"] = model.id
-        param["booking_type"] = model.bookingType
         
-        if let vc = self.navigationController?.children.first as? HomeViewController {
-//            vc.emitSocket_AcceptRequest(param: param)
+        Loader.showHUD(with: UIApplication.shared.keyWindow)
+        
+        let detail = self.pastBookingHistoryModelDetails[sender.tag]
+        let model = RejectModel()
+        model.booking_id = detail.id
+        model.driver_id = Singleton.shared.userProfile!.responseObject.id
+        
+        UserWebserviceSubclass.RejectBooking(rejectModel: model) { (response, status) in
+            print("Reject Booking : ",response)
+            Loader.hideHUD()
+            if status {
+                self.LoadNewData()
+            } else {
+                UtilityClass.showAlert(message: response.dictionary?["message"]?.stringValue ?? "Cancel trip is not possible due to some reason, \nPlease restart application.")
+            }
         }
     }
     
