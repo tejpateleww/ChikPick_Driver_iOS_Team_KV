@@ -138,6 +138,13 @@
                                             <action selector="btnCurrentLocation:" destination="lWb-mh-YOO" eventType="touchUpInside" id="2Fy-Fr-cve"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_trip_to_desti_home" translatesAutoresizingMaskIntoConstraints="NO" id="NZb-UU-SbE">
+                                        <rect key="frame" x="6" y="85" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="g1b-Yb-fCb"/>
+                                            <constraint firstAttribute="height" constant="70" id="yA8-t7-xUN"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -152,8 +159,10 @@
                                     <constraint firstItem="qE2-Xs-sGr" firstAttribute="leading" secondItem="Wve-fg-rra" secondAttribute="leading" id="RFv-nA-OMK"/>
                                     <constraint firstItem="9qj-Xs-c7H" firstAttribute="leading" secondItem="qE2-Xs-sGr" secondAttribute="leading" id="VrG-E9-R2r"/>
                                     <constraint firstAttribute="trailing" secondItem="qE2-Xs-sGr" secondAttribute="trailing" id="ibd-CZ-9J4"/>
+                                    <constraint firstItem="NZb-UU-SbE" firstAttribute="top" secondItem="p7U-Oc-14s" secondAttribute="bottom" constant="25" id="j3I-DE-4LI"/>
                                     <constraint firstItem="9qj-Xs-c7H" firstAttribute="trailing" secondItem="qE2-Xs-sGr" secondAttribute="trailing" id="j9R-2B-fxR"/>
                                     <constraint firstItem="9qj-Xs-c7H" firstAttribute="top" secondItem="qE2-Xs-sGr" secondAttribute="top" id="kJD-9V-bPM"/>
+                                    <constraint firstItem="NZb-UU-SbE" firstAttribute="leading" secondItem="Wve-fg-rra" secondAttribute="leading" constant="6" id="mw4-SX-kcA"/>
                                     <constraint firstItem="m8J-aM-wEg" firstAttribute="top" secondItem="p7U-Oc-14s" secondAttribute="bottom" id="obd-KF-pjf"/>
                                     <constraint firstAttribute="trailing" secondItem="m8J-aM-wEg" secondAttribute="trailing" id="qhG-Pu-I7f"/>
                                     <constraint firstAttribute="trailing" secondItem="p7U-Oc-14s" secondAttribute="trailing" id="w7x-cp-KP2"/>
@@ -179,6 +188,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1b8-Hd-PZd"/>
                     <connections>
+                        <outlet property="ImgTripToDestination" destination="NZb-UU-SbE" id="h9D-ju-xoX"/>
                         <outlet property="bottomContentView" destination="eAj-jx-znC" id="Z6A-U7-vcl"/>
                         <outlet property="btnTopHeader" destination="gof-6a-hID" id="ktW-YF-qe4"/>
                         <outlet property="constantHeightOfOfflineView" destination="s1B-uh-m2V" id="9WP-Al-GBO"/>
@@ -195,7 +205,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJS-aq-vAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="IZD-7d-uEw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7777" y="69"/>
+            <point key="canvasLocation" x="7776.8000000000002" y="68.7192118226601"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="GMX-dn-dYR">
@@ -520,7 +530,7 @@
         <!--Help View Controller-->
         <scene sceneID="YF2-Fo-DeO">
             <objects>
-                <viewController storyboardIdentifier="HelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtS-uL-MNQ" customClass="HelpViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtS-uL-MNQ" customClass="HelpViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pnU-MS-dB2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -588,7 +598,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aEr-bM-J4k">
                                         <rect key="frame" x="20" y="614" width="335" height="100"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byJ-hX-JZA" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byJ-hX-JZA" customClass="ThemeButton" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -607,7 +617,7 @@
                                                     <action selector="btnDoneAction:" destination="FtS-uL-MNQ" eventType="touchUpInside" id="BcA-hd-n6s"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTl-v4-3UH" customClass="ThemeButton" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTl-v4-3UH" customClass="ThemeButton" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="60" width="335" height="40"/>
                                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.0078431372550000003" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -664,7 +674,7 @@
         <!--Tickets View Controller-->
         <scene sceneID="ET8-RQ-4ee">
             <objects>
-                <viewController storyboardIdentifier="TicketsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DX4-aL-d2I" customClass="TicketsViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TicketsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DX4-aL-d2I" customClass="TicketsViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6zG-aD-Yoo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -676,7 +686,7 @@
                                         <rect key="frame" x="0.0" y="10" width="375" height="724"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketsCell" rowHeight="82" id="SSE-mH-fBu" customClass="TicketsCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketsCell" rowHeight="82" id="SSE-mH-fBu" customClass="TicketsCell" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="82"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SSE-mH-fBu" id="SHy-ob-6Sw">
@@ -774,7 +784,7 @@
         <!--View Controller-->
         <scene sceneID="hMb-0V-DVl">
             <objects>
-                <viewController storyboardIdentifier="FAQViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JIC-7b-ys3" customClass="FAQViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JIC-7b-ys3" customClass="FAQViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Bo-Jm-fGt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -787,7 +797,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQListingTableViewCell" id="Q6p-Ya-tHQ" customClass="FAQListingTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQListingTableViewCell" id="Q6p-Ya-tHQ" customClass="FAQListingTableViewCell" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="38.333332061767578"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q6p-Ya-tHQ" id="Zob-SH-A6W">
@@ -848,7 +858,7 @@
         <!--Details View Controller-->
         <scene sceneID="gHs-DY-iew">
             <objects>
-                <viewController storyboardIdentifier="FAQDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AwR-wR-3yE" customClass="FAQDetailsViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AwR-wR-3yE" customClass="FAQDetailsViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="50G-Ka-4UC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -861,7 +871,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQDetailsListingTableViewCell" rowHeight="80" id="ffW-GA-L9L" customClass="FAQDetailsListingTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQDetailsListingTableViewCell" rowHeight="80" id="ffW-GA-L9L" customClass="FAQDetailsListingTableViewCell" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffW-GA-L9L" id="SgS-P4-KO0">
@@ -961,7 +971,7 @@
         <!--Questions View Controller-->
         <scene sceneID="ds8-EU-onx">
             <objects>
-                <viewController storyboardIdentifier="FAQQuestionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l7R-lv-xwc" customClass="FAQQuestionsViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQQuestionsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l7R-lv-xwc" customClass="FAQQuestionsViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lB2-eh-mcG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -974,7 +984,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQQuestionsTableViewCell" rowHeight="45" id="Ycp-b5-asY" customClass="FAQQuestionsTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQQuestionsTableViewCell" rowHeight="45" id="Ycp-b5-asY" customClass="FAQQuestionsTableViewCell" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ycp-b5-asY" id="EDf-Sg-48w">
@@ -1055,7 +1065,7 @@
         <!--Sub Types View Controller-->
         <scene sceneID="eVe-SZ-aw6">
             <objects>
-                <viewController storyboardIdentifier="FAQSubTypesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7BM-UQ-Bqf" customClass="FAQSubTypesViewController" customModule="Chick_Pick_Ride" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQSubTypesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7BM-UQ-Bqf" customClass="FAQSubTypesViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uDX-F8-TWv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1068,7 +1078,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQQuestionsTableViewCell" rowHeight="45" id="67k-1f-NLe" customClass="FAQQuestionsTableViewCell" customModule="Chick_Pick_Ride" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQQuestionsTableViewCell" rowHeight="45" id="67k-1f-NLe" customClass="FAQQuestionsTableViewCell" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="67k-1f-NLe" id="weH-39-mZa">
@@ -1149,6 +1159,7 @@
     </scenes>
     <resources>
         <image name="Moon" width="170" height="170"/>
+        <image name="ic_trip_to_desti_home" width="32" height="32"/>
         <image name="iconQA" width="128" height="128"/>
         <image name="logout" width="40" height="40"/>
         <image name="pinCurrentLocation" width="38" height="38"/>

@@ -54,6 +54,9 @@ class Singleton {
     /// While send to client build some features not everything
     var isClientBuild = true
     
+    /// Trip to Destination
+    var tripToDestinationDataModel: TripToDestinationDataModel?
+    
     
     func clearSingletonClass() {
         RegisterOTP = String()

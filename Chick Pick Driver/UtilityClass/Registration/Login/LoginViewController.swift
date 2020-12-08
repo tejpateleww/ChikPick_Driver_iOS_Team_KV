@@ -133,6 +133,9 @@ class LoginViewController: UIViewController {
                     Singleton.shared.isDriverOnline = !(loginModelDetails.responseObject.duty == "0")
                     Singleton.shared.bookingInfo = BookingInfo.init(fromJson: json.dictionary?["booking_info"])
                     Singleton.shared.bookingInfoLoginModel = BookingInfoLoginModel(fromJson: json.dictionary?["booking_info"])
+                    Singleton.shared.tripToDestinationDataModel = loginModelDetails.tripToDestination
+                    try UserDefaults.standard.set(object: loginModelDetails.tripToDestination, forKey: "TripToDestinationDataModel")
+//                    UserDefaults.standard.get(objectType: loginModelDetails.tripToDestination, forKey: "TripToDestinationDataModel")
                 }
                 catch {
                     AlertMessage.showMessageForError("error")

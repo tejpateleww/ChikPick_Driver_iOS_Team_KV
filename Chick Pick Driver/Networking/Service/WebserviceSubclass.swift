@@ -197,4 +197,9 @@ class UserWebserviceSubclass
         let strURLFinal = NetworkEnvironment.baseURL + ApiKey.ticketList.rawValue + strURL
         WebService.shared.getMethod(url: URL.init(string: strURLFinal)!, httpMethod: .get, completion: completion)
     }
+    
+    class func tripToDestination(model: [String: Any], completion: @escaping CompletionResponse) {
+        let params : [String:String] = model as! [String:String]
+        WebService.shared.requestMethod(api: .tripToDestination, httpMethod: .post, parameters: params, completion: completion)
+    }
 }

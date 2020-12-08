@@ -172,6 +172,8 @@
 		34E8B58622C3ABAB00C33A94 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B58522C3ABAB00C33A94 /* Validator.swift */; };
 		34E8B61E22C3AF0900C33A94 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */; };
 		34E8B61F22C3AF0900C33A94 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */; };
+		37C0069C257F6FC1002F8B03 /* TripToDestinationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C0069A257F6FC0002F8B03 /* TripToDestinationDataModel.swift */; };
+		37C0069D257F6FC1002F8B03 /* TripToDestinationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */; };
 		37DF9247257625B900FFAF2B /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9243257625B800FFAF2B /* FAQViewController.swift */; };
 		37DF9248257625B900FFAF2B /* FAQSubTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9244257625B900FFAF2B /* FAQSubTypesViewController.swift */; };
 		37DF9249257625B900FFAF2B /* FAQDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9245257625B900FFAF2B /* FAQDetailsViewController.swift */; };
@@ -459,6 +461,8 @@
 		34E8B58522C3ABAB00C33A94 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		37C0069A257F6FC0002F8B03 /* TripToDestinationDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripToDestinationDataModel.swift; sourceTree = "<group>"; };
+		37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripToDestinationResponseModel.swift; sourceTree = "<group>"; };
 		37DF9243257625B800FFAF2B /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		37DF9244257625B900FFAF2B /* FAQSubTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSubTypesViewController.swift; sourceTree = "<group>"; };
 		37DF9245257625B900FFAF2B /* FAQDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQDetailsViewController.swift; sourceTree = "<group>"; };
@@ -1482,6 +1486,15 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
+		37C00699257F6F52002F8B03 /* TripToDestinationModel */ = {
+			isa = PBXGroup;
+			children = (
+				37C0069A257F6FC0002F8B03 /* TripToDestinationDataModel.swift */,
+				37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */,
+			);
+			path = TripToDestinationModel;
+			sourceTree = "<group>";
+		};
 		37DF92412576259D00FFAF2B /* Help */ = {
 			isa = PBXGroup;
 			children = (
@@ -1747,6 +1760,7 @@
 		EE48D3CE22D36A0200A55146 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				37C00699257F6F52002F8B03 /* TripToDestinationModel */,
 				37DF924F25763D3300FFAF2B /* TickitListingModel */,
 				64128CC7254690B2004A6153 /* InitModel */,
 				18BC30CA22F45A2F0041D617 /* bookingAcceptedeDataModel */,
@@ -2163,9 +2177,11 @@
 				34AC3B7E22CB2F6900125CD8 /* BookingView.swift in Sources */,
 				347038D122C48FA7009C040C /* IndexCollectionViewCell.swift in Sources */,
 				347038D322C49000009C040C /* BaseViewController.swift in Sources */,
+				37C0069D257F6FC1002F8B03 /* TripToDestinationResponseModel.swift in Sources */,
 				EE4B834422D9E43D00843424 /* MyBidListViewCell.swift in Sources */,
 				34E8B54D22C3AB4A00C33A94 /* SetPasscodeViewController.swift in Sources */,
 				EE00703D22D8CFA900D30223 /* TransferToBankVC.swift in Sources */,
+				37C0069C257F6FC1002F8B03 /* TripToDestinationDataModel.swift in Sources */,
 				34E8B4F022C3AB4900C33A94 /* ImageTileView.swift in Sources */,
 				1830C47622E7034D004F107F /* ResponseObject.swift in Sources */,
 				34E8B61F22C3AF0900C33A94 /* ImagePickerViewController.swift in Sources */,

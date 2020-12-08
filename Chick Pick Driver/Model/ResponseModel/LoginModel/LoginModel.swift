@@ -9,6 +9,7 @@ import SwiftyJSON
 
 class LoginModel : Codable {
 
+    var tripToDestination : TripToDestinationDataModel!
     var bookingInfo : BookingInfoLoginModel!
     var currentBooking : CurrentBooking!
     var responseObject : ResponseObject!
@@ -37,6 +38,10 @@ class LoginModel : Codable {
         if !bookingInfoJson.isEmpty{
             bookingInfo = BookingInfoLoginModel(fromJson: bookingInfoJson)
         }
+        let tripToDestinationJson = json["trip_to_destination_arr"]
+        if !tripToDestinationJson.isEmpty{
+            tripToDestination = TripToDestinationDataModel(fromJson: tripToDestinationJson)
+        }
         message = json["message"].stringValue
         status = json["status"].boolValue
 	}
@@ -48,6 +53,9 @@ class LoginModel : Codable {
 	{
 		var dictionary = [String:Any]()
         
+        if tripToDestination != nil{
+            dictionary["trip_to_destination_arr"] = tripToDestination.toDictionary()
+        }
         if bookingInfo != nil{
             dictionary["bookingInfo"] = bookingInfo.toDictionary()
         }
@@ -72,6 +80,7 @@ class LoginModel : Codable {
     */
     @objc required init(coder aDecoder: NSCoder)
 	{
+        tripToDestination = aDecoder.decodeObject(forKey: "trip_to_destination_arr") as? TripToDestinationDataModel
         bookingInfo = aDecoder.decodeObject(forKey: "booking_info") as? BookingInfoLoginModel
 		currentBooking = aDecoder.decodeObject(forKey: "current_booking") as? CurrentBooking
 		responseObject = aDecoder.decodeObject(forKey: "data") as? ResponseObject
@@ -85,6 +94,9 @@ class LoginModel : Codable {
     */
     func encode(with aCoder: NSCoder)
 	{
+        if tripToDestination != nil{
+            aCoder.encode(tripToDestination, forKey: "trip_to_destination_arr")
+        }
         if bookingInfo != nil{
             aCoder.encode(bookingInfo, forKey: "booking_info")
         }

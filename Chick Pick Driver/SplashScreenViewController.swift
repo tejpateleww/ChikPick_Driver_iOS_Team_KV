@@ -15,6 +15,12 @@ class SplashScreenViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webserviceCallForInit()
+        do {
+        Singleton.shared.tripToDestinationDataModel = try UserDefaults.standard.get(objectType: TripToDestinationDataModel.self, forKey: "TripToDestinationDataModel")
+//            UserDefaults.standard.object(forKey: "TripToDestinationDataModel") as? TripToDestinationDataModel
+        } catch {
+            print("error")
+        }
     }
 
 

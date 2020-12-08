@@ -75,9 +75,11 @@ enum ApiKey: String {
     case logout = "logout/"
     case changePassword = "change_password"
     case forgotPassword = "forgot_password"
+    
     case AddCard = "add_card"
     case removeCard = "remove_card"
     case cardList = "card_list"
+    
     case walletHistory = "wallet_history"
     case transferMoneyToBank = "transfer_money_to_bank"
     case addMoney = "add_money"
@@ -99,6 +101,8 @@ enum ApiKey: String {
     
     case vehicleTypeModelList = "vehicle_type_manufacturer_list"
     case companyList = "company_list"
+    
+    case tripToDestination = "ManageTripToDestination"
     
     case FAQList = "help_categories"
     case FAQSubCategories = "help_subcategories/"

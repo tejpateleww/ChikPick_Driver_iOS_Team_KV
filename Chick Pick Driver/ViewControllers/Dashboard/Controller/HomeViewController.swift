@@ -12,7 +12,7 @@ import CoreLocation
 import GoogleMaps
 import AVKit
 
-class HomeViewController: UIViewController,ARCarMovementDelegate {
+class HomeViewController: UIViewController, ARCarMovementDelegate {
     
     
     
@@ -24,6 +24,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     @IBOutlet weak var btnTopHeader: UIButton!
     
     @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var ImgTripToDestination: UIImageView!
     
     @IBOutlet weak var offlineView: UIView!
     @IBOutlet weak var constantHeightOfOfflineView: NSLayoutConstraint! // 60
@@ -51,7 +52,7 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     // MARK: - Globle Declaration Methods
     // ----------------------------------------------------
     
-      var audioPlayer:AVAudioPlayer!
+    var audioPlayer:AVAudioPlayer!
     
     var presentType = DriverState.available
     var presentView = UIView()
@@ -150,6 +151,9 @@ class HomeViewController: UIViewController,ARCarMovementDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        ImgTripToDestination.isHidden = Singleton.shared.tripToDestinationDataModel?.status == "1" ? false : true
+        
         if presentType == .available {
             if let driverView = presentView as? DriverInfoView {
                 driverView.setDataofDriver()
