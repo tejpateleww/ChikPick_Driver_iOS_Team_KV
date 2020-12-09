@@ -132,6 +132,18 @@ extension HomeViewController: SocketConnected {
             print(#function)
             print("\n \(json)")
             
+            // TODO:- Uncomment for Rejecting 2nd request- Bhumi jani
+            
+        /*    if Singleton.shared.bookingInfo != nil {
+                var param = [String: Any]()
+                let booking = bookingAcceptedeDataModel(fromJson: json.array?.first)
+                param["driver_id"] = Singleton.shared.driverId
+                param["booking_id"] = booking.bookingInfo.id
+                self.emitSocket_RejectRequest(param: param)
+                return
+            } */
+            
+            
             let message = json.first?.1.dictionary?["message"]?.stringValue
             AlertMessage.showMessageForSuccess(message ?? "Booking Request Accepted")
             

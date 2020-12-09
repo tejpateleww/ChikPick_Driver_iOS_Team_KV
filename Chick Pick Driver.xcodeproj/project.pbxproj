@@ -172,6 +172,7 @@
 		34E8B58622C3ABAB00C33A94 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B58522C3ABAB00C33A94 /* Validator.swift */; };
 		34E8B61E22C3AF0900C33A94 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */; };
 		34E8B61F22C3AF0900C33A94 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */; };
+		37454A352580E61B0095B60D /* ConfirmationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37454A342580E61B0095B60D /* ConfirmationPopupViewController.swift */; };
 		37C0069C257F6FC1002F8B03 /* TripToDestinationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C0069A257F6FC0002F8B03 /* TripToDestinationDataModel.swift */; };
 		37C0069D257F6FC1002F8B03 /* TripToDestinationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */; };
 		37DF9247257625B900FFAF2B /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9243257625B800FFAF2B /* FAQViewController.swift */; };
@@ -461,6 +462,7 @@
 		34E8B58522C3ABAB00C33A94 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		37454A342580E61B0095B60D /* ConfirmationPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopupViewController.swift; sourceTree = "<group>"; };
 		37C0069A257F6FC0002F8B03 /* TripToDestinationDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripToDestinationDataModel.swift; sourceTree = "<group>"; };
 		37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripToDestinationResponseModel.swift; sourceTree = "<group>"; };
 		37DF9243257625B800FFAF2B /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
@@ -1128,6 +1130,7 @@
 				18E9F0F922E5976800132C97 /* DashboardWebserviceList.swift */,
 				64128FE925347E290094FA60 /* VerifyCustomerPopupViewController.swift */,
 				64439ADC253EB58900696A1D /* PaymentFailedPopupViewController.swift */,
+				37454A342580E61B0095B60D /* ConfirmationPopupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2139,6 +2142,7 @@
 				18A7EA9F23027D880081BBD1 /* DoubleEx.swift in Sources */,
 				34E8B53622C3AB4A00C33A94 /* SocketConnected.swift in Sources */,
 				6481BEE62508B4E2004C1E94 /* SettingsViewController.swift in Sources */,
+				37454A352580E61B0095B60D /* ConfirmationPopupViewController.swift in Sources */,
 				469BD3C622F0316A0077E3A5 /* SwipeAnimator.swift in Sources */,
 				469BD3D422F0316A0077E3A5 /* SwipeCollectionViewCell+Accessibility.swift in Sources */,
 				37DF9248257625B900FFAF2B /* FAQSubTypesViewController.swift in Sources */,
@@ -2412,7 +2416,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
@@ -2437,7 +2441,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

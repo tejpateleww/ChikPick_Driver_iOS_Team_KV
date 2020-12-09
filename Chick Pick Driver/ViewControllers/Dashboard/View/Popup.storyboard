@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,7 +55,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconDownArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Qni-hg-Xsf">
-                                                                <rect key="frame" x="272" y="-6" width="52" height="52"/>
+                                                                <rect key="frame" x="298" y="7" width="26" height="26"/>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvu-Cr-oCu">
                                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -353,12 +353,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzZ-Tf-7O5">
+                                <rect key="frame" x="187" y="289" width="40" height="40"/>
+                                <state key="normal" image="iconCloseAlert"/>
+                                <connections>
+                                    <action selector="btnCloseAction:" destination="PZm-q4-Udv" eventType="touchDragInside" id="up8-Wu-hIR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.60158925510000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DzZ-Tf-7O5" firstAttribute="centerX" secondItem="sIf-7D-YkO" secondAttribute="centerX" id="3bC-ca-eYU"/>
                             <constraint firstItem="YMJ-NV-s84" firstAttribute="trailing" secondItem="Ewc-3J-2zS" secondAttribute="trailing" constant="20" id="QtX-Rs-xZq"/>
                             <constraint firstItem="Ewc-3J-2zS" firstAttribute="leading" secondItem="YMJ-NV-s84" secondAttribute="leading" constant="20" id="TvI-2A-d53"/>
+                            <constraint firstItem="Ewc-3J-2zS" firstAttribute="top" secondItem="DzZ-Tf-7O5" secondAttribute="bottom" constant="20" id="fIo-jN-zQl"/>
                             <constraint firstItem="Ewc-3J-2zS" firstAttribute="centerY" secondItem="sIf-7D-YkO" secondAttribute="centerY" id="gYl-LJ-Kw2"/>
+                            <constraint firstItem="DzZ-Tf-7O5" firstAttribute="width" secondItem="DzZ-Tf-7O5" secondAttribute="height" multiplier="1:1" id="tVJ-3k-DSR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMJ-NV-s84"/>
                     </view>
@@ -369,6 +379,120 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3a-4d-blQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2052" y="148"/>
+        </scene>
+        <!--Confirmation Popup View Controller-->
+        <scene sceneID="kH8-uN-lgK">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmationPopupViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PZm-q4-Udv" customClass="ConfirmationPopupViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="87a-H5-8cd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2B-Hz-q8T">
+                                <rect key="frame" x="20" y="339" width="374" height="218"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="kUJ-YZ-VF2">
+                                        <rect key="frame" x="103" y="10" width="168" height="68"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="168" id="n1Z-ue-eBN"/>
+                                            <constraint firstAttribute="width" secondItem="kUJ-YZ-VF2" secondAttribute="height" multiplier="42:17" id="tRc-Hg-bDB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6I1-t3-ZlM">
+                                        <rect key="frame" x="10" y="98" width="354" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVl-Vr-Rc1">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwF-96-uhh">
+                                                <rect key="frame" x="0.0" y="20" width="354" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <color key="textColor" red="0.90588235289999997" green="0.58431372550000005" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfJ-Ab-58N">
+                                                <rect key="frame" x="0.0" y="40" width="354" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <string key="userLabel">Dear Customer. To Keep Our Drivers Motivated. Please Note That Cancelling a Trip 3 Mins After Booking Attracts A Free of Ksh 10 Payable To The Driver. Please Confirm Whether You Still Wish To Cancel?</string>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v31-S2-Emu">
+                                                <rect key="frame" x="0.0" y="60" width="354" height="40"/>
+                                                <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Qwt-j6-bo4"/>
+                                                </constraints>
+                                                <state key="normal" title="OK">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnOkAction:" destination="PZm-q4-Udv" eventType="touchUpInside" id="3wx-kJ-m1G"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kUJ-YZ-VF2" firstAttribute="centerX" secondItem="A2B-Hz-q8T" secondAttribute="centerX" id="3xh-KM-vne"/>
+                                    <constraint firstItem="6I1-t3-ZlM" firstAttribute="top" secondItem="kUJ-YZ-VF2" secondAttribute="bottom" constant="20" id="GL0-0M-9rJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="6I1-t3-ZlM" secondAttribute="trailing" constant="10" id="LRQ-iW-XOA"/>
+                                    <constraint firstAttribute="bottom" secondItem="6I1-t3-ZlM" secondAttribute="bottom" constant="20" id="cfp-Ze-C5D"/>
+                                    <constraint firstItem="kUJ-YZ-VF2" firstAttribute="top" secondItem="A2B-Hz-q8T" secondAttribute="top" constant="10" id="duy-tR-zog"/>
+                                    <constraint firstItem="6I1-t3-ZlM" firstAttribute="leading" secondItem="A2B-Hz-q8T" secondAttribute="leading" constant="10" id="sbi-T8-BKU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bZ-mu-LTP">
+                                <rect key="frame" x="187" y="279" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6bZ-mu-LTP" secondAttribute="height" multiplier="1:1" id="an5-BC-OU7"/>
+                                </constraints>
+                                <state key="normal" image="iconCloseAlert"/>
+                                <connections>
+                                    <action selector="btnCloseAction:" destination="PZm-q4-Udv" eventType="touchUpInside" id="69G-16-g5O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.60158925510000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6bZ-mu-LTP" firstAttribute="centerX" secondItem="87a-H5-8cd" secondAttribute="centerX" id="9gS-22-r5j"/>
+                            <constraint firstItem="A2B-Hz-q8T" firstAttribute="top" secondItem="6bZ-mu-LTP" secondAttribute="bottom" constant="20" id="Dl9-MC-2Xi"/>
+                            <constraint firstItem="aV0-2Z-AeQ" firstAttribute="trailing" secondItem="A2B-Hz-q8T" secondAttribute="trailing" constant="20" id="KMQ-bt-ucQ"/>
+                            <constraint firstItem="A2B-Hz-q8T" firstAttribute="leading" secondItem="aV0-2Z-AeQ" secondAttribute="leading" constant="20" id="ZTI-Wj-rxf"/>
+                            <constraint firstItem="A2B-Hz-q8T" firstAttribute="centerY" secondItem="87a-H5-8cd" secondAttribute="centerY" id="f78-Fc-Ubc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aV0-2Z-AeQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnAction" destination="v31-S2-Emu" id="6Fs-hg-NKE"/>
+                        <outlet property="btnClose" destination="6bZ-mu-LTP" id="OjV-jp-KfF"/>
+                        <outlet property="lblMessage" destination="VfJ-Ab-58N" id="Ujm-xC-rPI"/>
+                        <outlet property="lblOTP" destination="cwF-96-uhh" id="MUd-ig-leZ"/>
+                        <outlet property="lblTitle" destination="uVl-Vr-Rc1" id="ieB-Fo-Iw6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kpb-41-dDv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2707" y="148"/>
         </scene>
     </scenes>
     <resources>

@@ -34,7 +34,7 @@ class TripToDestinationViewController: BaseViewController {
     
     @IBAction func valueChangedOfTripToDestination(_ sender: UISwitch) {
         
-        txtDestination.isHidden = !sender.isOn
+//        txtDestination.isHidden = !sender.isOn
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
@@ -52,11 +52,55 @@ class TripToDestinationViewController: BaseViewController {
     
     
     @IBAction func SwitchAction(_ sender: UISwitch) {
+        
         btnSelectDestination.isOn = sender.isOn
         
+        if btnSelectDestination.isOn {
+            txtDestination.isHidden = false
+        }
+        
         if !btnSelectDestination.isOn {
-            txtDestination.text = ""
-            locationCoordinate = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+            
+            if Singleton.shared.tripToDestinationDataModel?.status == "1" {
+                let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+                if let controller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPopupViewController") as? ConfirmationPopupViewController {
+                    
+                    controller.strMessage = "Do you want to off the Trip To Destination option?"
+                    controller.strBtnTitle = "OK"
+                    controller.shouldRedirect = true
+                    controller.redirectToBack = {
+                        self.txtDestination.isHidden = !sender.isOn
+                        self.txtDestination.text = ""
+                        self.locationCoordinate = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+                        controller.dismiss(animated: true, completion: nil)
+                        self.webserviceForTripToDestination(switchStatus: self.btnSelectDestination.isOn ? "1" : "0")
+                    }
+                    controller.cancelPopup = {
+                        self.btnSelectDestination.isOn = true
+                        self.txtDestination.isHidden = self.btnSelectDestination.isOn ? false : true
+                        controller.dismiss(animated: true, completion: nil)
+                    }
+                    self.present(controller, animated: true)
+                }
+            } else {
+                let storyboard = UIStoryboard(name: "Popup", bundle: nil)
+                if let controller = storyboard.instantiateViewController(withIdentifier: "ConfirmationPopupViewController") as? ConfirmationPopupViewController {
+                    
+                    controller.strMessage = "Are you sure you want to off Trip to Destination?"
+                    controller.strBtnTitle = "OK"
+                    controller.shouldRedirect = true
+                    controller.redirectToBack = {
+                        self.txtDestination.isHidden = !sender.isOn
+                        controller.dismiss(animated: true, completion: nil)
+                    }
+                    controller.cancelPopup = {
+                        self.btnSelectDestination.isOn = true
+                        self.txtDestination.isHidden = self.btnSelectDestination.isOn ? false : true
+                        controller.dismiss(animated: true, completion: nil)
+                    }
+                    self.present(controller, animated: true)
+                }
+            }
         }
     }
     
@@ -93,7 +137,7 @@ class TripToDestinationViewController: BaseViewController {
                 
                 AlertMessage.showMessageForSuccess(response["message"].stringValue)
                 //                self.dismiss(animated: true, completion: nil)
-                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
             } else {
                 self.btnSelectDestination.isOn = !self.btnSelectDestination.isOn
                 AlertMessage.showMessageForError(response["message"].stringValue)
