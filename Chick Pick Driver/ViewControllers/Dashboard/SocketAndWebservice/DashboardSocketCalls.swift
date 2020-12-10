@@ -77,6 +77,10 @@ extension HomeViewController: SocketConnected {
         }
     }
     
+    func emitSocket_RejectRequestForMultipleRequest(param: [String:Any]) {
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.RejectRequest.rawValue, with: param)
+    }
+    
     // Socket Emit 4
     func emitSocket_StartTrip(param: [String : Any]) {
         SocketIOManager.shared.socketEmit(for: socketApiKeys.StartTrip.rawValue, with: param)
@@ -134,16 +138,21 @@ extension HomeViewController: SocketConnected {
             
             // TODO:- Uncomment for Rejecting 2nd request- Bhumi jani
             
-        /*    if Singleton.shared.bookingInfo != nil {
+            if Singleton.shared.bookingInfo != nil && Singleton.shared.bookingInfo?.id.count ?? 0 > 0 {
                 var param = [String: Any]()
                 let booking = bookingAcceptedeDataModel(fromJson: json.array?.first)
                 param["driver_id"] = Singleton.shared.driverId
                 param["booking_id"] = booking.bookingInfo.id
-                self.emitSocket_RejectRequest(param: param)
+                self.emitSocket_RejectRequestForMultipleRequest(param: param)
                 return
-            } */
+            }
             
-            
+            if (self.navigationController?.topViewController as? HomeViewController) == nil {
+                if let homeVC = self.navigationController?.children.first {
+                    self.navigationController?.popToViewController(homeVC, animated: true)
+                }
+            }
+           
             let message = json.first?.1.dictionary?["message"]?.stringValue
             AlertMessage.showMessageForSuccess(message ?? "Booking Request Accepted")
             
@@ -218,7 +227,7 @@ extension HomeViewController: SocketConnected {
 //                }
             }
             //                if homeVC.mapView != nil {
-            self.bookingData = Singleton.shared.bookingInfo!
+//            self.bookingData = Singleton.shared.bookingInfo!
             self.driverData.driverState = .requestAccepted
             self.resetMap()
             //                }
@@ -239,7 +248,7 @@ extension HomeViewController: SocketConnected {
                 bookingView.setConstraintOfHomeVc()
                 bookingView.setStartTripView()
             }
-            self.bookingData = Singleton.shared.bookingInfo!
+//            self.bookingData = Singleton.shared.bookingInfo!
             self.driverData.driverState = .requestAccepted
             self.resetMap()
         }
@@ -254,7 +263,7 @@ extension HomeViewController: SocketConnected {
             Loader.hideHUD()
             
             if ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController) != nil {
-                self.bookingData = Singleton.shared.bookingInfo!
+//                self.bookingData = Singleton.shared.bookingInfo!
                 self.driverData.driverState = .inTrip
                 self.resetMap()
             }
@@ -421,7 +430,7 @@ extension HomeViewController: SocketConnected {
             print(#function)
             print("\n \(json)")
            
-            if self.bookingData.arrivedTime.isEmpty {
+            if Singleton.shared.bookingInfo?.arrivedTime.isEmpty ?? false {
                  UserDefaults.standard.set(false, forKey: "isDriverArrived")
             } else {
                 UserDefaults.standard.set(true, forKey: "isDriverArrived")

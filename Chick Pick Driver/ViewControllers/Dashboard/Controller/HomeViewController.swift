@@ -41,7 +41,7 @@ class HomeViewController: UIViewController, ARCarMovementDelegate {
     var addCardReqModel : AddCard = AddCard()
     var CardListReqModel : CardList = CardList()
     var driverData = DriverData.shared
-    var bookingData = BookingInfo()
+//    var bookingData = BookingInfo()
     
     let carMovement = ARCarMovement()
     var driverMarker : GMSMarker!
@@ -502,11 +502,11 @@ extension HomeViewController: CLLocationManagerDelegate {
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)
             var dictParam = [String:Any]()
             dictParam["driver_id"] = driverData.profile.responseObject.id ?? ""
-            dictParam["customer_id"] = bookingData.customerId ?? ""
+            dictParam["customer_id"] = Singleton.shared.bookingInfo?.customerId ?? ""
             dictParam["lat"] = "\(location.coordinate.latitude)"
             dictParam["lng"] =  "\(location.coordinate.longitude)"
-            dictParam["pickup_lat"] = bookingData.pickupLat
-            dictParam["pickup_lng"] = bookingData.pickupLng
+            dictParam["pickup_lat"] = Singleton.shared.bookingInfo?.pickupLat
+            dictParam["pickup_lng"] = Singleton.shared.bookingInfo?.pickupLng
             
             if Singleton.shared.bookingInfo?.id != nil && Singleton.shared.bookingInfo?.id != "" {
                 emitSocket_LiveTracking(param: dictParam)
