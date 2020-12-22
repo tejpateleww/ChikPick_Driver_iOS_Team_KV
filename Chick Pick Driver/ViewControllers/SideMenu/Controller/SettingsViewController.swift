@@ -21,7 +21,7 @@ class SettingsViewController: BaseViewController {
         tableView.tableFooterView = UIView()
         
         self.setNavBarWithBack(Title: "Settings", IsNeedRightButton: false)
-        arrMenuTitle = ["Profile", "Change Password", "Help", "FAQ"]
+        arrMenuTitle = ["Profile", "Change Password", "Help", "FAQ", "Payments"]
     }
     
     func pushThroughNavigationBar(viewController : UIViewController)
@@ -81,6 +81,13 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
         if arrMenuTitle[indexPath.row] == "FAQ"
         {
            let vc : FAQViewController = UIViewController.viewControllerInstance(storyBoard: .home)
+           self.pushThroughNavigationBar(viewController: vc)
+            return
+        }
+        
+        if arrMenuTitle[indexPath.row] == "Payments"
+        {
+           let vc : UpdateAccountViewController = UIViewController.viewControllerInstance(storyBoard: .updateProfile)
            self.pushThroughNavigationBar(viewController: vc)
             return
         }

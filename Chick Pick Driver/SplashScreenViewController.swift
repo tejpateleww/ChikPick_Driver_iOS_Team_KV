@@ -21,6 +21,7 @@ class SplashScreenViewController: BaseViewController {
         } catch {
             print("error")
         }
+        
     }
 
 

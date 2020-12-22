@@ -122,6 +122,10 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
         let vc : UpdateAccountViewController = UIViewController.viewControllerInstance(storyBoard: .updateProfile)
         self.pushThroughNavigationBar(viewController: vc)
     }
+    func pushRatingVC(){
+        let vc : MyRatingViewController = UIViewController.viewControllerInstance(storyBoard: .ratingHistory)
+        self.pushThroughNavigationBar(viewController: vc)
+    }
     func pushWalletVC(){
         let vc : WalletViewController = UIViewController.viewControllerInstance(storyBoard: .wallet)
         self.pushThroughNavigationBar(viewController: vc)
@@ -182,8 +186,8 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate{
         switch type {
         case .myTrip:
             pushMyTripsVC()
-        case .payments:
-            pushPaymentVC()
+        case .myRating:
+            pushRatingVC()
         case .settings:
             pushSettingVC()
             

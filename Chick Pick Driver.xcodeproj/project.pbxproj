@@ -173,8 +173,11 @@
 		34E8B61E22C3AF0900C33A94 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */; };
 		34E8B61F22C3AF0900C33A94 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */; };
 		37454A352580E61B0095B60D /* ConfirmationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37454A342580E61B0095B60D /* ConfirmationPopupViewController.swift */; };
+		37BB763E25920F38002DB308 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB763C25920F37002DB308 /* Datum.swift */; };
+		37BB763F25920F38002DB308 /* ReviewListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB763D25920F37002DB308 /* ReviewListing.swift */; };
 		37C0069C257F6FC1002F8B03 /* TripToDestinationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C0069A257F6FC0002F8B03 /* TripToDestinationDataModel.swift */; };
 		37C0069D257F6FC1002F8B03 /* TripToDestinationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */; };
+		37D18D052591AFAB0073C33E /* MyRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D18D042591AFAB0073C33E /* MyRatingViewController.swift */; };
 		37DF9247257625B900FFAF2B /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9243257625B800FFAF2B /* FAQViewController.swift */; };
 		37DF9248257625B900FFAF2B /* FAQSubTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9244257625B900FFAF2B /* FAQSubTypesViewController.swift */; };
 		37DF9249257625B900FFAF2B /* FAQDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9245257625B900FFAF2B /* FAQDetailsViewController.swift */; };
@@ -184,6 +187,7 @@
 		37DF925225763D4700FFAF2B /* TicketListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF925025763D4700FFAF2B /* TicketListingModel.swift */; };
 		37DF925325763D4700FFAF2B /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF925125763D4700FFAF2B /* Ticket.swift */; };
 		37DF9255257641CB00FFAF2B /* GenerateTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DF9254257641CB00FFAF2B /* GenerateTicket.swift */; };
+		37F39D7B2591CC46004DE7A6 /* MyRatingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F39D7A2591CC46004DE7A6 /* MyRatingViewCell.swift */; };
 		463D6CD022F9873200DA819B /* VehicleListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463D6CCF22F9873200DA819B /* VehicleListModel.swift */; };
 		463D6CD222F9ADE400DA819B /* CompanyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463D6CD122F9ADE400DA819B /* CompanyListModel.swift */; };
 		4656018522EB36E900CB4445 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4656018422EB36E900CB4445 /* UserNotifications.framework */; };
@@ -463,8 +467,11 @@
 		34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		37454A342580E61B0095B60D /* ConfirmationPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopupViewController.swift; sourceTree = "<group>"; };
+		37BB763C25920F37002DB308 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
+		37BB763D25920F37002DB308 /* ReviewListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewListing.swift; sourceTree = "<group>"; };
 		37C0069A257F6FC0002F8B03 /* TripToDestinationDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripToDestinationDataModel.swift; sourceTree = "<group>"; };
 		37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripToDestinationResponseModel.swift; sourceTree = "<group>"; };
+		37D18D042591AFAB0073C33E /* MyRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingViewController.swift; sourceTree = "<group>"; };
 		37DF9243257625B800FFAF2B /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		37DF9244257625B900FFAF2B /* FAQSubTypesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQSubTypesViewController.swift; sourceTree = "<group>"; };
 		37DF9245257625B900FFAF2B /* FAQDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQDetailsViewController.swift; sourceTree = "<group>"; };
@@ -474,6 +481,7 @@
 		37DF925025763D4700FFAF2B /* TicketListingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketListingModel.swift; sourceTree = "<group>"; };
 		37DF925125763D4700FFAF2B /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		37DF9254257641CB00FFAF2B /* GenerateTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateTicket.swift; sourceTree = "<group>"; };
+		37F39D7A2591CC46004DE7A6 /* MyRatingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRatingViewCell.swift; sourceTree = "<group>"; };
 		463D6CCF22F9873200DA819B /* VehicleListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleListModel.swift; sourceTree = "<group>"; };
 		463D6CD122F9ADE400DA819B /* CompanyListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyListModel.swift; sourceTree = "<group>"; };
 		4656018422EB36E900CB4445 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -977,6 +985,7 @@
 		34E8B43A22C3AB4800C33A94 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				37D18D032591AF870073C33E /* Rating */,
 				37DF9242257625A700FFAF2B /* FAQ */,
 				37DF92412576259D00FFAF2B /* Help */,
 				469BD37E22F02CD70077E3A5 /* Payment */,
@@ -1489,6 +1498,15 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
+		37BB763B25920F04002DB308 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				37BB763C25920F37002DB308 /* Datum.swift */,
+				37BB763D25920F37002DB308 /* ReviewListing.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		37C00699257F6F52002F8B03 /* TripToDestinationModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1496,6 +1514,16 @@
 				37C0069B257F6FC0002F8B03 /* TripToDestinationResponseModel.swift */,
 			);
 			path = TripToDestinationModel;
+			sourceTree = "<group>";
+		};
+		37D18D032591AF870073C33E /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				37BB763B25920F04002DB308 /* Model */,
+				37F39D792591CB9F004DE7A6 /* view */,
+				37D18D042591AFAB0073C33E /* MyRatingViewController.swift */,
+			);
+			path = Rating;
 			sourceTree = "<group>";
 		};
 		37DF92412576259D00FFAF2B /* Help */ = {
@@ -1525,6 +1553,14 @@
 				37DF925025763D4700FFAF2B /* TicketListingModel.swift */,
 			);
 			path = TickitListingModel;
+			sourceTree = "<group>";
+		};
+		37F39D792591CB9F004DE7A6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				37F39D7A2591CC46004DE7A6 /* MyRatingViewCell.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		469BD37E22F02CD70077E3A5 /* Payment */ = {
@@ -2081,6 +2117,7 @@
 				34E8B4EA22C3AB4900C33A94 /* ApiModel.swift in Sources */,
 				469BD3D522F0316A0077E3A5 /* SwipeCollectionViewCell.swift in Sources */,
 				EE00704622D8CFE800D30223 /* HistoryTableViewCell.swift in Sources */,
+				37F39D7B2591CC46004DE7A6 /* MyRatingViewCell.swift in Sources */,
 				EE72353722D4801C00948D54 /* ChangePassword.swift in Sources */,
 				349E3A7D22C9EFF70046B4F4 /* LoaderClass.swift in Sources */,
 				EE4B834322D9E43D00843424 /* BidDetailsViewController.swift in Sources */,
@@ -2126,6 +2163,7 @@
 				34E8B4E922C3AB4900C33A94 /* ThemeModel.swift in Sources */,
 				34E8B57422C3AB8300C33A94 /* Enums.swift in Sources */,
 				EE00704C22D8D2B600D30223 /* ThemeTextField.swift in Sources */,
+				37BB763F25920F38002DB308 /* ReviewListing.swift in Sources */,
 				37DF925325763D4700FFAF2B /* Ticket.swift in Sources */,
 				18BC30D022F45A2F0041D617 /* bookingAcceptedeDataModel.swift in Sources */,
 				3470390222C49763009C040C /* ColumnCollectionViewCell.swift in Sources */,
@@ -2161,6 +2199,7 @@
 				18125CC022D73B3D00E4C0C4 /* UpdateAccountData.swift in Sources */,
 				1830C47422E7034D004F107F /* VehicleType.swift in Sources */,
 				EE72353122D47CF900948D54 /* CardList.swift in Sources */,
+				37BB763E25920F38002DB308 /* Datum.swift in Sources */,
 				469BD39F22F0313F0077E3A5 /* RequiredInputValidator.swift in Sources */,
 				1830C47522E7034D004F107F /* CurrentBooking.swift in Sources */,
 				469BD3C822F0316A0077E3A5 /* Swipeable.swift in Sources */,
@@ -2206,6 +2245,7 @@
 				34E8B55122C3AB4A00C33A94 /* ReceiveRequestViewController.swift in Sources */,
 				1830C47322E7034D004F107F /* DriverDoc.swift in Sources */,
 				34E8B54622C3AB4A00C33A94 /* ProfileOptionsViewController.swift in Sources */,
+				37D18D052591AFAB0073C33E /* MyRatingViewController.swift in Sources */,
 				469BD3CB22F0316A0077E3A5 /* SwipeTransitionLayout.swift in Sources */,
 				34E8B58022C3ABA400C33A94 /* ViewEx.swift in Sources */,
 				34E8B3EF22C3AAE000C33A94 /* AppDelegate.swift in Sources */,
@@ -2416,7 +2456,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
@@ -2441,7 +2481,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

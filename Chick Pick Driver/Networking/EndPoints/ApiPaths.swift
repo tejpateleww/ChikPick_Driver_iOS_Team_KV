@@ -98,6 +98,7 @@ enum ApiKey: String {
     case PendingBookingHistory = "pending_booking_history/"
     
     case PaymentReceivedOrNot = "payment_received_or_not/"
+    case ReviewListing = "review_listing/"
     
     case vehicleTypeModelList = "vehicle_type_manufacturer_list"
     case companyList = "company_list"

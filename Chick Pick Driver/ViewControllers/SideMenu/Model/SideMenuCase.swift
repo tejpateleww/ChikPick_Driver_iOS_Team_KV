@@ -12,12 +12,14 @@ enum SideMenuCase: String, CaseIterable{
     
     case home = "Home"
     case myTrip = "My Trips"
-    case payments = "Payments"
+    case myRating = "My Ratings"
+    case tripToDestination = "Trip To Destination"
+//    case payments = "Payments"
     case settings = "Settings"
 //    case wallet = "Wallet"
     
 //    case onDemand = "On Demand Area"
-    case tripToDestination = "Trip To Destination"
+    
 //    case airportQueue = "Airport Queue Management"
 //    case bidMyTrip = "Bid My Trip"
 //    case invite = "Invite"
