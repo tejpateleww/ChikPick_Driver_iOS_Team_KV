@@ -68,6 +68,7 @@ extension HomeViewController: SocketConnected {
     
     // Socket Emit 3
     func emitSocket_RejectRequest(param: [String:Any]) {
+        print(#function)
         SocketIOManager.shared.socketEmit(for: socketApiKeys.RejectRequest.rawValue, with: param)
         Singleton.shared.bookingInfo = nil
         if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController {
@@ -78,6 +79,7 @@ extension HomeViewController: SocketConnected {
     }
     
     func emitSocket_RejectRequestForMultipleRequest(param: [String:Any]) {
+        print(#function)
         SocketIOManager.shared.socketEmit(for: socketApiKeys.RejectRequest.rawValue, with: param)
     }
     
@@ -407,13 +409,14 @@ extension HomeViewController: SocketConnected {
         
         self.locationManager.startUpdatingLocation()
         
-        if DriverData.shared.profile != nil {
-            if let driver = DriverData.shared.profile.responseObject {
+//        if Singleton.shared.driverId != nil {
+//            if let driver = DriverData.shared.profile.responseObject {
+                let token = UserDefaults.standard.object(forKey: "Token") as? String
                 
-                let myJSON = ["driver_id" : driver.id, "lat": "\(Singleton.shared.driverLocation.coordinate.latitude)", "lng": "\(Singleton.shared.driverLocation.coordinate.longitude)","device_token": driver.deviceToken] as [String : Any]
+                let myJSON = ["driver_id" : Singleton.shared.driverId, "lat": "\(Singleton.shared.driverLocation.coordinate.latitude)", "lng": "\(Singleton.shared.driverLocation.coordinate.longitude)","device_token": token ?? "123"] as [String : Any]
                 emitSocket_UpdateDriverLatLng(param: myJSON)
-            }
-        }
+//            }
+//        }
     }
     
     // Socket On 9

@@ -75,7 +75,7 @@ class HomeViewController: UIViewController, ARCarMovementDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGoogleMaps()
-        SocketIOManager.shared.establishConnection()
+        
         isLocationEnable()
         
         progressRequest.isHidden = true
@@ -89,6 +89,10 @@ class HomeViewController: UIViewController, ARCarMovementDelegate {
         getFirstView(isDriverInfoUpdated: false)
         SideMenuController.preferences.basic.enableRubberEffectWhenPanning = false
         btnTopHeader.addTarget(self, action: #selector(hideBottomView(_:)), for: .touchUpInside)
+        
+        if Singleton.shared.isDriverOnline {
+            SocketIOManager.shared.establishConnection()
+        }
         
         if let BookingInfoData = Singleton.shared.bookingInfo {
             let status = BookingInfoData.status
