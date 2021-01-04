@@ -491,7 +491,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         
         isValueSelected = true
         
-        if pickerView == pickerViewVehicleName
+        if pickerView == pickerViewVehicleName && arrVehicleTypeName.count > 0
         {
             let strSelectName = arrVehicleTypeName[row]
             let tempDic = (arrVehicleData.filter({$0.manufacturerName == strSelectName}).first)
@@ -505,7 +505,7 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             // Reset car images
             resetCarCollectionToDefault()
         }
-        else if pickerView == pickerViewVehicleSubName
+        else if pickerView == pickerViewVehicleSubName && arrVehicleTypeSubName.count > 0
         {
             let strSelectSubName = arrVehicleTypeSubName[row]
             txtVehicleSubModel.text = "\(strSelectSubName)"
@@ -524,8 +524,10 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         }
         else
         {
-            let strSelectYear = arrYearMenufacList[row]
-            txtVehicleYearMenufacture.text = "\(strSelectYear)"
+            if arrYearMenufacList.count > 0 {
+                let strSelectYear = arrYearMenufacList[row]
+                txtVehicleYearMenufacture.text = "\(strSelectYear)"
+            }
         }
     }
 }
