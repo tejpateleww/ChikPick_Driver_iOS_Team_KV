@@ -495,6 +495,14 @@ extension HomeViewController: CLLocationManagerDelegate {
         
         print("DRIVER LOCATION UPDATE...")
         
+        if UserDefaults.standard.object(forKey: "isUserLogin") != nil {
+        
+        if UserDefaults.standard.object(forKey: "isUserLogin") as? Bool == true {
+            
+            }
+            
+        }
+        
         if(Singleton.shared.bookingInfo?.id == nil)
         {
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: zoomLevel, bearing: 0, viewingAngle: 0)

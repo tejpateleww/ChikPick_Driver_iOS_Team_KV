@@ -18,6 +18,7 @@ class Singleton {
     var vehicleListData : VehicleListResultModel?
     var companyListData : CompanyListModel?
     var menufacturingYearList = [String]()
+//    var vehicleTypeList = [VehicleTypeList]()
 
      /// Driver login details
     var userProfile: LoginModel?

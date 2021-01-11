@@ -459,22 +459,52 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
     // Navigation to third party map application
     @IBAction func btnNavigationAction(_ sender: UIButton) {
         print(#function)
+        
+        guard WebService.shared.isConnected else { return }
+        
         setConstraintOfHomeVc()
         
         guard let bookingData = Singleton.shared.bookingInfo else { return }
-        let DropOffLat = bookingData.dropoffLat ?? ""
-        let DropOffLon = bookingData.dropoffLng ?? ""
-
-
-        let url =  "comgooglemaps://?saddr=&daddr=\(String(describing: Float(DropOffLat)!)),\(String(describing: Float(DropOffLon)!))&directionsmode=driving"
-
-        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
-            UIApplication.shared.canOpenURL(URL(string: url)!)
-        } else {
-            if let url = URL(string: "https://itunes.apple.com/us/app/google-maps-transit-food/id585027354") {
-                UIApplication.shared.canOpenURL(url)
+        
+        var DropOffLat = bookingData.dropoffLat ?? ""
+        var DropOffLon = bookingData.dropoffLng ?? ""
+        
+        if let vc: UIViewController = self.parentViewController {
+            if let hVc = vc as? HomeViewController {
+                
+                if hVc.driverData.driverState == .inTrip {
+                    DropOffLat = bookingData.dropoffLat ?? ""
+                    DropOffLon = bookingData.dropoffLng ?? ""
+                } else {
+                    DropOffLat = bookingData.pickupLat ?? ""
+                    DropOffLon = bookingData.pickupLng ?? ""
+                }
             }
         }
+        
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+            
+            UIApplication.shared.open(NSURL(string:
+                "comgooglemaps://?saddr=&daddr=\(DropOffLat),\(DropOffLon)&directionsmode=driving")! as URL, options: [:], completionHandler: { (status) in
+            })
+        }
+        else {
+            
+            NSLog("Can't use com.google.maps://")
+            UtilityClass.showAlert(message: "Please install Google Maps")
+//            UtilityClass.showAlert("App Name".localized, message: "Please install Google Maps.".localized, vc: self)
+        }
+
+
+//        let url =  "comgooglemaps://?saddr=&daddr=\(String(describing: Float(DropOffLat)!)),\(String(describing: Float(DropOffLon)!))&directionsmode=driving"
+//
+//        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+//            UIApplication.shared.canOpenURL(URL(string: url)!)
+//        } else {
+//            if let url = URL(string: "https://itunes.apple.com/us/app/google-maps-transit-food/id585027354") {
+//                UIApplication.shared.canOpenURL(url)
+//            }
+//        }
     }
     
     func alertForCancellation(charges : String) {

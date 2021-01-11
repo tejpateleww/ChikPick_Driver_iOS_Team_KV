@@ -13,6 +13,7 @@ class VehicleListModel : Codable{
     var message : String!
     var status : Bool!
     var yearList : [String]!
+    var vehicleTypeList : [VehicleTypeList]!
     /**
      * Instantiate the instance using the passed json values to set the properties values
      */
@@ -32,6 +33,12 @@ class VehicleListModel : Codable{
         let yearListArray = json["year_list"].arrayValue
         for yearListJson in yearListArray{
             yearList.append(yearListJson.stringValue)
+        }
+        vehicleTypeList = [VehicleTypeList]()
+        let vehicleTypeListArray = json["vehicle_type_list"].arrayValue
+        for vehicleTypeListJson in vehicleTypeListArray{
+            let value = VehicleTypeList(fromJson: vehicleTypeListJson)
+            vehicleTypeList.append(value)
         }
     }
     
@@ -61,6 +68,13 @@ class VehicleListModel : Codable{
         if yearList != nil{
             dictionary["year_list"] = yearList
         }
+        if vehicleTypeList != nil{
+            var dictionaryElements = [[String:Any]]()
+            for vehicleTypeListElement in vehicleTypeList {
+                dictionaryElements.append(vehicleTypeListElement.toDictionary())
+            }
+            dictionary["vehicleTypeList"] = dictionaryElements
+        }
         return dictionary
     }
     
@@ -74,7 +88,7 @@ class VehicleListModel : Codable{
         message = aDecoder.decodeObject(forKey: "message") as? String
         status = aDecoder.decodeObject(forKey: "status") as? Bool
         yearList = aDecoder.decodeObject(forKey: "year_list") as? [String]
-        
+        vehicleTypeList = aDecoder.decodeObject(forKey: "vehicle_type_list") as? [VehicleTypeList]
     }
     
     /**
@@ -94,6 +108,9 @@ class VehicleListModel : Codable{
         }
         if yearList != nil{
             aCoder.encode(yearList, forKey: "year_list")
+        }
+        if vehicleTypeList != nil{
+            aCoder.encode(vehicleTypeList, forKey: "vehicle_type_list")
         }
     }
     

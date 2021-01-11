@@ -172,6 +172,7 @@
 		34E8B58622C3ABAB00C33A94 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B58522C3ABAB00C33A94 /* Validator.swift */; };
 		34E8B61E22C3AF0900C33A94 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */; };
 		34E8B61F22C3AF0900C33A94 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */; };
+		3707C42D25AC6F670043A572 /* VehicleTypeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707C42C25AC6F670043A572 /* VehicleTypeList.swift */; };
 		37454A352580E61B0095B60D /* ConfirmationPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37454A342580E61B0095B60D /* ConfirmationPopupViewController.swift */; };
 		37BB763E25920F38002DB308 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB763C25920F37002DB308 /* Datum.swift */; };
 		37BB763F25920F38002DB308 /* ReviewListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB763D25920F37002DB308 /* ReviewListing.swift */; };
@@ -466,6 +467,7 @@
 		34E8B58522C3ABAB00C33A94 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		34E8B61C22C3AF0900C33A94 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		34E8B61D22C3AF0900C33A94 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		3707C42C25AC6F670043A572 /* VehicleTypeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleTypeList.swift; sourceTree = "<group>"; };
 		37454A342580E61B0095B60D /* ConfirmationPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopupViewController.swift; sourceTree = "<group>"; };
 		37BB763C25920F37002DB308 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		37BB763D25920F37002DB308 /* ReviewListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewListing.swift; sourceTree = "<group>"; };
@@ -1805,6 +1807,7 @@
 				18BC30CA22F45A2F0041D617 /* bookingAcceptedeDataModel */,
 				18BC30C822F43C300041D617 /* VehicleListResultModel.swift */,
 				463D6CCF22F9873200DA819B /* VehicleListModel.swift */,
+				3707C42C25AC6F670043A572 /* VehicleTypeList.swift */,
 				469BD37C22F02B120077E3A5 /* AddCardModel.swift */,
 				469BD3E322F04D9C0077E3A5 /* WalletHistoryListModel.swift */,
 				46C7D14722F854650064FFD0 /* PastBookingHistoryResponse.swift */,
@@ -2285,6 +2288,7 @@
 				347038ED22C4938E009C040C /* UserProfile.swift in Sources */,
 				641035A62535B74000A5CACB /* NoDataFoundTblCell.swift in Sources */,
 				18D4342A22F4799B0086CD07 /* CompleteModel.swift in Sources */,
+				3707C42D25AC6F670043A572 /* VehicleTypeList.swift in Sources */,
 				46C7D14822F854660064FFD0 /* PastBookingHistoryResponse.swift in Sources */,
 				469BD3E222F04BBC0077E3A5 /* transferMoneyToBank.swift in Sources */,
 				EE4B834122D9E43D00843424 /* OpenBidListViewController.swift in Sources */,
@@ -2456,7 +2460,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
@@ -2481,7 +2485,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.5;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

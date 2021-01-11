@@ -20,6 +20,8 @@ class InitResponseModel : NSObject, NSCoding{
     var sosNumber : String!
     var status : Bool!
     var waitingTime : String!
+    var update : Bool!
+    var message : String!
 
 	/**
 	 * Instantiate the instance using the passed json values to set the properties values
@@ -47,6 +49,8 @@ class InitResponseModel : NSObject, NSCoding{
         sosNumber = json["sos_number"].stringValue
         status = json["status"].boolValue
         waitingTime = json["waiting_time"].stringValue
+        update = json["update"].boolValue
+        message = json["message"].stringValue
 	}
 
 	/**
@@ -92,6 +96,12 @@ class InitResponseModel : NSObject, NSCoding{
         if waitingTime != nil{
         	dictionary["waiting_time"] = waitingTime
         }
+        if update != nil{
+            dictionary["update"] = update
+        }
+        if message != nil{
+            dictionary["message"] = message
+        }
 		return dictionary
 	}
 
@@ -112,6 +122,8 @@ class InitResponseModel : NSObject, NSCoding{
 		sosNumber = aDecoder.decodeObject(forKey: "sos_number") as? String
 		status = aDecoder.decodeObject(forKey: "status") as? Bool
 		waitingTime = aDecoder.decodeObject(forKey: "waiting_time") as? String
+        update = aDecoder.decodeObject(forKey: "update") as? Bool
+        message = aDecoder.decodeObject(forKey: "message") as? String
 	}
 
     /**
@@ -153,7 +165,12 @@ class InitResponseModel : NSObject, NSCoding{
 		if waitingTime != nil{
 			aCoder.encode(waitingTime, forKey: "waiting_time")
 		}
-
+        if update != nil{
+            aCoder.encode(update, forKey: "update")
+        }
+        if message != nil{
+            aCoder.encode(message, forKey: "message")
+        }
 	}
 
 }

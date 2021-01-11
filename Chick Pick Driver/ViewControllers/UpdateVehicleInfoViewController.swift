@@ -20,6 +20,8 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     var pickerViewManufYear = UIPickerView()
     var pickerViewVehicleName = UIPickerView()
     var pickerViewVehicleSubName = UIPickerView()
+    var pickerViewVehicleType = UIPickerView()
+    
     @IBOutlet weak var txtVehiclePlateNumber: SkyFloatingLabelTextField!
     @IBOutlet weak var txtVehicleModel: SkyFloatingLabelTextField!
     @IBOutlet weak var txtVehicleYearMenufacture: SkyFloatingLabelTextField!
@@ -33,10 +35,14 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     var arrYearMenufacList = [String]()
     var arrVehicleTypeName = [String]()
     var arrVehicleTypeSubName = [String]()
+    var arrVehicleType = [String]()
+    
     var vehicleUpdatedType = String()
     var vehicleSelectedManuID = String()
     var vehicleSelectedVehicleModelID = String()
     var vehicleSelectedSubModelID = String()
+    
+    var arrVehicleTypeData = [VehicleTypeList]()
     var arrVehicleData = [VehicleData]()
     var parameterArray = RegistrationParameter.shared
     var isValueSelected = Bool()
@@ -55,54 +61,60 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         //        btnSave.isHidden = true
         
         setupColumnView()
-        pickerViewManufYear = UIPickerView()
+//        pickerViewManufYear = UIPickerView()
         
-        pickerViewManufYear.dataSource = self
-        pickerViewManufYear.delegate = self
-        
-        pickerViewVehicleName.dataSource = self
-        pickerViewVehicleName.delegate = self
-        
-        pickerViewVehicleSubName.dataSource = self
-        pickerViewVehicleSubName.delegate = self
-        
-        pickerViewManufYear.backgroundColor = UIColor.white
-        pickerViewVehicleSubName.backgroundColor = UIColor.white
-        
-        let vehicleModelRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        let vehicleSubModelRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        let vehicleYearMenufactureRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        
-        let imageView1 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
-        let imageView2 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
-        let imageView3 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
-        
-        imageView1.image = UIImage(named: "drop-icon")
-        imageView2.image = UIImage(named: "drop-icon")
-        imageView3.image = UIImage(named: "drop-icon")
-        
-        vehicleModelRightView.addSubview(imageView1)
-        vehicleSubModelRightView.addSubview(imageView2)
-        vehicleYearMenufactureRightView.addSubview(imageView3)
-        
-        txtVehicleModel.rightView = vehicleModelRightView
-        txtVehicleModel.rightViewMode = .always
-        
-        txtVehicleSubModel.rightView = vehicleSubModelRightView
-        txtVehicleSubModel.rightViewMode = .always
-        
-        txtVehicleYearMenufacture.rightView = vehicleYearMenufactureRightView
-        txtVehicleYearMenufacture.rightViewMode = .always
-        
-        
+       
+       
         //        vehicleView.addSubview(myCustomView)
         //        myCustomView.setupTextField()
-        btnSave.submitButtonLayout(isDark : true)
+       
         webserviceForVehicleMenufactureYearList()
         self.title = "Vehicle Option"
-        //        txtVehicleType.delegate = self
+        txtVehicleType.delegate = self
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.setupPickerViews()
+        }
         
         getData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        let vehicleModelRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        let vehicleSubModelRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        let vehicleYearMenufactureRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        let vehicleTypeRightView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//
+//
+//        let imageView1 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
+//        let imageView2 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
+//        let imageView3 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
+//        let imageView4 = UIImageView(frame: CGRect(x: 0, y: 10, width: 20, height: 20))
+//
+//        imageView1.image = UIImage(named: "drop-icon")
+//        imageView2.image = UIImage(named: "drop-icon")
+//        imageView3.image = UIImage(named: "drop-icon")
+//        imageView4.image = UIImage(named: "drop-icon")
+//
+//        vehicleModelRightView.addSubview(imageView1)
+//        vehicleSubModelRightView.addSubview(imageView2)
+//        vehicleYearMenufactureRightView.addSubview(imageView3)
+//        vehicleTypeRightView.addSubview(imageView4)
+//
+//        txtVehicleModel.rightView = vehicleModelRightView
+//        txtVehicleModel.rightViewMode = .always
+//
+//        txtVehicleSubModel.rightView = vehicleSubModelRightView
+//        txtVehicleSubModel.rightViewMode = .always
+//
+//        txtVehicleYearMenufacture.rightView = vehicleYearMenufactureRightView
+//        txtVehicleYearMenufacture.rightViewMode = .always
+//
+//        txtVehicleType.rightView = vehicleYearMenufactureRightView
+//        txtVehicleType.rightViewMode = .always
+        
+        btnSave.submitButtonLayout(isDark : true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,6 +162,26 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             indexPath in
             self.didSelect(indexPath: indexPath)
         }
+    }
+    
+    
+    func setupPickerViews() {
+        pickerViewManufYear.dataSource = self
+        pickerViewManufYear.delegate = self
+        
+        pickerViewVehicleName.dataSource = self
+        pickerViewVehicleName.delegate = self
+        
+        pickerViewVehicleSubName.dataSource = self
+        pickerViewVehicleSubName.delegate = self
+        
+        pickerViewVehicleType.dataSource = self
+        pickerViewVehicleType.delegate = self
+        
+        pickerViewManufYear.backgroundColor = UIColor.white
+        pickerViewVehicleSubName.backgroundColor = UIColor.white
+        pickerViewVehicleName.backgroundColor = UIColor.white
+        pickerViewVehicleType.backgroundColor = UIColor.white
     }
     
     func didSelect(indexPath: IndexPath) {
@@ -420,6 +452,10 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
                 
                 let vehicleListRes = VehicleListModel.init(fromJson: response)
                 Singleton.shared.menufacturingYearList = vehicleListRes.yearList
+//                Singleton.shared.vehicleTypeList = vehicleListRes.vehicleTypeList
+               
+                self.arrVehicleTypeData = vehicleListRes.vehicleTypeList
+                self.arrVehicleType = vehicleListRes.vehicleTypeList.compactMap({$0.name})
                 
                 print(vehicleListRes.yearList)
                 
@@ -465,6 +501,10 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         {
             return arrVehicleTypeSubName.count
         }
+        else if pickerView == pickerViewVehicleType
+        {
+            return arrVehicleType.count
+        }
         else
         {
             return arrYearMenufacList.count
@@ -480,6 +520,10 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         else if pickerView == pickerViewVehicleSubName
         {
             return arrVehicleTypeSubName[row]
+        }
+        else if pickerView == pickerViewVehicleType
+        {
+            return arrVehicleType[row]
         }
         else
         {
@@ -522,6 +566,23 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             // Reset car images
             resetCarCollectionToDefault()
         }
+        else if pickerView == pickerViewVehicleType && arrVehicleType.count > 0
+        {
+            let strSelectType = arrVehicleType[row]
+            txtVehicleType.text = "\(strSelectType)"
+//            let temp = (arrVehicleData.filter({$0.manufacturerName == txtVehicleModel.text!}).first)?.vehicleModel
+//
+//            let newData = temp?.filter({$0.vehicleTypeModelName == strSelectSubName})
+//
+//            self.vehicleSelectedManuID = newData?.first?.vehicleTypeManufacturerId ?? ""
+//            self.vehicleSelectedSubModelID = newData?.first?.id ?? ""
+            self.vehicleSelectedVehicleModelID = arrVehicleTypeData[row].id
+//            self.txtVehicleType.text = newData?.first?.vehicleTypeName
+            self.vehicleUpdatedType =  arrVehicleTypeData[row].id
+            
+            // Reset car images
+//            resetCarCollectionToDefault()
+        }
         else
         {
             if arrYearMenufacList.count > 0 {
@@ -543,8 +604,10 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             return true
             
         case txtVehicleType:
-            openVehiclePicker()
-            return false
+//            openVehiclePicker()
+            txtVehicleType.inputView = pickerViewVehicleType
+            return true
+            
         case txtVehicleSubModel:
             
             if txtVehicleModel.text == ""
@@ -563,6 +626,7 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             txtVehicleModel.inputView = pickerViewVehicleName
             pickerViewVehicleName.backgroundColor = UIColor.white
             return true
+            
         default:
             return true
         }
@@ -590,7 +654,7 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if textField == txtVehicleModel && !isValueSelected {
+        if textField == txtVehicleModel && !isValueSelected && arrVehicleTypeName.count > 0 {
             
             let strSelectName = arrVehicleTypeName[0]
             
@@ -603,9 +667,9 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             arrVehicleTypeSubName = (tempDic!).vehicleModel.map({$0.vehicleTypeModelName})
             
             // Reset car images
-            resetCarCollectionToDefault()
+//            resetCarCollectionToDefault()
             
-        } else if textField == txtVehicleSubModel && !isValueSelected {
+        } else if textField == txtVehicleSubModel && !isValueSelected && arrVehicleTypeSubName.count > 0 {
             
             let strSelectSubName = arrVehicleTypeSubName[0]
             txtVehicleSubModel.text = "\(strSelectSubName)"
@@ -622,7 +686,24 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             // Reset car images
             resetCarCollectionToDefault()
             
-        } else if textField == txtVehicleYearMenufacture && !isValueSelected {
+        } else if textField == txtVehicleType && !isValueSelected && arrVehicleType.count > 0 {
+            
+            let strSelectType = arrVehicleType[0]
+            txtVehicleType.text = "\(strSelectType)"
+//            let temp = (arrVehicleData.filter({$0.manufacturerName == txtVehicleModel.text!}).first)?.vehicleModel
+//
+//            let newData = temp?.filter({$0.vehicleTypeModelName == strSelectSubName})
+//
+//            self.vehicleSelectedManuID = newData?.first?.vehicleTypeManufacturerId ?? ""
+//            self.vehicleSelectedSubModelID = newData?.first?.id ?? ""
+            self.vehicleSelectedVehicleModelID = arrVehicleTypeData[0].id
+//            self.txtVehicleType.text = newData?.first?.vehicleTypeName
+            self.vehicleUpdatedType =  arrVehicleTypeData[0].id
+            
+            // Reset car images
+            resetCarCollectionToDefault()
+            
+        } else if textField == txtVehicleYearMenufacture && !isValueSelected && arrYearMenufacList.count > 0 {
             let strSelectYear = arrYearMenufacList[0]
             txtVehicleYearMenufacture.text = "\(strSelectYear)"
         }

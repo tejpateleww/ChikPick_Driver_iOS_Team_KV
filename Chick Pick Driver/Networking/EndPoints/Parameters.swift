@@ -130,7 +130,7 @@ struct RegistrationFinalKeys {
 struct AppName {
     static let kAPPName = "Chick Pick"
     //    "TanTaxi Driver"
-    static let kAPPUrl = "https://itunes.apple.com/us/app/TanTaxi Driver/id1445179587?ls=1&mt=8"
+    static let kAPPUrl = "itms-apps://itunes.apple.com/app/id1530927381"
     
 }
 

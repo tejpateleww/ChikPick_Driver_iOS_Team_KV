@@ -24,7 +24,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9Zs-Fo-hnw">
-                                    <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="316" height="44"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG1" translatesAutoresizingMaskIntoConstraints="NO" id="0rd-dm-c9H">
                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -33,7 +33,7 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zWx-Vm-T5w">
-                                            <rect key="frame" x="48" y="0.0" width="312" height="36"/>
+                                            <rect key="frame" x="48" y="0.0" width="268" height="36"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Smith" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaI-R6-QTI">
                                                     <rect key="frame" x="0.0" y="0.0" width="79.5" height="18"/>
@@ -71,10 +71,10 @@
                                         </stackView>
                                     </subviews>
                                 </stackView>
-                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="T3s-X6-WRU">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="T3s-X6-WRU">
+                                    <rect key="frame" x="316" y="0.0" width="44" height="44"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hji-PI-DJK">
+                                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hji-PI-DJK">
                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$25.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uK-tX-SJm">
@@ -92,9 +92,9 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JQr-m1-mfW">
-                                            <rect key="frame" x="2" y="0.0" width="148" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-ih-Uc3">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-ih-Uc3">
                                                     <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="E8q-ih-Uc3" secondAttribute="height" id="yTj-iw-kVf"/>
@@ -104,8 +104,8 @@
                                                         <action selector="btnMessageAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="kf1-hC-Nb8"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8F-BK-TuY">
-                                                    <rect key="frame" x="52" y="0.0" width="44" height="44"/>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z8F-BK-TuY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="z8F-BK-TuY" secondAttribute="height" id="5l8-TL-szs"/>
                                                     </constraints>
@@ -115,7 +115,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gy-sG-hve">
-                                                    <rect key="frame" x="104" y="0.0" width="44" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="0gy-sG-hve" secondAttribute="height" id="Fcq-lP-A86"/>
                                                     </constraints>
