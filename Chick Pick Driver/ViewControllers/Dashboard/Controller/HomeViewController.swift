@@ -342,7 +342,8 @@ class HomeViewController: UIViewController, ARCarMovementDelegate {
     func changeView() {
         bottomContentView.customAddSubview(presentView)
         containerBottomConstraint.constant = 0
-//        self.containerTopView.layoutIfNeeded()
+//        bottomContentView.layoutIfNeeded()
+        self.containerTopView.layoutIfNeeded()
     }
     
     var count: Double = 0

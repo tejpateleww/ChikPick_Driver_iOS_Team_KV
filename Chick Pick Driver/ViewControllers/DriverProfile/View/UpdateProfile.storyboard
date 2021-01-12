@@ -451,10 +451,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q0-DP-JP0" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="739"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YyH-gp-I6E">
-                                                        <rect key="frame" x="20" y="20" width="335" height="639"/>
+                                                        <rect key="frame" x="20" y="20" width="335" height="636"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vehicle Plate Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Trk-qV-OWh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -484,7 +484,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tnb-3F-RQx">
-                                                                <rect key="frame" x="0.0" y="58" width="335" height="105"/>
+                                                                <rect key="frame" x="0.0" y="58" width="335" height="160"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdb-Dc-eTv">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -519,6 +519,13 @@
                                                                                     <outlet property="delegate" destination="kyQ-En-gUg" id="nzi-K4-0pC"/>
                                                                                 </connections>
                                                                             </textField>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-icon" translatesAutoresizingMaskIntoConstraints="NO" id="OEn-Q0-deo">
+                                                                                <rect key="frame" x="305" y="15" width="20" height="20"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="20" id="Ayr-iZ-dNx"/>
+                                                                                    <constraint firstAttribute="height" constant="20" id="JIn-ni-123"/>
+                                                                                </constraints>
+                                                                            </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
@@ -526,6 +533,8 @@
                                                                             <constraint firstItem="DiB-Ia-WN0" firstAttribute="leading" secondItem="zdb-Dc-eTv" secondAttribute="leading" id="O9s-yr-cgE"/>
                                                                             <constraint firstAttribute="bottom" secondItem="DiB-Ia-WN0" secondAttribute="bottom" id="TEz-30-yun"/>
                                                                             <constraint firstItem="DiB-Ia-WN0" firstAttribute="top" secondItem="zdb-Dc-eTv" secondAttribute="top" id="j1k-95-Yrd"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="OEn-Q0-deo" secondAttribute="trailing" constant="10" id="nH6-hc-SlD"/>
+                                                                            <constraint firstItem="OEn-Q0-deo" firstAttribute="centerY" secondItem="zdb-Dc-eTv" secondAttribute="centerY" id="yLq-WS-xJ1"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pq2-8A-ltM">
@@ -561,13 +570,73 @@
                                                                                     <outlet property="delegate" destination="kyQ-En-gUg" id="c2J-aN-RsO"/>
                                                                                 </connections>
                                                                             </textField>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ysY-Ac-pYe">
+                                                                                <rect key="frame" x="305" y="15" width="20" height="20"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="20" id="EpO-Ko-gb4"/>
+                                                                                    <constraint firstAttribute="width" constant="20" id="ixX-rC-XFU"/>
+                                                                                </constraints>
+                                                                            </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstItem="bp9-LV-lkT" firstAttribute="leading" secondItem="pq2-8A-ltM" secondAttribute="leading" id="0W2-xB-TfB"/>
                                                                             <constraint firstItem="bp9-LV-lkT" firstAttribute="top" secondItem="pq2-8A-ltM" secondAttribute="top" id="1jN-ND-JCZ"/>
                                                                             <constraint firstAttribute="trailing" secondItem="bp9-LV-lkT" secondAttribute="trailing" id="fNO-p5-X2q"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="ysY-Ac-pYe" secondAttribute="trailing" constant="10" id="nIC-uh-qcs"/>
                                                                             <constraint firstAttribute="bottom" secondItem="bp9-LV-lkT" secondAttribute="bottom" id="qFE-T4-WTc"/>
+                                                                            <constraint firstItem="ysY-Ac-pYe" firstAttribute="centerY" secondItem="pq2-8A-ltM" secondAttribute="centerY" id="y4j-hg-T3v"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwO-j0-gVi">
+                                                                        <rect key="frame" x="0.0" y="110" width="335" height="50"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Vehicle Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IbB-va-Lmg" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="PVB-49-sss"/>
+                                                                                </constraints>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="kyQ-En-gUg" id="vRl-hb-da9"/>
+                                                                                </connections>
+                                                                            </textField>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop-icon" translatesAutoresizingMaskIntoConstraints="NO" id="4FB-pe-N3f">
+                                                                                <rect key="frame" x="305" y="15" width="20" height="20"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="20" id="VYC-jH-7Sa"/>
+                                                                                    <constraint firstAttribute="width" constant="20" id="dRn-Ua-9zA"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="bottom" secondItem="IbB-va-Lmg" secondAttribute="bottom" id="JCP-UG-ASe"/>
+                                                                            <constraint firstItem="IbB-va-Lmg" firstAttribute="top" secondItem="gwO-j0-gVi" secondAttribute="top" id="P8h-WR-hGj"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="4FB-pe-N3f" secondAttribute="trailing" constant="10" id="Ywx-cy-1Bl"/>
+                                                                            <constraint firstItem="4FB-pe-N3f" firstAttribute="centerY" secondItem="gwO-j0-gVi" secondAttribute="centerY" id="m0p-51-XJL"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="IbB-va-Lmg" secondAttribute="trailing" id="oWo-CD-VoT"/>
+                                                                            <constraint firstItem="IbB-va-Lmg" firstAttribute="leading" secondItem="gwO-j0-gVi" secondAttribute="leading" id="yPb-dE-5Ye"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -575,8 +644,8 @@
                                                                     <constraint firstItem="pq2-8A-ltM" firstAttribute="height" secondItem="zdb-Dc-eTv" secondAttribute="height" id="wpD-md-GJe"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vehicle Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQv-mn-JAe" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="171" width="335" height="50"/>
+                                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vehicle Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQv-mn-JAe" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                                <rect key="frame" x="0.0" y="222" width="335" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="lKX-1A-T36"/>
@@ -601,12 +670,9 @@
                                                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="kyQ-En-gUg" id="04t-UU-Vt8"/>
-                                                                </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Vehicle Manufacture Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="baE-lc-Vkd" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="229" width="335" height="50"/>
+                                                                <rect key="frame" x="0.0" y="226" width="335" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="GXV-FO-fNs"/>
@@ -636,7 +702,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number Of Passengers" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHg-av-XGc" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="287" width="335" height="50"/>
+                                                                <rect key="frame" x="0.0" y="284" width="335" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="YnK-aG-Ilj"/>
@@ -666,7 +732,7 @@
                                                                 </connections>
                                                             </textField>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blr-jN-e6Z">
-                                                                <rect key="frame" x="0.0" y="341" width="335" height="50"/>
+                                                                <rect key="frame" x="0.0" y="338" width="335" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you working under any company?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdK-2r-zfn">
                                                                         <rect key="frame" x="23.5" y="16" width="301.5" height="34"/>
@@ -704,7 +770,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cA1-E4-Gg8" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                                <rect key="frame" x="0.0" y="341" width="335" height="50"/>
+                                                                <rect key="frame" x="0.0" y="338" width="335" height="50"/>
                                                                 <color key="tintColor" red="1" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="bFK-v0-Tur"/>
@@ -731,7 +797,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUa-LN-Fbe">
-                                                                <rect key="frame" x="0.0" y="345" width="335" height="294"/>
+                                                                <rect key="frame" x="0.0" y="342" width="335" height="294"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xz-3D-ovU">
                                                                         <rect key="frame" x="0.0" y="62" width="335" height="232"/>
@@ -771,7 +837,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjW-lp-cLW" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
-                                                        <rect key="frame" x="20" y="679" width="335" height="40"/>
+                                                        <rect key="frame" x="20" y="676" width="335" height="40"/>
                                                         <color key="backgroundColor" red="0.18039215689999999" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Fiv-lj-a2Q"/>
@@ -837,7 +903,7 @@
                         <outlet property="txtVehicleModel" destination="DiB-Ia-WN0" id="4T3-VC-Cq6"/>
                         <outlet property="txtVehiclePlateNumber" destination="Trk-qV-OWh" id="jF0-9U-cs1"/>
                         <outlet property="txtVehicleSubModel" destination="bp9-LV-lkT" id="gV7-Ot-0aA"/>
-                        <outlet property="txtVehicleType" destination="aQv-mn-JAe" id="zOX-oP-gKQ"/>
+                        <outlet property="txtVehicleType" destination="IbB-va-Lmg" id="SiL-5l-nzx"/>
                         <outlet property="txtVehicleYearMenufacture" destination="baE-lc-Vkd" id="tWN-rL-509"/>
                         <outlet property="viewCarList" destination="8xz-3D-ovU" id="0ks-2H-S27"/>
                         <outletCollection property="textFields" destination="Trk-qV-OWh" collectionClass="NSMutableArray" id="PV9-xh-elq"/>
@@ -849,7 +915,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXF-kq-1Vp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4634" y="-530"/>
+            <point key="canvasLocation" x="4632.8000000000002" y="-530.28485757121439"/>
         </scene>
         <!--Update Document View Controller-->
         <scene sceneID="3JJ-xX-F4x">
@@ -2103,6 +2169,7 @@
         <image name="Document" width="170" height="170"/>
         <image name="Profile" width="170" height="170"/>
         <image name="Vehicle Option" width="170" height="170"/>
+        <image name="drop-icon" width="170" height="170"/>
         <image name="edit" width="42" height="42"/>
         <image name="iconBack" width="26" height="26"/>
         <image name="iconPlaceHolderUser" width="85" height="85"/>

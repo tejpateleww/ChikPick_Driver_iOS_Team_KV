@@ -92,9 +92,9 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
         txtDropOff.text = Singleton.shared.bookingInfo?.dropoffLocation
         
         btnCard.setTitle("Card", for: .normal)
-        lblTripPrice.text = "N/A"
-        btnDiscount.setTitle("N/A", for: .normal)
-        lblTripDistance.text = "N/A"
+//        lblTripPrice.text = "N/A"
+//        btnDiscount.setTitle("N/A", for: .normal)
+//        lblTripDistance.text = "N/A"
         
         guard let profile = Singleton.shared.bookingInfo?.customerInfo else { return }
         lblPassengerName.text = (profile.firstName ?? "") + " " + (profile.lastName ?? "")
@@ -218,8 +218,7 @@ class BookingView: UIView,MFMessageComposeViewControllerDelegate {
             viewContactUs,
             txtDropOff,
             btnCompleteTrip,
-            viewEstimatePrice,
-            viewWaitingTimer, btnStart])
+            viewWaitingTimer, btnStart]) // viewEstimatePrice,
     }
     
     func setView(type: DriverState) {

@@ -314,11 +314,25 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
     
     @IBAction func brnSaveClicked(_ sender: Any) {
         
-        if !validation().0 {
-            AlertMessage.showMessageForError(validation().1)
+        if Singleton.shared.bookingInfo?.id == nil || Singleton.shared.bookingInfo?.id == ""  || Singleton.shared.bookingInfo?.status == "completed" {
+            if !validation().0 {
+                AlertMessage.showMessageForError(validation().1)
+            } else {
+                print("Done")
+                
+                if Singleton.shared.isDriverOnline {
+                    UtilityClass.showAlert(title: AppName.kAPPName, message: "For making this changes your duty will be off.\n Do you want to proceed??", isCancelShow: true) {
+                        
+                        self.webserviceForVehicleInfo()
+                    }
+                } else {
+                    webserviceForVehicleInfo()
+                }
+                
+                
+            }
         } else {
-            print("Done")
-            webserviceForVehicleInfo()
+            AlertMessage.showMessageForError("Your trip is already started, please complete it first")
         }
     }
     
@@ -413,6 +427,26 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
         updateVehicleInfoData.vehicle_type_model_id = self.vehicleSelectedSubModelID
         updateVehicleInfoData.vehicle_type_manufacturer_id = self.vehicleSelectedManuID
         
+        if parameterArray.car_left.hasPrefix(NetworkEnvironment.imageBaseURL) {
+            let str = parameterArray.car_left.replacingOccurrences(of: NetworkEnvironment.imageBaseURL, with: "")
+            parameterArray.car_left = str
+        }
+        
+        if parameterArray.car_right.hasPrefix(NetworkEnvironment.imageBaseURL) {
+            let str = parameterArray.car_right.replacingOccurrences(of: NetworkEnvironment.imageBaseURL, with: "")
+            parameterArray.car_right = str
+        }
+        
+        if parameterArray.car_front.hasPrefix(NetworkEnvironment.imageBaseURL) {
+            let str = parameterArray.car_front.replacingOccurrences(of: NetworkEnvironment.imageBaseURL, with: "")
+            parameterArray.car_front = str
+        }
+        
+        if parameterArray.car_back.hasPrefix(NetworkEnvironment.imageBaseURL) {
+            let str = parameterArray.car_back.replacingOccurrences(of: NetworkEnvironment.imageBaseURL, with: "")
+            parameterArray.car_back = str
+        }
+        
         updateVehicleInfoData.car_left = parameterArray.car_left
         updateVehicleInfoData.car_right = parameterArray.car_right
         updateVehicleInfoData.car_front = parameterArray.car_front
@@ -425,6 +459,14 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             Loader.hideHUD()
             
             if status {
+                
+                // If Driver is online then, Duty will be change
+                if Singleton.shared.isDriverOnline {
+                    if let homeVC = self.navigationController?.children.first as? HomeViewController {
+                        homeVC.webserviceForChangeDuty()
+                    }
+                }
+                
                 
                 let loginModelDetails = LoginModel.init(fromJson: response)
                 do {
@@ -563,6 +605,12 @@ class UpdateVehicleInfoViewController: UIViewController,UIPickerViewDelegate,UIP
             self.txtVehicleType.text = newData?.first?.vehicleTypeName
             self.vehicleUpdatedType =  newData?.first!.vehicleTypeId ?? ""
             
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                UtilityClass.showAlert(title: AppName.kAPPName, message: "Do you want to change Vehicle Type?", isCancelShow: true) {
+//                    self.txtVehicleType.becomeFirstResponder()
+//                }
+//            }
+            
             // Reset car images
             resetCarCollectionToDefault()
         }
@@ -683,6 +731,12 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             self.txtVehicleType.text = newData?.first?.vehicleTypeName
             self.vehicleUpdatedType =  newData?.first!.vehicleTypeId ?? ""
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                UtilityClass.showAlert(title: AppName.kAPPName, message: "Do you want to change Vehicle Type?", isCancelShow: true) {
+                    self.txtVehicleType.becomeFirstResponder()
+                }
+            }
+            
             // Reset car images
             resetCarCollectionToDefault()
             
@@ -701,7 +755,7 @@ extension UpdateVehicleInfoViewController: UITextFieldDelegate {
             self.vehicleUpdatedType =  arrVehicleTypeData[0].id
             
             // Reset car images
-            resetCarCollectionToDefault()
+//            resetCarCollectionToDefault()
             
         } else if textField == txtVehicleYearMenufacture && !isValueSelected && arrYearMenufacList.count > 0 {
             let strSelectYear = arrYearMenufacList[0]

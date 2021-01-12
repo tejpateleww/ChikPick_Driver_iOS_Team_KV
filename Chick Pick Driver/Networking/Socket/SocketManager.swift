@@ -35,24 +35,27 @@ class SocketIOManager: NSObject {
             print ("socket connected")
             
             let homeVC = UIApplication.shared.keyWindow?.rootViewController?.children.first?.children.first as? HomeViewController
-            homeVC?.updateDriverLocation()
+           
             
             if !self.isSocketOn {
                 self.isSocketOn = true
 //                let homeStory = UIStoryboard(name: "Home", bundle: nil)
                 
                 homeVC?.allSocketOnMethods()
+                homeVC?.updateDriverLocation()
             }
         }
     }
     
     func establishConnection() {
         socket.connect()
+//        DriverData.shared.startUpdateLocationTimer() // Added By Bhumi Jani
     }
     
     func closeConnection() {
         socket.disconnect()
-        self.isSocketOn = false
+//        DriverData.shared.stopUpdateLocationTimer() // Added By Bhumi Jani
+//        self.isSocketOn = false
     }
     
     func socketCall(for key: String, completion: CompletionBlock = nil)

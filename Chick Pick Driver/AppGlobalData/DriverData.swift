@@ -21,23 +21,15 @@ struct DriverData {
         {
             if(driverState == .available)
             {
-                if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController
-                {
-                    homeVC.updateDriverLocationAtRegularInterval = Timer.scheduledTimer(timeInterval: 10, target: homeVC, selector: #selector(homeVC.updateDriverLocation), userInfo: nil, repeats: true)
-                }
+               startUpdateLocationTimer()
             }
             else
             {
-                if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController
-                {
-                    if homeVC.updateDriverLocationAtRegularInterval != nil {
-                        homeVC.updateDriverLocationAtRegularInterval.invalidate()
-                        homeVC.updateDriverLocationAtRegularInterval = nil
-                    }
-                }
+                stopUpdateLocationTimer()
             }
         }
     }
+    
 
     private(set) var profile: LoginModel!
     
@@ -48,6 +40,24 @@ struct DriverData {
         }
         catch {
             print("Driver Profile not found")
+        }
+    }
+    
+    
+    func startUpdateLocationTimer() {
+        if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController
+        {
+            homeVC.updateDriverLocationAtRegularInterval = Timer.scheduledTimer(timeInterval: 10, target: homeVC, selector: #selector(homeVC.updateDriverLocation), userInfo: nil, repeats: true)
+        }
+    }
+    
+    func stopUpdateLocationTimer() {
+        if let homeVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController?.children.first?.children.first as? HomeViewController
+        {
+            if homeVC.updateDriverLocationAtRegularInterval != nil {
+                homeVC.updateDriverLocationAtRegularInterval.invalidate()
+                homeVC.updateDriverLocationAtRegularInterval = nil
+            }
         }
     }
 }
