@@ -52,6 +52,24 @@ extension HomeViewController: DashboardWebservices {
             
             if status {
                 
+                let loginModelDetails = LoginModel.init(fromJson: response)
+                do {
+                    try UserDefaults.standard.set(object: loginModelDetails, forKey: "userProfile")
+                    UserDefaults.standard.synchronize()
+                } catch {
+                    AlertMessage.showMessageForError(error.localizedDescription)
+                }
+                
+                if let visibleController = self.navigationController?.visibleViewController as? HomeViewController {
+                    if visibleController.isKind(of: HomeViewController.self) {
+                        if visibleController.presentType == .available {
+                            if let driverView = visibleController.presentView as? DriverInfoView {
+                                driverView.setDataofDriver()
+                            }
+                        }
+                    }
+                }
+                
                 let duty = response.dictionaryValue["duty"]?.stringValue ?? ""
                 _ = response.dictionaryValue["message"]?.stringValue ?? ""
                 
@@ -72,6 +90,7 @@ extension HomeViewController: DashboardWebservices {
                     Singleton.shared.bookingInfo = nil
                     Singleton.shared.isDriverOnline = false
                     SocketIOManager.shared.closeConnection()
+                    self.allSocketOffMethods()
                     self.driverData.driverState = .tripComplete // added for stop timer
                     self.switchBtn.setOn(false, animated: true)
                     if self.constantHeightOfOfflineView != nil {

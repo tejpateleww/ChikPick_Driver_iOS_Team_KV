@@ -314,6 +314,7 @@ class HomeViewController: UIViewController, ARCarMovementDelegate {
         //        presentView = presentType.fromNib()
         presentView = presentType.chooseTripMode(state: .available)
         changeView()
+        bottomContentView.layoutIfNeeded()
         
         if isDriverInfoUpdated {
             if let driverView = presentView as? DriverInfoView {
@@ -343,7 +344,7 @@ class HomeViewController: UIViewController, ARCarMovementDelegate {
         bottomContentView.customAddSubview(presentView)
         containerBottomConstraint.constant = 0
 //        bottomContentView.layoutIfNeeded()
-        self.containerTopView.layoutIfNeeded()
+//        self.containerTopView.layoutIfNeeded()
     }
     
     var count: Double = 0

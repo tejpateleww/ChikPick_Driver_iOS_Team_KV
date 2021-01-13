@@ -362,7 +362,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     vc.present(controller, animated: true)
                 }
             }
-        } else if userInfo["gcm.notification.type"] as! String == "Logout" {
+        }
+       else if userInfo["gcm.notification.type"] as! String == "change_vehicle_request" {
+            
+            var strMsg = ""
+            
+            if let dic = (userInfo["aps"] as? [String : Any]) {
+                //                   print(dic["alert"])
+                if let alert = (dic["alert"] as? [String : Any]) {
+                    //                        print(alert["body"])
+                    strMsg = alert["body"] as? String ?? ""
+                }
+            }
+            UtilityClass.showAlert(message: strMsg)
+        }
+        else if userInfo["gcm.notification.type"] as! String == "Logout" {
             self.setLogout()
         }
     }
@@ -425,6 +439,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             //                   vc.pushViewController(controller, animated: true)
             //               }
             //           }
+        }
+        else if userInfo["gcm.notification.type"] as! String == "change_vehicle_request" {
+            completionHandler([.alert, .sound])
+            
+            var strMsg = ""
+            
+            if let dic = (userInfo["aps"] as? [String : Any]) {
+                //                   print(dic["alert"])
+                if let alert = (dic["alert"] as? [String : Any]) {
+                    //                        print(alert["body"])
+                    strMsg = alert["body"] as? String ?? ""
+                }
+            }
+            UtilityClass.showAlert(message: strMsg)
         }
         else if userInfo["gcm.notification.type"] as! String == "Logout" {
             completionHandler([.alert, .sound])

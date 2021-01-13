@@ -55,7 +55,7 @@ class SocketIOManager: NSObject {
     func closeConnection() {
         socket.disconnect()
 //        DriverData.shared.stopUpdateLocationTimer() // Added By Bhumi Jani
-//        self.isSocketOn = false
+        self.isSocketOn = false
     }
     
     func socketCall(for key: String, completion: CompletionBlock = nil)
