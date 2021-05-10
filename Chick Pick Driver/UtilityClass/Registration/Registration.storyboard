@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yBn-mz-LZl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yBn-mz-LZl">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,7 +53,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="kXb-fN-dUM">
                                                                 <rect key="frame" x="20" y="671" width="374" height="50"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbT-hq-eQg" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbT-hq-eQg" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
                                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="50"/>
                                                                         <color key="backgroundColor" red="0.89338213209999995" green="0.51630395650000005" blue="0.15679338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -64,7 +64,7 @@
                                                                             <action selector="back:" destination="Obf-w9-2SH" eventType="touchUpInside" id="vBB-D6-qqE"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uu-Jk-TgA" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uu-Jk-TgA" customClass="SSSpinnerButton" customModule="SSSpinnerButton">
                                                                         <rect key="frame" x="195" y="0.0" width="179" height="50"/>
                                                                         <color key="backgroundColor" red="0.89338213209999995" green="0.51630395650000005" blue="0.15679338570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -135,6 +135,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gFL-YG-4Hw"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZBo-fh-PHV" firstAttribute="leading" secondItem="gFL-YG-4Hw" secondAttribute="leading" id="8NF-zq-Bmk"/>
@@ -142,7 +143,6 @@
                             <constraint firstItem="ZBo-fh-PHV" firstAttribute="top" secondItem="ENt-aB-HII" secondAttribute="top" id="dHJ-F9-QNX"/>
                             <constraint firstItem="gFL-YG-4Hw" firstAttribute="bottom" secondItem="ZBo-fh-PHV" secondAttribute="bottom" id="h3m-A8-qA4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gFL-YG-4Hw"/>
                     </view>
                     <navigationItem key="navigationItem" id="KPb-MR-nHD"/>
                     <connections>
@@ -169,7 +169,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="mM1-tv-CI6">
-                                        <rect key="frame" x="0.0" y="-57" width="414" height="544"/>
+                                        <rect key="frame" x="0.0" y="79" width="414" height="272"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -295,7 +295,7 @@
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zy-XI-QlK">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zy-XI-QlK">
                                         <rect key="frame" x="78.000000000000028" y="0.0" width="103.33333333333334" height="40"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                         <state key="normal" title="Register">
@@ -309,6 +309,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8Sl-yg-kiA"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uzC-Qy-bUs" firstAttribute="bottom" secondItem="73h-2g-3jw" secondAttribute="bottom" id="2zP-oh-nMa"/>
@@ -337,7 +338,6 @@
                             <constraint firstItem="3UH-Ea-kQ5" firstAttribute="leading" secondItem="8Sl-yg-kiA" secondAttribute="leading" constant="12" id="rnz-xf-3dB"/>
                             <constraint firstItem="0wy-D7-beA" firstAttribute="top" secondItem="TOF-a0-MZf" secondAttribute="bottom" constant="25" id="sop-H0-nEf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8Sl-yg-kiA"/>
                     </view>
                     <navigationItem key="navigationItem" id="mRE-2D-6DM"/>
                     <connections>
@@ -384,12 +384,12 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ypc-Uz-oqS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gsV-h9-LVa" firstAttribute="centerX" secondItem="nQC-5y-YyM" secondAttribute="centerX" id="Bsc-f8-MGB"/>
                             <constraint firstItem="gsV-h9-LVa" firstAttribute="centerY" secondItem="nQC-5y-YyM" secondAttribute="centerY" id="oRG-g4-SY7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ypc-Uz-oqS"/>
                     </view>
                     <navigationItem key="navigationItem" id="GCI-eW-qWi"/>
                     <connections>
@@ -430,7 +430,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="358.33333333333331"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-ios" translatesAutoresizingMaskIntoConstraints="NO" id="a37-pc-uH9">
-                                        <rect key="frame" x="0.0" y="-92.666666666666686" width="414" height="544"/>
+                                        <rect key="frame" x="0.0" y="43.333333333333343" width="414" height="272"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -514,6 +514,7 @@
                                 <state key="normal" title="Submit"/>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="O2B-jd-uh1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="O8l-ZB-7w1" firstAttribute="leading" secondItem="O2B-jd-uh1" secondAttribute="leading" constant="12" id="5Bh-N3-p5C"/>
@@ -529,7 +530,6 @@
                             <constraint firstItem="ZUH-QL-Yuk" firstAttribute="top" secondItem="8ad-Wp-RMa" secondAttribute="top" id="rMS-ol-isH"/>
                             <constraint firstItem="O8l-ZB-7w1" firstAttribute="top" secondItem="rvV-Kp-UTz" secondAttribute="bottom" constant="9" id="wHA-bC-27W"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="O2B-jd-uh1"/>
                     </view>
                     <navigationItem key="navigationItem" id="rDQ-xa-6ou"/>
                 </viewController>
@@ -616,6 +616,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="v7q-CW-6nJ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="v7q-CW-6nJ" firstAttribute="trailing" secondItem="EKQ-I9-mWL" secondAttribute="trailing" id="Dkn-cJ-bKU"/>
@@ -630,7 +631,6 @@
                             <constraint firstItem="lan-ek-cDf" firstAttribute="top" secondItem="EKQ-I9-mWL" secondAttribute="bottom" constant="50" id="jh1-AF-J7I"/>
                             <constraint firstItem="v7q-CW-6nJ" firstAttribute="trailing" secondItem="lan-ek-cDf" secondAttribute="trailing" constant="12" id="yeK-ef-GlW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="v7q-CW-6nJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="hko-gw-XAH"/>
                     <connections>
@@ -643,13 +643,30 @@
             <point key="canvasLocation" x="2472" y="-162"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="3UH-Ea-kQ5">
+            <size key="intrinsicContentSize" width="390" height="39.988671874999994"/>
+        </designable>
+        <designable name="O8l-ZB-7w1">
+            <size key="intrinsicContentSize" width="390" height="39.988671874999994"/>
+        </designable>
+        <designable name="isu-dj-FXq">
+            <size key="intrinsicContentSize" width="390" height="39.988671874999994"/>
+        </designable>
+        <designable name="lan-ek-cDf">
+            <size key="intrinsicContentSize" width="390" height="39.988671874999994"/>
+        </designable>
+        <designable name="rvV-Kp-UTz">
+            <size key="intrinsicContentSize" width="390" height="39.988671874999994"/>
+        </designable>
+    </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="iv5-SH-9ux"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Bg" width="375" height="812"/>
         <image name="driver" width="150" height="51.666667938232422"/>
         <image name="iconBack" width="26.666666030883789" height="26.666666030883789"/>
         <image name="logo-ios" width="245" height="272"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dSH-9m-svp"/>
-    </inferredMetricsTieBreakers>
 </document>

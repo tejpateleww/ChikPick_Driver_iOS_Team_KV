@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +11,7 @@
         <!--Legal View Controller-->
         <scene sceneID="EMp-W5-ndm">
             <objects>
-                <viewController storyboardIdentifier="LegalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Px-gG-syg" customClass="LegalViewController" customModule="Pappea_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LegalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Px-gG-syg" customClass="LegalViewController" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cD-jC-yIZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +25,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpZ-Dw-xdM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbE-gJ-jIj">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbE-gJ-jIj">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="  Terms &amp; conditions">
@@ -49,7 +47,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UH-pH-0z8">
                                                 <rect key="frame" x="0.0" y="65.5" width="375" height="64.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqs-3s-DKL">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqs-3s-DKL">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="  Privacy &amp; Policy">
@@ -81,13 +79,13 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="eQf-Xh-G54"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Vji-2z-8Qy" firstAttribute="leading" secondItem="eQf-Xh-G54" secondAttribute="leading" id="JTR-Lt-hzG"/>
                             <constraint firstItem="eQf-Xh-G54" firstAttribute="trailing" secondItem="Vji-2z-8Qy" secondAttribute="trailing" id="XA1-FH-sIf"/>
                             <constraint firstItem="Vji-2z-8Qy" firstAttribute="top" secondItem="9cD-jC-yIZ" secondAttribute="top" constant="64" id="udA-xn-S04"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="eQf-Xh-G54"/>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showsBackButton" value="YES"/>
@@ -122,6 +120,7 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <viewLayoutGuide key="safeArea" id="gmC-h7-s1g"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="cxl-P4-08N" secondAttribute="trailing" id="NIu-hg-dTs"/>
@@ -129,15 +128,14 @@
                         <constraint firstItem="cxl-P4-08N" firstAttribute="leading" secondItem="bgQ-xJ-naA" secondAttribute="leading" id="hzm-YD-aMH"/>
                         <constraint firstAttribute="bottom" secondItem="cxl-P4-08N" secondAttribute="bottom" id="zGE-kn-dVo"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="gmC-h7-s1g"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKy-dj-FMt">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <viewLayoutGuide key="safeArea" id="Yg1-nP-L2Z"/>
                     <color key="backgroundColor" red="0.87843137250000003" green="0.47058823529999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="WVt-85-eyA"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="Yg1-nP-L2Z"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="8220" y="200"/>
@@ -145,12 +143,12 @@
         <!--termsConditionWebviewVc-->
         <scene sceneID="OyA-vG-YX7">
             <objects>
-                <viewController storyboardIdentifier="termsConditionWebviewVc" title="termsConditionWebviewVc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6K5-Jc-wvQ" customClass="termsConditionWebviewVc" customModule="Pappea_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="termsConditionWebviewVc" title="termsConditionWebviewVc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6K5-Jc-wvQ" customClass="termsConditionWebviewVc" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZDJ-yf-0pf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epb-Q2-cct" customClass="ThemView" customModule="Pappea_Driver" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epb-Q2-cct" customClass="ThemView" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navHairLine" translatesAutoresizingMaskIntoConstraints="NO" id="yeV-2Q-PUe">
@@ -175,7 +173,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zId-3S-20b">
-                                                <rect key="frame" x="117" y="29" width="141.5" height="13"/>
+                                                <rect key="frame" x="117" y="29" width="141" height="13"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -214,6 +212,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="f7v-ML-fzT"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Epb-Q2-cct" secondAttribute="bottom" id="8Pc-g3-9jA"/>
@@ -221,7 +220,6 @@
                             <constraint firstItem="Epb-Q2-cct" firstAttribute="top" secondItem="ZDJ-yf-0pf" secondAttribute="top" id="G9B-Rv-coy"/>
                             <constraint firstItem="f7v-ML-fzT" firstAttribute="trailing" secondItem="Epb-Q2-cct" secondAttribute="trailing" id="veH-Lo-Ta0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="f7v-ML-fzT"/>
                     </view>
                     <connections>
                         <outlet property="webView" destination="HI8-25-cou" id="Uq0-RU-a7m"/>
@@ -234,12 +232,12 @@
         <!--LegalWebView-->
         <scene sceneID="jc4-oO-sgz">
             <objects>
-                <viewController storyboardIdentifier="LegalWebView" title="Legal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SNE-lA-MUT" userLabel="LegalWebView" customClass="LegalWebView" customModule="Pappea_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LegalWebView" title="Legal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SNE-lA-MUT" userLabel="LegalWebView" customClass="LegalWebView" customModule="Chick_Pick_Drive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16M-qo-OiS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-yI-cen" customClass="ThemView" customModule="Pappea_Driver" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-yI-cen" customClass="ThemView" customModule="Chick_Pick_Drive" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8X-hI-6CU">
@@ -271,6 +269,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="hZ6-Pa-pOP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4GY-yI-cen" firstAttribute="top" secondItem="16M-qo-OiS" secondAttribute="top" id="3Ao-vl-EI5"/>
@@ -278,7 +277,6 @@
                             <constraint firstItem="4GY-yI-cen" firstAttribute="leading" secondItem="hZ6-Pa-pOP" secondAttribute="leading" id="hnZ-Zn-aPw"/>
                             <constraint firstItem="hZ6-Pa-pOP" firstAttribute="trailing" secondItem="4GY-yI-cen" secondAttribute="trailing" id="jPn-uY-skv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hZ6-Pa-pOP"/>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showTitleLabelView" value="YES"/>
@@ -292,11 +290,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rY-H8-od2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzH-pP-wx0">
                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                    <viewLayoutGuide key="safeArea" id="WIC-h0-Zh0"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="dzH-pP-wx0" secondAttribute="height" multiplier="1:1" id="Cqt-nt-8r2"/>
                         <constraint firstAttribute="height" constant="30" id="e7f-fP-5md"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="WIC-h0-Zh0"/>
                     <state key="normal" image="iconBack"/>
                     <connections>
                         <action selector="btnBack:" destination="SNE-lA-MUT" eventType="touchUpInside" id="Jmb-N6-xew"/>
@@ -304,17 +302,17 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navHairLine" translatesAutoresizingMaskIntoConstraints="NO" id="t4C-qZ-rHY">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                    <viewLayoutGuide key="safeArea" id="mE0-eM-RC8"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="2" id="sEW-el-2ne"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="mE0-eM-RC8"/>
                 </imageView>
             </objects>
             <point key="canvasLocation" x="8876" y="962"/>
         </scene>
     </scenes>
     <resources>
-        <image name="iconBack" width="21" height="21"/>
+        <image name="iconBack" width="26" height="26"/>
         <image name="navHairLine" width="16" height="16"/>
     </resources>
 </document>

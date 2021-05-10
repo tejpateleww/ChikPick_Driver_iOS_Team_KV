@@ -19,6 +19,9 @@ class EmailDetailsView: UIView
     @IBOutlet var txtConPassword: SkyFloatingLabelTextField!
     @IBOutlet var txtMobile: SkyFloatingLabelTextField!
     @IBOutlet var txtReferalCode: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var btnCheckBox: UIButton!
+    @IBOutlet weak var btnTermsAndConditiond: UIButton!
 
     var parameterArray = RegistrationParameter.shared
     
@@ -35,8 +38,26 @@ class EmailDetailsView: UIView
 //        setRightViewForPassword(textField: txtPassword)
 //        setRightViewForPassword(textField: txtConPassword)
 
+        let yourAttributes: [NSAttributedString.Key: Any] = [
+              .font: UIFont.systemFont(ofSize: 12),
+              .foregroundColor: UIColor(custom: .themePink),
+              .underlineStyle: NSUnderlineStyle.single.rawValue]
+        let attributeString = NSMutableAttributedString(string: "Terms and Conditions", attributes: yourAttributes)
+             btnTermsAndConditiond.setAttributedTitle(attributeString, for: .normal)
+        
         fillData()
     }
+    
+    @IBAction func btnTermsAndConditionsAction(_ sender: Any) {
+        if let url = URL(string: "http://18.133.15.111/terms-conditions-driver") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func btnCheckBoxAction(_ sender: Any) {
+        btnCheckBox.isSelected = !btnCheckBox.isSelected
+    }
+    
     override func validationWithCompletion(_ completion: @escaping ((Bool) -> ())){
     
         
@@ -73,6 +94,13 @@ class EmailDetailsView: UIView
             completion(false)
             return
         }
+        
+        if !btnCheckBox.isSelected {
+            AlertMessage.showMessageForError("Please accept the terms and conditions!")
+            completion(false)
+            return
+        }
+        
         parameterArray.first_name = txtFirstName.text!
         parameterArray.last_name =  txtLastName.text!
         parameterArray.password = txtPassword.text!

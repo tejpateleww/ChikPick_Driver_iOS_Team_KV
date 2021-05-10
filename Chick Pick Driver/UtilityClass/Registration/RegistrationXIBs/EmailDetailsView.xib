@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,15 +15,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="rTs-2H-LI9" customClass="EmailDetailsView" customModule="Chick_Pick_Driver" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="396"/>
+        <view contentMode="scaleToFill" id="rTs-2H-LI9" customClass="EmailDetailsView" customModule="Chick_Pick_Drive" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="409"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jSb-nJ-KBw">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="396"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="409"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Nf-nR-Mdl" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="41.5"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -46,7 +46,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHv-6K-4js" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                            <rect key="frame" x="0.0" y="69.5" width="375" height="49"/>
+                            <rect key="frame" x="0.0" y="61.5" width="375" height="41"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -69,7 +69,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uDz-50-Jn4" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                            <rect key="frame" x="0.0" y="138.5" width="375" height="49.5"/>
+                            <rect key="frame" x="0.0" y="122.5" width="375" height="41.5"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -92,13 +92,13 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKy-yE-zbZ">
-                            <rect key="frame" x="0.0" y="208" width="375" height="49.5"/>
+                            <rect key="frame" x="0.0" y="184" width="375" height="41"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFA-St-Zlk" userLabel="PostalCode View">
-                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="41"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="254" borderStyle="roundedRect" placeholder="Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3BW-DC-w93" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="41"/>
                                             <color key="tintColor" red="1" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
@@ -135,10 +135,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5q-4H-0xk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YPK-UW-FE8" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -183,7 +183,7 @@
                             </constraints>
                         </stackView>
                         <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tzu-e5-nWY" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                            <rect key="frame" x="0.0" y="267.5" width="375" height="0.0"/>
+                            <rect key="frame" x="0.0" y="235" width="375" height="0.0"/>
                             <color key="tintColor" red="1" green="0.63921568630000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" id="ZU1-8R-IVo"/>
@@ -210,7 +210,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R8b-Mt-wsh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                            <rect key="frame" x="0.0" y="277.5" width="375" height="49"/>
+                            <rect key="frame" x="0.0" y="245" width="375" height="41.5"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -233,7 +233,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cJ-SX-KnB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                            <rect key="frame" x="0.0" y="346.5" width="375" height="49.5"/>
+                            <rect key="frame" x="0.0" y="306.5" width="375" height="41"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -255,9 +255,61 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqe-pi-ibh">
+                            <rect key="frame" x="0.0" y="367.5" width="375" height="41.5"/>
+                            <subviews>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zz-vw-wnf">
+                                    <rect key="frame" x="2" y="11" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="LUL-Wb-742"/>
+                                        <constraint firstAttribute="height" constant="20" id="w99-M8-Jg0"/>
+                                    </constraints>
+                                    <state key="normal" image="blank-check-box"/>
+                                    <state key="selected" image="black-check-box-with-white-check (1)"/>
+                                    <connections>
+                                        <action selector="btnCheckBoxAction:" destination="rTs-2H-LI9" eventType="touchUpInside" id="iFw-5h-SHo"/>
+                                    </connections>
+                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="xwy-76-eWX">
+                                    <rect key="frame" x="32" y="7.5" width="308.5" height="27"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to the" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AQ-EV-N9F">
+                                            <rect key="frame" x="0.0" y="6" width="75.5" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMy-D5-Jin">
+                                            <rect key="frame" x="76.5" y="0.0" width="124" height="27"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <state key="normal" title="Terms and Conditions">
+                                                <color key="titleColor" red="0.90588235289999997" green="0.58431372550000005" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="btnTermsAndConditionsAction:" destination="rTs-2H-LI9" eventType="touchUpInside" id="M9h-Uv-4Rc"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="of Chick Pick Drive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qar-3i-OBT">
+                                            <rect key="frame" x="201.5" y="6" width="107" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="xwy-76-eWX" firstAttribute="leading" secondItem="9zz-vw-wnf" secondAttribute="trailing" constant="10" id="F1W-wo-dMm"/>
+                                <constraint firstItem="xwy-76-eWX" firstAttribute="centerY" secondItem="zqe-pi-ibh" secondAttribute="centerY" id="FdM-qc-Y5g"/>
+                                <constraint firstItem="9zz-vw-wnf" firstAttribute="centerY" secondItem="zqe-pi-ibh" secondAttribute="centerY" id="iDs-Hr-fSh"/>
+                                <constraint firstItem="9zz-vw-wnf" firstAttribute="leading" secondItem="zqe-pi-ibh" secondAttribute="leading" constant="2" id="yDK-AP-3ID"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="KEm-xW-Ssi"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="jSb-nJ-KBw" firstAttribute="leading" secondItem="KEm-xW-Ssi" secondAttribute="leading" id="MHN-9b-Dxn"/>
@@ -266,8 +318,9 @@
                 <constraint firstItem="jSb-nJ-KBw" firstAttribute="bottom" secondItem="KEm-xW-Ssi" secondAttribute="bottom" id="wGZ-IR-scP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="KEm-xW-Ssi"/>
             <connections>
+                <outlet property="btnCheckBox" destination="9zz-vw-wnf" id="ayE-90-fYs"/>
+                <outlet property="btnTermsAndConditiond" destination="YMy-D5-Jin" id="D5U-Hn-034"/>
                 <outlet property="txtConPassword" destination="3cJ-SX-KnB" id="zWf-44-aKQ"/>
                 <outlet property="txtEmail" destination="uDz-50-Jn4" id="1Vx-64-jHG"/>
                 <outlet property="txtFirstName" destination="5Nf-nR-Mdl" id="ZRh-qT-onM"/>
@@ -276,7 +329,37 @@
                 <outlet property="txtPassword" destination="R8b-Mt-wsh" id="tB2-k2-6YE"/>
                 <outlet property="txtReferalCode" destination="Tzu-e5-nWY" id="tdC-Bt-aek"/>
             </connections>
-            <point key="canvasLocation" x="317.60000000000002" y="-788.90554722638683"/>
+            <point key="canvasLocation" x="317.60000000000002" y="-783.05847076461771"/>
         </view>
     </objects>
+    <designables>
+        <designable name="3BW-DC-w93">
+            <size key="intrinsicContentSize" width="62" height="34"/>
+        </designable>
+        <designable name="3cJ-SX-KnB">
+            <size key="intrinsicContentSize" width="144" height="34"/>
+        </designable>
+        <designable name="5Nf-nR-Mdl">
+            <size key="intrinsicContentSize" width="96.5" height="34"/>
+        </designable>
+        <designable name="IHv-6K-4js">
+            <size key="intrinsicContentSize" width="96" height="34"/>
+        </designable>
+        <designable name="R8b-Mt-wsh">
+            <size key="intrinsicContentSize" width="90" height="34"/>
+        </designable>
+        <designable name="Tzu-e5-nWY">
+            <size key="intrinsicContentSize" width="115" height="34"/>
+        </designable>
+        <designable name="YPK-UW-FE8">
+            <size key="intrinsicContentSize" width="124.5" height="34"/>
+        </designable>
+        <designable name="uDz-50-Jn4">
+            <size key="intrinsicContentSize" width="62.5" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="black-check-box-with-white-check (1)" width="170" height="170"/>
+        <image name="blank-check-box" width="32" height="32"/>
+    </resources>
 </document>
