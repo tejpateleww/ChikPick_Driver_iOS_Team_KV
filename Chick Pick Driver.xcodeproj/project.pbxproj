@@ -2460,7 +2460,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.8;
+				CURRENT_PROJECT_VERSION = 1.1.9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
@@ -2485,7 +2485,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Chick Pick Driver/Chick Pick Driver.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.8;
+				CURRENT_PROJECT_VERSION = 1.1.9;
 				DEVELOPMENT_TEAM = S3CGZRZDL7;
 				INFOPLIST_FILE = "Chick Pick Driver/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

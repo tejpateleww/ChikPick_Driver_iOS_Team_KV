@@ -21,7 +21,7 @@ class SettingsViewController: BaseViewController {
         tableView.tableFooterView = UIView()
         
         self.setNavBarWithBack(Title: "Settings", IsNeedRightButton: false)
-        arrMenuTitle = ["Profile", "Change Password", "Help", "FAQ", "Payments"]
+        arrMenuTitle = ["Profile", "Change Password", "Help", "FAQ", "Payments", "Terms and Conditions"]
     }
     
     func pushThroughNavigationBar(viewController : UIViewController)
@@ -89,6 +89,14 @@ extension SettingsViewController : UITableViewDelegate, UITableViewDataSource {
         {
            let vc : UpdateAccountViewController = UIViewController.viewControllerInstance(storyBoard: .updateProfile)
            self.pushThroughNavigationBar(viewController: vc)
+            return
+        }
+        
+        if arrMenuTitle[indexPath.row] == "Terms and Conditions"
+        {
+            if let url = URL(string: "http://18.133.15.111/terms-conditions-driver") {
+                UIApplication.shared.open(url)
+            }
             return
         }
     }
